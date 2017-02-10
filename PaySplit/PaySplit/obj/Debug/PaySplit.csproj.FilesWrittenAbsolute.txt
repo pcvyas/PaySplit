@@ -1,0 +1,5 @@
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll.mdb
