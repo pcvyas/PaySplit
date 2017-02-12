@@ -1,0 +1,10 @@
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/PaySplit.Droid.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.Xml.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.Core.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/Mono.Android.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/Java.Interop.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/PaySplit.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/mscorlib.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.Runtime.Serialization.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.ServiceModel.Internals.dll

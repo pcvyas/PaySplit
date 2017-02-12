@@ -1,0 +1,4 @@
+PaySplit.Droid.MainActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
+PaySplit.Droid.MainActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
+PaySplit.Droid.MainActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
+paysplit.droid.MainActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity

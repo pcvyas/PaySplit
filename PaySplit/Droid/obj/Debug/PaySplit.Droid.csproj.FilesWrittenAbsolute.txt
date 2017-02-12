@@ -10,6 +10,11 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xhdpi/icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxhdpi/icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxxhdpi/icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-hdpi/new_icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-mdpi/new_icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xhdpi/new_icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxhdpi/new_icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxxhdpi/new_icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/R.cs.flag
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/com.sag.paysplit-Signed.apk
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/uploadflags.txt

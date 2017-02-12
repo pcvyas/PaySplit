@@ -1,0 +1,10 @@
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/ibtool/_BundleResourceWithLogicalName.items
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/actool/_PartialAppManifest.items
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/actool/_BundleResourceWithLogicalName.items
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/optimized/
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/PaySplit.iOS.exe.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/PaySplit.iOS.exe
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/PaySplit.iOS.exe
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/PaySplit.iOS.exe.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/PaySplit.dll

@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
