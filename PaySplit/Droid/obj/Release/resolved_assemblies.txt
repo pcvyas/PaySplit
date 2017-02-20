@@ -4,6 +4,12 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.Core.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/Mono.Android.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/Java.Interop.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLitePCLRaw.core.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLitePCLRaw.lib.e_sqlite3.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLitePCLRaw.provider.e_sqlite3.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLitePCLRaw.batteries_green.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLitePCLRaw.batteries_v2.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/SQLite-net.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/mscorlib.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Release/android/assets/System.Runtime.Serialization.dll

@@ -100,6 +100,11 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "PaySplit.Droid.dll" comes first in this list. */
 		"PaySplit.Droid.dll",
 		"System.Runtime.dll",
+		"SQLitePCLRaw.core.dll",
+		"SQLitePCLRaw.lib.e_sqlite3.dll",
+		"SQLitePCLRaw.provider.e_sqlite3.dll",
+		"SQLitePCLRaw.batteries_green.dll",
+		"SQLite-net.dll",
 		"PaySplit.dll",
 		"System.Threading.dll",
 		"System.Collections.dll",
@@ -110,6 +115,10 @@ class MonoPackageManager_Resources {
 		"System.Runtime.InteropServices.dll",
 		"System.Runtime.Extensions.dll",
 		"System.Reflection.Extensions.dll",
+		"System.Linq.Expressions.dll",
+		"System.Globalization.dll",
+		"System.Threading.Tasks.dll",
+		"System.Resources.ResourceManager.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

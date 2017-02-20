@@ -3,3 +3,7 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.core.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_green.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_v2.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLite-net.dll

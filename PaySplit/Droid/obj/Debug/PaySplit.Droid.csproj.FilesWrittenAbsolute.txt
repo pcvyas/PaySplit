@@ -15,10 +15,16 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xhdpi/new_icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxhdpi/new_icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxxhdpi/new_icon.png
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/createentry.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/R.cs.flag
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/com.sag.paysplit-Signed.apk
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/uploadflags.txt
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/PaySplit.Droid.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/PaySplit.Droid.dll.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLitePCLRaw.core.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLitePCLRaw.lib.e_sqlite3.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLitePCLRaw.provider.e_sqlite3.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLitePCLRaw.batteries_green.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLite-net.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.dll.mdb

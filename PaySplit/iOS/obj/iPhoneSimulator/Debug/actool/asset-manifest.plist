@@ -6,8 +6,91 @@
 	<dict>
 		<key>output-files</key>
 		<array>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon29x29.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon29x29@2x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon29x29@3x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon40x40@2x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon40x40@3x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon57x57.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon57x57@2x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon60x60@2x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon60x60@3x.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon29x29~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon29x29@2x~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon40x40~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon40x40@2x~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon72x72~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon72x72@2x~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon76x76~ipad.png</string>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/bundle/AppIcon76x76@2x~ipad.png</string>
 			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/partial-info.plist</string>
 		</array>
 	</dict>
+	<key>com.apple.actool.document.notices</key>
+	<array>
+		<dict>
+			<key>affected-items</key>
+			<array>
+				<string>./AppIcon.appiconset/[][iphone][57x57][][][1x]</string>
+			</array>
+			<key>catalog</key>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/Assets.xcassets</string>
+			<key>message</key>
+			<string>57x57 app icons only apply to iPhone apps targeting releases of iOS prior to 7.0</string>
+			<key>type</key>
+			<string>Inapplicable Content</string>
+		</dict>
+		<dict>
+			<key>affected-items</key>
+			<array>
+				<string>./AppIcon.appiconset/[][iphone][57x57][][][2x]</string>
+			</array>
+			<key>catalog</key>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/Assets.xcassets</string>
+			<key>message</key>
+			<string>57x57@2x app icons only apply to iPhone apps targeting releases of iOS prior to 7.0</string>
+			<key>type</key>
+			<string>Inapplicable Content</string>
+		</dict>
+		<dict>
+			<key>affected-items</key>
+			<array>
+				<string>./AppIcon.appiconset/[][ipad][72x72][][][1x]</string>
+			</array>
+			<key>catalog</key>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/Assets.xcassets</string>
+			<key>message</key>
+			<string>72x72 app icons only apply to iPad apps targeting releases of iOS prior to 7.0</string>
+			<key>type</key>
+			<string>Inapplicable Content</string>
+		</dict>
+		<dict>
+			<key>affected-items</key>
+			<array>
+				<string>./AppIcon.appiconset/[][ipad][72x72][][][2x]</string>
+			</array>
+			<key>catalog</key>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/Assets.xcassets</string>
+			<key>message</key>
+			<string>72x72@2x app icons only apply to iPad apps targeting releases of iOS prior to 7.0</string>
+			<key>type</key>
+			<string>Inapplicable Content</string>
+		</dict>
+	</array>
+	<key>com.apple.actool.document.warnings</key>
+	<array>
+		<dict>
+			<key>affected-items</key>
+			<array>
+				<string>./AppIcon.appiconset</string>
+			</array>
+			<key>catalog</key>
+			<string>/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/Assets.xcassets</string>
+			<key>message</key>
+			<string>A 83.5x83.5@2x app icon is required for iPad apps targeting iOS 9.0 and later</string>
+			<key>type</key>
+			<string>Missing Content</string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -7,4 +7,9 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/PaySplit.iOS.exe
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/PaySplit.iOS.exe
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Release/PaySplit.iOS.exe.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/SQLitePCLRaw.core.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/SQLitePCLRaw.provider.sqlite3.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/SQLitePCLRaw.batteries_green.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/SQLitePCLRaw.batteries_v2.dll
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/SQLite-net.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Release/PaySplit.dll
