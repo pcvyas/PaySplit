@@ -1,28 +1,15 @@
-﻿<Properties StartupConfiguration="{F2E2B9EE-4D25-4982-B742-AFB0EACA68F7}|Default">
+﻿<Properties StartupConfiguration="{142E8DF1-81C2-4BED-B944-F54F2FC63205}|Default">
   <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/CameraService.cs">
     <Files>
-      <File FileName="iOS/ViewController.cs" Line="15" Column="42" />
-      <File FileName="iOS/DataHelper.cs" Line="1" Column="1" />
-      <File FileName="iOS/CameraService.cs" Line="18" Column="17" />
-      <File FileName="Droid/MainActivity.cs" Line="104" Column="38" />
+      <File FileName="Droid/MainActivity.cs" Line="81" Column="7" />
+      <File FileName="Droid/CameraService.cs" Line="16" Column="16" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="PaySplit" expanded="True">
-            <Node name="PaySplit.Droid" expanded="True">
-              <Node name="MainActivity.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.LGH831118ba2c2" />
+  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_x86" />
 </Properties>

@@ -19,6 +19,7 @@ namespace PaySplit.Droid
 	{
 		int count = 1;
 		ImageView iw;
+		CameraService cs;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -65,18 +66,33 @@ namespace PaySplit.Droid
 			/**************************
 			 *  Take a Photo
 			 * ************************/
-			if (IsThereAnAppToTakePictures())
+			iw = FindViewById<ImageView>(Resource.Id.imageView);
+
+		    cs = new CameraService(iw, this);
+
+			if (cs.IsThereAnAppToTakePictures())
 			{
-				CreateDirectoryForPictures();
+				cs.CreateDirectoryForPictures();
 
 				Button takePhoto = FindViewById<Button>(Resource.Id.picture);
-				iw = FindViewById<ImageView>(Resource.Id.imageView);
-				takePhoto.Click += TakeAPicture;
+
+				takePhoto.Click += delegate 
+				{
+					cs.TakeAPicture();
+				};
 			}
+
 			iw.Visibility = ViewStates.Invisible;
 
 		}
 
+		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+			cs.SavePicture();
+
+		}
+		/*
 		private void CreateDirectoryForPictures()
 		{
 			App.dir = new File(
@@ -132,9 +148,9 @@ namespace PaySplit.Droid
 				GC.Collect();
 			}
 
-		}
+		}*/
 	}
-
+	/*
 		public static class BitmapHelpers
 		{
 			public static Bitmap LoadAndResizeBitmap(this string fileName, int width, int height)
@@ -172,7 +188,7 @@ namespace PaySplit.Droid
 			public static File dir;
 			public static Bitmap bitmap;
 	    }
-
+     */
 	
 
 }
