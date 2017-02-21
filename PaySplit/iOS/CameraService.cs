@@ -1,4 +1,5 @@
 ﻿using System;
+using Foundation;
 using UIKit;
 
 namespace PaySplit.iOS
@@ -9,6 +10,7 @@ namespace PaySplit.iOS
 		UIImageView imageVW;
 		UIViewController viewController;
 		public UIImage Image { get; set; }
+		public string ImagePath { get; set; }
 
 		public CameraService(UIImageView imageView, UIViewController viewController)
 		{
@@ -45,7 +47,7 @@ namespace PaySplit.iOS
 		//Photo taken
 		public void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
 		{
-
+		 
 			bool isImage = false;
 			switch (e.Info[UIImagePickerController.MediaType].ToString())
 			{
@@ -68,5 +70,44 @@ namespace PaySplit.iOS
 			// dismiss the picker
 			iPicker.DismissModalViewController(true);
 		}
+
+		public void SavePicture()
+		{
+			if (Image == null)
+			{
+				return;
+			}
+			string documentsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			string picName = String.Format("myPhoto_{0}.jpg", Guid.NewGuid());
+
+			ImagePath = System.IO.Path.Combine(documentsDirectory, picName);
+
+			NSData imgData = Image.AsJPEG();
+
+			NSError err = null;
+			if (imgData.Save(ImagePath, false, out err))
+			{
+				Console.WriteLine("saved as " + ImagePath);
+			}
+			else {
+				Console.WriteLine("NOT saved as " + ImagePath + " because" + err.LocalizedDescription);
+			}
+
+		}
+
+		public string GetSavedPicturePath()
+		{
+			if (Image != null)
+			{
+				return ImagePath;
+			}
+			return null;
+		} 
+
+		public UIImage GetSavedImage()
+		{
+			return Image;
+		}
+
 	}
 }

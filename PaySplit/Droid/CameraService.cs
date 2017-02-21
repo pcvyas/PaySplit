@@ -53,9 +53,7 @@ namespace PaySplit.Droid
 
 		public void SavePicture()
 		{
-			
 			// Make it available in the gallery
-
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 			Android.Net.Uri contentUri = Android.Net.Uri.FromFile(App.file);
 			mediaScanIntent.SetData(contentUri);
@@ -64,7 +62,6 @@ namespace PaySplit.Droid
 			// Display in ImageView. We will resize the bitmap to fit the display.
 			// Loading the full sized image will consume to much memory
 			// and cause the application to crash.
-
 			int height = activity.Resources.DisplayMetrics.HeightPixels;
 			int width = iw.Height;
 			App.bitmap = App.file.Path.LoadAndResizeBitmap(width, height);
@@ -78,6 +75,20 @@ namespace PaySplit.Droid
 				GC.Collect();
 			}
 
+		}
+
+		public string GetSavedPicturePath()
+		{
+			if (App.bitmap != null)
+			{
+				return App.file.Path;
+			}
+			return null;
+		}
+
+		public Bitmap GetSavedImage()
+		{
+			return App.bitmap;
 		}
 
 	}
