@@ -22,6 +22,14 @@ namespace PaySplit.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imageVW { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView splitView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton viewItem { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -34,6 +42,16 @@ namespace PaySplit.iOS
             if (Button != null) {
                 Button.Dispose ();
                 Button = null;
+            }
+
+            if (imageVW != null) {
+                imageVW.Dispose ();
+                imageVW = null;
+            }
+
+            if (splitView != null) {
+                splitView.Dispose ();
+                splitView = null;
             }
 
             if (viewItem != null) {

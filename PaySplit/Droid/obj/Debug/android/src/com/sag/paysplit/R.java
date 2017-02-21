@@ -13,8 +13,9 @@ public final class R {
     public static final class id {
         public static final int AddEntry=0x7f050000;
         public static final int Viewbtn=0x7f050001;
-        public static final int items=0x7f050002;
-        public static final int myButton=0x7f050003;
+        public static final int imageView=0x7f050003;
+        public static final int myButton=0x7f050004;
+        public static final int picture=0x7f050002;
     }
     public static final class layout {
         public static final int createentry=0x7f030000;

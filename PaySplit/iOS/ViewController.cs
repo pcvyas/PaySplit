@@ -1,5 +1,6 @@
 ﻿using System;
-
+using AssetsLibrary;
+using Foundation;
 using UIKit;
 
 namespace PaySplit.iOS
@@ -8,6 +9,7 @@ namespace PaySplit.iOS
 	{
 		int count = 1;
 		GenDataService database;
+
 		public ViewController(IntPtr handle) : base(handle)
 		{
 			//Generate or Initialize Database Path
@@ -19,12 +21,15 @@ namespace PaySplit.iOS
 
 			//Create Table
 			database.CreateTable();
+
+
 			
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			Button.AccessibilityIdentifier = "myButton";
@@ -42,7 +47,12 @@ namespace PaySplit.iOS
 
 			};
 
-			viewItem.TouchUpInside += delegate 
+
+			CameraService cs = new CameraService(imageVW, this);
+			//cs.StartCamera();
+
+
+			viewItem.TouchUpInside += delegate
 			{
 				var bills = database.GetAllBills();
 				string s = "";
@@ -50,7 +60,12 @@ namespace PaySplit.iOS
 				{
 					s += bill.Name + "\n";
 				}
+
+				//Just for testing (Need a seperate listener
+				cs.StartCamera();
 			};
+
+
 		}
 
 		public override void DidReceiveMemoryWarning()
@@ -59,4 +74,7 @@ namespace PaySplit.iOS
 			// Release any cached data, images, etc that aren't in use.		
 		}
 	}
+
+
+
 }

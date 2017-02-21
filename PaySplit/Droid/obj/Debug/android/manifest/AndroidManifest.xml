@@ -5,7 +5,7 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:label="PaySplit" android:icon="@mipmap/new_icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:icon="@mipmap/new_icon" android:label="PaySplit" android:name="md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity">
+    <activity android:icon="@mipmap/new_icon" android:label="PaySplit" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:name="md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
