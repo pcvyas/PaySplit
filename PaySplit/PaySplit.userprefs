@@ -1,17 +1,10 @@
-﻿<Properties StartupConfiguration="{142E8DF1-81C2-4BED-B944-F54F2FC63205}|Default">
+﻿<Properties StartupConfiguration="{F2E2B9EE-4D25-4982-B742-AFB0EACA68F7}|Default">
   <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/CameraService.cs">
-    <Files>
-      <File FileName="Droid/CameraService.cs" Line="28" Column="45" />
-      <File FileName="PaySplit/Models/Bill.cs" Line="6" Column="17" />
-      <File FileName="iOS/ViewController.cs" Line="1" Column="1" />
-      <File FileName="iOS/CameraService.cs" Line="1" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.LGH831118ba2c2" />
+  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_ARMv7a" />
 </Properties>
