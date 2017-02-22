@@ -1,18 +1,10 @@
-﻿<Properties StartupConfiguration="{F2E2B9EE-4D25-4982-B742-AFB0EACA68F7}|Default">
-  <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.ECD0A840-2650-4EFC-AAC2-36AA52D6649B" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewController.cs">
-    <Files>
-      <File FileName="../../../../../../Library/Frameworks/Xamarin.iOS.framework/Versions/10.3.1.8/lib/mono/2.1/Xamarin.iOS.Common.targets" Line="1251" Column="43" />
-      <File FileName="PaySplit/Models/Bill.cs" Line="10" Column="4" />
-      <File FileName="PaySplit/GenDataService.cs" Line="75" Column="11" />
-      <File FileName="iOS/ViewController.cs" Line="68" Column="4" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+<Properties StartupConfiguration="{F2E2B9EE-4D25-4982-B742-AFB0EACA68F7}|Default">
+  <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/iOS/ViewController.cs" line="64" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_ARMv7a" />
 </Properties>
