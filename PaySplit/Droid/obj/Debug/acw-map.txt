@@ -1,4 +1,16 @@
+PaySplit.Droid.BillDetailsActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.BillDetailsActivity
+PaySplit.Droid.BillDetailsActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.BillDetailsActivity
+PaySplit.Droid.BillDetailsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.BillDetailsActivity
+paysplit.droid.BillDetailsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.BillDetailsActivity
+PaySplit.Droid.ListViewAdapter, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.ListViewAdapter
+PaySplit.Droid.ListViewAdapter, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.ListViewAdapter
+PaySplit.Droid.ListViewAdapter;md50e8ff3f196fa9f0428d8492958f5c6f0.ListViewAdapter
+paysplit.droid.ListViewAdapter;md50e8ff3f196fa9f0428d8492958f5c6f0.ListViewAdapter
 PaySplit.Droid.MainActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
 PaySplit.Droid.MainActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
 PaySplit.Droid.MainActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
 paysplit.droid.MainActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.MainActivity
+PaySplit.Droid.ViewBillsActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
+PaySplit.Droid.ViewBillsActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
+PaySplit.Droid.ViewBillsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
+paysplit.droid.ViewBillsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity

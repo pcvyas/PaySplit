@@ -84,6 +84,26 @@ namespace PaySplit
 			return bs;
 		}
 
+        public Bill getBillById(int id)
+        {
+            Bill b = new Bill();
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+                SQLiteConnection db = new SQLiteConnection(DBPath);
+                b = db.Find<Bill>(id);
+                db.Close();
+            }
+            catch
+            {
+                return null;
+            }
+            return b; ;
+        }
+
 		//Delete A Bill
 		public bool DeleteBill(Bill b)
 		{
@@ -102,8 +122,26 @@ namespace PaySplit
 				return false;
 			}
 			return true;
-
 		}
 
+        // Delete all bills
+        public bool deleteAllBills()
+        {
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+                SQLiteConnection db = new SQLiteConnection(DBPath);
+                db.DeleteAll<Bill>();
+                db.Close();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
 	}
 }

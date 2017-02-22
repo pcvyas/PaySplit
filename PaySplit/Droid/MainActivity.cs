@@ -26,7 +26,8 @@ namespace PaySplit.Droid
 			base.OnCreate(savedInstanceState);
 
 			// Set our view from the "main" layout resource
-			SetContentView(Resource.Layout.CreateEntry);
+            // Currently set to "CreateEntry", change to main dashboard page
+			SetContentView(Resource.Layout.Main);
 
 
 			//Generate or Initialize Database Path
@@ -40,33 +41,45 @@ namespace PaySplit.Droid
 			dbs.CreateTable();
 
 			//Add Entry
-			Button button = FindViewById<Button>(Resource.Id.AddEntry);
-			button.Click += delegate
+			Button addB = FindViewById<Button>(Resource.Id.Main_AddEntry);
+            addB.Click += delegate
 			{
-				Bill b = new Bill() { Name = "Car Gas", Amount = 15.67, Description = "to ottawa" };
+                var bills = dbs.GetAllBills();
+                Bill b = new Bill() { Name = "Car Gas" + bills.Count, Amount = 15.67, Description = "to ottawa" };
 				dbs.InsertBillEntry(b);
 
 			};
 
-			//View Entry
-			Button viewB = FindViewById<Button>(Resource.Id.Viewbtn);
-			viewB.Click += delegate
-			{
-				var bills = dbs.GetAllBills();
-				string s = "";
-				foreach (var bill in bills)
-				{
-					s += bill.Name + "\n";
-				}
-				Toast.MakeText(this, s, ToastLength.Short).Show();
+            ////View Entry
+            Button viewB = FindViewById<Button>(Resource.Id.Main_Viewbtn);
+            viewB.Click += delegate
+            {
+                StartActivity(typeof(ViewBillsActivity));
+                //viewB.Click += delegate
+                //{
+                //	var bills = dbs.GetAllBills();
+                //	string s = "";
+                //	foreach (var bill in bills)
+                //	{
+                //		s += bill.Name + "\n";
+                //	}
+                //	Toast.MakeText(this, s, ToastLength.Short).Show();
 
-			};
+                //};
+            };
 
+            // Delete all bills (for testing)
+            Button delB = FindViewById<Button>(Resource.Id.Main_DelBtn);
+            delB.Click += delegate
+            {
+                dbs.deleteAllBills();
+                Toast.MakeText(this, "Bills Deleted", ToastLength.Short).Show();
+            };
 
-			/**************************
+            /**************************
 			 *  Take a Photo
 			 * ************************/
-			iw = FindViewById<ImageView>(Resource.Id.imageView);
+            iw = FindViewById<ImageView>(Resource.Id.Main_imageView);
 
 		    cs = new CameraService(iw, this);
 
@@ -74,7 +87,7 @@ namespace PaySplit.Droid
 			{
 				cs.CreateDirectoryForPictures();
 
-				Button takePhoto = FindViewById<Button>(Resource.Id.picture);
+				Button takePhoto = FindViewById<Button>(Resource.Id.Main_picture);
 
 				takePhoto.Click += delegate 
 				{
@@ -93,7 +106,6 @@ namespace PaySplit.Droid
 			cs.SavePicture();
 
 		}
-
 	}
 }
 

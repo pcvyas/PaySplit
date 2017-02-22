@@ -18,5 +18,7 @@ namespace PaySplit
 		public double Amount { get; set; }
 		public string ImagePath { get; set; }
 		public DateTime Date { get; set; }
+        public DateTime LastEdited { get; set;  }
+        public string Owner { get; set;  }
 	}
 }
