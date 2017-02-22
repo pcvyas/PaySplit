@@ -2,10 +2,10 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.core/library_project_imports/res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.lib.e_sqlite3/library_project_imports/res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.provider.e_sqlite3/library_project_imports/res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.batteries_green/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.core/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.lib.e_sqlite3/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.provider.e_sqlite3/library_project_imports/res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.batteries_green/library_project_imports/res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj/Debug/__library_projects__/SQLitePCLRaw.core/library_project_imports/assets</ResolvedAssetDirectory>
@@ -15,9 +15,9 @@
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.core.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.lib.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.provider.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.batteries_green.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.core.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.lib.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.provider.e_sqlite3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/Droid/obj/Debug/__library_projects__/SQLitePCLRaw.batteries_green.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

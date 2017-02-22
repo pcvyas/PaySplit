@@ -7,3 +7,12 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_green.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_v2.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/SQLite-net.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile259.AssemblyAttribute.cs
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll.mdb
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/obj/Debug/PaySplit.dll.mdb
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.core.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_green.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/SQLitePCLRaw.batteries_v2.dll
+/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/SQLite-net.dll

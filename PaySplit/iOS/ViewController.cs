@@ -61,8 +61,9 @@ namespace PaySplit.iOS
 					s += bill.Name + "\n";
 				}
 
+				Console.WriteLine(s);
 				//Just for testing (Need a seperate listener
-				cs.StartCamera();
+				//cs.StartCamera();
 			};
 
 
