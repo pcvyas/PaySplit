@@ -99,14 +99,14 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "PaySplit.Droid.dll" comes first in this list. */
 		"PaySplit.Droid.dll",
-		"PaySplit.dll",
-		"SQLite-net.dll",
-		"SQLitePCLRaw.batteries_green.dll",
+		"System.Runtime.dll",
 		"SQLitePCLRaw.core.dll",
 		"SQLitePCLRaw.lib.e_sqlite3.dll",
 		"SQLitePCLRaw.provider.e_sqlite3.dll",
+		"SQLitePCLRaw.batteries_green.dll",
+		"SQLite-net.dll",
+		"PaySplit.dll",
 		"System.Threading.dll",
-		"System.Runtime.dll",
 		"System.Collections.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Diagnostics.Debug.dll",

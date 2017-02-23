@@ -75,6 +75,7 @@
     <Compile Include="DataHelper.cs" />
     <Compile Include="CameraService.cs" />
     <Compile Include="ViewBillsActivity.cs" />
+    <Compile Include="CreateBillActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">

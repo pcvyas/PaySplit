@@ -48,6 +48,7 @@ namespace PaySplit.Droid
                 Bill b = new Bill() { Name = "Car Gas" + bills.Count, Amount = 15.67, Description = "to ottawa" };
 				dbs.InsertBillEntry(b);
 
+				StartActivity(typeof(CreateBillActivity));
 			};
 
             ////View Entry

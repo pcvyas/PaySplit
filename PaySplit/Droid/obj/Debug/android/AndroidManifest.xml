@@ -13,6 +13,7 @@
       </intent-filter>
     </activity>
     <activity android:label="ViewBillsActivity" android:name="md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity" />
+    <activity android:label="CreateBillActivity" android:name="md50e8ff3f196fa9f0428d8492958f5c6f0.CreateBillActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.sag.paysplit.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

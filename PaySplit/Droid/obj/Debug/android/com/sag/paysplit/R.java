@@ -17,15 +17,28 @@ public final class R {
         public static final int Details_CreatedOn=0x7f050003;
         public static final int Details_Owner=0x7f050002;
         public static final int Details_Updated=0x7f050004;
-        public static final int Main_AddEntry=0x7f050008;
-        public static final int Main_DelBtn=0x7f05000b;
-        public static final int Main_Viewbtn=0x7f050009;
-        public static final int Main_imageView=0x7f05000c;
-        public static final int Main_picture=0x7f05000a;
-        public static final int View_BillEntry=0x7f05000d;
-        public static final int View_ListView=0x7f05000e;
-        public static final int imageView1=0x7f050007;
-        public static final int textView1=0x7f050006;
+        public static final int Main_AddEntry=0x7f050015;
+        public static final int Main_DelBtn=0x7f050018;
+        public static final int Main_Viewbtn=0x7f050016;
+        public static final int Main_imageView=0x7f050019;
+        public static final int Main_picture=0x7f050017;
+        public static final int View_BillEntry=0x7f05001a;
+        public static final int View_ListView=0x7f05001b;
+        public static final int amount=0x7f050009;
+        public static final int amountLabel=0x7f050008;
+        public static final int category=0x7f05000d;
+        public static final int categoryLabel=0x7f05000c;
+        public static final int description=0x7f05000b;
+        public static final int descriptionLabel=0x7f05000a;
+        public static final int name=0x7f050007;
+        public static final int nameLabel=0x7f050006;
+        public static final int numPeople=0x7f050010;
+        public static final int peopleLable=0x7f05000f;
+        public static final int pickCat=0x7f05000e;
+        public static final int pickPeople=0x7f050011;
+        public static final int picture=0x7f050012;
+        public static final int save=0x7f050014;
+        public static final int takePic=0x7f050013;
     }
     public static final class layout {
         public static final int billdetails=0x7f030000;

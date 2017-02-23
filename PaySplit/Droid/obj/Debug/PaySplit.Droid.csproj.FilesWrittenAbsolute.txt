@@ -3,7 +3,9 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.Droid.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/com.sag.paysplit.apk
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/android/bin/com.sag.paysplit.apk
-/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/main.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/viewbills.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/billdetails.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/viewbills_listview.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/values/strings.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-hdpi/icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-mdpi/icon.png
@@ -15,7 +17,8 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xhdpi/new_icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxhdpi/new_icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-xxxhdpi/new_icon.png
-/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/createentry.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/main.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/createbillentry.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/R.cs.flag
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/com.sag.paysplit-Signed.apk
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/uploadflags.txt
@@ -28,3 +31,4 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/SQLite-net.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.dll.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/bin/Debug/PaySplit.pdb

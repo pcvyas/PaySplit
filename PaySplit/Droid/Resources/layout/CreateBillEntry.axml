@@ -1,38 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px"
-    android:paddingLeft="5dp"
-    android:paddingTop="20dp">
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:text="Medium Text"
+    p1:textAppearance="?android:attr/textAppearanceMedium"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:minWidth="25px"
+    p1:minHeight="25px">
     <TextView
-        android:text="Name: "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:paddingTop="10dp" />
+        p1:text="Name:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/nameLabel"
+        p1:paddingTop="10dp"
+        p1:paddingLeft="10dp" />
+    <EditText
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="match_parent"
+        p1:layout_height="40dp"
+        p1:id="@+id/name"
+        p1:layout_toRightOf="@id/nameLabel"
+        p1:layout_marginTop="5dp"
+        p1:layout_marginLeft="10dp"
+        p1:inputType="textPersonName" />
     <TextView
-        android:text="Amount: "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:paddingTop="20dp" />
+        p1:text="Amount:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/amountLabel"
+        p1:layout_below="@id/nameLabel"
+        p1:paddingTop="30dp"
+        p1:paddingLeft="10dp" />
+    <EditText
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="match_parent"
+        p1:layout_height="40dp"
+        p1:id="@+id/amount"
+        p1:layout_toRightOf="@id/amountLabel"
+        p1:layout_below="@id/name"
+        p1:layout_marginTop="5dp"
+        p1:layout_marginLeft="10dp"
+        p1:inputType="numberDecimal" />
     <TextView
-        android:text="Catagory: "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:paddingTop="20dp" />
+        p1:text="Description:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/descriptionLabel"
+        p1:layout_below="@id/amountLabel"
+        p1:paddingTop="30dp"
+        p1:paddingLeft="10dp" />
+    <EditText
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="match_parent"
+        p1:layout_height="40dp"
+        p1:id="@+id/description"
+        p1:layout_toRightOf="@id/descriptionLabel"
+        p1:layout_below="@id/amount"
+        p1:layout_marginTop="10dp"
+        p1:layout_marginLeft="10dp"
+        p1:inputType="textLongMessage" />
+    <TextView
+        p1:text="Category:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/categoryLabel"
+        p1:layout_below="@id/descriptionLabel"
+        p1:paddingTop="30dp"
+        p1:paddingLeft="10dp" />
+    <TextView
+        p1:text="Default"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/category"
+        p1:layout_below="@id/description"
+        p1:layout_toRightOf="@id/categoryLabel"
+        p1:paddingTop="32dp"
+        p1:paddingLeft="10dp" />
+    <Button
+        p1:text="+"
+        p1:layout_width="40dp"
+        p1:layout_height="40dp"
+        p1:layout_toRightOf="@id/category"
+        p1:layout_below="@id/description"
+        p1:id="@+id/pickCat"
+        p1:layout_marginTop="20dp"
+        p1:layout_marginLeft="10dp" />
+    <TextView
+        p1:text="People:"
+        p1:textAppearance="?android:attr/textAppearanceMedium"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/peopleLable"
+        p1:layout_below="@id/categoryLabel"
+        p1:paddingTop="30dp"
+        p1:paddingLeft="10dp" />
+    <NumberPicker
+        p1:layout_width="70dp"
+        p1:layout_height="70dp"
+        p1:layout_toRightOf="@id/peopleLable"
+        p1:layout_below="@id/category"
+        p1:layout_marginLeft="10dp"
+        p1:layout_marginTop="10dp"
+        p1:id="@+id/numPeople" />
+    <Button
+        p1:text="+"
+        p1:layout_width="40dp"
+        p1:layout_height="40dp"
+        p1:layout_toRightOf="@id/numPeople"
+        p1:layout_below="@id/category"
+        p1:id="@+id/pickPeople"
+        p1:layout_marginTop="20dp"
+        p1:layout_marginLeft="10dp" />
     <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:id="@+id/imageView1"
-        android:layout_marginBottom="0.0dp"
-        android:layout_gravity="center_horizontal" />
-</LinearLayout>
+        p1:layout_width="250dp"
+        p1:layout_height="180dp"
+        p1:layout_below="@id/peopleLable"
+        p1:layout_marginTop="20dp"
+        p1:id="@+id/picture" />
+    <Button
+        p1:text="+"
+        p1:layout_width="40dp"
+        p1:layout_height="40dp"
+        p1:layout_toRightOf="@id/picture"
+        p1:layout_below="@id/peopleLable"
+        p1:id="@+id/takePic"
+        p1:layout_marginTop="80dp"
+        p1:layout_marginLeft="10dp" />
+    <Button
+        p1:text="Save"
+        p1:layout_width="100dp"
+        p1:layout_height="40dp"
+        p1:layout_below="@id/picture"
+        p1:id="@+id/save"
+        p1:layout_marginTop="10dp"
+        p1:layout_marginLeft="10dp" />
+    <Button
+        p1:text="Cancel"
+        p1:layout_width="100dp"
+        p1:layout_height="40dp"
+        p1:layout_toRightOf="@id/save"
+        p1:layout_below="@id/picture"
+        p1:id="@+id/pickPeople"
+        p1:layout_marginTop="10dp"
+        p1:layout_marginLeft="10dp" />
+</RelativeLayout>

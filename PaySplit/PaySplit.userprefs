@@ -1,10 +1,15 @@
-<Properties StartupConfiguration="{F2E2B9EE-4D25-4982-B742-AFB0EACA68F7}|Default">
+﻿<Properties StartupConfiguration="{142E8DF1-81C2-4BED-B944-F54F2FC63205}|Default">
   <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
+    <Files>
+      <File FileName="Droid/CreateBillActivity.cs" Line="7" Column="19" />
+      <File FileName="Droid/MainActivity.cs" Line="44" Column="66" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_ARMv7a" />
+  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.LGH831118ba2c2" />
 </Properties>

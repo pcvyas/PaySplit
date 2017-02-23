@@ -14,3 +14,7 @@ PaySplit.Droid.ViewBillsActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5
 PaySplit.Droid.ViewBillsActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
 PaySplit.Droid.ViewBillsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
 paysplit.droid.ViewBillsActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.ViewBillsActivity
+PaySplit.Droid.CreateBillActivity, PaySplit.Droid;md50e8ff3f196fa9f0428d8492958f5c6f0.CreateBillActivity
+PaySplit.Droid.CreateBillActivity, PaySplit.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md50e8ff3f196fa9f0428d8492958f5c6f0.CreateBillActivity
+PaySplit.Droid.CreateBillActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.CreateBillActivity
+paysplit.droid.CreateBillActivity;md50e8ff3f196fa9f0428d8492958f5c6f0.CreateBillActivity
