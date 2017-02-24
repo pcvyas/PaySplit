@@ -1,0 +1,12 @@
+#Ignore these paths for commits
+.DS_Store
+PaySplit/.DS_Store
+PaySplit/Droid/.DS_Store
+PaySplit/Droid/CategoryListViewAdapter.cs
+PaySplit/Droid/Resources/.DS_Store
+PaySplit/Droid/bin/Debug/
+PaySplit/Droid/obj/Debug/
+PaySplit/PaySplit/bin/Debug/
+PaySplit/PaySplit/obj/Debug/
+*.mdb
+*.apk
