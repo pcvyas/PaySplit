@@ -5,7 +5,8 @@
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
     p1:minWidth="25px"
-    p1:minHeight="25px">
+    p1:minHeight="25px"
+    p1:background="@drawable/back2">
     <TextView
         p1:text="Name:"
         p1:textAppearance="?android:attr/textAppearanceMedium"
@@ -13,7 +14,8 @@
         p1:layout_height="wrap_content"
         p1:id="@+id/nameLabel"
         p1:paddingTop="10dp"
-        p1:paddingLeft="10dp" />
+        p1:paddingLeft="10dp"
+        p1:textStyle="bold" />
     <EditText
         p1:textAppearance="?android:attr/textAppearanceMedium"
         p1:layout_width="match_parent"
@@ -31,7 +33,8 @@
         p1:id="@+id/amountLabel"
         p1:layout_below="@id/nameLabel"
         p1:paddingTop="30dp"
-        p1:paddingLeft="10dp" />
+        p1:paddingLeft="10dp"
+        p1:textStyle="bold" />
     <EditText
         p1:textAppearance="?android:attr/textAppearanceMedium"
         p1:layout_width="match_parent"
@@ -50,7 +53,8 @@
         p1:id="@+id/descriptionLabel"
         p1:layout_below="@id/amountLabel"
         p1:paddingTop="30dp"
-        p1:paddingLeft="10dp" />
+        p1:paddingLeft="10dp"
+        p1:textStyle="bold" />
     <EditText
         p1:textAppearance="?android:attr/textAppearanceMedium"
         p1:layout_width="match_parent"
@@ -58,7 +62,7 @@
         p1:id="@+id/description"
         p1:layout_toRightOf="@id/descriptionLabel"
         p1:layout_below="@id/amount"
-        p1:layout_marginTop="10dp"
+        p1:layout_marginTop="15dp"
         p1:layout_marginLeft="10dp"
         p1:inputType="textLongMessage" />
     <TextView
@@ -69,7 +73,8 @@
         p1:id="@+id/categoryLabel"
         p1:layout_below="@id/descriptionLabel"
         p1:paddingTop="30dp"
-        p1:paddingLeft="10dp" />
+        p1:paddingLeft="10dp"
+        p1:textStyle="bold" />
     <TextView
         p1:text="Default"
         p1:textAppearance="?android:attr/textAppearanceMedium"
@@ -80,15 +85,17 @@
         p1:layout_toRightOf="@id/categoryLabel"
         p1:paddingTop="32dp"
         p1:paddingLeft="10dp" />
-    <Button
-        p1:text="+"
+    <ImageButton
         p1:layout_width="40dp"
         p1:layout_height="40dp"
-        p1:layout_toRightOf="@id/category"
+        p1:layout_marginRight="20dp"
         p1:layout_below="@id/description"
         p1:id="@+id/pickCat"
         p1:layout_marginTop="20dp"
-        p1:layout_marginLeft="10dp" />
+        p1:layout_marginLeft="10dp"
+        p1:src="@android:drawable/ic_menu_view"
+        p1:background="@android:color/transparent"
+        p1:layout_alignParentRight="true" />
     <TextView
         p1:text="People:"
         p1:textAppearance="?android:attr/textAppearanceMedium"
@@ -97,54 +104,64 @@
         p1:id="@+id/peopleLable"
         p1:layout_below="@id/categoryLabel"
         p1:paddingTop="30dp"
-        p1:paddingLeft="10dp" />
+        p1:paddingLeft="10dp"
+        p1:textStyle="bold" />
     <NumberPicker
-        p1:layout_width="70dp"
+        p1:layout_width="75dp"
         p1:layout_height="70dp"
         p1:layout_toRightOf="@id/peopleLable"
         p1:layout_below="@id/category"
-        p1:layout_marginLeft="10dp"
+        p1:layout_marginLeft="30dp"
         p1:layout_marginTop="10dp"
-        p1:id="@+id/numPeople" />
-    <Button
-        p1:text="+"
+        p1:id="@+id/numPeople"
+        p1:solidColor="@android:color/darker_gray" />
+    <ImageButton
         p1:layout_width="40dp"
         p1:layout_height="40dp"
-        p1:layout_toRightOf="@id/numPeople"
         p1:layout_below="@id/category"
         p1:id="@+id/pickPeople"
         p1:layout_marginTop="20dp"
-        p1:layout_marginLeft="10dp" />
+        p1:layout_marginLeft="10dp"
+        p1:layout_marginRight="20dp"
+        p1:src="@android:drawable/ic_menu_view"
+        p1:background="@android:color/transparent"
+        p1:layout_alignParentRight="true" />
     <ImageView
         p1:layout_width="250dp"
-        p1:layout_height="180dp"
+        p1:layout_height="185dp"
         p1:layout_below="@id/peopleLable"
         p1:layout_marginTop="20dp"
         p1:id="@+id/picture" />
-    <Button
-        p1:text="+"
-        p1:layout_width="40dp"
-        p1:layout_height="40dp"
-        p1:layout_toRightOf="@id/picture"
+    <ImageButton
+        p1:layout_width="60dp"
+        p1:layout_height="60dp"
+        p1:layout_marginRight="5dp"
         p1:layout_below="@id/peopleLable"
         p1:id="@+id/takePic"
         p1:layout_marginTop="80dp"
-        p1:layout_marginLeft="10dp" />
-    <Button
-        p1:text="Save"
+        p1:layout_marginLeft="10dp"
+        p1:src="@android:drawable/ic_menu_camera"
+        p1:background="@drawable/rounded"
+        p1:layout_alignParentRight="true" />
+    <ImageButton
         p1:layout_width="100dp"
         p1:layout_height="40dp"
         p1:layout_below="@id/picture"
         p1:id="@+id/save"
         p1:layout_marginTop="10dp"
-        p1:layout_marginLeft="10dp" />
-    <Button
-        p1:text="Cancel"
+        p1:layout_marginLeft="10dp"
+        p1:layout_alignParentBottom="true"
+        p1:src="@android:drawable/ic_menu_save"
+        p1:background="@android:color/transparent" />
+    <ImageButton
         p1:layout_width="100dp"
         p1:layout_height="40dp"
         p1:layout_toRightOf="@id/save"
         p1:layout_below="@id/picture"
-        p1:id="@+id/pickPeople"
+        p1:id="@+id/cancel"
         p1:layout_marginTop="10dp"
-        p1:layout_marginLeft="10dp" />
+        p1:layout_marginLeft="10dp"
+        p1:layout_alignParentBottom="true"
+        p1:src="@android:drawable/ic_menu_close_clear_cancel"
+        p1:background="@android:color/transparent" />
 </RelativeLayout>

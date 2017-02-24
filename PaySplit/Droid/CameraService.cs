@@ -74,16 +74,19 @@ namespace PaySplit.Droid
 				// Dispose of the Java side bitmap.
 				GC.Collect();
 			}
+			else
+			{
+				App.file = null;
+			}
 
 		}
 
 		public string GetSavedPicturePath()
 		{
-			if (App.bitmap != null)
-			{
+			if (App.file != null)
 				return App.file.Path;
-			}
-			return null;
+			else
+				return null;
 		}
 
 		public Bitmap GetSavedImage()

@@ -91,6 +91,8 @@
     <AndroidResource Include="Resources\layout\ViewBills_ListView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\back2.jpeg" />
+    <AndroidResource Include="Resources\drawable\Rounded.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -108,6 +110,9 @@
     <AndroidResource Include="Resources\layout\CreateBillEntry.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

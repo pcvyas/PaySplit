@@ -43,11 +43,7 @@ namespace PaySplit.Droid
 			//Add Entry
 			Button addB = FindViewById<Button>(Resource.Id.Main_AddEntry);
             addB.Click += delegate
-			{
-                var bills = dbs.GetAllBills();
-                Bill b = new Bill() { Name = "Car Gas" + bills.Count, Amount = 15.67, Description = "to ottawa" };
-				dbs.InsertBillEntry(b);
-
+			{            
 				StartActivity(typeof(CreateBillActivity));
 			};
 

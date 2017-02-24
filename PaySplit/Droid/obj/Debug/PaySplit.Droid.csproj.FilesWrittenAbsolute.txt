@@ -6,6 +6,10 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/viewbills.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/billdetails.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/layout/viewbills_listview.xml
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/drawable/createback.jpg
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/drawable/back1.jpg
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/drawable/back2.jpeg
+/Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/drawable/rounded.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/values/strings.xml
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-hdpi/icon.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/Droid/obj/Debug/res/mipmap-mdpi/icon.png

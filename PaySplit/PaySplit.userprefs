@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{142E8DF1-81C2-4BED-B944-F54F2FC63205}|Default">
   <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/CameraService.cs">
     <Files>
-      <File FileName="Droid/CreateBillActivity.cs" Line="7" Column="19" />
-      <File FileName="Droid/MainActivity.cs" Line="44" Column="66" />
+      <File FileName="Droid/CreateBillActivity.cs" Line="105" Column="36" />
+      <File FileName="Droid/MainActivity.cs" Line="32" Column="4" />
+      <File FileName="Droid/Resources/drawable/Rounded.xml" Line="3" Column="38" />
+      <File FileName="PaySplit/Models/Bill.cs" Line="16" Column="17" />
+      <File FileName="Droid/CameraService.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
