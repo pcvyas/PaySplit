@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PaySplit.Droid</RootNamespace>
     <AssemblyName>PaySplit.Droid</AssemblyName>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -76,6 +76,8 @@
     <Compile Include="CameraService.cs" />
     <Compile Include="ViewBillsActivity.cs" />
     <Compile Include="CreateBillActivity.cs" />
+    <Compile Include="CategoryActivity.cs" />
+    <Compile Include="CategoryListViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -93,6 +95,8 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\back2.jpeg" />
     <AndroidResource Include="Resources\drawable\Rounded.xml" />
+    <AndroidResource Include="Resources\layout\ViewCategory.axml" />
+    <AndroidResource Include="Resources\layout\ViewCategories_ListView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

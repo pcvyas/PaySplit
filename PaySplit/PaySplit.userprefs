@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{142E8DF1-81C2-4BED-B944-F54F2FC63205}|Default">
-  <MonoDevelop.Ide.ItemProperties.PaySplit.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.97C45783-099A-4E53-825D-87E37DA49F30" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/CameraService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
     <Files>
-      <File FileName="Droid/CreateBillActivity.cs" Line="105" Column="36" />
-      <File FileName="Droid/MainActivity.cs" Line="32" Column="4" />
-      <File FileName="Droid/Resources/drawable/Rounded.xml" Line="3" Column="38" />
-      <File FileName="PaySplit/Models/Bill.cs" Line="16" Column="17" />
-      <File FileName="Droid/CameraService.cs" Line="1" Column="1" />
+      <File FileName="Droid/BillDetailsActivity.cs" Line="25" Column="53" />
+      <File FileName="Droid/CategoryActivity.cs" Line="54" Column="2" />
+      <File FileName="Droid/CategoryListViewAdapter.cs" Line="39" Column="9" />
+      <File FileName="Droid/MainActivity.cs" Line="17" Column="37" />
+      <File FileName="Droid/ViewBillsActivity.cs" Line="37" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -14,5 +13,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.LGH831118ba2c2" />
+  <MonoDevelop.Ide.ItemProperties.PaySplit.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus_5_API_23_x86" />
 </Properties>

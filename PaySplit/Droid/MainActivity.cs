@@ -14,7 +14,7 @@ using Android.Views;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon", Theme = "@android:style/Theme.NoTitleBar.Fullscreen")]
+	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon", Theme = "@android:style/Theme.Material.Light")]
 	public class MainActivity : Activity
 	{
 		int count = 1;
@@ -64,6 +64,13 @@ namespace PaySplit.Droid
 
                 //};
             };
+
+			//Add Entry
+			Button categoriesBtn = FindViewById<Button>(Resource.Id.Main_Categoriesbtn);
+			categoriesBtn.Click += delegate
+			{
+				StartActivity(typeof(CategoryActivity));
+			};
 
             // Delete all bills (for testing)
             Button delB = FindViewById<Button>(Resource.Id.Main_DelBtn);

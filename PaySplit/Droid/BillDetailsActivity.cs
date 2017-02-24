@@ -43,12 +43,15 @@ namespace PaySplit.Droid
             TextView created = FindViewById<TextView>(Resource.Id.Details_CreatedOn);
             TextView updated = FindViewById<TextView>(Resource.Id.Details_Updated);
             TextView desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
-            name.Text = bill.Name;
+			TextView category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
+            
+			name.Text = bill.Name;
             amount.Text = bill.Amount.ToString();
             owner.Text = bill.Owner;
             created.Text = bill.Date.ToString();
             updated.Text = bill.LastEdited.ToString();
             desc.Text = bill.Description;
+			category.Text = bill.Category;
         }
     }
 }

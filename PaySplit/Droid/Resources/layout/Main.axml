@@ -14,6 +14,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/Main_Viewbtn" />
     <Button
+        android:text="Categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Main_Categoriesbtn" />
+    <Button
         android:text="Take a Photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -33,6 +33,9 @@ namespace PaySplit.Droid
 
             bills = dbs.GetAllBills();
 
+			string category = Intent.GetStringExtra("category");
+			bills = fetchBillsByCategory(category);
+
             // Instantiate the listview
             ListView viewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
@@ -46,5 +49,23 @@ namespace PaySplit.Droid
 
             viewBillsListview.Adapter = adapter;
         }
+
+		private List<Bill> fetchBillsByCategory(String category)
+		{
+			if (category == null || category.Equals(""))
+			{
+				return bills;
+			}
+
+			foreach (Bill bill in bills)
+			{
+				if (bill.Category != category)
+				{
+					bills.Remove(bill);
+				}
+			}
+
+			return bills;
+		}
     }
 }
