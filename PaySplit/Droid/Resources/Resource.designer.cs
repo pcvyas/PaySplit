@@ -64,7 +64,13 @@ namespace PaySplit.Droid
 			public const int back2 = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int Rounded = 2130837505;
+			public const int big_card = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int rectangle = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Rounded = 2130837507;
 			
 			static Drawable()
 			{
@@ -79,8 +85,8 @@ namespace PaySplit.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07001d
-			public const int CategoryName = 2131165213;
+			// aapt resource value: 0x7f07001f
+			public const int CategoryName = 2131165215;
 			
 			// aapt resource value: 0x7f070001
 			public const int Details_BillAmount = 2131165185;
@@ -121,17 +127,23 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f070018
 			public const int Main_picture = 2131165208;
 			
-			// aapt resource value: 0x7f07001b
-			public const int View_BillEntry = 2131165211;
-			
-			// aapt resource value: 0x7f07001c
-			public const int View_ListView = 2131165212;
+			// aapt resource value: 0x7f07001e
+			public const int View_ListView = 2131165214;
 			
 			// aapt resource value: 0x7f07000a
 			public const int amount = 2131165194;
 			
 			// aapt resource value: 0x7f070009
 			public const int amountLabel = 2131165193;
+			
+			// aapt resource value: 0x7f07001d
+			public const int billCategory = 2131165213;
+			
+			// aapt resource value: 0x7f07001c
+			public const int billDescription = 2131165212;
+			
+			// aapt resource value: 0x7f07001b
+			public const int billTitle = 2131165211;
 			
 			// aapt resource value: 0x7f070014
 			public const int cancel = 2131165204;
@@ -147,6 +159,9 @@ namespace PaySplit.Droid
 			
 			// aapt resource value: 0x7f07000b
 			public const int descriptionLabel = 2131165195;
+			
+			// aapt resource value: 0x7f070020
+			public const int listview_background_shape = 2131165216;
 			
 			// aapt resource value: 0x7f070008
 			public const int name = 2131165192;

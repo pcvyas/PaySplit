@@ -45,7 +45,7 @@ namespace PaySplit.Droid
             //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, billNames);
 
             // Custom adapter
-            ListViewAdapter adapter = new ListViewAdapter(this, bills);
+            BillListViewAdapter adapter = new BillListViewAdapter(this, bills);
 
             viewBillsListview.Adapter = adapter;
         }

@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillDetailsActivity.cs" />
-    <Compile Include="ListViewAdapter.cs" />
+    <Compile Include="BillListViewAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +97,8 @@
     <AndroidResource Include="Resources\drawable\Rounded.xml" />
     <AndroidResource Include="Resources\layout\ViewCategory.axml" />
     <AndroidResource Include="Resources\layout\ViewCategories_ListView.axml" />
+    <AndroidResource Include="Resources\drawable\big_card.xml" />
+    <AndroidResource Include="Resources\drawable\rectangle.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
