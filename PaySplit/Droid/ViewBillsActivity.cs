@@ -57,15 +57,16 @@ namespace PaySplit.Droid
 				return bills;
 			}
 
+			List<Bill> filteredBills = new List<Bill>();
 			foreach (Bill bill in bills)
 			{
-				if (bill.Category != category)
+				if (category.Equals(bill.Category))
 				{
-					bills.Remove(bill);
+					filteredBills.Add(bill);
 				}
 			}
 
-			return bills;
+			return filteredBills;
 		}
     }
 }
