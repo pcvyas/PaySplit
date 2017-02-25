@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">PaySplit.Droid</string>
+	<string name="app_name">PaySplit</string>
+
+	<string name="category_prompt">Category: </string>
+	<string-array name="categories_array">
+		<item>Uncategorized</item>
+        <item>Food/Drink</item>
+        <item>Entertainment</item>
+		<item>Utilities</item>
+        <item>Education</item>
+		<item>Personal Care</item>
+		<item>Shopping</item>
+        <item>Work</item>
+        <item>Travel</item>
+		<item>Transportation</item>
+		<item>Charity</item>
+		<item>Investment</item>
+		<item>Other</item>
+    </string-array>
+	
 </resources>

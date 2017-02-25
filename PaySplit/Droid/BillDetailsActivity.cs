@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace PaySplit.Droid
 {
-    [Activity(Label = "BillDetailsActivity")]
+    [Activity(Label = "Bill Details", MainLauncher = false, Icon = "@mipmap/new_icon", Theme = "@android:style/Theme.Material.Light")]
     public class BillDetailsActivity : Activity
     {
         private Bill bill;

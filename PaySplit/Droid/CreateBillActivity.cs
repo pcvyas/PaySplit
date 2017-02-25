@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "Create Bill")]
+	[Activity(Label = "Create Bill", MainLauncher = false, Icon = "@mipmap/new_icon", Theme = "@android:style/Theme.Material.Light")]
 	public class CreateBillActivity : Activity
 	{
 
@@ -32,11 +32,11 @@ namespace PaySplit.Droid
 			//Bill
 			bill = new Bill();
 
-			//Init num picker
-			NumberPicker np = FindViewById<NumberPicker>(Resource.Id.numPeople);
-			np.MaxValue = 20;
-			np.MinValue = 1;
-
+			// Initialize the Categories Spinner
+			Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
+			String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
+			categoriesSpinner.Adapter = adapter;
 
 			//Init Database
 			DataHelper dbPath = new DataHelper();
@@ -67,22 +67,11 @@ namespace PaySplit.Droid
 
 			iw.Visibility = ViewStates.Invisible;
 
-
-			//Initialize Button Listeners
-			ImageButton pickCategoryBtn = FindViewById<ImageButton>(Resource.Id.pickCat);
-			pickCategoryBtn.Click += PickCategory_Clicked;
-
-			ImageButton addPeopleBtn = FindViewById<ImageButton>(Resource.Id.pickPeople);
-			addPeopleBtn.Click += AddPeople_Clicked;
-
-			ImageButton saveBtn = FindViewById<ImageButton>(Resource.Id.save);
+			Button saveBtn = FindViewById<Button>(Resource.Id.save);
 			saveBtn.Click += Save_Clicked;
 
-			ImageButton cancelBtn = FindViewById<ImageButton>(Resource.Id.cancel);
+			Button cancelBtn = FindViewById<Button>(Resource.Id.cancel);
 			cancelBtn.Click += CancelBtn_Click;
-
-
-
 
 		}
 
@@ -103,6 +92,10 @@ namespace PaySplit.Droid
 				bill.Amount = Double.Parse(amount.Text);
 
 				bill.LastEdited = DateTime.Now;
+
+				Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
+				bill.Category = categoriesSpinner.SelectedItem.ToString();
+
 				dbs.InsertBillEntry(bill);
 				this.Finish();
 			}
@@ -110,16 +103,6 @@ namespace PaySplit.Droid
 			{
 				Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
 			}
-		}
-
-		void AddPeople_Clicked(object sender, EventArgs e)
-		{
-			
-		}
-
-		void PickCategory_Clicked(object sender, EventArgs e)
-		{
-			
 		}
 
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
