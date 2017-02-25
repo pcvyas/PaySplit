@@ -14,7 +14,7 @@ using Android.Views;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon", Theme = "@android:style/Theme.Material.Light")]
+	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon")]
 	public class MainActivity : Activity
 	{
 		int count = 1;

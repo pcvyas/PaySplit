@@ -4,6 +4,6 @@
 	<application 
 			android:label="PaySplit"
 			android:icon="@mipmap/new_icon"
-            android:theme="@android:style/Theme.Material.Light">
+            android:theme="@android:style/Theme.Material.Light.DarkActionBar">
 	</application>
 </manifest>
