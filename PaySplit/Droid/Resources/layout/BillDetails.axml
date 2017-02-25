@@ -4,52 +4,79 @@
     android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="Name"
+  <TextView
+      android:text="Name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:id="@+id/Details_BillName" />
-    <TextView
-        android:text="Amount"
+        android:textStyle="bold"
+        android:id="@+id/Details_BillName" 
+      android:visibility="visible"/>
+  <EditText
+    android:text="Name"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="10dp"
+      android:textStyle="bold"
+      android:id="@+id/Details_BillName_Edit"
+    android:visibility="invisible"/>
+  <TextView
+      android:text="Amount"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
+        android:textStyle="italic"
         android:id="@+id/Details_BillAmount" />
     <TextView
-        android:text="Owner"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:id="@+id/Details_Owner" />
-    <TextView
-        android:text="Created On"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:id="@+id/Details_CreatedOn" />
-    <TextView
-        android:text="Last Updated"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:id="@+id/Details_Updated" />
-    <TextView
+        android:id="@+id/Details_Date" />
+  <TextView
+      android:text="Category"
+        android:id="@+id/Details_BillCategory"
+        android:layout_width="wrap_content"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/secondary_text_light"
+        android:background="#4DB6AC"
+        android:foreground="#B2DFDB"
+        android:textSize="8sp"
+        android:textAllCaps="true"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:layout_height="wrap_content" />
+    <EditText
         android:text="Description"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
+        android:editable="false"
         android:id="@+id/Details_BillDesc" />
-    <TextView
-        android:text="Category"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+  <TextView
+      android:text="Last Updated"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Details_BillCategory" />
+        android:paddingBottom="10dp"
+        android:id="@+id/Details_Updated" />
+    <Button
+        android:text="Edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Details_EditButton"
+        android:layout_marginLeft="0.0dp"
+        android:layout_marginRight="0.0dp" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Details_imageView" />
 </LinearLayout>

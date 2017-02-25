@@ -36,22 +36,49 @@ namespace PaySplit.Droid
 
             bill = dbs.getBillById(Int32.Parse(id));
 
-            // Instatiate text views
+            // Instatiate views
             TextView name = FindViewById<TextView>(Resource.Id.Details_BillName);
+            EditText edit_name = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
             TextView amount = FindViewById<TextView>(Resource.Id.Details_BillAmount);
-            TextView owner = FindViewById<TextView>(Resource.Id.Details_Owner);
-            TextView created = FindViewById<TextView>(Resource.Id.Details_CreatedOn);
+            TextView date = FindViewById<TextView>(Resource.Id.Details_Date);
+            TextView category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
+            EditText desc = FindViewById<EditText>(Resource.Id.Details_BillDesc);
+            ImageView image = FindViewById<ImageView>(Resource.Id.Details_imageView);
             TextView updated = FindViewById<TextView>(Resource.Id.Details_Updated);
-            TextView desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
-			TextView category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
-            
-			name.Text = bill.Name;
-            amount.Text = bill.Amount.ToString();
-            owner.Text = bill.Owner;
-            created.Text = bill.Date.ToString();
-            updated.Text = bill.LastEdited.ToString();
+            Button editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
+
+            name.Text = bill.Name;
+            amount.Text = "$" + (bill.Amount == Math.Round(bill.Amount) ? bill.Amount + ".00" : bill.Amount.ToString());
+            date.Text = "Date: " + bill.Date.ToString("MMMM dd, yyyy");
+            category.Text = bill.Category;
             desc.Text = bill.Description;
-			category.Text = bill.Category;
+            // Display in ImageView. We will resize the bitmap to fit the display.
+            // Loading the full sized image will consume too much memory
+            // and cause the application to crash.
+            int height = this.Resources.DisplayMetrics.HeightPixels;
+            int width = this.Resources.DisplayMetrics.WidthPixels;
+            Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
+            if (App.bitmap != null)
+            {
+                image.SetImageBitmap(App.bitmap);
+                App.bitmap = null;
+
+                image.Visibility = ViewStates.Visible;
+                // Dispose of the Java side bitmap.
+                GC.Collect();
+            }
+            else
+            {
+                image.Visibility = ViewStates.Invisible;
+                App.file = null;
+            }
+            updated.Text = "Last updated: " + "Date: " + bill.LastEdited.ToString("MMMM dd, yyyy");
+
+            editButton.Click += delegate
+                {
+                    name.Visibility = ViewStates.Invisible;
+                    edit_name.Visibility = ViewStates.Visible;
+                };
         }
     }
 }
