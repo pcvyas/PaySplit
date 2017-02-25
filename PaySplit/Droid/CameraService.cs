@@ -63,7 +63,8 @@ namespace PaySplit.Droid
 			// Loading the full sized image will consume to much memory
 			// and cause the application to crash.
 			int height = activity.Resources.DisplayMetrics.HeightPixels;
-			int width = iw.Height;
+			int width = activity.Resources.DisplayMetrics.WidthPixels;
+
 			App.bitmap = App.file.Path.LoadAndResizeBitmap(width, height);
 			if (App.bitmap != null)
 			{
@@ -122,7 +123,11 @@ namespace PaySplit.Droid
 			options.InJustDecodeBounds = false;
 			Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
 
-			return resizedBitmap;
+			Matrix matrix = new Matrix();
+			matrix.PostRotate(90);
+			Bitmap rotatedBitmap = Bitmap.CreateBitmap(resizedBitmap, 0, 0, resizedBitmap.Width, resizedBitmap.Height, matrix, true);
+
+			return rotatedBitmap;
 		}
 	}
 
