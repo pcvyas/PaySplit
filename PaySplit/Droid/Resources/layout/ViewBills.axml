@@ -2,11 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         android:background="@drawable/big_card">
         <TextView
@@ -32,8 +33,8 @@
             android:fontFamily="sans-serif-light"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/secondary_text_light"
-            android:background="#4DB6AC"
-            android:foreground="#B2DFDB"
+            android:background="#FFD54F"
+            android:foreground="#FFECB3"
             android:textSize="8sp"
             android:textAllCaps="true"
             android:layout_marginTop="5dp"
