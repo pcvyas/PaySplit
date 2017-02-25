@@ -1,167 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
-    p1:text="Medium Text"
-    p1:textAppearance="?android:attr/textAppearanceMedium"
-    p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
-    p1:minWidth="25px"
-    p1:minHeight="25px"
-    p1:background="@drawable/back2">
-    <TextView
-        p1:text="Name:"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/nameLabel"
-        p1:paddingTop="10dp"
-        p1:paddingLeft="10dp"
-        p1:textStyle="bold" />
-    <EditText
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="match_parent"
-        p1:layout_height="40dp"
-        p1:id="@+id/name"
-        p1:layout_toRightOf="@id/nameLabel"
-        p1:layout_marginTop="5dp"
-        p1:layout_marginLeft="10dp"
-        p1:inputType="textPersonName" />
-    <TextView
-        p1:text="Amount:"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/amountLabel"
-        p1:layout_below="@id/nameLabel"
-        p1:paddingTop="30dp"
-        p1:paddingLeft="10dp"
-        p1:textStyle="bold" />
-    <EditText
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="match_parent"
-        p1:layout_height="40dp"
-        p1:id="@+id/amount"
-        p1:layout_toRightOf="@id/amountLabel"
-        p1:layout_below="@id/name"
-        p1:layout_marginTop="5dp"
-        p1:layout_marginLeft="10dp"
-        p1:inputType="numberDecimal" />
-    <TextView
-        p1:text="Description:"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/descriptionLabel"
-        p1:layout_below="@id/amountLabel"
-        p1:paddingTop="30dp"
-        p1:paddingLeft="10dp"
-        p1:textStyle="bold" />
-    <EditText
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="match_parent"
-        p1:layout_height="40dp"
-        p1:id="@+id/description"
-        p1:layout_toRightOf="@id/descriptionLabel"
-        p1:layout_below="@id/amount"
-        p1:layout_marginTop="15dp"
-        p1:layout_marginLeft="10dp"
-        p1:inputType="textLongMessage" />
-    <TextView
-        p1:text="Category:"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/categoryLabel"
-        p1:layout_below="@id/descriptionLabel"
-        p1:paddingTop="30dp"
-        p1:paddingLeft="10dp"
-        p1:textStyle="bold" />
-    <TextView
-        p1:text="Default"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/category"
-        p1:layout_below="@id/description"
-        p1:layout_toRightOf="@id/categoryLabel"
-        p1:paddingTop="32dp"
-        p1:paddingLeft="10dp" />
-    <ImageButton
-        p1:layout_width="40dp"
-        p1:layout_height="40dp"
-        p1:layout_marginRight="20dp"
-        p1:layout_below="@id/description"
-        p1:id="@+id/pickCat"
-        p1:layout_marginTop="20dp"
-        p1:layout_marginLeft="10dp"
-        p1:src="@android:drawable/ic_menu_view"
-        p1:background="@android:color/transparent"
-        p1:layout_alignParentRight="true" />
-    <TextView
-        p1:text="People:"
-        p1:textAppearance="?android:attr/textAppearanceMedium"
-        p1:layout_width="wrap_content"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/peopleLable"
-        p1:layout_below="@id/categoryLabel"
-        p1:paddingTop="30dp"
-        p1:paddingLeft="10dp"
-        p1:textStyle="bold" />
-    <NumberPicker
-        p1:layout_width="75dp"
-        p1:layout_height="70dp"
-        p1:layout_toRightOf="@id/peopleLable"
-        p1:layout_below="@id/category"
-        p1:layout_marginLeft="30dp"
-        p1:layout_marginTop="10dp"
-        p1:id="@+id/numPeople"
-        p1:solidColor="@android:color/darker_gray" />
-    <ImageButton
-        p1:layout_width="40dp"
-        p1:layout_height="40dp"
-        p1:layout_below="@id/category"
-        p1:id="@+id/pickPeople"
-        p1:layout_marginTop="20dp"
-        p1:layout_marginLeft="10dp"
-        p1:layout_marginRight="20dp"
-        p1:src="@android:drawable/ic_menu_view"
-        p1:background="@android:color/transparent"
-        p1:layout_alignParentRight="true" />
-    <ImageView
-        p1:layout_width="250dp"
-        p1:layout_height="185dp"
-        p1:layout_below="@id/peopleLable"
-        p1:layout_marginTop="20dp"
-        p1:id="@+id/picture" />
-    <ImageButton
-        p1:layout_width="60dp"
-        p1:layout_height="60dp"
-        p1:layout_marginRight="5dp"
-        p1:layout_below="@id/peopleLable"
-        p1:id="@+id/takePic"
-        p1:layout_marginTop="80dp"
-        p1:layout_marginLeft="10dp"
-        p1:src="@android:drawable/ic_menu_camera"
-        p1:background="@drawable/rounded"
-        p1:layout_alignParentRight="true" />
-    <ImageButton
-        p1:layout_width="100dp"
-        p1:layout_height="40dp"
-        p1:layout_below="@id/picture"
-        p1:id="@+id/save"
-        p1:layout_marginTop="10dp"
-        p1:layout_marginLeft="10dp"
-        p1:layout_alignParentBottom="true"
-        p1:src="@android:drawable/ic_menu_save"
-        p1:background="@android:color/transparent" />
-    <ImageButton
-        p1:layout_width="100dp"
-        p1:layout_height="40dp"
-        p1:layout_toRightOf="@id/save"
-        p1:layout_below="@id/picture"
-        p1:id="@+id/cancel"
-        p1:layout_marginTop="10dp"
-        p1:layout_marginLeft="10dp"
-        p1:layout_alignParentBottom="true"
-        p1:src="@android:drawable/ic_menu_close_clear_cancel"
-        p1:background="@android:color/transparent" />
-</RelativeLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:padding="20dp"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameLabel"
+            android:text="Name:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:inputType="textPersonName" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/amountLabel"
+            android:text="Amount:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount"
+            android:inputType="numberDecimal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descriptionLabel"
+            android:text="Description:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/description"
+            android:inputType="textLongMessage" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryLabel"
+            android:text="Category:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/category_spinner"
+            android:paddingBottom="10dp"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/peopleLable"
+            android:text="People"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/peopleAmount"
+            android:inputType="numberDecimal" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:id="@+id/picture" />
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:id="@+id/takePic"
+            android:src="@android:drawable/ic_menu_camera"
+            android:background="@drawable/rounded" />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/save"
+                android:text="SAVE"
+                android:layout_margin="10dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancel"
+                android:text="CANCEL"
+                android:layout_below="@id/picture"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
