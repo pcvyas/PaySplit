@@ -101,9 +101,11 @@ namespace PaySplit.Droid
 	{
 		public static Bitmap LoadAndResizeBitmap(this string fileName, int width, int height)
 		{
+			
 			// First we get the the dimensions of the file on disk
 			BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
 			BitmapFactory.DecodeFile(fileName, options);
+
 
 			// Next we calculate the ratio that we need to resize the image by
 			// in order to fit the requested dimensions.
@@ -122,7 +124,12 @@ namespace PaySplit.Droid
 			options.InSampleSize = inSampleSize;
 			options.InJustDecodeBounds = false;
 			Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
-
+			//Image not found
+			if (resizedBitmap == null)
+			{
+				return null;
+			}
+		
 			Matrix matrix = new Matrix();
 			matrix.PostRotate(90);
 			Bitmap rotatedBitmap = Bitmap.CreateBitmap(resizedBitmap, 0, 0, resizedBitmap.Width, resizedBitmap.Height, matrix, true);
