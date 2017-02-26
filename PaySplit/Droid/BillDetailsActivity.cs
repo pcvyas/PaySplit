@@ -38,20 +38,42 @@ namespace PaySplit.Droid
 
             // Instatiate views
             TextView name = FindViewById<TextView>(Resource.Id.Details_BillName);
-            EditText edit_name = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
             TextView amount = FindViewById<TextView>(Resource.Id.Details_BillAmount);
             TextView date = FindViewById<TextView>(Resource.Id.Details_Date);
             TextView category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
-            EditText desc = FindViewById<EditText>(Resource.Id.Details_BillDesc);
+            TextView desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
             ImageView image = FindViewById<ImageView>(Resource.Id.Details_imageView);
             TextView updated = FindViewById<TextView>(Resource.Id.Details_Updated);
             Button editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
 
+            EditText name_edit = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
+            EditText amount_edit = FindViewById<EditText>(Resource.Id.Details_BillAmount_Edit);
+            EditText date_edit = FindViewById<EditText>(Resource.Id.Details_Date_Edit);
+            Spinner category_edit = FindViewById<Spinner>(Resource.Id.Details_BillCategory_Edit);
+            EditText desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
+            Button saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
+
+            // Populate the views
             name.Text = bill.Name;
             amount.Text = "$" + (bill.Amount == Math.Round(bill.Amount) ? bill.Amount + ".00" : bill.Amount.ToString());
             date.Text = "Date: " + bill.Date.ToString("MMMM dd, yyyy");
             category.Text = bill.Category;
             desc.Text = bill.Description;
+
+            // Initialize the Categories Spinner
+            String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
+            int categoryIndex = 0;
+            for (int i = 0; i < categories.Length; ++i)
+            {
+                if (categories[i] == category.Text)
+                {
+                    categoryIndex = i;
+                    break;
+                }
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
+            category_edit.Adapter = adapter;
+
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
             // and cause the application to crash.
@@ -74,11 +96,42 @@ namespace PaySplit.Droid
             }
             updated.Text = "Last updated: " + "Date: " + bill.LastEdited.ToString("MMMM dd, yyyy");
 
+            // Instantiate ViewSwitchers used for switching to edit mode
+            ViewSwitcher nameSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_name_switcher);
+            ViewSwitcher amountSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_amount_switcher);
+            ViewSwitcher categorySwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_category_switcher);
+            ViewSwitcher descSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_desc_switcher);
+            ViewSwitcher buttonSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_button_switcher);
+
             editButton.Click += delegate
                 {
-                    name.Visibility = ViewStates.Invisible;
-                    edit_name.Visibility = ViewStates.Visible;
+                    nameSwitcher.ShowNext();
+                    amountSwitcher.ShowNext();
+                    categorySwitcher.ShowNext();
+                    descSwitcher.ShowNext();
+                    buttonSwitcher.ShowNext();
+
+                    name_edit.SetText(name.Text, TextView.BufferType.Editable);
+                    amount_edit.SetText(amount.Text, TextView.BufferType.Editable);
+                    date_edit.SetText(date.Text, TextView.BufferType.Editable);
+                    category_edit.SetSelection(categoryIndex);
+                    desc_edit.SetText(desc.Text, TextView.BufferType.Editable);
                 };
+
+            saveButton.Click += delegate
+            {
+                nameSwitcher.ShowPrevious();
+                amountSwitcher.ShowPrevious();
+                categorySwitcher.ShowPrevious();
+                descSwitcher.ShowPrevious();
+                buttonSwitcher.ShowPrevious();
+
+                name.Text = name_edit.Text;
+                amount.Text = amount_edit.Text;
+                date.Text = date_edit.Text;
+                category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
+                desc.Text = desc_edit.Text;
+            };
         }
     }
 }
