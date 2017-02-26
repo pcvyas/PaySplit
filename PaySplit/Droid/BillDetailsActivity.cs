@@ -55,8 +55,8 @@ namespace PaySplit.Droid
 
             // Populate the views
             name.Text = bill.Name;
-            amount.Text = "$" + (bill.Amount == Math.Round(bill.Amount) ? bill.Amount + ".00" : bill.Amount.ToString());
-            date.Text = "Date: " + bill.Date.ToString("MMMM dd, yyyy");
+            amount.Text = "$" + String.Format("{0:0.00}", bill.Amount); // rounds to 2 decimal places
+            date.Text = bill.Date.ToString("MMMM dd, yyyy");
             category.Text = bill.Category;
             desc.Text = bill.Description;
 
@@ -74,27 +74,31 @@ namespace PaySplit.Droid
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
             category_edit.Adapter = adapter;
 
-            // Display in ImageView. We will resize the bitmap to fit the display.
-            // Loading the full sized image will consume too much memory
-            // and cause the application to crash.
-            int height = this.Resources.DisplayMetrics.HeightPixels;
-            int width = this.Resources.DisplayMetrics.WidthPixels;
-            Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
-            if (App.bitmap != null)
-            {
-                image.SetImageBitmap(App.bitmap);
-                App.bitmap = null;
-
-                image.Visibility = ViewStates.Visible;
-                // Dispose of the Java side bitmap.
-                GC.Collect();
-            }
-            else
-            {
-                image.Visibility = ViewStates.Invisible;
-                App.file = null;
-            }
-            updated.Text = "Last updated: " + "Date: " + bill.LastEdited.ToString("MMMM dd, yyyy");
+			// Display in ImageView. We will resize the bitmap to fit the display.
+			// Loading the full sized image will consume too much memory
+			// and cause the application to crash.
+			if (bill.ImagePath != null)
+			{
+				int height = this.Resources.DisplayMetrics.HeightPixels;
+				int width = this.Resources.DisplayMetrics.WidthPixels;
+				Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
+                if (imageMap != null)
+                {
+                    image.SetImageBitmap(imageMap);
+                    image.Visibility = ViewStates.Visible;
+                    // Dispose of the Java side bitmap.
+                    GC.Collect();
+                }
+                else
+                {
+                    image.Visibility = ViewStates.Invisible;
+                }
+			}
+			else
+			{
+				image.Visibility = ViewStates.Invisible;
+			}
+            updated.Text = "Last updated: " + bill.LastEdited.ToString("MMMM dd, yyyy");
 
             // Instantiate ViewSwitchers used for switching to edit mode
             ViewSwitcher nameSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_name_switcher);
@@ -112,7 +116,7 @@ namespace PaySplit.Droid
                     buttonSwitcher.ShowNext();
 
                     name_edit.SetText(name.Text, TextView.BufferType.Editable);
-                    amount_edit.SetText(amount.Text, TextView.BufferType.Editable);
+                    amount_edit.SetText(amount.Text.Substring(1), TextView.BufferType.Editable); // dangerous string concat to get rid of dollar sign, error check later
                     date_edit.SetText(date.Text, TextView.BufferType.Editable);
                     category_edit.SetSelection(categoryIndex);
                     desc_edit.SetText(desc.Text, TextView.BufferType.Editable);
@@ -126,12 +130,21 @@ namespace PaySplit.Droid
                 descSwitcher.ShowPrevious();
                 buttonSwitcher.ShowPrevious();
 
+                bill.Name = name_edit.Text;
+                bill.Amount = Double.Parse(amount_edit.Text);
+                bill.Date = Convert.ToDateTime(date_edit.Text); // date format check here
+                bill.Category = adapter.GetItem(category_edit.SelectedItemPosition);
+                bill.Description = desc_edit.Text;
+
+                dbs.SaveBillEntry(bill.Id, bill);
+
                 name.Text = name_edit.Text;
-                amount.Text = amount_edit.Text;
+                amount.Text = "$" + amount_edit.Text; // number check here
                 date.Text = date_edit.Text;
                 category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
                 desc.Text = desc_edit.Text;
             };
+
         }
     }
 }

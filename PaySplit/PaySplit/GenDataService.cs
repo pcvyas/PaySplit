@@ -143,5 +143,30 @@ namespace PaySplit
             }
             return true;
         }
-	}
+
+        //Save a BillEntry
+        public bool SaveBillEntry(int id, Bill b)
+        {
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+                SQLiteConnection db = new SQLiteConnection(DBPath);
+                Bill bill = db.Find<Bill>(id);
+                if (bill != null)
+                {
+                    bill = b;
+                    db.Update(bill);
+                }
+                db.Close();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }

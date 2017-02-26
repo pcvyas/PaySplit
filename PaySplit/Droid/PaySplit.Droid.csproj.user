@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <SelectedDevice>Motorola MotoG3</SelectedDevice>
-    <DefaultDevice>5" KitKat %284.4%29 XXHDPI Phone</DefaultDevice>
+    <DefaultDevice>AVD_GalaxyNexus_ToolsForApacheCordova</DefaultDevice>
+    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
