@@ -12,7 +12,7 @@ using Android.Content.Res;
 
 namespace PaySplit.Droid
 {
-	public class CameraService 
+	public class CameraService
 	{
 		ImageView iw;
 		Activity activity;
@@ -49,7 +49,7 @@ namespace PaySplit.Droid
 			activity.StartActivityForResult(intent, 0);
 		}
 
-	
+
 
 		public void SavePicture()
 		{
@@ -63,8 +63,9 @@ namespace PaySplit.Droid
 			// Loading the full sized image will consume to much memory
 			// and cause the application to crash.
 			int height = activity.Resources.DisplayMetrics.HeightPixels;
-            int width = activity.Resources.DisplayMetrics.WidthPixels;
+			int width = activity.Resources.DisplayMetrics.WidthPixels;
 
+			App.bitmap = App.file.Path.LoadAndResizeBitmap(width, height);
 			if (App.bitmap != null)
 			{
 				iw.SetImageBitmap(App.bitmap);

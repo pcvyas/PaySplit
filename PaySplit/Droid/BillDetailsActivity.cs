@@ -58,10 +58,9 @@ namespace PaySplit.Droid
             int height = this.Resources.DisplayMetrics.HeightPixels;
             int width = this.Resources.DisplayMetrics.WidthPixels;
             Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
-            if (App.bitmap != null)
+			if (imageMap != null)
             {
-                image.SetImageBitmap(App.bitmap);
-                App.bitmap = null;
+				image.SetImageBitmap(imageMap);
 
                 image.Visibility = ViewStates.Visible;
                 // Dispose of the Java side bitmap.
@@ -70,7 +69,6 @@ namespace PaySplit.Droid
             else
             {
                 image.Visibility = ViewStates.Invisible;
-                App.file = null;
             }
             updated.Text = "Last updated: " + "Date: " + bill.LastEdited.ToString("MMMM dd, yyyy");
 
