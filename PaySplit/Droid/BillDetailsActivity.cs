@@ -52,24 +52,31 @@ namespace PaySplit.Droid
             date.Text = "Date: " + bill.Date.ToString("MMMM dd, yyyy");
             category.Text = bill.Category;
             desc.Text = bill.Description;
-            // Display in ImageView. We will resize the bitmap to fit the display.
-            // Loading the full sized image will consume too much memory
-            // and cause the application to crash.
-            int height = this.Resources.DisplayMetrics.HeightPixels;
-            int width = this.Resources.DisplayMetrics.WidthPixels;
-            Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
-			if (imageMap != null)
-            {
-				image.SetImageBitmap(imageMap);
+			// Display in ImageView. We will resize the bitmap to fit the display.
+			// Loading the full sized image will consume too much memory
+			// and cause the application to crash.
+			if (bill.ImagePath != null)
+			{
+				int height = this.Resources.DisplayMetrics.HeightPixels;
+				int width = this.Resources.DisplayMetrics.WidthPixels;
+				Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
+				if (imageMap != null)
+				{
+					image.SetImageBitmap(imageMap);
 
-                image.Visibility = ViewStates.Visible;
-                // Dispose of the Java side bitmap.
-                GC.Collect();
-            }
-            else
-            {
-                image.Visibility = ViewStates.Invisible;
-            }
+					image.Visibility = ViewStates.Visible;
+					// Dispose of the Java side bitmap.
+					GC.Collect();
+				}
+				else
+				{
+					image.Visibility = ViewStates.Invisible;
+				}
+			}
+			else
+			{
+				image.Visibility = ViewStates.Invisible;
+			}
             updated.Text = "Last updated: " + "Date: " + bill.LastEdited.ToString("MMMM dd, yyyy");
 
             editButton.Click += delegate
