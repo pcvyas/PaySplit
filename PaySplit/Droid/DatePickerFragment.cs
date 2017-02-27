@@ -27,7 +27,7 @@ namespace PaySplit.Droid
 			DatePickerDialog dialog = new DatePickerDialog(Activity,
 														   this,
 														   currently.Year,
-														   currently.Month,
+														   currently.Month-1,
 														   currently.Day);
 			return dialog;
 		}	
