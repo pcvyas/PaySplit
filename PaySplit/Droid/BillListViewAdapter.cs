@@ -63,7 +63,8 @@ namespace PaySplit.Droid
             {
                 var activity = new Intent(context, typeof(BillDetailsActivity));
                 activity.PutExtra("id", bills[position].Id.ToString());
-                context.StartActivity(activity);
+                ((Activity)context).StartActivityForResult(activity, 1);
+                //context.StartActivity(activity);
             };
 
             return rowView;

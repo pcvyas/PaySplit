@@ -67,6 +67,6 @@ namespace PaySplit.Droid
 			}
 
 			return filteredBills;
-		}
+        }
     }
 }

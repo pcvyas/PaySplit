@@ -25,7 +25,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:hint="Enter a name"
-            android:maxLines="1"
+            android:singleLine="true"
             android:id="@+id/Details_BillName_Edit" />
     </ViewSwitcher>
     <TextView
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter an amount"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:maxLines="1"
             android:id="@+id/Details_BillAmount_Edit" />
     </ViewSwitcher>
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter a description"
-            android:maxLines="1"
+            android:singleLine="true"
             android:id="@+id/Details_BillDesc_Edit" />
     </ViewSwitcher>
     <ViewSwitcher
