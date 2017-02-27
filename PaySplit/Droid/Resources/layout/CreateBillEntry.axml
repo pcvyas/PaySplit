@@ -99,6 +99,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:adjustViewBounds="true"
             android:id="@+id/picture" />
         <ImageButton
             android:layout_width="60dp"

@@ -1,160 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="20dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_nameLabel"
-        android:text="Name:"
-        android:paddingBottom="10dp"
-        android:textStyle="bold" />
-    <ViewSwitcher
-        android:id="@+id/Details_name_switcher"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
         <TextView
-            android:text="Name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Details_BillName" />
-        <EditText
-            android:text="Name"
+            android:id="@+id/Details_nameLabel"
+            android:text="Name:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <ViewSwitcher
+            android:id="@+id/Details_name_switcher"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_BillName" />
+            <EditText
+                android:text="Name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter a name"
+                android:singleLine="true"
+                android:id="@+id/Details_BillName_Edit" />
+        </ViewSwitcher>
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter a name"
-            android:singleLine="true"
-            android:id="@+id/Details_BillName_Edit" />
-    </ViewSwitcher>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_amountLabel"
-        android:text="Amount:"
-        android:paddingBottom="10dp"
-        android:textStyle="bold" />
-    <ViewSwitcher
-        android:id="@+id/Details_amount_switcher"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/Details_amountLabel"
+            android:text="Amount:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <ViewSwitcher
+            android:id="@+id/Details_amount_switcher"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_BillAmount" />
+            <EditText
+                android:text="Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter an amount"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:id="@+id/Details_BillAmount_Edit" />
+        </ViewSwitcher>
         <TextView
-            android:text="Amount"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Details_BillAmount" />
-        <EditText
-            android:text="Amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter an amount"
-            android:inputType="numberDecimal"
-            android:maxLines="1"
-            android:id="@+id/Details_BillAmount_Edit" />
-    </ViewSwitcher>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_dateLabel"
-        android:text="Date:"
-        android:paddingBottom="10dp"
-        android:textStyle="bold" />
-    <ViewSwitcher
-        android:id="@+id/Details_date_switcher"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/Details_dateLabel"
+            android:text="Date:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <ViewSwitcher
+            android:id="@+id/Details_date_switcher"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_Date" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter a Date"
+                android:id="@+id/Details_Date_Edit" />
+        </ViewSwitcher>
         <TextView
-            android:text="Date"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Details_Date" />
-        <EditText
+            android:id="@+id/Details_categoryLabel"
+            android:text="Category:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <ViewSwitcher
+            android:id="@+id/Details_category_switcher"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter a Date"
-            android:id="@+id/Details_Date_Edit" />
-    </ViewSwitcher>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_categoryLabel"
-        android:text="Category:"
-        android:paddingBottom="10dp"
-        android:textStyle="bold" />
-    <ViewSwitcher
-        android:id="@+id/Details_category_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Category"
+                android:id="@+id/Details_BillCategory"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/secondary_text_light"
+                android:background="#4DB6AC"
+                android:foreground="#B2DFDB"
+                android:textSize="8sp"
+                android:textAllCaps="true"
+                android:padding="5dp"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_BillCategory_Edit"
+                android:paddingBottom="10dp" />
+        </ViewSwitcher>
         <TextView
-            android:text="Category"
-            android:id="@+id/Details_BillCategory"
             android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:fontFamily="sans-serif-light"
+            android:layout_height="wrap_content"
+            android:id="@+id/Details_descriptionLabel"
+            android:text="Description:"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+        <ViewSwitcher
+            android:id="@+id/Details_desc_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_BillDesc" />
+            <EditText
+                android:text="Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter a description"
+                android:singleLine="true"
+                android:id="@+id/Details_BillDesc_Edit" />
+        </ViewSwitcher>
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:id="@+id/Details_imageView" />
+        <ViewSwitcher
+            android:id="@+id/Details_button_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="Edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_EditButton" />
+            <Button
+                android:text="Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Details_SaveButton" />
+        </ViewSwitcher>
+        <TextView
+            android:text="Last Updated"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/secondary_text_light"
-            android:background="#4DB6AC"
-            android:foreground="#B2DFDB"
-            android:textSize="8sp"
-            android:textAllCaps="true"
-            android:padding="5dp"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Details_BillCategory_Edit"
-            android:paddingBottom="10dp" />
-    </ViewSwitcher>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Details_descriptionLabel"
-        android:text="Description:"
-        android:paddingBottom="10dp"
-        android:textStyle="bold" />
-    <ViewSwitcher
-        android:id="@+id/Details_desc_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Details_BillDesc" />
-        <EditText
-            android:text="Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter a description"
-            android:singleLine="true"
-            android:id="@+id/Details_BillDesc_Edit" />
-    </ViewSwitcher>
-    <ViewSwitcher
-        android:id="@+id/Details_button_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:text="Edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Details_EditButton" />
-        <Button
-            android:text="Save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Details_SaveButton" />
-    </ViewSwitcher>
-    <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/Details_imageView" />
-    <TextView
-        android:text="Last Updated"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:id="@+id/Details_Updated" />
-</LinearLayout>
+            android:paddingBottom="10dp"
+            android:id="@+id/Details_Updated" />
+    </LinearLayout>
+</ScrollView>
