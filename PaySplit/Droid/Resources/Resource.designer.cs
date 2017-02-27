@@ -85,8 +85,8 @@ namespace PaySplit.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070031
-			public const int CategoryName = 2131165233;
+			// aapt resource value: 0x7f070033
+			public const int CategoryName = 2131165235;
 			
 			// aapt resource value: 0x7f070006
 			public const int Details_BillAmount = 2131165190;
@@ -163,26 +163,26 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f070001
 			public const int Details_name_switcher = 2131165185;
 			
-			// aapt resource value: 0x7f070027
-			public const int Main_AddEntry = 2131165223;
-			
 			// aapt resource value: 0x7f070029
-			public const int Main_Categoriesbtn = 2131165225;
+			public const int Main_AddEntry = 2131165225;
 			
 			// aapt resource value: 0x7f07002b
-			public const int Main_DelBtn = 2131165227;
+			public const int Main_Categoriesbtn = 2131165227;
 			
-			// aapt resource value: 0x7f070028
-			public const int Main_Viewbtn = 2131165224;
-			
-			// aapt resource value: 0x7f07002c
-			public const int Main_imageView = 2131165228;
+			// aapt resource value: 0x7f07002d
+			public const int Main_DelBtn = 2131165229;
 			
 			// aapt resource value: 0x7f07002a
-			public const int Main_picture = 2131165226;
+			public const int Main_Viewbtn = 2131165226;
 			
-			// aapt resource value: 0x7f070030
-			public const int View_ListView = 2131165232;
+			// aapt resource value: 0x7f07002e
+			public const int Main_imageView = 2131165230;
+			
+			// aapt resource value: 0x7f07002c
+			public const int Main_picture = 2131165228;
+			
+			// aapt resource value: 0x7f070032
+			public const int View_ListView = 2131165234;
 			
 			// aapt resource value: 0x7f07001c
 			public const int amount = 2131165212;
@@ -190,17 +190,17 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f07001b
 			public const int amountLabel = 2131165211;
 			
+			// aapt resource value: 0x7f070031
+			public const int billCategory = 2131165233;
+			
+			// aapt resource value: 0x7f070030
+			public const int billDescription = 2131165232;
+			
 			// aapt resource value: 0x7f07002f
-			public const int billCategory = 2131165231;
+			public const int billTitle = 2131165231;
 			
-			// aapt resource value: 0x7f07002e
-			public const int billDescription = 2131165230;
-			
-			// aapt resource value: 0x7f07002d
-			public const int billTitle = 2131165229;
-			
-			// aapt resource value: 0x7f070026
-			public const int cancel = 2131165222;
+			// aapt resource value: 0x7f070028
+			public const int cancel = 2131165224;
 			
 			// aapt resource value: 0x7f07001f
 			public const int categoryLabel = 2131165215;
@@ -208,14 +208,20 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f070020
 			public const int category_spinner = 2131165216;
 			
+			// aapt resource value: 0x7f070024
+			public const int date = 2131165220;
+			
+			// aapt resource value: 0x7f070023
+			public const int datePicker = 2131165219;
+			
 			// aapt resource value: 0x7f07001e
 			public const int description = 2131165214;
 			
 			// aapt resource value: 0x7f07001d
 			public const int descriptionLabel = 2131165213;
 			
-			// aapt resource value: 0x7f070032
-			public const int listview_background_shape = 2131165234;
+			// aapt resource value: 0x7f070034
+			public const int listview_background_shape = 2131165236;
 			
 			// aapt resource value: 0x7f07001a
 			public const int name = 2131165210;
@@ -229,14 +235,14 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f070021
 			public const int peopleLable = 2131165217;
 			
-			// aapt resource value: 0x7f070023
-			public const int picture = 2131165219;
-			
 			// aapt resource value: 0x7f070025
-			public const int save = 2131165221;
+			public const int picture = 2131165221;
 			
-			// aapt resource value: 0x7f070024
-			public const int takePic = 2131165220;
+			// aapt resource value: 0x7f070027
+			public const int save = 2131165223;
+			
+			// aapt resource value: 0x7f070026
+			public const int takePic = 2131165222;
 			
 			static Id()
 			{
