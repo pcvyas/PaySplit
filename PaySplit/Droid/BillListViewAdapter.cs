@@ -78,7 +78,6 @@ namespace PaySplit.Droid
         public void update(List<Bill> bills)
         {
             this.bills = bills;
-            //this.NotifyDataSetChanged();
         }
     }
 

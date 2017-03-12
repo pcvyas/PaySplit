@@ -17,6 +17,7 @@ namespace PaySplit.Droid
     {
         private List<Bill> bills;
         private BillListViewAdapter adapter;
+        ListView viewBillsListview;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -38,7 +39,7 @@ namespace PaySplit.Droid
 			bills = fetchBillsByCategory(category);
 
             // Instantiate the listview
-            ListView viewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+            viewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
             // Create the adapter to format the list
 
@@ -90,6 +91,7 @@ namespace PaySplit.Droid
             bills = fetchBillsByCategory(category);
 
             adapter.update(bills);
+            viewBillsListview.Adapter = adapter;
         }
     }
 }
