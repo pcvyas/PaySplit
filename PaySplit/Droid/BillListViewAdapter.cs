@@ -41,33 +41,57 @@ namespace PaySplit.Droid
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View rowView = convertView;
+            ViewBillListViewHolder viewHolder;
 
             // create a new row if not drawn
             if (rowView == null)
             {
+                // We use a viewholder so the views do not have to be recreated
                 rowView = LayoutInflater.From(context).Inflate(Resource.Layout.ViewBills, null, false);
+                viewHolder = new ViewBillListViewHolder(rowView);
+                rowView.Tag = viewHolder;
+            } else
+            {
+                viewHolder = (ViewBillListViewHolder)rowView.Tag;
             }
 
             // Define what is in the row
             // Assign the text field of the textview to the name of each bill
-			TextView billName = rowView.FindViewById<TextView>(Resource.Id.billTitle);
-            billName.Text = bills[position].Name;
+            viewHolder.billName.Text = bills[position].Name;
 
-			TextView billDesc = rowView.FindViewById<TextView>(Resource.Id.billDescription);
-			billDesc.Text = "Last modified: " + bills[position].LastEdited;
+            viewHolder.billDesc.Text = "Last modified: " + bills[position].LastEdited;
 
-			TextView billCategory = rowView.FindViewById<TextView>(Resource.Id.billCategory);
-			billCategory.Text = bills[position].Category;
+            viewHolder.billCategory.Text = bills[position].Category;
 
 			rowView.Click += delegate
             {
                 var activity = new Intent(context, typeof(BillDetailsActivity));
                 activity.PutExtra("id", bills[position].Id.ToString());
-                ((Activity)context).StartActivityForResult(activity, 1);
-                //context.StartActivity(activity);
-            };
+                context.StartActivity(activity);
+                //((Activity)context).StartActivityForResult(activity, 1);
+             };
 
             return rowView;
+        }
+
+        // Update the bills list
+        public void update(List<Bill> bills)
+        {
+            this.bills = bills;
+            //this.NotifyDataSetChanged();
+        }
+    }
+
+    public class ViewBillListViewHolder : Java.Lang.Object
+    {
+        public TextView billName;
+        public TextView billDesc;
+        public TextView billCategory;
+        public ViewBillListViewHolder(View view)
+        {
+            billName = view.FindViewById<TextView>(Resource.Id.billTitle);
+            billDesc = view.FindViewById<TextView>(Resource.Id.billDescription);
+            billCategory = view.FindViewById<TextView>(Resource.Id.billCategory);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace PaySplit.Droid
     public class ViewBillsActivity : Activity
     {
         private List<Bill> bills;
+        private BillListViewAdapter adapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,7 +46,7 @@ namespace PaySplit.Droid
             //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, billNames);
 
             // Custom adapter
-            BillListViewAdapter adapter = new BillListViewAdapter(this, bills);
+            adapter = new BillListViewAdapter(this, bills);
 
             viewBillsListview.Adapter = adapter;
         }
@@ -67,6 +68,28 @@ namespace PaySplit.Droid
 			}
 
 			return filteredBills;
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            //Generate or Initialize Database Path
+            DataHelper dbPath = new DataHelper();
+            dbPath.CreateDataBase("PaySplitDataDb.db3");
+
+            //Initialize database service
+            GenDataService dbs = new GenDataService(dbPath.DBPath);
+
+            //Create Table
+            dbs.CreateTable();
+
+            bills = dbs.GetAllBills();
+
+            string category = Intent.GetStringExtra("category");
+            bills = fetchBillsByCategory(category);
+
+            adapter.update(bills);
         }
     }
 }

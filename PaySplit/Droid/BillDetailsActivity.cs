@@ -143,8 +143,20 @@ namespace PaySplit.Droid
                 date.Text = date_edit.Text;
                 category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
                 desc.Text = desc_edit.Text;
+
+                Toast.MakeText(this, "Update Successful", ToastLength.Short).Show();
             };
 
         }
+
+        //public override void OnBackPressed()
+        //{
+        //    base.OnBackPressed();
+        //    FinishActivity(1);
+        //}
+        //protected override void OnStop()
+        //{
+        //    base.OnStop();
+        //}
     }
 }

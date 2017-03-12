@@ -42,16 +42,22 @@ namespace PaySplit.Droid
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View rowView = convertView;
+            CategoryListViewHolder viewHolder;
 
-			// create a new row if not drawn
-			if (rowView == null)
+            // create a new row if not drawn
+            if (rowView == null)
 			{
-				rowView = LayoutInflater.From(context).Inflate(Resource.Layout.ViewCategory, null, false);
-			}
+                // We use a viewholder so the views do not have to be recreated
+                rowView = LayoutInflater.From(context).Inflate(Resource.Layout.ViewCategory, null, false);
+                viewHolder = new CategoryListViewHolder(rowView);
+                rowView.Tag = viewHolder;
+            } else
+            {
+                viewHolder = (CategoryListViewHolder)rowView.Tag;
+            }
 
-			TextView categoryItem = rowView.FindViewById<TextView>(Resource.Id.CategoryName);
-			categoryItem.Text = categories[position];
-			categoryItem.Click += delegate
+            viewHolder.categoryItem.Text = categories[position];
+            viewHolder.categoryItem.Click += delegate
 			{
 				var activity = new Intent(context, typeof(ViewBillsActivity));
 				activity.PutExtra("category", categories[position]);
@@ -61,4 +67,12 @@ namespace PaySplit.Droid
 			return rowView;
 		}
 	}
+    public class CategoryListViewHolder : Java.Lang.Object
+    {
+        public TextView categoryItem;
+        public CategoryListViewHolder(View view)
+        {
+            categoryItem = view.FindViewById<TextView>(Resource.Id.CategoryName);
+        }
+    }
 }
