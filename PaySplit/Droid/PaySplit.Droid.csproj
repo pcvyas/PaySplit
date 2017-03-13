@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PaySplit.Droid</RootNamespace>
     <AssemblyName>PaySplit.Droid</AssemblyName>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -16,7 +16,8 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <AndroidTlsProvider></AndroidTlsProvider>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,18 +69,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillDetailsActivity.cs" />
-    <Compile Include="BillListViewAdapter.cs" />
-    <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataHelper.cs" />
-    <Compile Include="CameraService.cs" />
-    <Compile Include="ViewBillsActivity.cs" />
-    <Compile Include="CreateBillActivity.cs" />
-    <Compile Include="CategoryActivity.cs" />
-    <Compile Include="CategoryListViewAdapter.cs" />
-    <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="Activities\BillDetailsActivity.cs" />
+    <Compile Include="Activities\CategoryActivity.cs" />
+    <Compile Include="Activities\CreateBillActivity.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Activities\ViewBillsActivity.cs" />
+    <Compile Include="Adapters\BillListViewAdapter.cs" />
+    <Compile Include="Adapters\CategoryListViewAdapter.cs" />
+    <Compile Include="Util\CameraService.cs" />
+    <Compile Include="Util\Constants.cs" />
+    <Compile Include="Util\DataHelper.cs" />
+    <Compile Include="Util\DatePickerFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -92,15 +94,18 @@
     <AndroidResource Include="Resources\layout\BillDetails.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\ViewBills_ListView.axml">
+    <AndroidResource Include="Resources\layout\Main_ListView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\back2.jpeg" />
     <AndroidResource Include="Resources\drawable\Rounded.xml" />
     <AndroidResource Include="Resources\layout\ViewCategory.axml" />
-    <AndroidResource Include="Resources\layout\ViewCategories_ListView.axml" />
     <AndroidResource Include="Resources\drawable\big_card.xml" />
     <AndroidResource Include="Resources\drawable\rectangle.xml" />
+    <AndroidResource Include="Resources\drawable\addbill.png" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\values-v21\Styles.xml" />
+    <AndroidResource Include="Resources\menu\main_menu.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -121,6 +126,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Activities\" />
+    <Folder Include="Adapters\" />
+    <Folder Include="Util\" />
+    <Folder Include="Resources\values-v21\" />
+    <Folder Include="Resources\menu\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

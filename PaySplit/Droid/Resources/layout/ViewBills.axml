@@ -1,44 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/big_card"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical"
-        android:background="@drawable/big_card">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
         <TextView
-            android:id="@+id/billTitle"
-            android:layout_width="fill_parent"
-            android:singleLine="true"
-            android:fontFamily="sans-serif"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/black"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/billDescription"
-            android:layout_width="fill_parent"
-            android:singleLine="true"
-            android:fontFamily="sans-serif-light"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/secondary_text_light"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/billCategory"
+            android:id="@+id/date_text"
             android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:fontFamily="sans-serif-light"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/secondary_text_light"
-            android:background="#FFD54F"
-            android:foreground="#FFECB3"
-            android:textSize="8sp"
-            android:textAllCaps="true"
-            android:layout_marginTop="5dp"
-            android:padding="5dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="fill_parent"
+            android:layout_gravity="top|left"
+            android:text="DATE"
+            android:background="@color/accentColor"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/billTitle"
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:text="Example Bill Title"
+                android:fontFamily="sans-serif"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:padding="2dp"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/billDescription"
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation"
+                android:fontFamily="sans-serif-light"
+                android:padding="2dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/secondary_text_light"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/billCategory"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Category"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:background="@color/accentColorLight"
+                android:textSize="8sp"
+                android:textAllCaps="true"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -3,9 +3,13 @@
 PaySplit/.DS_Store
 PaySplit/Droid/.DS_Store
 PaySplit/Droid/Resources/.DS_Store
+PaySplit/Droid/bin/Release/
 PaySplit/Droid/bin/Debug/
+PaySplit/Droid/obj/Release/
 PaySplit/Droid/obj/Debug/
+PaySplit/PaySplit/bin/Release/
 PaySplit/PaySplit/bin/Debug/
+PaySplit/PaySplit/obj/Release/
 PaySplit/PaySplit/obj/Debug/
 PaySplit/PaySplit.userprefs
 *.mdb

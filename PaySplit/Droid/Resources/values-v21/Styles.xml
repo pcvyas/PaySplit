@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:colorPrimary">@color/actionBarBackgroundColor</item>
+        <item name="android:colorPrimaryDark">@color/statusBarBackgroundColor</item>
+        <item name="android:colorAccent">@color/accentColor</item>
+		<item name="android:navigationBarColor">@color/actionBarBackgroundColor</item>
+    </style>
+</resources>

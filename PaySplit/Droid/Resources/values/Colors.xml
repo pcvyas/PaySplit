@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+	<color name="accentColor">#FFC107</color>
+	<color name="accentColorLight">#FFECB3</color>
+	<color name="statusBarBackgroundColor">#1976D2</color>	
+	<color name="actionBarBackgroundColor">#2196F3</color>
+	<color name="actionBarTextColor">#212121</color>
+	<color name="background">#FBFAFB</color>
+</resources>

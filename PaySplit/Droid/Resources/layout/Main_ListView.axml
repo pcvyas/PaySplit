@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/NoResultsImage"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:src="@drawable/addbill"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/NoResults"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="No Bills Created Yet"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textColor="@android:color/@android:color/black"
+        android:layout_below="@id/NoResultsImage"
+        android:textSize="15dp"
+        android:visibility="gone" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        android:padding="16dip"
+        android:clipToPadding="false"
+        android:id="@+id/View_ListView" />
+</RelativeLayout>

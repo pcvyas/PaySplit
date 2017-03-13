@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 	<string name="app_name">PaySplit</string>
-
+	<string name="categories_menu_title">View Categories</string>
 	<string name="category_prompt">Category: </string>
 	<string-array name="categories_array">
 		<item>Uncategorized</item>
@@ -18,5 +18,4 @@
 		<item>Investment</item>
 		<item>Other</item>
     </string-array>
-	
 </resources>
