@@ -29,7 +29,6 @@ namespace PaySplit.Droid
             // Currently set to "CreateEntry", change to main dashboard page
 			SetContentView(Resource.Layout.Main);
 
-
 			//Generate or Initialize Database Path
 			DataHelper dbPath = new DataHelper();
 			dbPath.CreateDataBase("PaySplitDataDb.db3");
@@ -52,17 +51,6 @@ namespace PaySplit.Droid
             viewB.Click += delegate
             {
                 StartActivity(typeof(ViewBillsActivity));
-                //viewB.Click += delegate
-                //{
-                //	var bills = dbs.GetAllBills();
-                //	string s = "";
-                //	foreach (var bill in bills)
-                //	{
-                //		s += bill.Name + "\n";
-                //	}
-                //	Toast.MakeText(this, s, ToastLength.Short).Show();
-
-                //};
             };
 
 			//Add Entry
@@ -108,7 +96,6 @@ namespace PaySplit.Droid
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
 			cs.SavePicture();
-
 		}
 	}
 }
