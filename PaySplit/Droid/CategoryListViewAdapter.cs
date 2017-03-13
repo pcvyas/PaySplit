@@ -38,6 +38,11 @@ namespace PaySplit.Droid
 			get { return categories[position]; }
 		}
 
+		public void update(List<String> categories)
+		{
+			this.categories = categories;
+		}
+
 		// Define what is within each row
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{

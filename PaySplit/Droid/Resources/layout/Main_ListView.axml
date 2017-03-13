@@ -5,7 +5,7 @@
     android:background="@android:color/@android:color/background_light"
     android:gravity="center">
     <ImageView
-        android:id="@+id/noBillsImage"
+        android:id="@+id/NoResultsImage"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_centerHorizontal="true"
@@ -14,7 +14,7 @@
         android:src="@drawable/addbill"
         android:visibility="gone" />
     <TextView
-        android:id="@+id/noBills"
+        android:id="@+id/NoResults"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -23,7 +23,7 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:textColor="@android:color/@android:color/black"
-        android:layout_below="@id/noBillsImage"
+        android:layout_below="@id/NoResultsImage"
         android:textSize="15dp"
         android:visibility="gone" />
     <ListView

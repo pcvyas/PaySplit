@@ -12,14 +12,34 @@ using Android.Widget;
 
 namespace PaySplit.Droid
 {
+
 	[Activity(Label = "Categories", MainLauncher = false, Icon = "@mipmap/new_icon")]
 	public class CategoryActivity : Activity
 	{
-		private List<Bill> bills;
+		private List<String> mCategories = new List<String>();
+		private CategoryListViewAdapter mAdapter;
+
+		private ListView mViewBillsListview;
+		private ImageView mNoResultsImage;
+		private TextView mNoResultsText;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.ViewCategories_ListView);
+			SetContentView(Resource.Layout.Main_ListView);
+
+			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
+			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
+			mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+
+			// Setup adapter
+			mAdapter = new CategoryListViewAdapter(this, mCategories);
+			mViewBillsListview.Adapter = mAdapter;
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
 
 			//Generate or Initialize Database Path
 			DataHelper dbPath = new DataHelper();
@@ -31,24 +51,24 @@ namespace PaySplit.Droid
 			//Create Table
 			dbs.CreateTable();
 
-			bills = dbs.GetAllBills();
-
-			List<String> categories = new List<String>();
+			List<Bill> bills = dbs.GetAllBills();
+			mCategories.Clear();
 			foreach (Bill bill in bills)
 			{
-				if (!categories.Contains(bill.Category))
+				if (!mCategories.Contains(bill.Category))
 				{
-					categories.Add(bill.Category);
+					mCategories.Add(bill.Category);
 				}
 			}
 
-			// Instantiate the listview
-			ListView viewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+			if (mCategories == null || mCategories.Count == 0)
+			{
+				mNoResultsText.Visibility = ViewStates.Visible;
+				mNoResultsImage.Visibility = ViewStates.Visible;
+			}
 
-			// Custom adapter
-			CategoryListViewAdapter adapter = new CategoryListViewAdapter(this, categories);
-
-			viewBillsListview.Adapter = adapter;
+			mAdapter.update(mCategories);
+			mViewBillsListview.Adapter = mAdapter;
 		}
 	}
 }

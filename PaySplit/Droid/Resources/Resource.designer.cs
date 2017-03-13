@@ -184,8 +184,14 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f07002c
 			public const int Main_picture = 2131165228;
 			
-			// aapt resource value: 0x7f070034
-			public const int View_ListView = 2131165236;
+			// aapt resource value: 0x7f070030
+			public const int NoResults = 2131165232;
+			
+			// aapt resource value: 0x7f07002f
+			public const int NoResultsImage = 2131165231;
+			
+			// aapt resource value: 0x7f070031
+			public const int View_ListView = 2131165233;
 			
 			// aapt resource value: 0x7f07001c
 			public const int amount = 2131165212;
@@ -193,14 +199,14 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f07001b
 			public const int amountLabel = 2131165211;
 			
-			// aapt resource value: 0x7f070031
-			public const int billCategory = 2131165233;
+			// aapt resource value: 0x7f070034
+			public const int billCategory = 2131165236;
 			
-			// aapt resource value: 0x7f070030
-			public const int billDescription = 2131165232;
+			// aapt resource value: 0x7f070033
+			public const int billDescription = 2131165235;
 			
-			// aapt resource value: 0x7f07002f
-			public const int billTitle = 2131165231;
+			// aapt resource value: 0x7f070032
+			public const int billTitle = 2131165234;
 			
 			// aapt resource value: 0x7f070028
 			public const int cancel = 2131165224;
@@ -231,12 +237,6 @@ namespace PaySplit.Droid
 			
 			// aapt resource value: 0x7f070019
 			public const int nameLabel = 2131165209;
-			
-			// aapt resource value: 0x7f070033
-			public const int noBills = 2131165235;
-			
-			// aapt resource value: 0x7f070032
-			public const int noBillsImage = 2131165234;
 			
 			// aapt resource value: 0x7f070022
 			public const int peopleAmount = 2131165218;
@@ -276,16 +276,13 @@ namespace PaySplit.Droid
 			public const int Main = 2130968578;
 			
 			// aapt resource value: 0x7f040003
-			public const int ViewBills = 2130968579;
+			public const int Main_ListView = 2130968579;
 			
 			// aapt resource value: 0x7f040004
-			public const int ViewBills_ListView = 2130968580;
+			public const int ViewBills = 2130968580;
 			
 			// aapt resource value: 0x7f040005
-			public const int ViewCategories_ListView = 2130968581;
-			
-			// aapt resource value: 0x7f040006
-			public const int ViewCategory = 2130968582;
+			public const int ViewCategory = 2130968581;
 			
 			static Layout()
 			{

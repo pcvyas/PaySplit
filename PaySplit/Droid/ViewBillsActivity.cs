@@ -17,23 +17,22 @@ namespace PaySplit.Droid
     {
 		private List<Bill> mBills = new List<Bill>();
 		private BillListViewAdapter mAdapter;
-		ListView mViewBillsListview;
+		private ListView mViewBillsListview;
 
-		ImageView mNoBillsImage;
-		TextView mNoBillsText;
+		private ImageView mNoResultsImage;
+		private TextView mNoResultsText;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.ViewBills_ListView);
+			SetContentView(Resource.Layout.Main_ListView);
 
-			// Update the UI to reflect no bills
-			mNoBillsText = FindViewById<TextView>(Resource.Id.noBills);
-			mNoBillsImage = FindViewById<ImageView>(Resource.Id.noBillsImage);
-
-            // Instantiate the listview and adapter
+			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
+			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+
+			// Setup adapter
             mAdapter = new BillListViewAdapter(this, mBills);
             mViewBillsListview.Adapter = mAdapter;
         }
@@ -59,8 +58,8 @@ namespace PaySplit.Droid
 
 			if (mBills == null || mBills.Count == 0)
 			{
-				mNoBillsText.Visibility = ViewStates.Visible;
-				mNoBillsImage.Visibility = ViewStates.Visible;
+				mNoResultsText.Visibility = ViewStates.Visible;
+				mNoResultsImage.Visibility = ViewStates.Visible;
 			}
 
 			mAdapter.update(mBills);
