@@ -44,6 +44,9 @@ namespace PaySplit.iOS
 			{
 				Bill b = new Bill() { Name = "Car Gas", Amount = 15.67, Description = "to ottawa" };
 				database.InsertBillEntry(b);
+				UIStoryboard board = UIStoryboard.FromName("Main", null);
+				UIViewController ctrl = (UIViewController)board.InstantiateViewController("CreateBill");
+				this.PresentViewController(ctrl, true, null);
 
 			};
 
@@ -54,6 +57,10 @@ namespace PaySplit.iOS
 
 			viewItem.TouchUpInside += delegate
 			{
+				UIStoryboard board = UIStoryboard.FromName("Main", null);
+				UIViewController ctrl = (UIViewController)board.InstantiateViewController("ViewBills");
+				this.PresentViewController(ctrl, true, null);
+				/*
 				var bills = database.GetAllBills();
 				string s = "";
 				foreach (var bill in bills)
@@ -62,6 +69,7 @@ namespace PaySplit.iOS
 				}
 
 				Console.WriteLine(s);
+				*/
 				//Just for testing (Need a seperate listener
 				//cs.StartCamera();
 			};

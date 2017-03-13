@@ -166,7 +166,6 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +182,17 @@
     </Compile>
     <Compile Include="DataHelper.cs" />
     <Compile Include="CameraService.cs" />
+    <Compile Include="CreateBillController.cs" />
+    <Compile Include="CreateBillController.designer.cs">
+      <DependentUpon>CreateBillController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewBillsController.cs" />
+    <Compile Include="ViewBillsController.designer.cs">
+      <DependentUpon>ViewBillsController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\camera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
