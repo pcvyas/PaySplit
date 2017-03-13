@@ -82,6 +82,7 @@
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\DataHelper.cs" />
     <Compile Include="Util\DatePickerFragment.cs" />
+    <Compile Include="Activities\CreateUserActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -119,7 +120,7 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\new_icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\new_icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\new_icon.png" />
-    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\CreateUser.axml" />
     <AndroidResource Include="Resources\layout\CreateBillEntry.axml">
       <SubType>Designer</SubType>
     </AndroidResource>

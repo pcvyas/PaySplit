@@ -119,6 +119,21 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0036
 			public const int CategoryName = 2131361846;
 			
+			// aapt resource value: 0x7f0a002d
+			public const int Create_Email_EditText = 2131361837;
+			
+			// aapt resource value: 0x7f0a002c
+			public const int Create_Email_Label = 2131361836;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int Create_Name_EditText = 2131361835;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int Create_Name_Label = 2131361834;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int Create_StartBtn = 2131361838;
+			
 			// aapt resource value: 0x7f0a0006
 			public const int Details_BillAmount = 2131361798;
 			
@@ -194,29 +209,14 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0001
 			public const int Details_name_switcher = 2131361793;
 			
-			// aapt resource value: 0x7f0a0029
-			public const int Main_AddEntry = 2131361833;
-			
-			// aapt resource value: 0x7f0a002b
-			public const int Main_Categoriesbtn = 2131361835;
-			
-			// aapt resource value: 0x7f0a002d
-			public const int Main_DelBtn = 2131361837;
-			
-			// aapt resource value: 0x7f0a002a
-			public const int Main_Viewbtn = 2131361834;
-			
-			// aapt resource value: 0x7f0a002e
-			public const int Main_imageView = 2131361838;
-			
-			// aapt resource value: 0x7f0a002c
-			public const int Main_picture = 2131361836;
-			
 			// aapt resource value: 0x7f0a0030
 			public const int NoResults = 2131361840;
 			
 			// aapt resource value: 0x7f0a002f
 			public const int NoResultsImage = 2131361839;
+			
+			// aapt resource value: 0x7f0a0029
+			public const int PaySplitTitle = 2131361833;
 			
 			// aapt resource value: 0x7f0a0031
 			public const int View_ListView = 2131361841;
@@ -313,7 +313,7 @@ namespace PaySplit.Droid
 			public const int CreateBillEntry = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int Main = 2130968578;
+			public const int CreateUser = 2130968578;
 			
 			// aapt resource value: 0x7f040003
 			public const int Main_ListView = 2130968579;

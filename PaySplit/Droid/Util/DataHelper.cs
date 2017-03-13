@@ -20,7 +20,7 @@ namespace PaySplit.Droid
 				Directory.CreateDirectory(folder);
 			}
 			sGenDataService = new GenDataService(System.IO.Path.Combine(folder, Constants.PAYSPLIT_DB_NAME));
-		}
+		}	
 
 		public static DataHelper getInstance()
 		{
