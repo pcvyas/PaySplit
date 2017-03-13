@@ -81,6 +81,7 @@
     <Compile Include="CategoryActivity.cs" />
     <Compile Include="CategoryListViewAdapter.cs" />
     <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -102,6 +103,7 @@
     <AndroidResource Include="Resources\layout\ViewCategories_ListView.axml" />
     <AndroidResource Include="Resources\drawable\big_card.xml" />
     <AndroidResource Include="Resources\drawable\rectangle.xml" />
+    <AndroidResource Include="Resources\drawable\addbill.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

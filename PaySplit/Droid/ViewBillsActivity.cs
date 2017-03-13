@@ -15,52 +15,67 @@ namespace PaySplit.Droid
     [Activity(Label = "View Bills", MainLauncher = false, Icon = "@mipmap/new_icon")]
     public class ViewBillsActivity : Activity
     {
-        private List<Bill> bills;
-        private BillListViewAdapter adapter;
-        ListView viewBillsListview;
+		private List<Bill> mBills = new List<Bill>();
+		private BillListViewAdapter mAdapter;
+		ListView mViewBillsListview;
+
+		ImageView mNoBillsImage;
+		TextView mNoBillsText;
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ViewBills_ListView);
 
-            //Generate or Initialize Database Path
-            DataHelper dbPath = new DataHelper();
-            dbPath.CreateDataBase("PaySplitDataDb.db3");
+			// Update the UI to reflect no bills
+			mNoBillsText = FindViewById<TextView>(Resource.Id.noBills);
+			mNoBillsImage = FindViewById<ImageView>(Resource.Id.noBillsImage);
 
-            //Initialize database service
-            GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-            //Create Table
-            dbs.CreateTable();
-
-            bills = dbs.GetAllBills();
-
-			string category = Intent.GetStringExtra("category");
-			bills = fetchBillsByCategory(category);
-
-            // Instantiate the listview
-            viewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
-
-            // Create the adapter to format the list
-
-            // simple text adapter
-            //ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, billNames);
-
-            // Custom adapter
-            adapter = new BillListViewAdapter(this, bills);
-
-            viewBillsListview.Adapter = adapter;
+            // Instantiate the listview and adapter
+            mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+            mAdapter = new BillListViewAdapter(this, mBills);
+            mViewBillsListview.Adapter = mAdapter;
         }
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+
+			//Generate or Initialize Database Path
+			DataHelper dbPath = new DataHelper();
+			dbPath.CreateDataBase(Constants.PAYSPLIT_DB_NAME);
+
+			//Initialize database service
+			GenDataService dbs = new GenDataService(dbPath.DBPath);
+
+			//Create Table
+			dbs.CreateTable();
+
+			mBills = dbs.GetAllBills();
+
+			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);
+			mBills = fetchBillsByCategory(category);
+
+			if (mBills == null || mBills.Count == 0)
+			{
+				mNoBillsText.Visibility = ViewStates.Visible;
+				mNoBillsImage.Visibility = ViewStates.Visible;
+			}
+
+			mAdapter.update(mBills);
+			mViewBillsListview.Adapter = mAdapter;
+		}
 
 		private List<Bill> fetchBillsByCategory(String category)
 		{
 			if (category == null || category.Equals(""))
 			{
-				return bills;
+				return mBills;
 			}
 
 			List<Bill> filteredBills = new List<Bill>();
-			foreach (Bill bill in bills)
+			foreach (Bill bill in mBills)
 			{
 				if (category.Equals(bill.Category))
 				{
@@ -69,29 +84,6 @@ namespace PaySplit.Droid
 			}
 
 			return filteredBills;
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            //Generate or Initialize Database Path
-            DataHelper dbPath = new DataHelper();
-            dbPath.CreateDataBase("PaySplitDataDb.db3");
-
-            //Initialize database service
-            GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-            //Create Table
-            dbs.CreateTable();
-
-            bills = dbs.GetAllBills();
-
-            string category = Intent.GetStringExtra("category");
-            bills = fetchBillsByCategory(category);
-
-            adapter.update(bills);
-            viewBillsListview.Adapter = adapter;
         }
     }
 }
