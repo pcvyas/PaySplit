@@ -17,7 +17,6 @@ namespace PaySplit.Droid
 	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon")]
 	public class MainActivity : Activity
 	{
-		int count = 1;
 		ImageView iw;
 		CameraService cs;
 
