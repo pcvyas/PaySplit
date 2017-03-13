@@ -22,6 +22,7 @@ namespace PaySplit.Droid
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 
+		private GenDataService mDBS;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,23 +36,15 @@ namespace PaySplit.Droid
 			// Setup adapter
             mAdapter = new BillListViewAdapter(this, mBills);
             mViewBillsListview.Adapter = mAdapter;
+
+			//Initialize database service
+			mDBS = DataHelper.getInstance().getGenDataService();
         }
 
 		protected override void OnResume()
 		{
 			base.OnResume();
-
-			//Generate or Initialize Database Path
-			DataHelper dbPath = new DataHelper();
-			dbPath.CreateDataBase(Constants.PAYSPLIT_DB_NAME);
-
-			//Initialize database service
-			GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-			//Create Table
-			dbs.CreateTable();
-
-			mBills = dbs.GetAllBills();
+			mBills = mDBS.GetAllBills();
 
 			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);
 			mBills = fetchBillsByCategory(category);
@@ -78,6 +71,13 @@ namespace PaySplit.Droid
 			{
 				case Resource.Id.categories:
 					StartActivity(typeof(CategoryActivity));
+					return true;
+				case Resource.Id.add_bill:
+					StartActivity(typeof(CreateBillActivity));
+					return true;
+				case Resource.Id.delete_all_bills:
+					mDBS.deleteAllBills();
+					Toast.MakeText(this, "All Bills Deleted!", ToastLength.Short).Show();
 					return true;
 				default:
 					return base.OnOptionsItemSelected(item);

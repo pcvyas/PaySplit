@@ -221,6 +221,9 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0031
 			public const int View_ListView = 2131361841;
 			
+			// aapt resource value: 0x7f0a0039
+			public const int add_bill = 2131361849;
+			
 			// aapt resource value: 0x7f0a001c
 			public const int amount = 2131361820;
 			
@@ -256,6 +259,9 @@ namespace PaySplit.Droid
 			
 			// aapt resource value: 0x7f0a0032
 			public const int date_text = 2131361842;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int delete_all_bills = 2131361850;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int description = 2131361822;

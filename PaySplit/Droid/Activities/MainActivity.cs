@@ -17,8 +17,10 @@ namespace PaySplit.Droid
 	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon")]
 	public class MainActivity : Activity
 	{
-		ImageView iw;
-		CameraService cs;
+		private ImageView iw;
+		private CameraService cs;
+
+		private DataHelper mDataHelper;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -33,11 +35,13 @@ namespace PaySplit.Droid
 				StartActivity(typeof(CreateBillActivity));
 			};
 
+			mDataHelper = DataHelper.getInstance();
+			mDataHelper.getGenDataService().CreateTable();
+
 			// TODO: set record_exists properly based on if onboarding has been completed
 			bool user_info_recorded = true;
 			if (!user_info_recorded)
 			{
-				setupDatabase();
 				// send user to create user page (so we can record their name, email, etc) on first use and
 				// persist this data for later
 			}
@@ -52,19 +56,6 @@ namespace PaySplit.Droid
 		protected override void OnResume()
 		{
 			base.OnResume();
-		}
-
-		private void setupDatabase()
-		{
-			//Generate or Initialize Database Path
-			DataHelper dbPath = new DataHelper();
-			dbPath.CreateDataBase(Constants.PAYSPLIT_DB_NAME);
-
-			//Initialize database service
-			GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-			//Create Table
-			dbs.CreateTable();
 		}
 
 		//To handle Camera action completed

@@ -10,5 +10,6 @@
     </style>
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
       <item name="android:textColor">@color/actionBarTextColor</item>
+	  <item name="android:fontFamily">sans-serif</item>
     </style>
 </resources>

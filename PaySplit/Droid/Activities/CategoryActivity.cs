@@ -41,17 +41,11 @@ namespace PaySplit.Droid
 		{
 			base.OnResume();
 
-			//Generate or Initialize Database Path
-			DataHelper dbPath = new DataHelper();
-			dbPath.CreateDataBase("PaySplitDataDb.db3");
-
 			//Initialize database service
-			GenDataService dbs = new GenDataService(dbPath.DBPath);
+			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
+			mDBS.CreateTable();
 
-			//Create Table
-			dbs.CreateTable();
-
-			List<Bill> bills = dbs.GetAllBills();
+			List<Bill> bills = mDBS.GetAllBills();
 			mCategories.Clear();
 			foreach (Bill bill in bills)
 			{

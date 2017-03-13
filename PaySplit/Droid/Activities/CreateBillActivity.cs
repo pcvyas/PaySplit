@@ -17,55 +17,51 @@ namespace PaySplit.Droid
 	public class CreateBillActivity : Activity
 	{
 
-		ImageView iw;
-		CameraService cs;
-		Bill bill;
-		GenDataService dbs;
+		private ImageView mImageView;
+		private CameraService mCameraService;
+		private Bill mBill;
+		private GenDataService mDBService;
+
+		private Spinner mCategoriesSpinner;
+
+		ArrayAdapter<String> mAdapter;
+		private String[] mCategories;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.CreateBillEntry);
-			// Create your application here
 
+			mBill = new Bill();
 
-			//Bill
-			bill = new Bill();
+			mCategories = Resources.GetStringArray(Resource.Array.categories_array);
 
-			// Initialize the Categories Spinner
-			Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
-			String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
-			categoriesSpinner.Adapter = adapter;
+			mCategoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
 
-			//Init Database
-			DataHelper dbPath = new DataHelper();
-			dbPath.CreateDataBase("PaySplitDataDb.db3");
+			mAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, mCategories);
+			mCategoriesSpinner.Adapter = mAdapter;
 
 			//Initialize database service
-			dbs = new GenDataService(dbPath.DBPath);
+			mDBService = DataHelper.getInstance().getGenDataService();
 
-			/**************************
-			*  Take a Photo
-			* ************************/
-			iw = FindViewById<ImageView>(Resource.Id.picture);
+			mImageView = FindViewById<ImageView>(Resource.Id.picture);
 
-			cs = new CameraService(iw, this);
+			mCameraService = new CameraService(mImageView, this);
 
-			if (cs.IsThereAnAppToTakePictures())
+			if (mCameraService.IsThereAnAppToTakePictures())
 			{
-				cs.CreateDirectoryForPictures();
+				mCameraService.CreateDirectoryForPictures();
 
 				ImageButton takePhoto = FindViewById<ImageButton>(Resource.Id.takePic);
 
 				takePhoto.Click += delegate
 				{
-					cs.TakeAPicture();
-					bill.ImagePath = cs.GetSavedPicturePath();
+					mCameraService.TakeAPicture();
+					mBill.ImagePath = mCameraService.GetSavedPicturePath();
 				};
 			}
 
-			iw.Visibility = ViewStates.Invisible;
+			mImageView.Visibility = ViewStates.Invisible;
 
 			Button saveBtn = FindViewById<Button>(Resource.Id.save);
 			saveBtn.Click += Save_Clicked;
@@ -74,7 +70,7 @@ namespace PaySplit.Droid
 			cancelBtn.Click += CancelBtn_Click;
 
 			TextView date = FindViewById<TextView>(Resource.Id.date);
-			date.Text = bill.Date.ToLongDateString();
+			date.Text = mBill.Date.ToLongDateString();
 			date.Click += Date_Click;
 		}
 
@@ -84,7 +80,7 @@ namespace PaySplit.Droid
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																 {
 																	 date.Text = time.ToLongDateString();
-																	 bill.Date = time;
+																	 mBill.Date = time;
 
 																 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
@@ -100,18 +96,18 @@ namespace PaySplit.Droid
 			try
 			{
 				EditText name = FindViewById<EditText>(Resource.Id.name);
-				bill.Name = name.Text;
+				mBill.Name = name.Text;
 				EditText description = FindViewById<EditText>(Resource.Id.description);
-				bill.Description = description.Text;
+				mBill.Description = description.Text;
 				EditText amount = FindViewById<EditText>(Resource.Id.amount);
-				bill.Amount = Double.Parse(amount.Text);
+				mBill.Amount = Double.Parse(amount.Text);
 
-				bill.LastEdited = DateTime.Now;
+				mBill.LastEdited = DateTime.Now;
 
 				Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
-				bill.Category = categoriesSpinner.SelectedItem.ToString();
+				mBill.Category = categoriesSpinner.SelectedItem.ToString();
 
-				dbs.InsertBillEntry(bill);
+				mDBService.InsertBillEntry(mBill);
 				this.Finish();
 			}
 			catch (Exception exc)
@@ -123,7 +119,7 @@ namespace PaySplit.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-			cs.SavePicture();
+			mCameraService.SavePicture();
 
 		}
 	}

@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/big_card"
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
@@ -10,5 +11,7 @@
         android:text="Category Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center"
         android:padding="15dp" />
 </LinearLayout>

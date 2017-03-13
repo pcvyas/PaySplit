@@ -8,51 +8,32 @@ namespace PaySplit.Droid
 {
 	public class DataHelper
 	{
-		
-		public string DBPath = null;
 
-		//Create a database
-		public bool CreateDataBase(string dbName)
+		private static DataHelper sInstance = null;
+		public static GenDataService sGenDataService;
+
+		protected DataHelper()
 		{
-
 			string folder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DB");
-
 			if (!Directory.Exists(folder))
 			{
 				Directory.CreateDirectory(folder);
 			}
-			DBPath = System.IO.Path.Combine(folder, dbName);
-
-
-			return true;
+			sGenDataService = new GenDataService(System.IO.Path.Combine(folder, Constants.PAYSPLIT_DB_NAME));
 		}
 
-		/*public string SaveImage(string name, Bitmap imageStream)
+		public static DataHelper getInstance()
 		{
-			string path = null;
-
-			//Create Directory if not present
-			string imageFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "images");
-
-			if (!Directory.Exists(imageFolder))
+			if (sInstance == null)
 			{
-				Directory.CreateDirectory(imageFolder);
+				sInstance = new DataHelper();
 			}
+			return sInstance;
+		}
 
-			string imageFile = System.IO.Path.Combine(imageFolder, name);
-
-			//Write image to folder
-			try
-			{
-				File.WriteAllBytes(imageFile, imageStream.ToArray<byte>());
-				path = imageFile;
-			}
-			catch
-			{
-				return null;
-			}
-			return path;
-		}*/
-
+		public GenDataService getGenDataService()
+		{
+			return sGenDataService;
+		}
 	}
 }

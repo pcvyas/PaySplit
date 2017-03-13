@@ -15,7 +15,10 @@ namespace PaySplit.Droid
     [Activity(Label = "Bill Details", MainLauncher = false, Icon = "@mipmap/new_icon")]
     public class BillDetailsActivity : Activity
     {
-        private Bill bill;
+		
+		private Bill mBill;
+		private GenDataService mDBS;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -24,17 +27,9 @@ namespace PaySplit.Droid
             //string id = Intent.GetStringExtra("id") ?? "Data not available";
             string id = Intent.GetStringExtra("id");
 
-            //Generate or Initialize Database Path
-            DataHelper dbPath = new DataHelper();
-            dbPath.CreateDataBase("PaySplitDataDb.db3");
-
-            //Initialize database service
-            GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-            //Create Table
-            dbs.CreateTable();
-
-            bill = dbs.getBillById(Int32.Parse(id));
+			//Initialize database service
+			mDBS = DataHelper.getInstance().getGenDataService();
+            mBill = mDBS.getBillById(Int32.Parse(id));
 
             // Instatiate views
             TextView name = FindViewById<TextView>(Resource.Id.Details_BillName);
@@ -54,11 +49,11 @@ namespace PaySplit.Droid
             Button saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
 
             // Populate the views
-            name.Text = bill.Name;
-            amount.Text = "$" + String.Format("{0:0.00}", bill.Amount); // rounds to 2 decimal places
-            date.Text = bill.Date.ToString("MMMM dd, yyyy");
-            category.Text = bill.Category;
-            desc.Text = bill.Description;
+            name.Text = mBill.Name;
+            amount.Text = "$" + String.Format("{0:0.00}", mBill.Amount); // rounds to 2 decimal places
+            date.Text = mBill.Date.ToString("MMMM dd, yyyy");
+            category.Text = mBill.Category;
+            desc.Text = mBill.Description;
 
             // Initialize the Categories Spinner
             String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
@@ -77,11 +72,11 @@ namespace PaySplit.Droid
 			// Display in ImageView. We will resize the bitmap to fit the display.
 			// Loading the full sized image will consume too much memory
 			// and cause the application to crash.
-			if (bill.ImagePath != null)
+			if (mBill.ImagePath != null)
 			{
 				int height = this.Resources.DisplayMetrics.HeightPixels;
 				int width = this.Resources.DisplayMetrics.WidthPixels;
-				Android.Graphics.Bitmap imageMap = bill.ImagePath.LoadAndResizeBitmap(width, height);
+				Android.Graphics.Bitmap imageMap = mBill.ImagePath.LoadAndResizeBitmap(width, height);
                 if (imageMap != null)
                 {
                     image.SetImageBitmap(imageMap);
@@ -98,7 +93,7 @@ namespace PaySplit.Droid
 			{
 				image.Visibility = ViewStates.Invisible;
 			}
-            updated.Text = "Last updated: " + bill.LastEdited.ToString("MMMM dd, yyyy");
+            updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy");
 
             // Instantiate ViewSwitchers used for switching to edit mode
             ViewSwitcher nameSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_name_switcher);
@@ -130,13 +125,13 @@ namespace PaySplit.Droid
                 descSwitcher.ShowPrevious();
                 buttonSwitcher.ShowPrevious();
 
-                bill.Name = name_edit.Text;
-                bill.Amount = Double.Parse(amount_edit.Text);
-                bill.Date = Convert.ToDateTime(date_edit.Text); // date format check here
-                bill.Category = adapter.GetItem(category_edit.SelectedItemPosition);
-                bill.Description = desc_edit.Text;
+                mBill.Name = name_edit.Text;
+                mBill.Amount = Double.Parse(amount_edit.Text);
+                mBill.Date = Convert.ToDateTime(date_edit.Text); // date format check here
+                mBill.Category = adapter.GetItem(category_edit.SelectedItemPosition);
+                mBill.Description = desc_edit.Text;
 
-                dbs.SaveBillEntry(bill.Id, bill);
+                mDBS.SaveBillEntry(mBill.Id, mBill);
 
                 name.Text = name_edit.Text;
                 amount.Text = "$" + amount_edit.Text; // number check here
