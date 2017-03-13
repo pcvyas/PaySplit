@@ -66,6 +66,24 @@ namespace PaySplit.Droid
 			mViewBillsListview.Adapter = mAdapter;
 		}
 
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.main_menu, menu);
+			return base.OnCreateOptionsMenu(menu);
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Resource.Id.categories:
+					StartActivity(typeof(CategoryActivity));
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
+		}
+
 		private List<Bill> fetchBillsByCategory(String category)
 		{
 			if (category == null || category.Equals(""))
