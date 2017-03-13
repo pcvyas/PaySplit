@@ -97,7 +97,6 @@
     <AndroidResource Include="Resources\layout\Main_ListView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\back2.jpeg" />
     <AndroidResource Include="Resources\drawable\Rounded.xml" />
     <AndroidResource Include="Resources\layout\ViewCategory.axml" />
     <AndroidResource Include="Resources\drawable\big_card.xml" />
