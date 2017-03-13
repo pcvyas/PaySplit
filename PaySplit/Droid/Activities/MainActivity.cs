@@ -23,20 +23,8 @@ namespace PaySplit.Droid
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
-			// Set our view from the "main" layout resource
-            // Currently set to "CreateEntry", change to main dashboard page
 			SetContentView(Resource.Layout.Main);
 
-			//Generate or Initialize Database Path
-			DataHelper dbPath = new DataHelper();
-			dbPath.CreateDataBase("PaySplitDataDb.db3");
-
-			//Initialize database service
-			GenDataService dbs = new GenDataService(dbPath.DBPath);
-
-			//Create Table
-			dbs.CreateTable();
 
 			//Add Entry
 			Button addB = FindViewById<Button>(Resource.Id.Main_AddEntry);
@@ -45,49 +33,38 @@ namespace PaySplit.Droid
 				StartActivity(typeof(CreateBillActivity));
 			};
 
-            ////View Entry
-            Button viewB = FindViewById<Button>(Resource.Id.Main_Viewbtn);
-            viewB.Click += delegate
-            {
-                StartActivity(typeof(ViewBillsActivity));
-            };
-
-			//Add Entry
-			Button categoriesBtn = FindViewById<Button>(Resource.Id.Main_Categoriesbtn);
-			categoriesBtn.Click += delegate
+			// TODO: set record_exists properly based on if onboarding has been completed
+			bool user_info_recorded = true;
+			if (!user_info_recorded)
 			{
-				StartActivity(typeof(CategoryActivity));
-			};
-
-            // Delete all bills (for testing)
-            Button delB = FindViewById<Button>(Resource.Id.Main_DelBtn);
-            delB.Click += delegate
-            {
-                dbs.deleteAllBills();
-                Toast.MakeText(this, "Bills Deleted", ToastLength.Short).Show();
-            };
-
-            /**************************
-			 *  Take a Photo
-			 * ************************/
-            iw = FindViewById<ImageView>(Resource.Id.Main_imageView);
-
-		    cs = new CameraService(iw, this);
-
-			if (cs.IsThereAnAppToTakePictures())
-			{
-				cs.CreateDirectoryForPictures();
-
-				Button takePhoto = FindViewById<Button>(Resource.Id.Main_picture);
-
-				takePhoto.Click += delegate 
-				{
-					cs.TakeAPicture();
-				};
+				setupDatabase();
+				// send user to create user page (so we can record their name, email, etc) on first use and
+				// persist this data for later
 			}
+			else
+			{
+				// The user has already registered, so we can just send them to the main view Bills Activity
+				StartActivity(typeof(ViewBillsActivity));
+				Finish();
+			}
+		}
 
-			iw.Visibility = ViewStates.Invisible;
+		protected override void OnResume()
+		{
+			base.OnResume();
+		}
 
+		private void setupDatabase()
+		{
+			//Generate or Initialize Database Path
+			DataHelper dbPath = new DataHelper();
+			dbPath.CreateDataBase(Constants.PAYSPLIT_DB_NAME);
+
+			//Initialize database service
+			GenDataService dbs = new GenDataService(dbPath.DBPath);
+
+			//Create Table
+			dbs.CreateTable();
 		}
 
 		//To handle Camera action completed
