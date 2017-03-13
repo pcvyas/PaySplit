@@ -55,18 +55,26 @@ namespace PaySplit.Droid
                 viewHolder = (ViewBillListViewHolder)rowView.Tag;
             }
 
+			Bill bill = bills[position];
+
             // Define what is in the row
             // Assign the text field of the textview to the name of each bill
             viewHolder.billName.Text = bills[position].Name;
 
-            viewHolder.billDesc.Text = "Last modified: " + bills[position].LastEdited;
+			DateTime date = bill.Date;
 
-            viewHolder.billCategory.Text = bills[position].Category;
+
+			//TODO use 02d format on day   
+			viewHolder.billDate.Text = date.ToString("MMM").ToUpper() + "\n" + date.Day;
+
+            viewHolder.billDesc.Text = "Last modified: " + bill.LastEdited;
+
+            viewHolder.billCategory.Text = bill.Category;
 
 			rowView.Click += delegate
             {
                 var activity = new Intent(context, typeof(BillDetailsActivity));
-                activity.PutExtra("id", bills[position].Id.ToString());
+                activity.PutExtra("id", bill.Id.ToString());
                 context.StartActivity(activity);
                 //((Activity)context).StartActivityForResult(activity, 1);
              };
@@ -86,11 +94,13 @@ namespace PaySplit.Droid
         public TextView billName;
         public TextView billDesc;
         public TextView billCategory;
+		public TextView billDate;
         public ViewBillListViewHolder(View view)
         {
             billName = view.FindViewById<TextView>(Resource.Id.billTitle);
             billDesc = view.FindViewById<TextView>(Resource.Id.billDescription);
             billCategory = view.FindViewById<TextView>(Resource.Id.billCategory);
+			billDate = view.FindViewById<TextView>(Resource.Id.date_text);
         }
     }
 }

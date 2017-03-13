@@ -63,17 +63,20 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f050000
 			public const int accentColor = 2131034112;
 			
-			// aapt resource value: 0x7f050002
-			public const int actionBarBackgroundColor = 2131034114;
+			// aapt resource value: 0x7f050001
+			public const int accentColorLight = 2131034113;
 			
 			// aapt resource value: 0x7f050003
-			public const int actionBarTextColor = 2131034115;
+			public const int actionBarBackgroundColor = 2131034115;
 			
 			// aapt resource value: 0x7f050004
-			public const int background = 2131034116;
+			public const int actionBarTextColor = 2131034116;
 			
-			// aapt resource value: 0x7f050001
-			public const int statusBarBackgroundColor = 2131034113;
+			// aapt resource value: 0x7f050005
+			public const int background = 2131034117;
+			
+			// aapt resource value: 0x7f050002
+			public const int statusBarBackgroundColor = 2131034114;
 			
 			static Color()
 			{
@@ -113,8 +116,8 @@ namespace PaySplit.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a0035
-			public const int CategoryName = 2131361845;
+			// aapt resource value: 0x7f0a0036
+			public const int CategoryName = 2131361846;
 			
 			// aapt resource value: 0x7f0a0006
 			public const int Details_BillAmount = 2131361798;
@@ -224,20 +227,20 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int amountLabel = 2131361819;
 			
+			// aapt resource value: 0x7f0a0035
+			public const int billCategory = 2131361845;
+			
 			// aapt resource value: 0x7f0a0034
-			public const int billCategory = 2131361844;
+			public const int billDescription = 2131361844;
 			
 			// aapt resource value: 0x7f0a0033
-			public const int billDescription = 2131361843;
-			
-			// aapt resource value: 0x7f0a0032
-			public const int billTitle = 2131361842;
+			public const int billTitle = 2131361843;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int cancel = 2131361832;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int categories = 2131361847;
+			// aapt resource value: 0x7f0a0038
+			public const int categories = 2131361848;
 			
 			// aapt resource value: 0x7f0a001f
 			public const int categoryLabel = 2131361823;
@@ -251,14 +254,17 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0023
 			public const int datePicker = 2131361827;
 			
+			// aapt resource value: 0x7f0a0032
+			public const int date_text = 2131361842;
+			
 			// aapt resource value: 0x7f0a001e
 			public const int description = 2131361822;
 			
 			// aapt resource value: 0x7f0a001d
 			public const int descriptionLabel = 2131361821;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int listview_background_shape = 2131361846;
+			// aapt resource value: 0x7f0a0037
+			public const int listview_background_shape = 2131361847;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int name = 2131361818;
