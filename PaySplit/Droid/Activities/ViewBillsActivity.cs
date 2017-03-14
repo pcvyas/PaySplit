@@ -21,6 +21,7 @@ namespace PaySplit.Droid
 
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
+		private TextView mDateTextView;
 
 		private DateTime mFilterTime;
 
@@ -31,17 +32,17 @@ namespace PaySplit.Droid
             base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Main_ListView);
 
+			mFilterTime = DateTime.Now;
+
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
 			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 			View header = (View)layoutInflater.Inflate(Resource.Layout.DateFilterView, null);
-
-			mFilterTime = DateTime.Now;
-
+			mDateTextView = header.FindViewById<TextView>(Resource.Id.DateFilter_Date_TextView);
+			mDateTextView.Text = mFilterTime.ToString("MMMMMMMMM yyyy").ToUpper();
 			header.Click += Date_Click;
-
 			mViewBillsListview.AddHeaderView(header);
 
 			// Setup adapter
@@ -56,9 +57,17 @@ namespace PaySplit.Droid
 		{
 			base.OnResume();
 			mBills = mDBS.GetAllBills();
+			UpdateListView();
+		}
 
+		private void UpdateListView()
+		{
 			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);
-			mBills = fetchBillsByCategory(category);
+			if (category != null && !category.Equals(""))
+			{
+				mBills = fetchBillsByCategory(mBills, category);
+			}
+			mBills = fetchBillsForDate(mBills, mFilterTime);
 
 			if (mBills == null || mBills.Count == 0)
 			{
@@ -97,16 +106,16 @@ namespace PaySplit.Droid
 
 		void Date_Click(object sender, EventArgs e)
 		{
-			TextView date = FindViewById<TextView>(Resource.Id.date);
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																 {
-																	 date.Text = time.ToLongDateString();
 																	 mFilterTime = time;
+																	 UpdateListView();
+																	 mDateTextView.Text = time.ToString("MMMMMMMMM yyyy").ToUpper();
 																 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
 
-		private List<Bill> fetchBillsByCategory(String category)
+		private List<Bill> fetchBillsByCategory(List<Bill> bills, String category)
 		{
 			if (category == null || category.Equals(""))
 			{
@@ -114,7 +123,7 @@ namespace PaySplit.Droid
 			}
 
 			List<Bill> filteredBills = new List<Bill>();
-			foreach (Bill bill in mBills)
+			foreach (Bill bill in bills)
 			{
 				if (category.Equals(bill.Category))
 				{
@@ -124,5 +133,19 @@ namespace PaySplit.Droid
 
 			return filteredBills;
         }
+
+		private List<Bill> fetchBillsForDate(List<Bill> bills, DateTime date)
+		{
+			List<Bill> filteredBills = new List<Bill>();
+			foreach (Bill bill in bills)
+			{
+				if ((date.Month).Equals(bill.Date.Month) && (date.Year).Equals(bill.Date.Year))
+				{
+					filteredBills.Add(bill);
+				}
+			}
+
+			return filteredBills;
+		}
     }
 }
