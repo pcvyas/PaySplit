@@ -19,6 +19,22 @@ namespace PaySplit.Droid
 		private Bill mBill;
 		private GenDataService mDBS;
 
+		private TextView name;
+		private TextView amount;
+		private TextView date;
+		private TextView category;
+		private TextView desc;
+		private ImageView image;
+		private TextView updated;
+		private Button editButton;
+
+		private EditText name_edit;
+		private EditText amount_edit;
+		private EditText date_edit;
+		private Spinner category_edit;
+		private EditText desc_edit;
+		private Button saveButton;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,21 +48,20 @@ namespace PaySplit.Droid
             mBill = mDBS.getBillById(Int32.Parse(id));
 
             // Instatiate views
-            TextView name = FindViewById<TextView>(Resource.Id.Details_BillName);
-            TextView amount = FindViewById<TextView>(Resource.Id.Details_BillAmount);
-            TextView date = FindViewById<TextView>(Resource.Id.Details_Date);
-            TextView category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
-            TextView desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
-            ImageView image = FindViewById<ImageView>(Resource.Id.Details_imageView);
-            TextView updated = FindViewById<TextView>(Resource.Id.Details_Updated);
-            Button editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
-
-            EditText name_edit = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
-            EditText amount_edit = FindViewById<EditText>(Resource.Id.Details_BillAmount_Edit);
-            EditText date_edit = FindViewById<EditText>(Resource.Id.Details_Date_Edit);
-            Spinner category_edit = FindViewById<Spinner>(Resource.Id.Details_BillCategory_Edit);
-            EditText desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
-            Button saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
+            name = FindViewById<TextView>(Resource.Id.Details_BillName);
+            amount = FindViewById<TextView>(Resource.Id.Details_BillAmount);
+            date = FindViewById<TextView>(Resource.Id.Details_Date);
+            category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
+            desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
+            image = FindViewById<ImageView>(Resource.Id.Details_imageView);
+            updated = FindViewById<TextView>(Resource.Id.Details_Updated);
+            editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
+            name_edit = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
+            amount_edit = FindViewById<EditText>(Resource.Id.Details_BillAmount_Edit);
+            date_edit = FindViewById<EditText>(Resource.Id.Details_Date_Edit);
+            category_edit = FindViewById<Spinner>(Resource.Id.Details_BillCategory_Edit);
+            desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
+            saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
 
             // Populate the views
             name.Text = mBill.Name;
@@ -77,8 +92,9 @@ namespace PaySplit.Droid
 				int height = this.Resources.DisplayMetrics.HeightPixels;
 				int width = this.Resources.DisplayMetrics.WidthPixels;
 				Android.Graphics.Bitmap imageMap = mBill.ImagePath.LoadAndResizeBitmap(width, height);
-                if (imageMap != null)
-                {
+				Android.Graphics.Bitmap emptyBitmap = Android.Graphics.Bitmap.CreateBitmap(imageMap.Width, imageMap.Height, imageMap.GetConfig());
+				if (imageMap != null && !imageMap.SameAs(emptyBitmap))
+				{
                     image.SetImageBitmap(imageMap);
                     image.Visibility = ViewStates.Visible;
                     // Dispose of the Java side bitmap.
@@ -86,7 +102,7 @@ namespace PaySplit.Droid
                 }
                 else
                 {
-                    image.Visibility = ViewStates.Invisible;
+					image.Visibility = ViewStates.Gone;
                 }
 			}
 			else

@@ -7,10 +7,10 @@
     <LinearLayout
         android:orientation="vertical"
         android:padding="20dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Details_nameLabel"
             android:text="Name:"
@@ -18,23 +18,23 @@
             android:textStyle="bold" />
         <ViewSwitcher
             android:id="@+id/Details_name_switcher"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:text="Name"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/Details_BillName" />
             <EditText
                 android:text="Name"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter a name"
                 android:singleLine="true"
                 android:id="@+id/Details_BillName_Edit" />
         </ViewSwitcher>
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Details_amountLabel"
             android:text="Amount:"
@@ -42,7 +42,7 @@
             android:textStyle="bold" />
         <ViewSwitcher
             android:id="@+id/Details_amount_switcher"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:text="Amount"
@@ -59,7 +59,7 @@
                 android:id="@+id/Details_BillAmount_Edit" />
         </ViewSwitcher>
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Details_dateLabel"
             android:text="Date:"
@@ -67,7 +67,7 @@
             android:textStyle="bold" />
         <ViewSwitcher
             android:id="@+id/Details_date_switcher"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:text="Date"
@@ -81,7 +81,7 @@
                 android:id="@+id/Details_Date_Edit" />
         </ViewSwitcher>
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Details_categoryLabel"
             android:text="Category:"
@@ -97,12 +97,11 @@
                 android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:fontFamily="sans-serif-light"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@android:color/secondary_text_light"
-                android:background="#4DB6AC"
-                android:foreground="#B2DFDB"
-                android:textSize="8sp"
+                android:textColor="@android:color/white"
+                android:background="@color/accentColor"
+                android:textSize="14sp"
                 android:textAllCaps="true"
+                android:textStyle="bold"
                 android:padding="5dp"
                 android:layout_height="wrap_content" />
             <Spinner
@@ -112,7 +111,7 @@
                 android:paddingBottom="10dp" />
         </ViewSwitcher>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Details_descriptionLabel"
             android:text="Description:"
@@ -138,8 +137,9 @@
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:visibility="gone"
             android:id="@+id/Details_imageView" />
         <ViewSwitcher
             android:id="@+id/Details_button_switcher"
@@ -147,11 +147,15 @@
             android:layout_height="wrap_content">
             <Button
                 android:text="Edit"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/Details_EditButton" />
             <Button
                 android:text="Save"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/Details_SaveButton" />
@@ -159,9 +163,12 @@
         <TextView
             android:text="Last Updated"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_gravity="center"
             android:id="@+id/Details_Updated" />
     </LinearLayout>
 </ScrollView>

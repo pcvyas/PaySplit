@@ -22,6 +22,8 @@ namespace PaySplit.Droid
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 
+		private DateTime mFilterTime;
+
 		private GenDataService mDBS;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -32,6 +34,15 @@ namespace PaySplit.Droid
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+
+			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
+			View header = (View)layoutInflater.Inflate(Resource.Layout.DateFilterView, null);
+
+			mFilterTime = DateTime.Now;
+
+			header.Click += Date_Click;
+
+			mViewBillsListview.AddHeaderView(header);
 
 			// Setup adapter
             mAdapter = new BillListViewAdapter(this, mBills);
@@ -82,6 +93,17 @@ namespace PaySplit.Droid
 				default:
 					return base.OnOptionsItemSelected(item);
 			}
+		}
+
+		void Date_Click(object sender, EventArgs e)
+		{
+			TextView date = FindViewById<TextView>(Resource.Id.date);
+			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
+																 {
+																	 date.Text = time.ToLongDateString();
+																	 mFilterTime = time;
+																 });
+			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
 
 		private List<Bill> fetchBillsByCategory(String category)

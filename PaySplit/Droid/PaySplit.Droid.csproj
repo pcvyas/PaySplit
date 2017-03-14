@@ -107,6 +107,7 @@
     <AndroidResource Include="Resources\values\Colors.xml" />
     <AndroidResource Include="Resources\values-v21\Styles.xml" />
     <AndroidResource Include="Resources\menu\main_menu.xml" />
+    <AndroidResource Include="Resources\layout\DateFilterView.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
