@@ -20,7 +20,7 @@ namespace PaySplit.iOS
 			database = new GenDataService(dbPath.DBPath);
 
 			//Create Table
-			database.CreateTable();
+			database.CreateTableIfNotExists();
 
 
 			

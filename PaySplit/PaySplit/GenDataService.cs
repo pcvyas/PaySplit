@@ -13,10 +13,10 @@ namespace PaySplit
 		public GenDataService(string path)
 		{
 			this.DBPath = path;
-		}
+		}	
 
 		//Create Table
-		public bool CreateTable()
+		public bool CreateTableIfNotExists()
 		{
 			try
 			{
@@ -24,8 +24,10 @@ namespace PaySplit
 				{
 					throw new Exception("Database does't exist!");
 				}
-				SQLiteConnection db = new SQLiteConnection(DBPath);
+				SQLiteConnection db = new SQLiteConnection(DBPath);	
 				db.CreateTable<Bill>();
+				//db.CreateTable<Transaction>();
+				//db.CreateTable<Contact>();
 				db.Close();
 			}
 			catch
@@ -34,6 +36,8 @@ namespace PaySplit
 			}
 			return true;
 		}
+
+		/* Insertion Operations */
 
 		//Insert a new BillEntry
 		public bool InsertBillEntry(Bill b)
@@ -54,6 +58,28 @@ namespace PaySplit
 			}
 			return true;
 		}
+
+		//Insert a new Contact
+		public bool InsertContactEntry(Contact c)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				db.Insert(c);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
+		/* Retreival Operations */
 
 		//Get all Bills
 		public List<Bill> GetAllBills()
@@ -104,6 +130,7 @@ namespace PaySplit
             return b; ;
         }
 
+		/* Delete Operations */
 		//Delete A Bill
 		public bool DeleteBill(Bill b)
 		{

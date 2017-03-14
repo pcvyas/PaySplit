@@ -43,7 +43,7 @@ namespace PaySplit.Droid
 
 			//Initialize database service
 			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
-			mDBS.CreateTable();
+			mDBS.CreateTableIfNotExists();
 
 			List<Bill> bills = mDBS.GetAllBills();
 			mCategories.Clear();

@@ -59,7 +59,7 @@ namespace PaySplit.Droid
 			mBills = mDBS.GetAllBills();
 			UpdateListView();
 		}
-
+			
 		private void UpdateListView()
 		{
 			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);

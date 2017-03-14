@@ -32,6 +32,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="GenDataService.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\Contact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLitePCLRaw.core">
