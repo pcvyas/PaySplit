@@ -26,8 +26,8 @@ namespace PaySplit
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);	
 				db.CreateTable<Bill>();
-				//db.CreateTable<Transaction>();
-				//db.CreateTable<Contact>();
+				db.CreateTable<Transaction>();
+				db.CreateTable<Contact>();
 				db.Close();
 			}
 			catch
@@ -70,6 +70,26 @@ namespace PaySplit
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
 				db.Insert(c);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
+		//Insert a new Transaction
+		public bool InsertTransactionEntry(Transaction t)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				db.Insert(t);
 				db.Close();
 			}
 			catch
@@ -130,6 +150,54 @@ namespace PaySplit
             return b; ;
         }
 
+		public List<Contact> GetAllContacts()
+		{
+			List<Contact> contacts = new List<Contact>();
+
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var contactTableQuery = db.Table<Contact>();
+				foreach (Contact c in contactTableQuery)
+				{
+					contacts.Add(c);
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return new List<Contact>();
+			}
+
+			return contacts;
+		}
+
+		public Contact getContactById(string UID)
+		{
+			Contact c = new Contact();
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				c = db.Find<Contact>(UID);
+				db.Close();
+			}
+			catch
+			{
+				return null;
+			}
+			return c;
+		}
+
 		/* Delete Operations */
 		//Delete A Bill
 		public bool DeleteBill(Bill b)
@@ -170,6 +238,9 @@ namespace PaySplit
             }
             return true;
         }
+
+
+		/* Update Operations */
 
         //Save a BillEntry
         public bool SaveBillEntry(int id, Bill b)
