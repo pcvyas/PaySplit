@@ -69,17 +69,17 @@ namespace PaySplit.Droid
 			Button cancelBtn = FindViewById<Button>(Resource.Id.cancel);
 			cancelBtn.Click += CancelBtn_Click;
 
-			TextView date = FindViewById<TextView>(Resource.Id.date);
-			date.Text = mBill.Date.ToLongDateString();
-			date.Click += Date_Click;
+			TextView dateV = FindViewById<TextView>(Resource.Id.date);
+			dateV.Text = mBill.Date.ToLongDateString();
+			dateV.Click += Date_Click;
 		}
 
 		void Date_Click(object sender, EventArgs e)
 		{
-			TextView date = FindViewById<TextView>(Resource.Id.date);
+			TextView dateV = FindViewById<TextView>(Resource.Id.date);
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																 {
-																	 date.Text = time.ToLongDateString();
+																	 dateV.Text = time.ToLongDateString();
 																	 mBill.Date = time;
 
 																 });
