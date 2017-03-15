@@ -28,8 +28,7 @@ namespace PaySplit.Droid
 			mDataHelper = DataHelper.getInstance();
 			mDataHelper.getGenDataService().CreateTableIfNotExists();
 
-			// TODO: set record_exists properly based on if onboarding has been completed
-			bool user_info_recorded = false;
+			bool user_info_recorded = Settings.getUserCreated(this);
 			if (!user_info_recorded)
 			{
 				// send user to create user page (so we can record their name, email, etc) on first use and

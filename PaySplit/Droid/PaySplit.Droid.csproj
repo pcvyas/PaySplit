@@ -83,6 +83,7 @@
     <Compile Include="Util\DataHelper.cs" />
     <Compile Include="Util\DatePickerFragment.cs" />
     <Compile Include="Activities\CreateUserActivity.cs" />
+    <Compile Include="Util\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
