@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="General">
+		<EditTextPreference
+			android:title="Name"
+            android:key="@string/pref_update_name"
+            android:summary="Placeholder Name"
+			android:dialogTitle="Update Your Name:"
+            android:defaultValue=""/>
+		<EditTextPreference
+			android:title="E-mail"
+            android:key="@string/pref_update_email"
+            android:summary="Placeholder E-mail"
+			android:dialogTitle="Update Your E-mail:"
+            android:defaultValue=""/>
+		<Preference android:title="App Version" android:summary="@string/app_version" />
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="Bugdeting">
+		<CheckBoxPreference
+			android:title="Enable Budgeting Insights"
+			android:summary="@string/settings_insights_subtitle"
+            android:key="enable_insights"/>
+		<!--<Preference android:title="CATEGORY_TITLE" android:key="CATEGORY_KEY"> (should probably make this an edittextpref though) </Preference>-->
+	</PreferenceCategory>
+</PreferenceScreen>

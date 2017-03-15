@@ -30,7 +30,7 @@ namespace PaySplit
 				db.CreateTable<Contact>();
 				db.Close();
 			}
-			catch
+			catch (SQLiteException)
 			{
 				return false;
 			}

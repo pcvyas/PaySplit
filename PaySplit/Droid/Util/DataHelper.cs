@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-//using Android.Graphics;
 using SQLite;
 
 namespace PaySplit.Droid
@@ -14,7 +13,7 @@ namespace PaySplit.Droid
 
 		protected DataHelper()
 		{
-			string folder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DB");
+			string folder = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "DB");
 			if (!Directory.Exists(folder))
 			{
 				Directory.CreateDirectory(folder);

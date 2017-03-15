@@ -99,6 +99,9 @@ namespace PaySplit.Droid
 					mDBS.deleteAllBills();
 					Toast.MakeText(this, "All Bills Deleted!", ToastLength.Short).Show();
 					return true;
+				case Resource.Id.settings:
+					StartActivity(typeof(SettingsActivity));
+					return true;
 				default:
 					return base.OnOptionsItemSelected(item);
 			}

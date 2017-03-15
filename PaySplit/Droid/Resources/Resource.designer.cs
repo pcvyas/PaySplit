@@ -31,8 +31,8 @@ namespace PaySplit.Droid
 		public partial class Array
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int categories_array = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int categories_array = 2131230720;
 			
 			static Array()
 			{
@@ -60,26 +60,26 @@ namespace PaySplit.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int accentColor = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int accentColor = 2131099648;
 			
-			// aapt resource value: 0x7f050002
-			public const int accentColorLight = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int accentColorLight = 2131099650;
 			
-			// aapt resource value: 0x7f050004
-			public const int actionBarBackgroundColor = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int actionBarBackgroundColor = 2131099652;
 			
-			// aapt resource value: 0x7f050005
-			public const int actionBarTextColor = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int actionBarTextColor = 2131099653;
 			
-			// aapt resource value: 0x7f050006
-			public const int background = 2131034118;
+			// aapt resource value: 0x7f060006
+			public const int background = 2131099654;
 			
-			// aapt resource value: 0x7f050001
-			public const int secondaryAccentColor = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int secondaryAccentColor = 2131099649;
 			
-			// aapt resource value: 0x7f050003
-			public const int statusBarBackgroundColor = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int statusBarBackgroundColor = 2131099651;
 			
 			static Color()
 			{
@@ -119,188 +119,191 @@ namespace PaySplit.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a0038
-			public const int CategoryName = 2131361848;
+			// aapt resource value: 0x7f0b0038
+			public const int CategoryName = 2131427384;
 			
-			// aapt resource value: 0x7f0a002d
-			public const int Create_Email_EditText = 2131361837;
+			// aapt resource value: 0x7f0b002d
+			public const int Create_Email_EditText = 2131427373;
 			
-			// aapt resource value: 0x7f0a002c
-			public const int Create_Email_Label = 2131361836;
+			// aapt resource value: 0x7f0b002c
+			public const int Create_Email_Label = 2131427372;
 			
-			// aapt resource value: 0x7f0a002b
-			public const int Create_Name_EditText = 2131361835;
+			// aapt resource value: 0x7f0b002b
+			public const int Create_Name_EditText = 2131427371;
 			
-			// aapt resource value: 0x7f0a002a
-			public const int Create_Name_Label = 2131361834;
+			// aapt resource value: 0x7f0b002a
+			public const int Create_Name_Label = 2131427370;
 			
-			// aapt resource value: 0x7f0a002e
-			public const int Create_StartBtn = 2131361838;
+			// aapt resource value: 0x7f0b002e
+			public const int Create_StartBtn = 2131427374;
 			
-			// aapt resource value: 0x7f0a0030
-			public const int DateFilter_Date_TextView = 2131361840;
+			// aapt resource value: 0x7f0b0030
+			public const int DateFilter_Date_TextView = 2131427376;
 			
-			// aapt resource value: 0x7f0a002f
-			public const int DateFilter_Label_TextView = 2131361839;
+			// aapt resource value: 0x7f0b002f
+			public const int DateFilter_Label_TextView = 2131427375;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int Details_BillAmount = 2131361798;
+			// aapt resource value: 0x7f0b0006
+			public const int Details_BillAmount = 2131427334;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int Details_BillAmount_Edit = 2131361799;
+			// aapt resource value: 0x7f0b0007
+			public const int Details_BillAmount_Edit = 2131427335;
 			
-			// aapt resource value: 0x7f0a000e
-			public const int Details_BillCategory = 2131361806;
+			// aapt resource value: 0x7f0b000e
+			public const int Details_BillCategory = 2131427342;
 			
-			// aapt resource value: 0x7f0a000f
-			public const int Details_BillCategory_Edit = 2131361807;
+			// aapt resource value: 0x7f0b000f
+			public const int Details_BillCategory_Edit = 2131427343;
 			
-			// aapt resource value: 0x7f0a0012
-			public const int Details_BillDesc = 2131361810;
+			// aapt resource value: 0x7f0b0012
+			public const int Details_BillDesc = 2131427346;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int Details_BillDesc_Edit = 2131361811;
+			// aapt resource value: 0x7f0b0013
+			public const int Details_BillDesc_Edit = 2131427347;
 			
-			// aapt resource value: 0x7f0a0002
-			public const int Details_BillName = 2131361794;
+			// aapt resource value: 0x7f0b0002
+			public const int Details_BillName = 2131427330;
 			
-			// aapt resource value: 0x7f0a0003
-			public const int Details_BillName_Edit = 2131361795;
+			// aapt resource value: 0x7f0b0003
+			public const int Details_BillName_Edit = 2131427331;
 			
-			// aapt resource value: 0x7f0a000a
-			public const int Details_Date = 2131361802;
+			// aapt resource value: 0x7f0b000a
+			public const int Details_Date = 2131427338;
 			
-			// aapt resource value: 0x7f0a000b
-			public const int Details_Date_Edit = 2131361803;
+			// aapt resource value: 0x7f0b000b
+			public const int Details_Date_Edit = 2131427339;
 			
-			// aapt resource value: 0x7f0a0016
-			public const int Details_EditButton = 2131361814;
+			// aapt resource value: 0x7f0b0016
+			public const int Details_EditButton = 2131427350;
 			
-			// aapt resource value: 0x7f0a0017
-			public const int Details_SaveButton = 2131361815;
+			// aapt resource value: 0x7f0b0017
+			public const int Details_SaveButton = 2131427351;
 			
-			// aapt resource value: 0x7f0a0018
-			public const int Details_Updated = 2131361816;
+			// aapt resource value: 0x7f0b0018
+			public const int Details_Updated = 2131427352;
 			
-			// aapt resource value: 0x7f0a0004
-			public const int Details_amountLabel = 2131361796;
+			// aapt resource value: 0x7f0b0004
+			public const int Details_amountLabel = 2131427332;
 			
-			// aapt resource value: 0x7f0a0005
-			public const int Details_amount_switcher = 2131361797;
+			// aapt resource value: 0x7f0b0005
+			public const int Details_amount_switcher = 2131427333;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int Details_button_switcher = 2131361813;
+			// aapt resource value: 0x7f0b0015
+			public const int Details_button_switcher = 2131427349;
 			
-			// aapt resource value: 0x7f0a000c
-			public const int Details_categoryLabel = 2131361804;
+			// aapt resource value: 0x7f0b000c
+			public const int Details_categoryLabel = 2131427340;
 			
-			// aapt resource value: 0x7f0a000d
-			public const int Details_category_switcher = 2131361805;
+			// aapt resource value: 0x7f0b000d
+			public const int Details_category_switcher = 2131427341;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int Details_dateLabel = 2131361800;
+			// aapt resource value: 0x7f0b0008
+			public const int Details_dateLabel = 2131427336;
 			
-			// aapt resource value: 0x7f0a0009
-			public const int Details_date_switcher = 2131361801;
+			// aapt resource value: 0x7f0b0009
+			public const int Details_date_switcher = 2131427337;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int Details_desc_switcher = 2131361809;
+			// aapt resource value: 0x7f0b0011
+			public const int Details_desc_switcher = 2131427345;
 			
-			// aapt resource value: 0x7f0a0010
-			public const int Details_descriptionLabel = 2131361808;
+			// aapt resource value: 0x7f0b0010
+			public const int Details_descriptionLabel = 2131427344;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int Details_imageView = 2131361812;
+			// aapt resource value: 0x7f0b0014
+			public const int Details_imageView = 2131427348;
 			
-			// aapt resource value: 0x7f0a0000
-			public const int Details_nameLabel = 2131361792;
+			// aapt resource value: 0x7f0b0000
+			public const int Details_nameLabel = 2131427328;
 			
-			// aapt resource value: 0x7f0a0001
-			public const int Details_name_switcher = 2131361793;
+			// aapt resource value: 0x7f0b0001
+			public const int Details_name_switcher = 2131427329;
 			
-			// aapt resource value: 0x7f0a0032
-			public const int NoResults = 2131361842;
+			// aapt resource value: 0x7f0b0032
+			public const int NoResults = 2131427378;
 			
-			// aapt resource value: 0x7f0a0031
-			public const int NoResultsImage = 2131361841;
+			// aapt resource value: 0x7f0b0031
+			public const int NoResultsImage = 2131427377;
 			
-			// aapt resource value: 0x7f0a0029
-			public const int PaySplitTitle = 2131361833;
+			// aapt resource value: 0x7f0b0029
+			public const int PaySplitTitle = 2131427369;
 			
-			// aapt resource value: 0x7f0a0033
-			public const int View_ListView = 2131361843;
+			// aapt resource value: 0x7f0b0033
+			public const int View_ListView = 2131427379;
 			
-			// aapt resource value: 0x7f0a003b
-			public const int add_bill = 2131361851;
+			// aapt resource value: 0x7f0b003b
+			public const int add_bill = 2131427387;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int amount = 2131361820;
+			// aapt resource value: 0x7f0b001c
+			public const int amount = 2131427356;
 			
-			// aapt resource value: 0x7f0a001b
-			public const int amountLabel = 2131361819;
+			// aapt resource value: 0x7f0b001b
+			public const int amountLabel = 2131427355;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int billCategory = 2131361847;
+			// aapt resource value: 0x7f0b0037
+			public const int billCategory = 2131427383;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int billDescription = 2131361846;
+			// aapt resource value: 0x7f0b0036
+			public const int billDescription = 2131427382;
 			
-			// aapt resource value: 0x7f0a0035
-			public const int billTitle = 2131361845;
+			// aapt resource value: 0x7f0b0035
+			public const int billTitle = 2131427381;
 			
-			// aapt resource value: 0x7f0a0028
-			public const int cancel = 2131361832;
+			// aapt resource value: 0x7f0b0028
+			public const int cancel = 2131427368;
 			
-			// aapt resource value: 0x7f0a003a
-			public const int categories = 2131361850;
+			// aapt resource value: 0x7f0b003a
+			public const int categories = 2131427386;
 			
-			// aapt resource value: 0x7f0a001f
-			public const int categoryLabel = 2131361823;
+			// aapt resource value: 0x7f0b001f
+			public const int categoryLabel = 2131427359;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int category_spinner = 2131361824;
+			// aapt resource value: 0x7f0b0020
+			public const int category_spinner = 2131427360;
 			
-			// aapt resource value: 0x7f0a0024
-			public const int date = 2131361828;
+			// aapt resource value: 0x7f0b0024
+			public const int date = 2131427364;
 			
-			// aapt resource value: 0x7f0a0023
-			public const int datePicker = 2131361827;
+			// aapt resource value: 0x7f0b0023
+			public const int datePicker = 2131427363;
 			
-			// aapt resource value: 0x7f0a0034
-			public const int date_text = 2131361844;
+			// aapt resource value: 0x7f0b0034
+			public const int date_text = 2131427380;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int delete_all_bills = 2131361852;
+			// aapt resource value: 0x7f0b003c
+			public const int delete_all_bills = 2131427388;
 			
-			// aapt resource value: 0x7f0a001e
-			public const int description = 2131361822;
+			// aapt resource value: 0x7f0b001e
+			public const int description = 2131427358;
 			
-			// aapt resource value: 0x7f0a001d
-			public const int descriptionLabel = 2131361821;
+			// aapt resource value: 0x7f0b001d
+			public const int descriptionLabel = 2131427357;
 			
-			// aapt resource value: 0x7f0a0039
-			public const int listview_background_shape = 2131361849;
+			// aapt resource value: 0x7f0b0039
+			public const int listview_background_shape = 2131427385;
 			
-			// aapt resource value: 0x7f0a001a
-			public const int name = 2131361818;
+			// aapt resource value: 0x7f0b001a
+			public const int name = 2131427354;
 			
-			// aapt resource value: 0x7f0a0019
-			public const int nameLabel = 2131361817;
+			// aapt resource value: 0x7f0b0019
+			public const int nameLabel = 2131427353;
 			
-			// aapt resource value: 0x7f0a0022
-			public const int peopleAmount = 2131361826;
+			// aapt resource value: 0x7f0b0022
+			public const int peopleAmount = 2131427362;
 			
-			// aapt resource value: 0x7f0a0021
-			public const int peopleLable = 2131361825;
+			// aapt resource value: 0x7f0b0021
+			public const int peopleLable = 2131427361;
 			
-			// aapt resource value: 0x7f0a0025
-			public const int picture = 2131361829;
+			// aapt resource value: 0x7f0b0025
+			public const int picture = 2131427365;
 			
-			// aapt resource value: 0x7f0a0027
-			public const int save = 2131361831;
+			// aapt resource value: 0x7f0b0027
+			public const int save = 2131427367;
 			
-			// aapt resource value: 0x7f0a0026
-			public const int takePic = 2131361830;
+			// aapt resource value: 0x7f0b003d
+			public const int settings = 2131427389;
+			
+			// aapt resource value: 0x7f0b0026
+			public const int takePic = 2131427366;
 			
 			static Id()
 			{
@@ -349,8 +352,8 @@ namespace PaySplit.Droid
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f090000
-			public const int main_menu = 2131296256;
+			// aapt resource value: 0x7f0a0000
+			public const int main_menu = 2131361792;
 			
 			static Menu()
 			{
@@ -384,14 +387,32 @@ namespace PaySplit.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int app_name = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int app_name = 2131165184;
 			
-			// aapt resource value: 0x7f060001
-			public const int categories_menu_title = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int app_version = 2131165185;
 			
-			// aapt resource value: 0x7f060002
-			public const int category_prompt = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int categories_menu_title = 2131165186;
+			
+			// aapt resource value: 0x7f070008
+			public const int category_prompt = 2131165192;
+			
+			// aapt resource value: 0x7f070007
+			public const int pref_update_email = 2131165191;
+			
+			// aapt resource value: 0x7f070006
+			public const int pref_update_name = 2131165190;
+			
+			// aapt resource value: 0x7f070004
+			public const int settings_insights_subtitle = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int settings_insights_title = 2131165189;
+			
+			// aapt resource value: 0x7f070003
+			public const int settings_menu_title = 2131165187;
 			
 			static String()
 			{
@@ -406,14 +427,14 @@ namespace PaySplit.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f080000
-			public const int AppTheme = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int AppTheme = 2131296256;
 			
-			// aapt resource value: 0x7f080002
-			public const int MyTheme_ActionBar_TitleTextStyle = 2131230722;
+			// aapt resource value: 0x7f090002
+			public const int MyTheme_ActionBar_TitleTextStyle = 2131296258;
 			
-			// aapt resource value: 0x7f080001
-			public const int MyTheme_ActionBarStyle = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int MyTheme_ActionBarStyle = 2131296257;
 			
 			static Style()
 			{
@@ -421,6 +442,22 @@ namespace PaySplit.Droid
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Xml
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int preferences_settings = 2131034112;
+			
+			static Xml()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Xml()
 			{
 			}
 		}

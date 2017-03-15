@@ -9,10 +9,12 @@ namespace PaySplit
 		public Bill()
 		{
 			Date = DateTime.Now;
+			UID = Guid.NewGuid().ToString();
 		}
 
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
+		public string UID { get; set; }
 		public string Name { get; set;}
 		public string Description { get; set;}
 		public string Category { get; set; }
@@ -20,6 +22,6 @@ namespace PaySplit
 		public string ImagePath { get; set; }
 		public DateTime Date { get; set; }
         public DateTime LastEdited { get; set;  }
-        public Contact Owner { get; set; }
+        public string OwnerUID { get; set; }
 	}
 }

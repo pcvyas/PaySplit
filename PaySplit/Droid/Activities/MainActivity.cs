@@ -11,6 +11,7 @@ using Java.IO;
 using Android.Net;
 using System;
 using Android.Views;
+using System.IO;
 
 namespace PaySplit.Droid
 {

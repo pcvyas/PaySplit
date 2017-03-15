@@ -17,7 +17,6 @@ namespace PaySplit.Droid
 	[Activity(Label = "CreateUserActivity", MainLauncher = false, Icon = "@mipmap/new_icon")]
 	public class CreateUserActivity : Activity
 	{
-
 		private TextView mNameTextView;
 		private TextView mEmailTextView;
 
@@ -49,7 +48,7 @@ namespace PaySplit.Droid
 					// Create initial contact as user
 					Contact c = new Contact();
 					c.Id = 1;
-					c.UID = "user";
+					c.UID = Constants.MAIN_USER_DEFAULT_UID;
 					c.FullName = name;
 					c.Email = email;
 					mDBS.InsertContactEntry(c);

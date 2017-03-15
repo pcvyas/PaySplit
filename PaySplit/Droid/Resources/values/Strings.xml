@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
 	<string name="app_name">PaySplit</string>
+	<string name="app_version">"1.0"</string>
+	
 	<string name="categories_menu_title">View Categories</string>
+	<string name="settings_menu_title">Settings</string>
+
+	<string name="settings_insights_subtitle">Set limits for monthly spending on each category to be notified when spending approaches or exceeds limit.</string>
+	
+	<string name="settings_insights_title">Insights</string>
+
+	<string name="pref_update_name">pref_update_name</string>
+	<string name="pref_update_email">pref_update_email</string>
+	
 	<string name="category_prompt">Category: </string>
 	<string-array name="categories_array">
 		<item>Uncategorized</item>
