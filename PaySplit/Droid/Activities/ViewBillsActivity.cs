@@ -139,7 +139,7 @@ namespace PaySplit.Droid
 			List<Bill> filteredBills = new List<Bill>();
 			foreach (Bill bill in bills)
 			{
-				if ((date.Month).Equals(bill.Date.Month) && (date.Year).Equals(bill.Date.Year))
+				if ((date.Month) == (bill.Date.Month) && (date.Year) == (bill.Date.Year))
 				{
 					filteredBills.Add(bill);
 				}

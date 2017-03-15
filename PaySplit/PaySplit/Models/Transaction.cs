@@ -12,9 +12,9 @@ namespace PaySplit
 
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
-		public int BillID { get; set; } /* The ID of the bill object in the bill table */ 
-		public string SenderUID { get; set; } /* The Contact UID of the sender of the transaction request */
-		public string ReceiverUID { get; set; } /* The Contact UID of the receiver of the transaction request */
+		public Bill Bill { get; set; } /* The ID of the bill object in the bill table */ 
+		public Contact Sender { get; set; } /* The Contact of the sender of the transaction request */
+		public Contact Receiver { get; set; } /* The Contact of the receiver of the transaction request */
 		public double Amount { get; set; } /* The amount owed by the sender */
 		public bool Completed { get; set; } /* The status of the transaction */
 	}

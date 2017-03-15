@@ -20,6 +20,6 @@ namespace PaySplit
 		public string ImagePath { get; set; }
 		public DateTime Date { get; set; }
         public DateTime LastEdited { get; set;  }
-        public string Owner { get; set;  }
+        public Contact Owner { get; set; }
 	}
 }
