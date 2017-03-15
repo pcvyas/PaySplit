@@ -396,14 +396,17 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f070002
 			public const int categories_menu_title = 2131165186;
 			
-			// aapt resource value: 0x7f070008
-			public const int category_prompt = 2131165192;
+			// aapt resource value: 0x7f070009
+			public const int category_prompt = 2131165193;
 			
 			// aapt resource value: 0x7f070007
 			public const int pref_update_email = 2131165191;
 			
 			// aapt resource value: 0x7f070006
 			public const int pref_update_name = 2131165190;
+			
+			// aapt resource value: 0x7f070008
+			public const int pref_user_created = 2131165192;
 			
 			// aapt resource value: 0x7f070004
 			public const int settings_insights_subtitle = 2131165188;

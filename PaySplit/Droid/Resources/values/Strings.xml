@@ -12,6 +12,7 @@
 
 	<string name="pref_update_name">pref_update_name</string>
 	<string name="pref_update_email">pref_update_email</string>
+	<string name="pref_user_created">setting_user_created</string>
 	
 	<string name="category_prompt">Category: </string>
 	<string-array name="categories_array">

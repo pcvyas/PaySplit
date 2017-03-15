@@ -178,6 +178,35 @@ namespace PaySplit
 			return contacts;
 		}
 
+		public Contact getUserContactInformation()
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var contactTableQuery = db.Table<Contact>();
+				foreach (Contact c in contactTableQuery)
+				{
+					if (c.UID.Equals("user"))
+					{
+						return c;
+					}
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return null;
+			}
+
+			return null;
+		}
+
 		public Contact getContactById(string UID)
 		{
 			Contact c = new Contact();

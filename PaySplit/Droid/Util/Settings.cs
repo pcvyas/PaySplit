@@ -17,14 +17,13 @@ namespace PaySplit.Droid
 	{
 
 		private const string PREFS_NAME = "paysplit_prefs";
-		private const string SETTING_USER_CREATED = "setting_user_created";
 
 		public static bool getUserCreated(Context context)
 		{
 			ISharedPreferences prefs = context.GetSharedPreferences(PREFS_NAME, FileCreationMode.Private);
 			if (prefs != null)
 			{
-				return prefs.GetBoolean(SETTING_USER_CREATED, false);
+				return prefs.GetBoolean(context.GetString(Resource.String.pref_user_created), false);
 			}
 			return false;
 		}
@@ -32,7 +31,21 @@ namespace PaySplit.Droid
 		public static void setUserCreated(Context context, bool created)
 		{
 			ISharedPreferencesEditor editor = context.GetSharedPreferences(PREFS_NAME, FileCreationMode.Private).Edit();
-			editor.PutBoolean(SETTING_USER_CREATED, created);
+			editor.PutBoolean(context.GetString(Resource.String.pref_user_created), created);
+			editor.Commit();
+		}
+
+		public static void SetDefaultName(Context context, string name)
+		{
+			ISharedPreferencesEditor editor = context.GetSharedPreferences(PREFS_NAME, FileCreationMode.Private).Edit();
+			editor.PutString(context.GetString(Resource.String.pref_update_name), name);
+			editor.Commit();
+		}
+
+		public static void SetDefaultEmail(Context context, string email)
+		{
+			ISharedPreferencesEditor editor = context.GetSharedPreferences(PREFS_NAME, FileCreationMode.Private).Edit();
+			editor.PutString(context.GetString(Resource.String.pref_update_email), email);
 			editor.Commit();
 		}
 

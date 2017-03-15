@@ -31,12 +31,16 @@ namespace PaySplit.Droid
 
 			try
 			{
-				Contact c = mDBS.getContactById(Constants.MAIN_USER_DEFAULT_UID);
+				Contact c = mDBS.getUserContactInformation();
+				Settings.SetDefaultName(this, c.FullName);
 				FindPreference(GetString(Resource.String.pref_update_name)).Summary = c.FullName;
+
+				Settings.SetDefaultName(this, c.Email);
 				FindPreference(GetString(Resource.String.pref_update_email)).Summary = c.Email;
 			}
 			catch (Exception)
 			{
+				Toast.MakeText(this, "Unable to get contact", ToastLength.Short).Show();
 				// Unable to fetch contact and update fields
 			}
 		}
