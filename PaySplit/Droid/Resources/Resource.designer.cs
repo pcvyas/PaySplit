@@ -75,11 +75,17 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f060006
 			public const int background = 2131099654;
 			
+			// aapt resource value: 0x7f060007
+			public const int redButtonColor = 2131099655;
+			
 			// aapt resource value: 0x7f060001
 			public const int secondaryAccentColor = 2131099649;
 			
 			// aapt resource value: 0x7f060003
 			public const int statusBarBackgroundColor = 2131099651;
+			
+			// aapt resource value: 0x7f060008
+			public const int whiteButtonColor = 2131099656;
 			
 			static Color()
 			{
@@ -122,29 +128,29 @@ namespace PaySplit.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0038
-			public const int CategoryName = 2131427384;
-			
-			// aapt resource value: 0x7f0b002d
-			public const int Create_Email_EditText = 2131427373;
-			
-			// aapt resource value: 0x7f0b002c
-			public const int Create_Email_Label = 2131427372;
-			
-			// aapt resource value: 0x7f0b002b
-			public const int Create_Name_EditText = 2131427371;
-			
-			// aapt resource value: 0x7f0b002a
-			public const int Create_Name_Label = 2131427370;
+			// aapt resource value: 0x7f0b0039
+			public const int CategoryName = 2131427385;
 			
 			// aapt resource value: 0x7f0b002e
-			public const int Create_StartBtn = 2131427374;
+			public const int Create_Email_EditText = 2131427374;
 			
-			// aapt resource value: 0x7f0b0030
-			public const int DateFilter_Date_TextView = 2131427376;
+			// aapt resource value: 0x7f0b002d
+			public const int Create_Email_Label = 2131427373;
+			
+			// aapt resource value: 0x7f0b002c
+			public const int Create_Name_EditText = 2131427372;
+			
+			// aapt resource value: 0x7f0b002b
+			public const int Create_Name_Label = 2131427371;
 			
 			// aapt resource value: 0x7f0b002f
-			public const int DateFilter_Label_TextView = 2131427375;
+			public const int Create_StartBtn = 2131427375;
+			
+			// aapt resource value: 0x7f0b0031
+			public const int DateFilter_Date_TextView = 2131427377;
+			
+			// aapt resource value: 0x7f0b0030
+			public const int DateFilter_Label_TextView = 2131427376;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int Details_BillAmount = 2131427334;
@@ -182,8 +188,8 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0b0017
 			public const int Details_SaveButton = 2131427351;
 			
-			// aapt resource value: 0x7f0b0018
-			public const int Details_Updated = 2131427352;
+			// aapt resource value: 0x7f0b0019
+			public const int Details_Updated = 2131427353;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int Details_amountLabel = 2131427332;
@@ -221,95 +227,103 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0b0001
 			public const int Details_name_switcher = 2131427329;
 			
-			// aapt resource value: 0x7f0b0032
-			public const int NoResults = 2131427378;
-			
-			// aapt resource value: 0x7f0b0031
-			public const int NoResultsImage = 2131427377;
-			
-			// aapt resource value: 0x7f0b0029
-			public const int PaySplitTitle = 2131427369;
-			
 			// aapt resource value: 0x7f0b0033
-			public const int View_ListView = 2131427379;
+			public const int NoResults = 2131427379;
+			
+			// aapt resource value: 0x7f0b0032
+			public const int NoResultsImage = 2131427378;
+			
+			// aapt resource value: 0x7f0b002a
+			public const int PaySplitTitle = 2131427370;
+			
+			// aapt resource value: 0x7f0b0034
+			public const int View_ListView = 2131427380;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int add_bill = 2131427388;
+
+			// aapt resource value: 0x7f0b001d
+			public const int amount = 2131427357;
 			
 			// aapt resource value: 0x7f0b001c
-			public const int amount = 2131427356;
+			public const int amountLabel = 2131427356;
 			
-			// aapt resource value: 0x7f0b001b
-			public const int amountLabel = 2131427355;
+			// aapt resource value: 0x7f0b0038
+			public const int billCategory = 2131427384;
 			
 			// aapt resource value: 0x7f0b0037
-			public const int billCategory = 2131427383;
+			public const int billDescription = 2131427383;
 			
 			// aapt resource value: 0x7f0b0036
-			public const int billDescription = 2131427382;
+			public const int billTitle = 2131427382;
 			
-			// aapt resource value: 0x7f0b0035
-			public const int billTitle = 2131427381;
-			
-			// aapt resource value: 0x7f0b0028
-			public const int cancel = 2131427368;
+			// aapt resource value: 0x7f0b0029
+			public const int cancel = 2131427369;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int categories = 2131427387;
+
+			public const int categoryLabel = 2131427360;
 			
-			// aapt resource value: 0x7f0b001f
-			public const int categoryLabel = 2131427359;
+			// aapt resource value: 0x7f0b0021
+			public const int category_spinner = 2131427361;
 			
-			// aapt resource value: 0x7f0b0020
-			public const int category_spinner = 2131427360;
+			// aapt resource value: 0x7f0b0025
+			public const int date = 2131427365;
 			
 			// aapt resource value: 0x7f0b0024
-			public const int date = 2131427364;
+			public const int datePicker = 2131427364;
 			
-			// aapt resource value: 0x7f0b0023
-			public const int datePicker = 2131427363;
+			// aapt resource value: 0x7f0b0035
+			public const int date_text = 2131427381;
 			
-			// aapt resource value: 0x7f0b0034
-			public const int date_text = 2131427380;
+			// aapt resource value: 0x7f0b0018
+			public const int deleteBillButton = 2131427352;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int delete_all_bills = 2131427389;
+<<<<<<< HEAD
+=======
+			
+			// aapt resource value: 0x7f0b001f
+			public const int description = 2131427359;
+>>>>>>> 8073626f716e831e9036107f050a2d98d87d4066
 			
 			// aapt resource value: 0x7f0b001e
-			public const int description = 2131427358;
+			public const int descriptionLabel = 2131427358;
 			
-			// aapt resource value: 0x7f0b001d
-			public const int descriptionLabel = 2131427357;
+			// aapt resource value: 0x7f0b003a
+			public const int listview_background_shape = 2131427386;
 			
-			// aapt resource value: 0x7f0b0039
-			public const int listview_background_shape = 2131427385;
+			// aapt resource value: 0x7f0b001b
+			public const int name = 2131427355;
 			
 			// aapt resource value: 0x7f0b001a
-			public const int name = 2131427354;
+			public const int nameLabel = 2131427354;
 			
-			// aapt resource value: 0x7f0b0019
-			public const int nameLabel = 2131427353;
+			// aapt resource value: 0x7f0b0023
+			public const int peopleAmount = 2131427363;
 			
 			// aapt resource value: 0x7f0b0022
-			public const int peopleAmount = 2131427362;
+			public const int peopleLable = 2131427362;
 			
-			// aapt resource value: 0x7f0b0021
-			public const int peopleLable = 2131427361;
+			// aapt resource value: 0x7f0b0026
+			public const int picture = 2131427366;
 			
-			// aapt resource value: 0x7f0b0025
-			public const int picture = 2131427365;
+			// aapt resource value: 0x7f0b0028
+			public const int save = 2131427368;
 			
-			// aapt resource value: 0x7f0b0027
-			public const int save = 2131427367;
-			
+<<<<<<< HEAD
 			// aapt resource value: 0x7f0b003a
 			public const int search = 2131427386;
 			
+=======
+>>>>>>> 8073626f716e831e9036107f050a2d98d87d4066
 			// aapt resource value: 0x7f0b003e
 			public const int settings = 2131427390;
 			
-			// aapt resource value: 0x7f0b0026
-			public const int takePic = 2131427366;
+			// aapt resource value: 0x7f0b0027
+			public const int takePic = 2131427367;
 			
 			static Id()
 			{

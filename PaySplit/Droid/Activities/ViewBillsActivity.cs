@@ -38,6 +38,9 @@ namespace PaySplit.Droid
             mFilterTime = DateTime.Now;
             searchString = "";
 
+
+			mFilterTime = DateTime.Now;
+
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);

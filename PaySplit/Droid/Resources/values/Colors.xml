@@ -7,4 +7,7 @@
 	<color name="actionBarBackgroundColor">#2196F3</color>
 	<color name="actionBarTextColor">#212121</color>
 	<color name="background">#FBFAFB</color>
+	<color name="redButtonColor">#FD0000</color>
+	<color name="whiteButtonColor">#FFFFFF</color>
+	
 </resources>

@@ -191,7 +191,7 @@ namespace PaySplit
 				var contactTableQuery = db.Table<Contact>();
 				foreach (Contact c in contactTableQuery)
 				{
-					if (c.UID.Equals("user"))
+					if (c.Id.Equals(1))
 					{
 						return c;
 					}
@@ -248,6 +248,27 @@ namespace PaySplit
 			return true;
 		}
 
+
+		/* Delete Operations */
+		//Delete A Bill
+		public bool DeleteBillAsync(Bill b)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteAsyncConnection db = new SQLiteAsyncConnection(DBPath);
+				db.DeleteAsync(b);
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
         // Delete all bills
         public bool deleteAllBills()
         {
@@ -284,7 +305,7 @@ namespace PaySplit
                 Bill bill = db.Find<Bill>(id);
                 if (bill != null)
                 {
-                    bill = b;
+                    bill = b;	
                     db.Update(bill);
                 }
                 db.Close();
@@ -295,5 +316,29 @@ namespace PaySplit
             }
             return true;
         }
+
+		public bool UpdateUserContactInformation(Contact c)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				Contact contact = db.Find<Contact>(1);
+				if (contact != null)
+				{
+					contact = c;
+					db.Update(contact);
+				}
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
     }
 }
