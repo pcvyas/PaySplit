@@ -32,6 +32,8 @@ namespace PaySplit.Droid
             base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Main_ListView);
 
+
+
 			mFilterTime = DateTime.Now;
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);

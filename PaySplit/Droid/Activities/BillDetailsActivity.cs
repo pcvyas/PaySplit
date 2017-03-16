@@ -27,6 +27,7 @@ namespace PaySplit.Droid
 		private ImageView image;
 		private TextView updated;
 		private Button editButton;
+		private Button deleteButton;
 
 		private EditText name_edit;
 		private EditText amount_edit;
@@ -46,6 +47,11 @@ namespace PaySplit.Droid
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
             mBill = mDBS.getBillById(Int32.Parse(id));
+			if (mBill == null)
+			{
+				Finish();
+				return;
+			}
 
             // Instatiate views
             name = FindViewById<TextView>(Resource.Id.Details_BillName);
@@ -62,14 +68,15 @@ namespace PaySplit.Droid
             category_edit = FindViewById<Spinner>(Resource.Id.Details_BillCategory_Edit);
             desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
             saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
+			deleteButton = FindViewById<Button>(Resource.Id.deleteBillButton);
 
-            // Populate the views
-            name.Text = mBill.Name;
-            amount.Text = "$" + String.Format("{0:0.00}", mBill.Amount); // rounds to 2 decimal places
-            date.Text = mBill.Date.ToString("MMMM dd, yyyy");
-            category.Text = mBill.Category;
-            desc.Text = mBill.Description;
-
+			// Populate the views
+			name.Text = mBill.Name;
+			amount.Text = "$" + String.Format("{0:0.00}", mBill.Amount); // rounds to 2 decimal places
+			date.Text = mBill.Date.ToString("MMMM dd, yyyy");
+			category.Text = mBill.Category;
+			desc.Text = mBill.Description;
+			    
             // Initialize the Categories Spinner
             String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
             int categoryIndex = 0;
@@ -132,6 +139,11 @@ namespace PaySplit.Droid
                     category_edit.SetSelection(categoryIndex);
                     desc_edit.SetText(desc.Text, TextView.BufferType.Editable);
                 };
+
+			deleteButton.Click += delegate {
+				mDBS.DeleteBillAsync(mBill);
+				this.Finish();
+			};
 
             saveButton.Click += delegate
             {

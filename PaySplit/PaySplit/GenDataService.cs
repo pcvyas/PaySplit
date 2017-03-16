@@ -248,6 +248,27 @@ namespace PaySplit
 			return true;
 		}
 
+
+		/* Delete Operations */
+		//Delete A Bill
+		public bool DeleteBillAsync(Bill b)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteAsyncConnection db = new SQLiteAsyncConnection(DBPath);
+				db.DeleteAsync(b);
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
         // Delete all bills
         public bool deleteAllBills()
         {

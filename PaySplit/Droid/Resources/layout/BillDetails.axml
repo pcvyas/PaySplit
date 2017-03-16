@@ -160,6 +160,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Details_SaveButton" />
         </ViewSwitcher>
+        <Button
+            android:text="Delete"
+            android:gravity="center"
+            android:background="@color/redButtonColor"
+            android:textColor="@color/whiteButtonColor"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteBillButton" />
         <TextView
             android:text="Last Updated"
             android:textAppearance="?android:attr/textAppearanceSmall"
