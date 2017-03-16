@@ -53,12 +53,29 @@ namespace PaySplit.Droid
 			}
 
 			Preference pref = FindPreference(key);
-			if (key.Equals(GetString(Resource.String.pref_update_name))) {
+			if (key.Equals(GetString(Resource.String.pref_update_name)))
+			{
 				EditTextPreference etp = (EditTextPreference)pref;
 				pref.Summary = etp.Text;
-			} else if (key.Equals(GetString(Resource.String.pref_update_email))) {
+
+				Contact c = mDBS.getUserContactInformation();
+				c.FullName = etp.Text;
+
+				mDBS.UpdateUserContactInformation(c);
+			}
+			else if (key.Equals(GetString(Resource.String.pref_update_email)))
+			{
 				EditTextPreference etp = (EditTextPreference)pref;
 				pref.Summary = etp.Text;
+
+				Contact c = mDBS.getUserContactInformation();
+				c.Email = etp.Text;
+
+				mDBS.UpdateUserContactInformation(c);
+			}
+			else
+			{
+				Toast.MakeText(this, key, ToastLength.Short).Show();
 			}
 		}
 

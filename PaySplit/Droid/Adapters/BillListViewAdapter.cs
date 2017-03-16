@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 
 namespace PaySplit.Droid
 {
@@ -26,6 +27,7 @@ namespace PaySplit.Droid
         {
             get { return bills.Count; }
         }
+
         public override long GetItemId(int position)
         {
             return position;
@@ -87,6 +89,12 @@ namespace PaySplit.Droid
         {
             this.bills = bills;
         }
+
+        public List<Bill> getBills()
+        {
+            return this.bills;
+        }
+
     }
 
     public class ViewBillListViewHolder : Java.Lang.Object

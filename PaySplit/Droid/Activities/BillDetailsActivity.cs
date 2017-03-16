@@ -24,13 +24,15 @@ namespace PaySplit.Droid
 		private TextView date;
 		private TextView category;
 		private TextView desc;
+		private TextView current_date;
 		private ImageView image;
 		private TextView updated;
 		private Button editButton;
+		private Button deleteButton;
 
 		private EditText name_edit;
 		private EditText amount_edit;
-		private EditText date_edit;
+		private TextView date_edit;
 		private Spinner category_edit;
 		private EditText desc_edit;
 		private Button saveButton;
@@ -46,6 +48,11 @@ namespace PaySplit.Droid
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
             mBill = mDBS.getBillById(Int32.Parse(id));
+			if (mBill == null)
+			{
+				Finish();
+				return;
+			}
 
             // Instatiate views
             name = FindViewById<TextView>(Resource.Id.Details_BillName);
@@ -58,18 +65,19 @@ namespace PaySplit.Droid
             editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
             name_edit = FindViewById<EditText>(Resource.Id.Details_BillName_Edit);
             amount_edit = FindViewById<EditText>(Resource.Id.Details_BillAmount_Edit);
-            date_edit = FindViewById<EditText>(Resource.Id.Details_Date_Edit);
+			date_edit = FindViewById<TextView>(Resource.Id.Details_Date_Edit);
             category_edit = FindViewById<Spinner>(Resource.Id.Details_BillCategory_Edit);
             desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
             saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
+			deleteButton = FindViewById<Button>(Resource.Id.deleteBillButton);
 
-            // Populate the views
-            name.Text = mBill.Name;
-            amount.Text = "$" + String.Format("{0:0.00}", mBill.Amount); // rounds to 2 decimal places
-            date.Text = mBill.Date.ToString("MMMM dd, yyyy");
-            category.Text = mBill.Category;
-            desc.Text = mBill.Description;
-
+			// Populate the views
+			name.Text = mBill.Name;
+			amount.Text = "$" + String.Format("{0:0.00}", mBill.Amount); // rounds to 2 decimal places
+			date.Text = mBill.Date.ToString("MMMM dd, yyyy");
+			category.Text = mBill.Category;
+			desc.Text = mBill.Description;
+			    
             // Initialize the Categories Spinner
             String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
             int categoryIndex = 0;
@@ -117,6 +125,7 @@ namespace PaySplit.Droid
             ViewSwitcher categorySwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_category_switcher);
             ViewSwitcher descSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_desc_switcher);
             ViewSwitcher buttonSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_button_switcher);
+			ViewSwitcher dateSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_date_switcher);
 
             editButton.Click += delegate
                 {
@@ -125,6 +134,7 @@ namespace PaySplit.Droid
                     categorySwitcher.ShowNext();
                     descSwitcher.ShowNext();
                     buttonSwitcher.ShowNext();
+					dateSwitcher.ShowNext();
 
                     name_edit.SetText(name.Text, TextView.BufferType.Editable);
                     amount_edit.SetText(amount.Text.Substring(1), TextView.BufferType.Editable); // dangerous string concat to get rid of dollar sign, error check later
@@ -132,6 +142,21 @@ namespace PaySplit.Droid
                     category_edit.SetSelection(categoryIndex);
                     desc_edit.SetText(desc.Text, TextView.BufferType.Editable);
                 };
+
+			deleteButton.Click += delegate {
+				mDBS.DeleteBillAsync(mBill);
+				this.Finish();
+			};
+
+			date_edit.Click += delegate {
+				DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
+																	 {
+					date.Text = time.ToLongDateString();
+																		mBill.Date = time;
+																	 });
+				frag.Show(FragmentManager, DatePickerFragment.TAG);
+				mDBS.SaveBillEntry(mBill.Id, mBill);
+			};
 
             saveButton.Click += delegate
             {
