@@ -15,9 +15,12 @@ namespace PaySplit.Droid
     [Activity(Label = "PaySplit", MainLauncher = false, Icon = "@mipmap/new_icon")]
     public class ViewBillsActivity : Activity
     {
-		private List<Bill> mBills = new List<Bill>();
+        private List<Bill> mBills;
 		private BillListViewAdapter mAdapter;
 		private ListView mViewBillsListview;
+        private SearchView searchView;
+        private SearchView mSearchView;
+        private static string searchString;
 
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
@@ -32,6 +35,8 @@ namespace PaySplit.Droid
             base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Main_ListView);
 
+            mFilterTime = DateTime.Now;
+            searchString = "";
 
 
 			mFilterTime = DateTime.Now;
@@ -40,22 +45,25 @@ namespace PaySplit.Droid
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
-			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
+            LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 			View header = (View)layoutInflater.Inflate(Resource.Layout.DateFilterView, null);
 			mDateTextView = header.FindViewById<TextView>(Resource.Id.DateFilter_Date_TextView);
 			mDateTextView.Text = mFilterTime.ToString("MMMMMMMMM yyyy").ToUpper();
 			header.Click += Date_Click;
 			mViewBillsListview.AddHeaderView(header);
 
-			// Setup adapter
+            //Initialize database service
+            mDBS = DataHelper.getInstance().getGenDataService();
+
+            // Load all bills from database
+            mBills = mDBS.GetAllBills();
+
+            // Setup adapter
             mAdapter = new BillListViewAdapter(this, mBills);
             mViewBillsListview.Adapter = mAdapter;
-
-			//Initialize database service
-			mDBS = DataHelper.getInstance().getGenDataService();
         }
 
-		protected override void OnResume()
+        protected override void OnResume()
 		{
 			base.OnResume();
 			UpdateListView();
@@ -66,31 +74,41 @@ namespace PaySplit.Droid
 			mBills = mDBS.GetAllBills();
 
 			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);
-			if (category != null && !category.Equals(""))
-			{
-				mBills = fetchBillsByCategory(mBills, category);
-			}
-			mBills = fetchBillsForDate(mBills, mFilterTime);
+
+            // we filter the bills using filter decorators
+            mBills = new Decorators.SearchFilter(new Decorators.DateFilter(new Decorators.CategoryFilter(mDBS.GetAllBills(), category), mFilterTime), searchString);
 
 			if (mBills == null || mBills.Count == 0)
 			{
 				mNoResultsText.Visibility = ViewStates.Visible;
 				mNoResultsImage.Visibility = ViewStates.Visible;
-			}
-			else
-			{
-				mNoResultsText.Visibility = ViewStates.Gone;
-				mNoResultsImage.Visibility = ViewStates.Gone;
-			}
+			} else
+            {
+                mNoResultsText.Visibility = ViewStates.Gone;
+                mNoResultsImage.Visibility = ViewStates.Gone;
+            }
 
 			mAdapter.update(mBills);
-			mViewBillsListview.Adapter = mAdapter;
+            mViewBillsListview.Adapter = mAdapter;
 		}
 
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
 			MenuInflater.Inflate(Resource.Menu.main_menu, menu);
-			return base.OnCreateOptionsMenu(menu);
+
+            searchView = (SearchView)menu.FindItem(Resource.Id.search).ActionView;
+            mSearchView = searchView.JavaCast<SearchView>();
+            mSearchView.QueryTextChange += (s, e) =>
+            {
+                searchString = e.NewText;
+                UpdateListView();
+            };
+            mSearchView.QueryTextSubmit += (s, e) =>
+            {
+                e.Handled = true;
+            };
+            
+            return base.OnCreateOptionsMenu(menu);
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -114,7 +132,7 @@ namespace PaySplit.Droid
 			}
 		}
 
-		void Date_Click(object sender, EventArgs e)
+        void Date_Click(object sender, EventArgs e)
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																 {
@@ -123,39 +141,6 @@ namespace PaySplit.Droid
 																	 mDateTextView.Text = time.ToString("MMMMMMMMM yyyy").ToUpper();
 																 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
-		}
-
-		private List<Bill> fetchBillsByCategory(List<Bill> bills, String category)
-		{
-			if (category == null || category.Equals(""))
-			{
-				return mBills;
-			}
-
-			List<Bill> filteredBills = new List<Bill>();
-			foreach (Bill bill in bills)
-			{
-				if (category.Equals(bill.Category))
-				{
-					filteredBills.Add(bill);
-				}
-			}
-
-			return filteredBills;
-        }
-
-		private List<Bill> fetchBillsForDate(List<Bill> bills, DateTime date)
-		{
-			List<Bill> filteredBills = new List<Bill>();
-			foreach (Bill bill in bills)
-			{
-				if ((date.Month) == (bill.Date.Month) && (date.Year) == (bill.Date.Year))
-				{
-					filteredBills.Add(bill);
-				}
-			}
-
-			return filteredBills;
 		}
     }
 }
