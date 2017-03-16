@@ -8,8 +8,6 @@ using Android.App;
 using Android.Widget;
 using Android.Views;
 using Android.Graphics;
-using Android.Content.Res;
-
 namespace PaySplit.Droid
 {
 	public class CameraService
@@ -31,6 +29,7 @@ namespace PaySplit.Droid
 			{
 				App.dir.Mkdirs();
 			}
+
 		}
 
 		public bool IsThereAnAppToTakePictures()
@@ -44,8 +43,9 @@ namespace PaySplit.Droid
 		public void TakeAPicture()
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
-			App.file = new File(App.dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
-			intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(App.file));
+			App.file = new File(App.dir, String.Format("Bill_{0}.jpg", Guid.NewGuid()));
+			Android.Net.Uri u = Android.Support.V4.Content.FileProvider.GetUriForFile(activity.BaseContext, "com.sag.paysplit.provider", App.file);
+			intent.PutExtra(MediaStore.ExtraOutput, u);
 			activity.StartActivityForResult(intent, 0);
 		}
 
@@ -55,7 +55,7 @@ namespace PaySplit.Droid
 		{
 			// Make it available in the gallery
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-			Android.Net.Uri contentUri = Android.Net.Uri.FromFile(App.file);
+			Android.Net.Uri contentUri = Android.Support.V4.Content.FileProvider.GetUriForFile(activity.BaseContext, "com.sag.paysplit.provider", App.file);
 			mediaScanIntent.SetData(contentUri);
 			activity.SendBroadcast(mediaScanIntent);
 
@@ -65,7 +65,8 @@ namespace PaySplit.Droid
 			int height = activity.Resources.DisplayMetrics.HeightPixels;
 			int width = activity.Resources.DisplayMetrics.WidthPixels;
 
-			App.bitmap = App.file.Path.LoadAndResizeBitmap(width, height);
+			App.bitmap = MediaStore.Images.Media.GetBitmap(activity.ContentResolver, contentUri);
+			//App.bitmap = contentUri.Path.LoadAndResizeBitmap(width, height);
 			if (App.bitmap != null)
 			{
 				iw.SetImageBitmap(App.bitmap);

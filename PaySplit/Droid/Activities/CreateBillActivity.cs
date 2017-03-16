@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+
 
 namespace PaySplit.Droid
 {
@@ -26,6 +28,8 @@ namespace PaySplit.Droid
 
 		ArrayAdapter<String> mAdapter;
 		private String[] mCategories;
+
+		private int CAMERA_REQUEST_CODE = 1;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -48,7 +52,32 @@ namespace PaySplit.Droid
 
 			mCameraService = new CameraService(mImageView, this);
 
-			if (mCameraService.IsThereAnAppToTakePictures())
+			//Camera Permission
+
+			mCameraService.CreateDirectoryForPictures();
+
+			ImageButton takePhoto = FindViewById<ImageButton>(Resource.Id.takePic);
+
+			takePhoto.Click += delegate
+			{
+				if (CheckSelfPermission(Manifest.Permission.Camera) != Permission.Granted)
+				{
+
+					RequestPermissions(new String[] { Manifest.Permission.Camera }, CAMERA_REQUEST_CODE);
+				}
+				else
+				{
+					if (mCameraService.IsThereAnAppToTakePictures())
+					{
+						mCameraService.TakeAPicture();
+						mBill.ImagePath = mCameraService.GetSavedPicturePath();
+					}
+				}
+
+			};
+			//====================
+
+			/*if (mCameraService.IsThereAnAppToTakePictures())
 			{
 				mCameraService.CreateDirectoryForPictures();
 
@@ -60,7 +89,7 @@ namespace PaySplit.Droid
 					mBill.ImagePath = mCameraService.GetSavedPicturePath();
 				};
 			}
-
+			*/
 			mImageView.Visibility = ViewStates.Invisible;
 
 			Button saveBtn = FindViewById<Button>(Resource.Id.save);
@@ -121,6 +150,29 @@ namespace PaySplit.Droid
 			base.OnActivityResult(requestCode, resultCode, data);
 			mCameraService.SavePicture();
 
+		}
+
+		//Ac
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions,  Permission[] grantResults)
+		{
+			if (requestCode == CAMERA_REQUEST_CODE)
+			{
+				if (grantResults[0] == Permission.Granted)
+				{
+					// Now user should be able to use camera
+					if (mCameraService.IsThereAnAppToTakePictures())
+					{
+						mCameraService.TakeAPicture();
+						mBill.ImagePath = mCameraService.GetSavedPicturePath();
+					}
+				}
+				else
+				{
+					// Your app will not have this permission. Turn off all functions 
+					// that require this permission or it will force close like your 
+					// original question
+				}
+			}
 		}
 	}
 
