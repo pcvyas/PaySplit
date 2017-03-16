@@ -76,6 +76,11 @@ namespace PaySplit.Droid
 				mNoResultsText.Visibility = ViewStates.Visible;
 				mNoResultsImage.Visibility = ViewStates.Visible;
 			}
+			else
+			{
+				mNoResultsText.Visibility = ViewStates.Gone;
+				mNoResultsImage.Visibility = ViewStates.Gone;
+			}
 
 			mAdapter.update(mBills);
 			mViewBillsListview.Adapter = mAdapter;
