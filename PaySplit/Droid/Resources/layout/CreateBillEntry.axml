@@ -72,6 +72,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/peopleAmount"
+            android:maxLength="2"
             android:inputType="numberDecimal" />
         <TextView
             android:text="Date"
@@ -81,7 +82,7 @@
             android:textStyle="bold" />
         <TextView
             android:id="@+id/date"
-            android:background="#4DB6AC"
+            android:background="@color/accentColor"
             android:textSize="15sp"
             android:textAllCaps="true"
             android:padding="8dp"
@@ -91,7 +92,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/secondary_text_light" />
+            android:textColor="@android:color/white" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
