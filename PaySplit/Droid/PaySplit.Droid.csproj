@@ -85,6 +85,7 @@
     <Compile Include="Activities\CreateUserActivity.cs" />
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
+    <Compile Include="Util\Debugger.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">

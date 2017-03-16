@@ -58,12 +58,13 @@ namespace PaySplit.Droid
 		protected override void OnResume()
 		{
 			base.OnResume();
-			mBills = mDBS.GetAllBills();
 			UpdateListView();
 		}
 			
 		private void UpdateListView()
 		{
+			mBills = mDBS.GetAllBills();
+
 			string category = Intent.GetStringExtra(Constants.CATEGORY_EXTRA);
 			if (category != null && !category.Equals(""))
 			{
@@ -104,7 +105,6 @@ namespace PaySplit.Droid
 					return true;
 				case Resource.Id.delete_all_bills:
 					mDBS.deleteAllBills();
-					Toast.MakeText(this, "All Bills Deleted!", ToastLength.Short).Show();
 					return true;
 				case Resource.Id.settings:
 					StartActivity(typeof(SettingsActivity));
