@@ -14,12 +14,14 @@ namespace PaySplit.Droid
 	{
 		ImageView iw;
 		Activity activity;
+		string imagePath;
 
 		public CameraService(ImageView imageView, Activity activity)
 		{
 			iw = imageView;
 			this.activity = activity;
 		}
+		/*
 		public void CreateDirectoryForPictures()
 		{
 			App.dir = new File(
@@ -30,6 +32,23 @@ namespace PaySplit.Droid
 				App.dir.Mkdirs();
 			}
 
+		}*/
+
+		private File CreateImageFile() 
+		{
+			// Create an image file name
+	
+		    string imageFileName = String.Format("Bill_{0}.jpg", Guid.NewGuid());
+			File storageDir = Android.Support.V4.Content.ContextCompat.GetExternalFilesDirs(activity.BaseContext, Android.OS.Environment.DirectoryPictures)[0];
+			App.file = File.CreateTempFile(
+				imageFileName,  /* prefix */
+				".jpg",         /* suffix */
+				storageDir      /* directory */
+			);
+
+				// Save a file: path for use with ACTION_VIEW intents
+			imagePath = App.file.AbsolutePath;
+			return App.file;
 		}
 
 		public bool IsThereAnAppToTakePictures()
@@ -43,10 +62,10 @@ namespace PaySplit.Droid
 		public void TakeAPicture()
 		{
 			Intent intent = new Intent(MediaStore.ActionImageCapture);
-			App.file = new File(App.dir, String.Format("Bill_{0}.jpg", Guid.NewGuid()));
+			App.file = CreateImageFile();
 			Android.Net.Uri u = Android.Support.V4.Content.FileProvider.GetUriForFile(activity.BaseContext, "com.sag.paysplit.provider", App.file);
 			intent.PutExtra(MediaStore.ExtraOutput, u);
-			activity.StartActivityForResult(intent, 0);
+			activity.StartActivityForResult(intent, 1);
 		}
 
 
@@ -55,7 +74,7 @@ namespace PaySplit.Droid
 		{
 			// Make it available in the gallery
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-			Android.Net.Uri contentUri = Android.Support.V4.Content.FileProvider.GetUriForFile(activity.BaseContext, "com.sag.paysplit.provider", App.file);
+			Android.Net.Uri contentUri = Android.Net.Uri.FromFile(App.file);
 			mediaScanIntent.SetData(contentUri);
 			activity.SendBroadcast(mediaScanIntent);
 
@@ -65,8 +84,8 @@ namespace PaySplit.Droid
 			int height = activity.Resources.DisplayMetrics.HeightPixels;
 			int width = activity.Resources.DisplayMetrics.WidthPixels;
 
-			App.bitmap = MediaStore.Images.Media.GetBitmap(activity.ContentResolver, contentUri);
-			//App.bitmap = contentUri.Path.LoadAndResizeBitmap(width, height);
+			//App.bitmap = MediaStore.Images.Media.GetBitmap(activity.ContentResolver, contentUri);
+			App.bitmap = App.file.Path.LoadAndResizeBitmap(width, height);
 			if (App.bitmap != null)
 			{
 				iw.SetImageBitmap(App.bitmap);

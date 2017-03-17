@@ -100,8 +100,8 @@ namespace PaySplit.Droid
 				int height = this.Resources.DisplayMetrics.HeightPixels;
 				int width = this.Resources.DisplayMetrics.WidthPixels;
 				Android.Graphics.Bitmap imageMap = mBill.ImagePath.LoadAndResizeBitmap(width, height);
-				Android.Graphics.Bitmap emptyBitmap = Android.Graphics.Bitmap.CreateBitmap(imageMap.Width, imageMap.Height, imageMap.GetConfig());
-				if (imageMap != null && !imageMap.SameAs(emptyBitmap))
+				//Android.Graphics.Bitmap emptyBitmap = Android.Graphics.Bitmap.CreateBitmap(imageMap.Width, imageMap.Height, imageMap.GetConfig());
+				if (imageMap != null)
 				{
                     image.SetImageBitmap(imageMap);
                     image.Visibility = ViewStates.Visible;
@@ -115,7 +115,7 @@ namespace PaySplit.Droid
 			}
 			else
 			{
-				image.Visibility = ViewStates.Invisible;
+				image.Visibility = ViewStates.Gone;
 			}
             updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy");
 

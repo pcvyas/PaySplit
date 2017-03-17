@@ -56,7 +56,7 @@ namespace PaySplit.Droid
             mDBS = DataHelper.getInstance().getGenDataService();
 
             // Load all bills from database
-            mBills = mDBS.GetAllBills();
+			mBills = mDBS.GetAllBills().OrderBy(o => o.Date).ToList();
 
             // Setup adapter
             mAdapter = new BillListViewAdapter(this, mBills);

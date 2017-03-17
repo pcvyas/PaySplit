@@ -7,6 +7,7 @@ using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -54,7 +55,7 @@ namespace PaySplit.Droid
 
 			//Camera Permission
 
-			mCameraService.CreateDirectoryForPictures();
+			//mCameraService.CreateDirectoryForPictures();
 
 			ImageButton takePhoto = FindViewById<ImageButton>(Resource.Id.takePic);
 
@@ -148,6 +149,9 @@ namespace PaySplit.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
+			//Bundle extras = data.GetBundleExtra("data");
+			//Bitmap imageBitmap = (Bitmap)extras.Get("data");
+			//mImageView.SetImageBitmap(imageBitmap);
 			mCameraService.SavePicture();
 
 		}
