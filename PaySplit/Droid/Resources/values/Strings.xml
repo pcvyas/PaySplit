@@ -9,12 +9,26 @@
 	<string name="categories_no_items_text">As you create bills, categories will appear here. \nTapping on categories will allow you to view bills in that category.</string>
 
 	<string name="settings_insights_subtitle">Set limits for monthly spending on each category to be notified when spending approaches or exceeds limit.</string>
-	
 	<string name="settings_insights_title">Insights</string>
 
 	<string name="pref_update_name">pref_update_name</string>
 	<string name="pref_update_email">pref_update_email</string>
 	<string name="pref_user_created">setting_user_created</string>
+  <string name="pref_budgeting_category">pref_budgeting_category</string>
+  <string name="pref_enable_insights">pref_enable_insights</string>
+  <string name="pref_insights_categories">pref_insights_categories</string>
+  <string name="pref_food_drink">pref_food_drink</string>
+  <string name="pref_entertainment">pref_entertainment</string>
+  <string name="pref_utilities">pref_utilities</string>
+  <string name="pref_education">pref_education</string>
+  <string name="pref_personal_care">pref_personal_care</string>
+  <string name="pref_shopping">pref_shopping</string>
+  <string name="pref_work">pref_work</string>
+  <string name="pref_travel">pref_travel</string>
+  <string name="pref_transportation">pref_transportation</string>
+  <string name="pref_charity">pref_charity</string>
+  <string name="pref_investment">pref_investment</string>
+  <string name="pref_other">pref_other</string>
 
   <string name="search_title">Bill Search</string>
 	

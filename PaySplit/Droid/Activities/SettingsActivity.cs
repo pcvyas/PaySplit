@@ -20,8 +20,11 @@ namespace PaySplit.Droid
 	{
 
 		private GenDataService mDBS;
+        private CheckBoxPreference cbPref;
+        private PreferenceCategory budgetPref;
+        private PreferenceScreen catPref;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			this.AddPreferencesFromResource(Resource.Xml.preferences_settings);
@@ -37,7 +40,17 @@ namespace PaySplit.Droid
 
 				Settings.SetDefaultName(this, c.Email);
 				FindPreference(GetString(Resource.String.pref_update_email)).Summary = c.Email;
-			}
+
+                cbPref = (CheckBoxPreference)FindPreference(GetString(Resource.String.pref_enable_insights));
+                budgetPref = (PreferenceCategory)FindPreference(GetString(Resource.String.pref_budgeting_category));
+                if (catPref == null)
+                {
+                    catPref = (PreferenceScreen)FindPreference(GetString(Resource.String.pref_insights_categories));
+                }
+
+                showInsights();
+
+            }
 			catch (Exception)
 			{
 				Toast.MakeText(this, "Unable to get contact", ToastLength.Short).Show();
@@ -72,7 +85,10 @@ namespace PaySplit.Droid
 				c.Email = etp.Text;
 
 				mDBS.UpdateUserContactInformation(c);
-			}
+			} else if (key.Equals(GetString(Resource.String.pref_enable_insights)))
+            {
+                showInsights();
+            }
 			else
 			{
 				Debugger.Log("Unhandled key : " + key);
@@ -80,6 +96,24 @@ namespace PaySplit.Droid
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
+
+        private void showInsights()
+        {
+            if (!cbPref.Checked)
+            {
+                if (budgetPref != null && catPref != null)
+                {
+                    budgetPref.RemovePreference(catPref);
+                }
+            }
+            else
+            {
+                if (budgetPref != null)
+                {
+                    budgetPref.AddPreference(catPref);
+                }
+            }
+        }
 
 		protected override void OnPause()
 		{

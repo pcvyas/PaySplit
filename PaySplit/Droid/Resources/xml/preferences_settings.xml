@@ -15,12 +15,30 @@
             android:defaultValue=""/>
 		<Preference android:title="App Version" android:summary="@string/app_version" />
 	</PreferenceCategory>
+  
 	<PreferenceCategory
-		android:title="Bugdeting">
+		android:title="Bugdeting"
+    android:key="@string/pref_budgeting_category">
 		<CheckBoxPreference
 			android:title="Enable Budgeting Insights"
 			android:summary="@string/settings_insights_subtitle"
-            android:key="enable_insights"/>
-		<!--<Preference android:title="CATEGORY_TITLE" android:key="CATEGORY_KEY"> (should probably make this an edittextpref though) </Preference>-->
+            android:key="@string/pref_enable_insights"
+      android:defaultValue="false"/>
+    <PreferenceScreen
+        android:key="@string/pref_insights_categories"
+        android:title="Edit Category Budgets...">
+      <Preference android:title="Food/Drink" android:key="@string/pref_food_drink"/>
+      <Preference android:title="Entertainment" android:key="@string/pref_entertainment"/>
+      <Preference android:title="Utilities" android:key="@string/pref_utilities"/>
+      <Preference android:title="Education" android:key="@string/pref_education" />
+      <Preference android:title="Personal Care" android:key="@string/pref_personal_care" />
+      <Preference android:title="Shopping" android:key="@string/pref_shopping" />
+      <Preference android:title="Work" android:key="@string/pref_work"  />
+      <Preference android:title="Travel" android:key="@string/pref_travel" />
+      <Preference android:title="Transportation" android:key="@string/pref_transportation" />
+      <Preference android:title="Charity" android:key="@string/pref_charity" />
+      <Preference android:title="Investment" android:key="@string/pref_investment"/>
+      <Preference android:title="Other" android:key="@string/pref_other"/>
+    </PreferenceScreen>
 	</PreferenceCategory>
 </PreferenceScreen>
