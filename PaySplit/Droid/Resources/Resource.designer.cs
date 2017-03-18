@@ -3094,9 +3094,6 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0e008b
 			public const int deleteBillButton = 2131624075;
 			
-			// aapt resource value: 0x7f0e00f2
-			public const int delete_all_bills = 2131624178;
-			
 			// aapt resource value: 0x7f0e0092
 			public const int description = 2131624082;
 			
@@ -3415,8 +3412,8 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0e0072
 			public const int select_dialog_listview = 2131624050;
 			
-			// aapt resource value: 0x7f0e00f3
-			public const int settings = 2131624179;
+			// aapt resource value: 0x7f0e00f2
+			public const int settings = 2131624178;
 			
 			// aapt resource value: 0x7f0e005c
 			public const int shortcut = 2131624028;

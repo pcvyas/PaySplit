@@ -121,9 +121,6 @@ namespace PaySplit.Droid
 				case Resource.Id.add_bill:
 					StartActivity(typeof(CreateBillActivity));
 					return true;
-				case Resource.Id.delete_all_bills:
-					mDBS.deleteAllBills();
-					return true;
 				case Resource.Id.settings:
 					StartActivity(typeof(SettingsActivity));
 					return true;

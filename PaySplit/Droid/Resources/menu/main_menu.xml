@@ -15,10 +15,6 @@
           android:title="Add Bill (temporary)"
           android:showAsAction="never"/>
 
-	<item android:id="@+id/delete_all_bills"
-	      android:title="Delete All Bill"
-	      android:showAsAction="never"/>
-
 	<item android:id="@+id/settings"
       android:title="@string/settings_menu_title"
       android:showAsAction="never"/>
