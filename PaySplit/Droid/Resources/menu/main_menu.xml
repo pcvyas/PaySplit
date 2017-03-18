@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+	
   <item android:id="@+id/search"
         android:title="@string/search_title"
         android:icon="@drawable/ic_search"
@@ -14,12 +15,8 @@
           android:title="Add Bill (temporary)"
           android:showAsAction="never"/>
 
-	<item android:id="@+id/delete_all_bills"
-	      android:title="Delete All Bill"
-	      android:showAsAction="never"/>
-
 	<item android:id="@+id/settings"
       android:title="@string/settings_menu_title"
       android:showAsAction="never"/>
-
+	
 </menu>
