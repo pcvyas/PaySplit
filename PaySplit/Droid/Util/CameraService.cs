@@ -21,6 +21,7 @@ namespace PaySplit.Droid
 			iw = imageView;
 			this.activity = activity;
 		}
+
 		/*
 		public void CreateDirectoryForPictures()
 		{

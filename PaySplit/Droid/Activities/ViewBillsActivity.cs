@@ -127,9 +127,6 @@ namespace PaySplit.Droid
 				case Resource.Id.settings:
 					StartActivity(typeof(SettingsActivity));
 					return true;
-				case Resource.Id.budgeting:
-					StartActivity(typeof(DashboardActivity));
-					return true;
 				default:
 					return base.OnOptionsItemSelected(item);
 			}

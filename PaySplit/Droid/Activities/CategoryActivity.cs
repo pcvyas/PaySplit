@@ -13,6 +13,9 @@ using Android.Webkit;
 using Android.Widget;
 using Java.Interop;
 using Java.Lang;
+
+using PaySplit;
+
 namespace PaySplit.Droid
 {
 
@@ -25,6 +28,9 @@ namespace PaySplit.Droid
 		private ListView mCategoriesListview;
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
+		private static Spinner mLoadingSpinner;
+		private static WebView mWebView;
+		private WebViewClient mWebViewClient;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -34,6 +40,7 @@ namespace PaySplit.Droid
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
 			mCategoriesListview = FindViewById<ListView>(Resource.Id.View_ListView);
+			mLoadingSpinner = FindViewById<Spinner>(Resource.Id.loadingSpinner);
 
 			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 			View header = (View)layoutInflater.Inflate(Resource.Layout.DashboardLayout, null);
@@ -43,14 +50,24 @@ namespace PaySplit.Droid
 			mAdapter = new CategoryListViewAdapter(this, mCategories);
 			mCategoriesListview.Adapter = mAdapter;
 
-			WebView wb = FindViewById<WebView>(Resource.Id.chartView);
+			mWebView = FindViewById<WebView>(Resource.Id.chartView);
+			mWebViewClient = new MyWebViewClient();
+			mWebView.SetWebViewClient(mWebViewClient);
 
 			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
 
-			wb.AddJavascriptInterface(new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array), mDBS), "Android");
-			string chartURL = "file:///android_asset/pie_chart.html";
-			wb.LoadUrl(chartURL);
-			wb.Settings.JavaScriptEnabled = true;
+			mWebView.Post(() =>
+			{
+				mWebView.Settings.JavaScriptEnabled = true;
+				mWebView.Settings.JavaScriptCanOpenWindowsAutomatically = false;
+				mWebView.AddJavascriptInterface(new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array), mDBS), "Android");
+				string chartURL = "file:///android_asset/pie_chart.html";
+				mWebView.LoadUrl(chartURL);
+				mWebView.Settings.SetRenderPriority(WebSettings.RenderPriority.High);
+				mWebView.SetLayerType(LayerType.Hardware, null);
+				mWebView.Settings.CacheMode = CacheModes.NoCache;
+				mWebView.Settings.JavaScriptEnabled = true;
+			});
 		}
 
 		protected override void OnResume()
@@ -79,6 +96,35 @@ namespace PaySplit.Droid
 
 			mAdapter.update(mCategories);
 			mCategoriesListview.Adapter = mAdapter;
+		}
+
+		private class MyWebViewClient : WebViewClient
+		{
+			public override void OnPageStarted(WebView view, string url, Android.Graphics.Bitmap favicon)
+			{
+				base.OnPageStarted(view, url, favicon);
+				if (mLoadingSpinner != null)
+				{
+					mLoadingSpinner.Visibility = ViewStates.Visible;
+				}
+				if (mWebView != null)
+				{
+					mWebView.Visibility = ViewStates.Gone;
+				}
+			} 
+
+			public override void OnPageFinished(WebView view, string url)
+			{
+				base.OnPageFinished(view, url);
+				if (mLoadingSpinner != null)
+				{
+					mLoadingSpinner.Visibility = ViewStates.Gone;
+				}
+				if (mWebView != null)
+				{
+					mWebView.Visibility = ViewStates.Visible;
+				}
+			}
 		}
 	}
 
