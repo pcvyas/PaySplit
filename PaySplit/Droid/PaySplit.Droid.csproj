@@ -196,6 +196,11 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_search.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_search.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_search.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_search.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_search.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
@@ -206,20 +211,12 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\mipmap-hdpi\new_icon.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\new_icon.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\new_icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\new_icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\new_icon.png" />
     <AndroidResource Include="Resources\layout\CreateUser.axml" />
     <AndroidResource Include="Resources\layout\CreateBillEntry.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_search.png" />
-  </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pie_chart.html" />
   </ItemGroup>
