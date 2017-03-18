@@ -31,6 +31,9 @@ namespace PaySplit.Droid
 		private WebView mChartsView;
 		private WebAppInterface mWebInterface;
 
+		private TextView mDateTextView;
+		private DateTime mFilterTime;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
@@ -39,8 +42,19 @@ namespace PaySplit.Droid
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
 			mCategoriesListview = FindViewById<ListView>(Resource.Id.View_ListView);
-
 			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
+
+
+			//Date Filter Header
+			mFilterTime = DateTime.Now;
+			View headerDate = (View)layoutInflater.Inflate(Resource.Layout.DateFilterView, null);
+			mDateTextView = headerDate.FindViewById<TextView>(Resource.Id.DateFilter_Date_TextView);
+			mDateTextView.Text = mFilterTime.ToString("MMMMMMMMM yyyy").ToUpper();
+			headerDate.Click += Date_Click;
+			mCategoriesListview.AddHeaderView(headerDate);
+
+
+
 			View header = (View)layoutInflater.Inflate(Resource.Layout.DashboardLayout, null);
 			mCategoriesListview.AddHeaderView(header);
 
@@ -55,10 +69,39 @@ namespace PaySplit.Droid
 
 
 			mWebInterface = new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array));
-			mWebInterface.UpdateBills(mDBS.GetAllBills());
+			mWebInterface.UpdateBills(new Decorators.DateFilter(mDBS.GetAllBills(), mFilterTime));
 			mChartsView.AddJavascriptInterface(mWebInterface, "Android");
 			mChartsView.LoadUrl(mChartURL);
 
+		
+		}
+
+		void Date_Click(object sender, EventArgs e)
+		{
+			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
+																 {
+																	 mFilterTime = time;
+																	 UpdateChart();
+																	 mDateTextView.Text = time.ToString("MMMMMMMMM yyyy").ToUpper();
+																 });
+			frag.Show(FragmentManager, DatePickerFragment.TAG);
+		}
+
+		void UpdateChart()
+		{
+			//throw new NotImplementedException();
+			List<Bill> mBills = new Decorators.DateFilter(mDBS.GetAllBills(), mFilterTime);
+			mWebInterface.UpdateBills(mBills);
+			mChartsView.LoadUrl(mChartURL);
+
+			if (mBills == null || mBills.Count == 0)
+			{
+				mChartsView.Visibility = ViewStates.Gone;
+			}
+			else
+			{
+				mChartsView.Visibility = ViewStates.Visible;
+			}
 		}
 
 		protected override void OnResume()
