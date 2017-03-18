@@ -32,6 +32,11 @@ namespace PaySplit.Droid
 		private static WebView mWebView;
 		private WebViewClient mWebViewClient;
 
+		private const string mChartURL = "file:///android_asset/pie_chart.html";
+		private GenDataService mDBS;
+		private WebView mChartsView;
+		private WebAppInterface mWebInterface;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
@@ -54,15 +59,21 @@ namespace PaySplit.Droid
 			mWebViewClient = new MyWebViewClient();
 			mWebView.SetWebViewClient(mWebViewClient);
 
-			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
+			//Expense Chart Config
+			mChartsView = FindViewById<WebView>(Resource.Id.chartView);
+			mChartsView.Settings.JavaScriptEnabled = true;
+			mDBS = DataHelper.getInstance().getGenDataService();
 
 			mWebView.Post(() =>
 			{
 				mWebView.Settings.JavaScriptEnabled = true;
 				mWebView.Settings.JavaScriptCanOpenWindowsAutomatically = false;
-				mWebView.AddJavascriptInterface(new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array), mDBS), "Android");
-				string chartURL = "file:///android_asset/pie_chart.html";
-				mWebView.LoadUrl(chartURL);
+
+				mWebInterface = new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array));
+				mWebInterface.UpdateBills(mDBS.GetAllBills());
+				mChartsView.AddJavascriptInterface(mWebInterface, "Android");
+				mChartsView.LoadUrl(mChartURL);
+
 				mWebView.Settings.SetRenderPriority(WebSettings.RenderPriority.High);
 				mWebView.SetLayerType(LayerType.Hardware, null);
 				mWebView.Settings.CacheMode = CacheModes.NoCache;
@@ -131,12 +142,12 @@ namespace PaySplit.Droid
 	public class WebAppInterface : Java.Lang.Object
 	{
 		string[] Categories;
-		GenDataService database;
+		List<Bill> bills;
 
-		public WebAppInterface(string[] c, GenDataService dbs)
+		public WebAppInterface(string[] c)
 		{
 			Categories = c;
-			database = dbs;
+			bills = new List<Bill>();
 		}
 
 		[Export]
@@ -157,7 +168,12 @@ namespace PaySplit.Droid
 		[JavascriptInterface]
 		public double getValue(int i)
 		{
-			return database.GetAllBills().Where(o => o.Category == Categories[i]).Sum(o => o.Amount);
+			return bills.Where(o => o.Category == Categories[i]).Sum(o => o.Amount);
+		}
+
+		public void UpdateBills(List<Bill> bills)
+		{
+			this.bills = bills;
 		}
 
 	}
