@@ -75,8 +75,10 @@ namespace PaySplit.Droid
 			}
 			else
 			{
-				Toast.MakeText(this, key, ToastLength.Short).Show();
+				Debugger.Log("Unhandled key : " + key);
 			}
+
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		protected override void OnPause()
@@ -94,6 +96,18 @@ namespace PaySplit.Droid
 			if (this.PreferenceManager != null)
 			{
 				this.PreferenceManager.SharedPreferences.RegisterOnSharedPreferenceChangeListener(this);
+			}
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
 			}
 		}
 

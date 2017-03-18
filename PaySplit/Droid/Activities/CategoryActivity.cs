@@ -93,7 +93,20 @@ namespace PaySplit.Droid
 
 			//Load the Charts
 			UpdateChart();
-		
+
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
 		}
 
 		void Date_Click(object sender, EventArgs e)

@@ -67,6 +67,7 @@
             android:textStyle="bold" />
         <ViewSwitcher
             android:id="@+id/Details_date_switcher"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -140,6 +141,8 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:visibility="gone"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:id="@+id/Details_imageView" />
         <ViewSwitcher
             android:id="@+id/Details_button_switcher"

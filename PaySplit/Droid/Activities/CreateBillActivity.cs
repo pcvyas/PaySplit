@@ -102,6 +102,8 @@ namespace PaySplit.Droid
 			TextView dateV = FindViewById<TextView>(Resource.Id.date);
 			dateV.Text = mBill.Date.ToLongDateString();
 			dateV.Click += Date_Click;
+
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		void Date_Click(object sender, EventArgs e)
@@ -146,6 +148,18 @@ namespace PaySplit.Droid
 			}
 		}
 
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
+		}
+
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
@@ -153,10 +167,8 @@ namespace PaySplit.Droid
 			//Bitmap imageBitmap = (Bitmap)extras.Get("data");
 			//mImageView.SetImageBitmap(imageBitmap);
 			mCameraService.SavePicture();
-
 		}
 
-		//Ac
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions,  Permission[] grantResults)
 		{
 			if (requestCode == CAMERA_REQUEST_CODE)
