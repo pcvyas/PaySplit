@@ -19,7 +19,7 @@ using PaySplit;
 namespace PaySplit.Droid
 {
 
-	[Activity(Label = "Categories", MainLauncher = false, Icon = "@mipmap/new_icon")]
+	[Activity(Label = "Categories", MainLauncher = false, Icon = "@mipmap/ic_launcher")]
 	public class CategoryActivity : Activity
 	{
 		private List<string> mCategories = new List<string>();
