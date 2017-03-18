@@ -155,7 +155,6 @@
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Util\Debugger.cs" />
-    <Compile Include="Activities\DashboardActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">

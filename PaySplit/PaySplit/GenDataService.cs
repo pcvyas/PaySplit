@@ -130,6 +130,37 @@ namespace PaySplit
 			return bs;
 		}
 
+		//Get all Bills
+		public List<Bill> GetBillsByCategory(string category)
+		{
+			List<Bill> bs = new List<Bill>();
+
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var bills = db.Table<Bill>();
+				foreach (Bill b in bills)
+				{
+					if (b.Category.Equals(category))
+					{
+						bs.Add(b);
+					}
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return new List<Bill>();
+			}
+			return bs;
+		}
+
         public Bill getBillById(int id)
         {
             Bill b = new Bill();

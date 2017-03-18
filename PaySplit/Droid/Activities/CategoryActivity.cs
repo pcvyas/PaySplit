@@ -5,22 +5,24 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
 using Android.Widget;
-
+using Java.Interop;
+using Java.Lang;
 namespace PaySplit.Droid
 {
 
 	[Activity(Label = "Categories", MainLauncher = false, Icon = "@mipmap/new_icon")]
 	public class CategoryActivity : Activity
 	{
-		private List<String> mCategories = new List<String>();
+		private List<string> mCategories = new List<string>();
 		private CategoryListViewAdapter mAdapter;
 
-		private ListView mViewBillsListview;
+		private ListView mCategoriesListview;
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 
@@ -31,12 +33,24 @@ namespace PaySplit.Droid
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
-			mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+			mCategoriesListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
+			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
+			View header = (View)layoutInflater.Inflate(Resource.Layout.DashboardLayout, null);
+			mCategoriesListview.AddHeaderView(header);
 
 			// Setup adapter
 			mAdapter = new CategoryListViewAdapter(this, mCategories);
-			mViewBillsListview.Adapter = mAdapter;
+			mCategoriesListview.Adapter = mAdapter;
+
+			WebView wb = FindViewById<WebView>(Resource.Id.chartView);
+
+			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
+
+			wb.AddJavascriptInterface(new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array), mDBS), "Android");
+			string chartURL = "file:///android_asset/pie_chart.html";
+			wb.LoadUrl(chartURL);
+			wb.Settings.JavaScriptEnabled = true;
 		}
 
 		protected override void OnResume()
@@ -64,7 +78,41 @@ namespace PaySplit.Droid
 			}
 
 			mAdapter.update(mCategories);
-			mViewBillsListview.Adapter = mAdapter;
+			mCategoriesListview.Adapter = mAdapter;
 		}
+	}
+
+	public class WebAppInterface : Java.Lang.Object
+	{
+		string[] Categories;
+		GenDataService database;
+
+		public WebAppInterface(string[] c, GenDataService dbs)
+		{
+			Categories = c;
+			database = dbs;
+		}
+
+		[Export]
+		[JavascriptInterface]
+		public int getCategoriesCount()
+		{
+			return Categories.Count();
+		}
+
+		[Export]
+		[JavascriptInterface]
+		public string getName(int i)
+		{
+			return Categories[i];
+		}
+
+		[Export]
+		[JavascriptInterface]
+		public double getValue(int i)
+		{
+			return database.GetAllBills().Where(o => o.Category == Categories[i]).Sum(o => o.Amount);
+		}
+
 	}
 }
