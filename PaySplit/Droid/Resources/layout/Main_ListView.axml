@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/background"
     android:gravity="center">
-    <ImageView
-        android:id="@+id/NoResultsImage"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:src="@drawable/addbill"
-        android:visibility="gone" />
     <TextView
         android:id="@+id/NoResults"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="No Bills Created Yet"
+        android:text="No Bills Created Yet!\nTap the add button to create one."
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:textColor="@android:color/@android:color/black"
-        android:layout_below="@id/NoResultsImage"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/lightGray"
         android:textSize="15dp"
+        android:padding="29dp"
         android:visibility="gone" />
     <ListView
         android:layout_width="match_parent"
@@ -34,4 +28,16 @@
         android:padding="16dip"
         android:clipToPadding="false"
         android:id="@+id/View_ListView" />
-</RelativeLayout>
+    <com.refractored.fab.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="25dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_plus"
+        android:visibility="gone"
+        fab:fab_colorNormal="@color/accentColor"
+        fab:fab_colorPressed="@color/accentColorDark"
+        fab:fab_colorRipple="@color/rippleColor" />
+</FrameLayout>

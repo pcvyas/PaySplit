@@ -11,10 +11,6 @@
           android:title="@string/categories_menu_title"
           android:showAsAction="never"/>
 
-	<item android:id="@+id/add_bill"
-          android:title="Add Bill (temporary)"
-          android:showAsAction="never"/>
-
 	<item android:id="@+id/settings"
       android:title="@string/settings_menu_title"
       android:showAsAction="never"/>

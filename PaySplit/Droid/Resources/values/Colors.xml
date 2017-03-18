@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+	<color name="rippleColor">#ffd454</color>
+	<color name="accentColorDark">#e2aa00</color>
 	<color name="accentColor">#FFC107</color>
 	<color name="secondaryAccentColor">#66BB6A</color>
 	<color name="accentColorLight">#FFECB3</color>
@@ -9,4 +11,5 @@
 	<color name="background">#FBFAFB</color>
 	<color name="redButtonColor">#FD0000</color>
 	<color name="whiteButtonColor">#FFFFFF</color>
+	<color name="lightGray">#a3a3a3</color>
 </resources>

@@ -13,6 +13,7 @@ using Android.Webkit;
 using Android.Widget;
 using Java.Interop;
 using Java.Lang;
+using com.refractored.fab;
 
 using PaySplit;
 
@@ -26,7 +27,6 @@ namespace PaySplit.Droid
 		private CategoryListViewAdapter mAdapter;
 
 		private ListView mCategoriesListview;
-		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 		private static Spinner mLoadingSpinner;
 		private static WebView mWebView;
@@ -39,18 +39,20 @@ namespace PaySplit.Droid
 		private TextView mDateTextView;
 		private DateTime mFilterTime;
 
+		private FloatingActionButton mFloatingActionButton;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Main_ListView);
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
-			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
+			mNoResultsText.Text = "As you create bills, categories will appear here. \nTapping on categories will allow you to view bills in that category.";
+
 			mCategoriesListview = FindViewById<ListView>(Resource.Id.View_ListView);
 			mLoadingSpinner = FindViewById<Spinner>(Resource.Id.loadingSpinner);
 
 			LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
-
 
 			//Date Filter Header
 			mFilterTime = DateTime.Now;
@@ -60,10 +62,10 @@ namespace PaySplit.Droid
 			headerDate.Click += Date_Click;
 			mCategoriesListview.AddHeaderView(headerDate);
 
-
-
 			View header = (View)layoutInflater.Inflate(Resource.Layout.DashboardLayout, null);
 			mCategoriesListview.AddHeaderView(header);
+
+			mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.floatingActionButton);
 
 			// Setup adapter
 			mAdapter = new CategoryListViewAdapter(this, mCategories);
@@ -144,11 +146,40 @@ namespace PaySplit.Droid
 			if (mCategories == null || mCategories.Count == 0)
 			{
 				mNoResultsText.Visibility = ViewStates.Visible;
-				mNoResultsImage.Visibility = ViewStates.Visible;
+				HideChart();
+			}
+			else
+			{
+				mNoResultsText.Visibility = ViewStates.Gone;
+				ShowChart();
 			}
 
 			mAdapter.update(mCategories);
 			mCategoriesListview.Adapter = mAdapter;
+		}
+
+		private void HideChart()
+		{
+			if (mLoadingSpinner != null)
+			{
+				mLoadingSpinner.Visibility = ViewStates.Gone;
+			}
+			if (mWebView != null)
+			{
+				mWebView.Visibility = ViewStates.Gone;
+			}
+		}
+
+		private void ShowChart()
+		{
+			if (mLoadingSpinner != null)
+			{
+				mLoadingSpinner.Visibility = ViewStates.Visible;
+			}
+			if (mWebView != null)
+			{
+				mWebView.Visibility = ViewStates.Visible;
+			}
 		}
 
 		private class MyWebViewClient : WebViewClient

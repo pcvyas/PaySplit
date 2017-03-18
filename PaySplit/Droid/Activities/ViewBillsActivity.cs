@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using com.refractored.fab;
 
 namespace PaySplit.Droid
 {
@@ -22,9 +23,9 @@ namespace PaySplit.Droid
         private SearchView mSearchView;
         private static string searchString;
 
-		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 		private TextView mDateTextView;
+		private FloatingActionButton mFloatingActionButton;
 
 		private DateTime mFilterTime;
 
@@ -38,11 +39,9 @@ namespace PaySplit.Droid
             mFilterTime = DateTime.Now;
             searchString = "";
 
-
 			mFilterTime = DateTime.Now;
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
-			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
             mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
             LayoutInflater layoutInflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
@@ -51,6 +50,10 @@ namespace PaySplit.Droid
 			mDateTextView.Text = mFilterTime.ToString("MMMMMMMMM yyyy").ToUpper();
 			header.Click += Date_Click;
 			mViewBillsListview.AddHeaderView(header);
+
+			mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.floatingActionButton);
+			mFloatingActionButton.Visibility = ViewStates.Visible;
+			mFloatingActionButton.Click += FAB_Click;
 
             //Initialize database service
             mDBS = DataHelper.getInstance().getGenDataService();
@@ -81,11 +84,9 @@ namespace PaySplit.Droid
 			if (mBills == null || mBills.Count == 0)
 			{
 				mNoResultsText.Visibility = ViewStates.Visible;
-				mNoResultsImage.Visibility = ViewStates.Visible;
 			} else
             {
                 mNoResultsText.Visibility = ViewStates.Gone;
-                mNoResultsImage.Visibility = ViewStates.Gone;
             }
 
 			mAdapter.update(mBills);
@@ -118,15 +119,17 @@ namespace PaySplit.Droid
 				case Resource.Id.categories:
 					StartActivity(typeof(CategoryActivity));
 					return true;
-				case Resource.Id.add_bill:
-					StartActivity(typeof(CreateBillActivity));
-					return true;
 				case Resource.Id.settings:
 					StartActivity(typeof(SettingsActivity));
 					return true;
 				default:
 					return base.OnOptionsItemSelected(item);
 			}
+		}
+
+		void FAB_Click(object sender, EventArgs e)
+		{
+			StartActivity(typeof(CreateBillActivity));
 		}
 
         void Date_Click(object sender, EventArgs e)
