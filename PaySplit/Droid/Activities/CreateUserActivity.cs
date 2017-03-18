@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "CreateUserActivity", MainLauncher = false, Icon = "@mipmap/new_icon")]
+	[Activity(Label = "CreateUserActivity", MainLauncher = false, Icon = "@mipmap/ic_launcher")]
 	public class CreateUserActivity : Activity
 	{
 		private TextView mNameTextView;

@@ -187,6 +187,11 @@
     <AndroidResource Include="Resources\xml\preferences_settings.xml" />
     <AndroidResource Include="Resources\xml\provider_paths.xml" />
     <AndroidResource Include="Resources\layout\DashboardLayout.axml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

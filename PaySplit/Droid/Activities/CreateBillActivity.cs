@@ -16,7 +16,7 @@ using Android.Widget;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "Create Bill", MainLauncher = false, Icon = "@mipmap/new_icon")]
+	[Activity(Label = "Create Bill", MainLauncher = false, Icon = "@mipmap/ic_launcher")]
 	public class CreateBillActivity : Activity
 	{
 

@@ -15,7 +15,7 @@ using System.IO;
 
 namespace PaySplit.Droid
 {
-	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/new_icon")]
+	[Activity(Label = "PaySplit", MainLauncher = true, Icon = "@mipmap/ic_launcher")]
 	public class MainActivity : Activity
 	{
 
