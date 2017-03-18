@@ -18,7 +18,11 @@
 	      android:title="Delete All Bill"
 	      android:showAsAction="never"/>
 
-		<item android:id="@+id/settings"
-          android:title="@string/settings_menu_title"
-          android:showAsAction="never"/>
+	<item android:id="@+id/settings"
+      android:title="@string/settings_menu_title"
+      android:showAsAction="never"/>
+
+	<item android:id="@+id/budgeting"
+      android:title="Dashboard(Temporary)"
+      android:showAsAction="never"/>
 </menu>

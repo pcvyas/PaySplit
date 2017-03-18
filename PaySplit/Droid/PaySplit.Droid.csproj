@@ -122,6 +122,10 @@
     <Reference Include="Xamarin.Android.Support.v7.CardView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.1.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaySplit\PaySplit.csproj">
@@ -151,6 +155,7 @@
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Util\Debugger.cs" />
+    <Compile Include="Activities\DashboardActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -182,6 +187,7 @@
     <AndroidResource Include="Resources\layout\DateFilterView.xml" />
     <AndroidResource Include="Resources\xml\preferences_settings.xml" />
     <AndroidResource Include="Resources\xml\provider_paths.xml" />
+    <AndroidResource Include="Resources\layout\DashboardLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
@@ -205,6 +211,9 @@
   <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pie_chart.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" />

@@ -8,6 +8,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Webkit;
 using Android.Widget;
 
 namespace PaySplit.Droid
@@ -31,6 +32,7 @@ namespace PaySplit.Droid
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
 			mNoResultsImage = FindViewById<ImageView>(Resource.Id.NoResultsImage);
 			mViewBillsListview = FindViewById<ListView>(Resource.Id.View_ListView);
+
 
 			// Setup adapter
 			mAdapter = new CategoryListViewAdapter(this, mCategories);
