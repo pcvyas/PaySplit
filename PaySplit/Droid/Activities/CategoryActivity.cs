@@ -26,6 +26,11 @@ namespace PaySplit.Droid
 		private ImageView mNoResultsImage;
 		private TextView mNoResultsText;
 
+		private const string mChartURL = "file:///android_asset/pie_chart.html";
+		private GenDataService mDBS;
+		private WebView mChartsView;
+		private WebAppInterface mWebInterface;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
@@ -43,14 +48,17 @@ namespace PaySplit.Droid
 			mAdapter = new CategoryListViewAdapter(this, mCategories);
 			mCategoriesListview.Adapter = mAdapter;
 
-			WebView wb = FindViewById<WebView>(Resource.Id.chartView);
+			//Expense Chart Config
+			mChartsView = FindViewById<WebView>(Resource.Id.chartView);
+			mChartsView.Settings.JavaScriptEnabled = true;
+			mDBS = DataHelper.getInstance().getGenDataService();
 
-			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
 
-			wb.AddJavascriptInterface(new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array), mDBS), "Android");
-			string chartURL = "file:///android_asset/pie_chart.html";
-			wb.LoadUrl(chartURL);
-			wb.Settings.JavaScriptEnabled = true;
+			mWebInterface = new WebAppInterface(Resources.GetStringArray(Resource.Array.categories_array));
+			mWebInterface.UpdateBills(mDBS.GetAllBills());
+			mChartsView.AddJavascriptInterface(mWebInterface, "Android");
+			mChartsView.LoadUrl(mChartURL);
+
 		}
 
 		protected override void OnResume()
@@ -85,12 +93,12 @@ namespace PaySplit.Droid
 	public class WebAppInterface : Java.Lang.Object
 	{
 		string[] Categories;
-		GenDataService database;
+		List<Bill> bills;
 
-		public WebAppInterface(string[] c, GenDataService dbs)
+		public WebAppInterface(string[] c)
 		{
 			Categories = c;
-			database = dbs;
+			bills = new List<Bill>();
 		}
 
 		[Export]
@@ -111,7 +119,12 @@ namespace PaySplit.Droid
 		[JavascriptInterface]
 		public double getValue(int i)
 		{
-			return database.GetAllBills().Where(o => o.Category == Categories[i]).Sum(o => o.Amount);
+			return bills.Where(o => o.Category == Categories[i]).Sum(o => o.Amount);
+		}
+
+		public void UpdateBills(List<Bill> bills)
+		{
+			this.bills = bills;
 		}
 
 	}

@@ -3022,9 +3022,6 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0e0015
 			public const int bottom = 2131623957;
 			
-			// aapt resource value: 0x7f0e00f3
-			public const int budgeting = 2131624179;
-			
 			// aapt resource value: 0x7f0e004b
 			public const int buttonPanel = 2131624011;
 			
