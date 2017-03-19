@@ -88,8 +88,9 @@ namespace PaySplit.Droid
             {
                 mNoResultsText.Visibility = ViewStates.Gone;
             }
+            mBills.Sort((a, b) => b.Date.CompareTo(a.Date));
 
-			mAdapter.update(mBills);
+            mAdapter.update(mBills);
             mViewBillsListview.Adapter = mAdapter;
 		}
 
