@@ -19,8 +19,18 @@ namespace PaySplit.iOS
 			createBillScrollView.ContentSize = new CoreGraphics.CGSize(CreateBill.Bounds.Width, 1000);
 			cs = new CameraService(picture, this);
 			datePicker.Mode = UIDatePickerMode.Date;
+
+			backCreateBill.Clicked += BackCreateBill_Clicked;;
+
 		
 			//picture.Hidden = true;
+		}
+
+		void BackCreateBill_Clicked(object sender, EventArgs e)
+		{
+			UIStoryboard board = UIStoryboard.FromName("Main", null);
+			UIViewController ctrl = (UIViewController)board.InstantiateViewController("ViewBills");
+			this.PresentViewController(ctrl, true, null);
 		}
 
 		public class CategoryPickerViewModel : UIPickerViewModel
