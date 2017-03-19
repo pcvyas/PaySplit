@@ -85,25 +85,28 @@
             android:id="@+id/datePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/date"
             android:textSize="15sp"
             android:textAllCaps="true"
             android:padding="8dp"
-            android:background="@color/accentColor"
+            android:background="@drawable/big_card"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/white" />
+            android:textStyle="bold"
+            android:textColor="@color/black" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:adjustViewBounds="true"
             android:id="@+id/picture" />
         <ImageButton

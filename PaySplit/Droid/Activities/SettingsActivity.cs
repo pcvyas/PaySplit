@@ -95,6 +95,8 @@ namespace PaySplit.Droid
                 EditTextPreference etp = (EditTextPreference)pref;
                 pref.Summary = etp.Text;
             }
+
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
         private void showInsights()
@@ -143,6 +145,18 @@ namespace PaySplit.Droid
 			if (this.PreferenceManager != null)
 			{
 				this.PreferenceManager.SharedPreferences.RegisterOnSharedPreferenceChangeListener(this);
+			}
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
 			}
 		}
 

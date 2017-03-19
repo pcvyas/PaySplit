@@ -1230,44 +1230,44 @@ namespace PaySplit.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a0057
-			public const int abc_background_cache_hint_selector_material_dark = 2131361879;
-			
 			// aapt resource value: 0x7f0a0058
-			public const int abc_background_cache_hint_selector_material_light = 2131361880;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361880;
 			
 			// aapt resource value: 0x7f0a0059
-			public const int abc_btn_colored_borderless_text_material = 2131361881;
+			public const int abc_background_cache_hint_selector_material_light = 2131361881;
 			
 			// aapt resource value: 0x7f0a005a
-			public const int abc_btn_colored_text_material = 2131361882;
+			public const int abc_btn_colored_borderless_text_material = 2131361882;
 			
 			// aapt resource value: 0x7f0a005b
-			public const int abc_color_highlight_material = 2131361883;
+			public const int abc_btn_colored_text_material = 2131361883;
 			
 			// aapt resource value: 0x7f0a005c
-			public const int abc_hint_foreground_material_dark = 2131361884;
+			public const int abc_color_highlight_material = 2131361884;
 			
 			// aapt resource value: 0x7f0a005d
-			public const int abc_hint_foreground_material_light = 2131361885;
+			public const int abc_hint_foreground_material_dark = 2131361885;
+			
+			// aapt resource value: 0x7f0a005e
+			public const int abc_hint_foreground_material_light = 2131361886;
 			
 			// aapt resource value: 0x7f0a0010
 			public const int abc_input_method_navigation_guard = 2131361808;
 			
-			// aapt resource value: 0x7f0a005e
-			public const int abc_primary_text_disable_only_material_dark = 2131361886;
-			
 			// aapt resource value: 0x7f0a005f
-			public const int abc_primary_text_disable_only_material_light = 2131361887;
+			public const int abc_primary_text_disable_only_material_dark = 2131361887;
 			
 			// aapt resource value: 0x7f0a0060
-			public const int abc_primary_text_material_dark = 2131361888;
+			public const int abc_primary_text_disable_only_material_light = 2131361888;
 			
 			// aapt resource value: 0x7f0a0061
-			public const int abc_primary_text_material_light = 2131361889;
+			public const int abc_primary_text_material_dark = 2131361889;
 			
 			// aapt resource value: 0x7f0a0062
-			public const int abc_search_url_text = 2131361890;
+			public const int abc_primary_text_material_light = 2131361890;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int abc_search_url_text = 2131361891;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int abc_search_url_text_normal = 2131361809;
@@ -1278,32 +1278,32 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0013
 			public const int abc_search_url_text_selected = 2131361811;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int abc_secondary_text_material_dark = 2131361891;
-			
 			// aapt resource value: 0x7f0a0064
-			public const int abc_secondary_text_material_light = 2131361892;
+			public const int abc_secondary_text_material_dark = 2131361892;
 			
 			// aapt resource value: 0x7f0a0065
-			public const int abc_tint_btn_checkable = 2131361893;
+			public const int abc_secondary_text_material_light = 2131361893;
 			
 			// aapt resource value: 0x7f0a0066
-			public const int abc_tint_default = 2131361894;
+			public const int abc_tint_btn_checkable = 2131361894;
 			
 			// aapt resource value: 0x7f0a0067
-			public const int abc_tint_edittext = 2131361895;
+			public const int abc_tint_default = 2131361895;
 			
 			// aapt resource value: 0x7f0a0068
-			public const int abc_tint_seek_thumb = 2131361896;
+			public const int abc_tint_edittext = 2131361896;
 			
 			// aapt resource value: 0x7f0a0069
-			public const int abc_tint_spinner = 2131361897;
+			public const int abc_tint_seek_thumb = 2131361897;
 			
 			// aapt resource value: 0x7f0a006a
-			public const int abc_tint_switch_thumb = 2131361898;
+			public const int abc_tint_spinner = 2131361898;
 			
 			// aapt resource value: 0x7f0a006b
-			public const int abc_tint_switch_track = 2131361899;
+			public const int abc_tint_switch_thumb = 2131361899;
+			
+			// aapt resource value: 0x7f0a006c
+			public const int abc_tint_switch_track = 2131361900;
 			
 			// aapt resource value: 0x7f0a004d
 			public const int accentColor = 2131361869;
@@ -1340,6 +1340,9 @@ namespace PaySplit.Droid
 			
 			// aapt resource value: 0x7f0a0019
 			public const int background_material_light = 2131361817;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int black = 2131361879;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int bright_foreground_disabled_material_dark = 2131361818;
@@ -1380,8 +1383,8 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0004
 			public const int design_bottom_navigation_shadow_color = 2131361796;
 			
-			// aapt resource value: 0x7f0a006c
-			public const int design_error = 2131361900;
+			// aapt resource value: 0x7f0a006d
+			public const int design_error = 2131361901;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int design_fab_shadow_end_color = 2131361797;
@@ -1413,8 +1416,8 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a000e
 			public const int design_textinput_error_color_light = 2131361806;
 			
-			// aapt resource value: 0x7f0a006d
-			public const int design_tint_password_toggle = 2131361901;
+			// aapt resource value: 0x7f0a006e
+			public const int design_tint_password_toggle = 2131361902;
 			
 			// aapt resource value: 0x7f0a0022
 			public const int dim_foreground_disabled_material_dark = 2131361826;
@@ -1551,11 +1554,11 @@ namespace PaySplit.Droid
 			// aapt resource value: 0x7f0a0047
 			public const int switch_thumb_disabled_material_light = 2131361863;
 			
-			// aapt resource value: 0x7f0a006e
-			public const int switch_thumb_material_dark = 2131361902;
-			
 			// aapt resource value: 0x7f0a006f
-			public const int switch_thumb_material_light = 2131361903;
+			public const int switch_thumb_material_dark = 2131361903;
+			
+			// aapt resource value: 0x7f0a0070
+			public const int switch_thumb_material_light = 2131361904;
 			
 			// aapt resource value: 0x7f0a0048
 			public const int switch_thumb_normal_material_dark = 2131361864;
@@ -2751,124 +2754,121 @@ namespace PaySplit.Droid
 			public const int ic_plus = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int ic_search = 2130837737;
+			public const int ic_vol_type_speaker_dark = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int ic_vol_type_speaker_dark = 2130837738;
+			public const int ic_vol_type_speaker_group_dark = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int ic_vol_type_speaker_group_dark = 2130837739;
+			public const int ic_vol_type_speaker_group_light = 2130837739;
 			
 			// aapt resource value: 0x7f0200ec
-			public const int ic_vol_type_speaker_group_light = 2130837740;
+			public const int ic_vol_type_speaker_light = 2130837740;
 			
 			// aapt resource value: 0x7f0200ed
-			public const int ic_vol_type_speaker_light = 2130837741;
+			public const int ic_vol_type_tv_dark = 2130837741;
 			
 			// aapt resource value: 0x7f0200ee
-			public const int ic_vol_type_tv_dark = 2130837742;
+			public const int ic_vol_type_tv_light = 2130837742;
 			
 			// aapt resource value: 0x7f0200ef
-			public const int ic_vol_type_tv_light = 2130837743;
+			public const int mr_button_connected_dark = 2130837743;
 			
 			// aapt resource value: 0x7f0200f0
-			public const int mr_button_connected_dark = 2130837744;
+			public const int mr_button_connected_light = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int mr_button_connected_light = 2130837745;
+			public const int mr_button_connecting_dark = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int mr_button_connecting_dark = 2130837746;
+			public const int mr_button_connecting_light = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int mr_button_connecting_light = 2130837747;
+			public const int mr_button_dark = 2130837747;
 			
 			// aapt resource value: 0x7f0200f4
-			public const int mr_button_dark = 2130837748;
+			public const int mr_button_light = 2130837748;
 			
 			// aapt resource value: 0x7f0200f5
-			public const int mr_button_light = 2130837749;
+			public const int mr_dialog_close_dark = 2130837749;
 			
 			// aapt resource value: 0x7f0200f6
-			public const int mr_dialog_close_dark = 2130837750;
+			public const int mr_dialog_close_light = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int mr_dialog_close_light = 2130837751;
+			public const int mr_dialog_material_background_dark = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int mr_dialog_material_background_dark = 2130837752;
+			public const int mr_dialog_material_background_light = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int mr_dialog_material_background_light = 2130837753;
+			public const int mr_group_collapse = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int mr_group_collapse = 2130837754;
+			public const int mr_group_expand = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int mr_group_expand = 2130837755;
+			public const int mr_media_pause_dark = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int mr_media_pause_dark = 2130837756;
+			public const int mr_media_pause_light = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int mr_media_pause_light = 2130837757;
+			public const int mr_media_play_dark = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int mr_media_play_dark = 2130837758;
+			public const int mr_media_play_light = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int mr_media_play_light = 2130837759;
+			public const int mr_vol_type_audiotrack_dark = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int mr_vol_type_audiotrack_dark = 2130837760;
+			public const int mr_vol_type_audiotrack_light = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int mr_vol_type_audiotrack_light = 2130837761;
+			public const int navigation_empty_icon = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int navigation_empty_icon = 2130837762;
+			public const int notification_action_background = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int notification_action_background = 2130837763;
+			public const int notification_bg = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int notification_bg = 2130837764;
+			public const int notification_bg_low = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int notification_bg_low = 2130837765;
+			public const int notification_bg_low_normal = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int notification_bg_low_normal = 2130837766;
+			public const int notification_bg_low_pressed = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int notification_bg_low_pressed = 2130837767;
+			public const int notification_bg_normal = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int notification_bg_normal = 2130837768;
+			public const int notification_bg_normal_pressed = 2130837768;
 			
 			// aapt resource value: 0x7f020109
-			public const int notification_bg_normal_pressed = 2130837769;
-			
-			// aapt resource value: 0x7f02010a
-			public const int notification_icon_background = 2130837770;
-			
-			// aapt resource value: 0x7f02010f
-			public const int notification_template_icon_bg = 2130837775;
-			
-			// aapt resource value: 0x7f020110
-			public const int notification_template_icon_low_bg = 2130837776;
-			
-			// aapt resource value: 0x7f02010b
-			public const int notification_tile_bg = 2130837771;
-			
-			// aapt resource value: 0x7f02010c
-			public const int notify_panel_notification_icon_bg = 2130837772;
-			
-			// aapt resource value: 0x7f02010d
-			public const int rectangle = 2130837773;
+			public const int notification_icon_background = 2130837769;
 			
 			// aapt resource value: 0x7f02010e
-			public const int Rounded = 2130837774;
+			public const int notification_template_icon_bg = 2130837774;
+			
+			// aapt resource value: 0x7f02010f
+			public const int notification_template_icon_low_bg = 2130837775;
+			
+			// aapt resource value: 0x7f02010a
+			public const int notification_tile_bg = 2130837770;
+			
+			// aapt resource value: 0x7f02010b
+			public const int notify_panel_notification_icon_bg = 2130837771;
+			
+			// aapt resource value: 0x7f02010c
+			public const int rectangle = 2130837772;
+			
+			// aapt resource value: 0x7f02010d
+			public const int Rounded = 2130837773;
 			
 			static Drawable()
 			{
@@ -3945,10 +3945,10 @@ namespace PaySplit.Droid
 			public const int ic_launcher = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Icon = 2130903041;
+			public const int ic_search = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int new_icon = 2130903042;
+			public const int Icon = 2130903042;
 			
 			static Mipmap()
 			{
