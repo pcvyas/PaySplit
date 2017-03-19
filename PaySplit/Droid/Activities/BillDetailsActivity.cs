@@ -222,11 +222,12 @@ namespace PaySplit.Droid
 
 		void Date_Click(object sender, EventArgs e)
 		{
-			TextView dateV = FindViewById<TextView>(Resource.Id.date);
+			TextView dateV = FindViewById<TextView>(Resource.Id.Details_Date);
 			DatePickerFragment frag = 
 				DatePickerFragment.NewInstance(delegate (DateTime date)
 												 {
 													 dateV.Text = date.ToLongDateString();
+													 date_edit.Text = date.ToLongDateString();
 													 mBill.Date = date;
 												 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
