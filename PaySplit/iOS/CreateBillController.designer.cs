@@ -24,6 +24,10 @@ namespace PaySplit.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem backCreateBill { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel billName { get; set; }
 
         [Outlet]
@@ -37,6 +41,10 @@ namespace PaySplit.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView CreateBill { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationBar createBillHeader { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -74,6 +82,10 @@ namespace PaySplit.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton takePicture { get; set; }
 
+        [Action ("BackCreateBill_Activated:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BackCreateBill_Activated (UIKit.UIBarButtonItem sender);
+
         [Action ("TakePicture_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void TakePicture_TouchUpInside (UIKit.UIButton sender);
@@ -88,6 +100,11 @@ namespace PaySplit.iOS
             if (amountLabel != null) {
                 amountLabel.Dispose ();
                 amountLabel = null;
+            }
+
+            if (backCreateBill != null) {
+                backCreateBill.Dispose ();
+                backCreateBill = null;
             }
 
             if (billName != null) {
@@ -108,6 +125,11 @@ namespace PaySplit.iOS
             if (CreateBill != null) {
                 CreateBill.Dispose ();
                 CreateBill = null;
+            }
+
+            if (createBillHeader != null) {
+                createBillHeader.Dispose ();
+                createBillHeader = null;
             }
 
             if (createBillScrollView != null) {

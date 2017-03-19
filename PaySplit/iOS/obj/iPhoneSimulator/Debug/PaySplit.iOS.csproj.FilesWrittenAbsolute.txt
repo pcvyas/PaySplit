@@ -4,10 +4,6 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/optimized/camera.png
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/optimized/
-/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.exe.mdb
-/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.exe
-/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/PaySplit.iOS.exe
-/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/PaySplit.iOS.exe.mdb
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.core.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.provider.sqlite3.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.batteries_green.dll
@@ -15,3 +11,7 @@
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/SQLite-net.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.dll
 /Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.dll.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.exe.mdb
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.exe
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/PaySplit.iOS.exe
+/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/PaySplit.iOS.exe.mdb
