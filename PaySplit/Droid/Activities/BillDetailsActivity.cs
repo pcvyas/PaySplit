@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Preferences;
 
 namespace PaySplit.Droid
 {
@@ -188,31 +189,62 @@ namespace PaySplit.Droid
 
 		void Save_Click(object sender, EventArgs e)
 		{
-			nameSwitcher.ShowPrevious();
-			amountSwitcher.ShowPrevious();
-			categorySwitcher.ShowPrevious();
-			descSwitcher.ShowPrevious();
-			buttonSwitcher.ShowPrevious();
-			dateSwitcher.ShowPrevious();
+            try
+            {
+                string billCat = adapter.GetItem(category_edit.SelectedItemPosition);
+                double billAmount = Double.Parse(amount_edit.Text);
+                ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
+                string catLimit = sharedPreferences.GetString(billCat, "0");
+                double limit = Convert.ToDouble(catLimit);
 
-			date_edit.Click -= Date_Click;
-			date_edit.Background = null;
+                // if there was an entry in preferences for this category, check if exceeds limit
+                if (limit != 0)
+                {
+                    double total = 0;
+                    foreach (Bill b in mDBS.GetBillsByCategory(billCat))
+                    {
+                        total += b.Amount;
+                    }
+                    // if category wasn't changed
+                    if (mBill.Category == billCat)
+                    {
+                        total -= mBill.Amount;
+                    }
+                    total += billAmount;
+                    if (total > limit)
+                    {
+                        Toast.MakeText(this, "Total exceeds limit for category: " + billCat, ToastLength.Short).Show();
+                        return;
+                    }
+                }
 
-			mBill.Name = name_edit.Text;
-			mBill.Amount = Double.Parse(amount_edit.Text);
-			mBill.Date = Convert.ToDateTime(date_edit.Text); // date format check here
-			mBill.Category = adapter.GetItem(category_edit.SelectedItemPosition);
-			mBill.Description = desc_edit.Text;
-			mBill.LastEdited = DateTime.Now;
+                nameSwitcher.ShowPrevious();
+                amountSwitcher.ShowPrevious();
+                categorySwitcher.ShowPrevious();
+                descSwitcher.ShowPrevious();
+                buttonSwitcher.ShowPrevious();
 
-			mDBS.SaveBillEntry(mBill.Id, mBill);
+                mBill.Name = name_edit.Text;
+                mBill.Amount = billAmount;
+                mBill.Date = Convert.ToDateTime(date_edit.Text); // date format check here
+                mBill.Category = billCat;
+                mBill.Description = desc_edit.Text;
 
-			name.Text = name_edit.Text;
-			amount.Text = "$" + amount_edit.Text; // number check here
-			date.Text = date_edit.Text;
-			category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
-			desc.Text = desc_edit.Text;
-		}
+                mDBS.SaveBillEntry(mBill.Id, mBill);
+
+                name.Text = name_edit.Text;
+                amount.Text = "$" + amount_edit.Text; // number check here
+                date.Text = date_edit.Text;
+                category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
+                desc.Text = desc_edit.Text;
+
+                Toast.MakeText(this, "Update Successful", ToastLength.Short).Show();
+            }
+            catch (Exception exc)
+            {
+                Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
+            }
+        }
 
 		void Delete_Click(object sender, EventArgs e)
 		{
@@ -232,5 +264,16 @@ namespace PaySplit.Droid
 												 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
+    
+       
+        //public override void OnBackPressed()
+        //{
+        //    base.OnBackPressed();
+        //    FinishActivity(1);
+        //}
+        //protected override void OnStop()
+        //{
+        //    base.OnStop();
+        //}
     }
 }

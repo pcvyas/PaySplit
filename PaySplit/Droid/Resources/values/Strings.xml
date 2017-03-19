@@ -17,18 +17,18 @@
   <string name="pref_budgeting_category">pref_budgeting_category</string>
   <string name="pref_enable_insights">pref_enable_insights</string>
   <string name="pref_insights_categories">pref_insights_categories</string>
-  <string name="pref_food_drink">pref_food_drink</string>
-  <string name="pref_entertainment">pref_entertainment</string>
-  <string name="pref_utilities">pref_utilities</string>
-  <string name="pref_education">pref_education</string>
-  <string name="pref_personal_care">pref_personal_care</string>
-  <string name="pref_shopping">pref_shopping</string>
-  <string name="pref_work">pref_work</string>
-  <string name="pref_travel">pref_travel</string>
-  <string name="pref_transportation">pref_transportation</string>
-  <string name="pref_charity">pref_charity</string>
-  <string name="pref_investment">pref_investment</string>
-  <string name="pref_other">pref_other</string>
+  <string name="pref_food_drink">Food/Drink</string>
+  <string name="pref_entertainment">Entertainment</string>
+  <string name="pref_utilities">Utilities</string>
+  <string name="pref_education">Education</string>
+  <string name="pref_personal_care">Personal Care</string>
+  <string name="pref_shopping">Shopping</string>
+  <string name="pref_work">Work</string>
+  <string name="pref_travel">Travel</string>
+  <string name="pref_transportation">Transportation</string>
+  <string name="pref_charity">Charity</string>
+  <string name="pref_investment">Investment</string>
+  <string name="pref_other">Other</string>
 
   <string name="search_title">Bill Search</string>
 	

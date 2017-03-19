@@ -29,18 +29,18 @@
     <PreferenceScreen
         android:key="@string/pref_insights_categories"
         android:title="Edit Category Budgets...">
-      <EditTextPreference android:title="Food/Drink" android:key="@string/pref_food_drink" android:inputType="numberDecimal" android:maxLines="1"/>
-      <EditTextPreference android:title="Entertainment" android:key="@string/pref_entertainment" android:inputType="numberDecimal" android:maxLines="1"/>
-      <EditTextPreference android:title="Utilities" android:key="@string/pref_utilities" android:inputType="numberDecimal" android:maxLines="1"/>
-      <EditTextPreference android:title="Education" android:key="@string/pref_education"  android:inputType="numberDecimal" android:maxLines="1"/>
-      <EditTextPreference android:title="Personal Care" android:key="@string/pref_personal_care" android:inputType="numberDecimal" android:maxLines="1" />
-      <EditTextPreference android:title="Shopping" android:key="@string/pref_shopping" android:inputType="numberDecimal" android:maxLines="1" />
-      <EditTextPreference android:title="Work" android:key="@string/pref_work" android:inputType="numberDecimal" android:maxLines="1"  />
-      <EditTextPreference android:title="Travel" android:key="@string/pref_travel" android:inputType="numberDecimal" android:maxLines="1" />
-      <EditTextPreference android:title="Transportation" android:key="@string/pref_transportation" android:inputType="numberDecimal" android:maxLines="1" />
-      <EditTextPreference android:title="Charity" android:key="@string/pref_charity" android:inputType="numberDecimal" android:maxLines="1" />
-      <EditTextPreference android:title="Investment" android:key="@string/pref_investment" android:inputType="numberDecimal" android:maxLines="1"/>
-      <EditTextPreference android:title="Other" android:key="@string/pref_other" android:inputType="numberDecimal" android:maxLines="1"/>
+      <EditTextPreference android:title="Food/Drink" android:key="@string/pref_food_drink" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
+      <EditTextPreference android:title="Entertainment" android:key="@string/pref_entertainment" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
+      <EditTextPreference android:title="Utilities" android:key="@string/pref_utilities" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
+      <EditTextPreference android:title="Education" android:key="@string/pref_education"  android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
+      <EditTextPreference android:title="Personal Care" android:key="@string/pref_personal_care" android:inputType="numberDecimal" android:maxLines="1"  android:defaultValue="0"/>
+      <EditTextPreference android:title="Shopping" android:key="@string/pref_shopping" android:inputType="numberDecimal" android:maxLines="1"  android:defaultValue="0"/>
+      <EditTextPreference android:title="Work" android:key="@string/pref_work" android:inputType="numberDecimal" android:maxLines="1"  android:defaultValue="0" />
+      <EditTextPreference android:title="Travel" android:key="@string/pref_travel" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0" />
+      <EditTextPreference android:title="Transportation" android:key="@string/pref_transportation" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0" />
+      <EditTextPreference android:title="Charity" android:key="@string/pref_charity" android:inputType="numberDecimal" android:maxLines="1"  android:defaultValue="0"/>
+      <EditTextPreference android:title="Investment" android:key="@string/pref_investment" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
+      <EditTextPreference android:title="Other" android:key="@string/pref_other" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
     </PreferenceScreen>
 	</PreferenceCategory>
 </PreferenceScreen>

@@ -12,7 +12,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using Android.Preferences;
 
 namespace PaySplit.Droid
 {
@@ -127,17 +127,37 @@ namespace PaySplit.Droid
 		{
 			try
 			{
-				EditText name = FindViewById<EditText>(Resource.Id.name);
-				mBill.Name = name.Text;
-				EditText description = FindViewById<EditText>(Resource.Id.description);
-				mBill.Description = description.Text;
-				EditText amount = FindViewById<EditText>(Resource.Id.amount);
-				mBill.Amount = Double.Parse(amount.Text);
+                EditText name = FindViewById<EditText>(Resource.Id.name);
+                mBill.Name = name.Text;
+                EditText description = FindViewById<EditText>(Resource.Id.description);
+                mBill.Description = description.Text;
+                EditText amount = FindViewById<EditText>(Resource.Id.amount);
+                mBill.Amount = Double.Parse(amount.Text);
 
-				mBill.LastEdited = DateTime.Now;
+                mBill.LastEdited = DateTime.Now;
 
-				Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
-				mBill.Category = categoriesSpinner.SelectedItem.ToString();
+                // Check if any more bills can be added for this category
+                Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
+                mBill.Category = categoriesSpinner.SelectedItem.ToString();
+                ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
+                string cat = sharedPreferences.GetString(mBill.Category, "0");
+                double limit = Convert.ToDouble(cat);
+
+                // if there was an entry in preferences for this category, check if exceeds limit
+                if (limit != 0)
+                {
+                    double total = 0;
+                    foreach (Bill b in mDBService.GetBillsByCategory(mBill.Category))
+                    {
+                        total += b.Amount;
+                    }
+
+                    if (total + mBill.Amount > limit)
+                    {
+                        Toast.MakeText(this, "Total exceeds limit for category: " + mBill.Category, ToastLength.Short).Show();
+                        return;
+                    }
+                }
 
 				mDBService.InsertBillEntry(mBill);
 				this.Finish();
