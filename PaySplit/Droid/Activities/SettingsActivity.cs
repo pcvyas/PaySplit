@@ -91,8 +91,10 @@ namespace PaySplit.Droid
             }
 			else
 			{
-				Toast.MakeText(this, key, ToastLength.Short).Show();
-			}
+                //Toast.MakeText(this, key, ToastLength.Short).Show();
+                EditTextPreference etp = (EditTextPreference)pref;
+                pref.Summary = etp.Text;
+            }
 		}
 
         private void showInsights()
@@ -108,6 +110,19 @@ namespace PaySplit.Droid
             {
                 if (budgetPref != null)
                 {
+                    budgetPref.AddPreference(catPref);
+                    FindPreference(GetString(Resource.String.pref_food_drink)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_food_drink))).Text;
+                    FindPreference(GetString(Resource.String.pref_entertainment)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_entertainment))).Text;
+                    FindPreference(GetString(Resource.String.pref_utilities)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_utilities))).Text;
+                    FindPreference(GetString(Resource.String.pref_education)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_education))).Text;
+                    FindPreference(GetString(Resource.String.pref_personal_care)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_personal_care))).Text;
+                    FindPreference(GetString(Resource.String.pref_shopping)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_shopping))).Text;
+                    FindPreference(GetString(Resource.String.pref_work)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_work))).Text;
+                    FindPreference(GetString(Resource.String.pref_travel)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_travel))).Text;
+                    FindPreference(GetString(Resource.String.pref_transportation)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_transportation))).Text;
+                    FindPreference(GetString(Resource.String.pref_charity)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_charity))).Text;
+                    FindPreference(GetString(Resource.String.pref_investment)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_investment))).Text;
+                    FindPreference(GetString(Resource.String.pref_other)).Summary = ((EditTextPreference)FindPreference(GetString(Resource.String.pref_other))).Text;
                     budgetPref.AddPreference(catPref);
                 }
             }
