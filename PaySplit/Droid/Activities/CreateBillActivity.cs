@@ -154,8 +154,7 @@ namespace PaySplit.Droid
 
                     if (total + mBill.Amount > limit)
                     {
-                        Toast.MakeText(this, "Total exceeds limit for category: " + mBill.Category, ToastLength.Short).Show();
-                        return;
+                        Toast.MakeText(this, "Warning: Total exceeds limit for category: " + mBill.Category, ToastLength.Short).Show();
                     }
                 }
 
