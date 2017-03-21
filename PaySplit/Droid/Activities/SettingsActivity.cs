@@ -53,7 +53,6 @@ namespace PaySplit.Droid
 				contactPreference = (Preference)FindPreference(GetString(Resource.String.pref_contacts));
 				contactPreference.PreferenceClick += delegate {
 					StartActivity(typeof(ViewContactsActivity));
-					Toast.MakeText(this, "Tapped Contacts", ToastLength.Short).Show();
 				};
 
                 showInsights();

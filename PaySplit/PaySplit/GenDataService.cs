@@ -178,7 +178,7 @@ namespace PaySplit
             {
                 return null;
             }
-            return b; ;
+            return b;
         }
 
 		public List<Contact> GetAllContacts()
@@ -204,6 +204,34 @@ namespace PaySplit
 			catch
 			{
 				return new List<Contact>();
+			}
+
+			return contacts;
+		}
+
+		public List<string> GetAllContactNames()
+		{
+			List<string> contacts = new List<string>();
+
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var contactTableQuery = db.Table<Contact>();
+				foreach (Contact c in contactTableQuery)
+				{
+					contacts.Add(c.FullName);
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return new List<string>();
 			}
 
 			return contacts;
@@ -238,7 +266,7 @@ namespace PaySplit
 			return null;
 		}
 
-		public Contact getContactById(string UID)
+		public Contact getContactByUID(string UID)
 		{
 			Contact c = new Contact();
 			try

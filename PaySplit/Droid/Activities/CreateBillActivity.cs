@@ -26,9 +26,17 @@ namespace PaySplit.Droid
 		private GenDataService mDBService;
 
 		private Spinner mCategoriesSpinner;
+		private Spinner mOwnerSpinner;
 
-		ArrayAdapter<String> mAdapter;
+		ArrayAdapter<String> mCategoriesSpinnerAdapter;
+		ContactsSuggestionArrayAdapter mOwnerSpinnerAdapter;
+
+		private EditText mNameEditText;
+		private EditText mDescriptionEditText;
+		private EditText mAmountEditText;
+
 		private String[] mCategories;
+		private List<Contact> mContacts;
 
 		private int CAMERA_REQUEST_CODE = 1;
 
@@ -37,17 +45,26 @@ namespace PaySplit.Droid
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.CreateBillEntry);
 
+			//Initialize database service
+			mDBService = DataHelper.getInstance().getGenDataService();
+
 			mBill = new Bill();
+
+			mNameEditText = FindViewById<EditText>(Resource.Id.name);
+			mDescriptionEditText = FindViewById<EditText>(Resource.Id.description);
+			mAmountEditText = FindViewById<EditText>(Resource.Id.amount);
 
 			mCategories = Resources.GetStringArray(Resource.Array.categories_array);
 
 			mCategoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
+			mOwnerSpinner = FindViewById<Spinner>(Resource.Id.owner_spinner);
 
-			mAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, mCategories);
-			mCategoriesSpinner.Adapter = mAdapter;
+			mCategoriesSpinnerAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, mCategories);
+			mCategoriesSpinner.Adapter = mCategoriesSpinnerAdapter;
 
-			//Initialize database service
-			mDBService = DataHelper.getInstance().getGenDataService();
+			mContacts = mDBService.GetAllContacts();
+			mOwnerSpinnerAdapter = new ContactsSuggestionArrayAdapter(this, mContacts);
+			mOwnerSpinner.Adapter = mOwnerSpinnerAdapter;
 
 			mImageView = FindViewById<ImageView>(Resource.Id.picture);
 
@@ -76,21 +93,7 @@ namespace PaySplit.Droid
 				}
 
 			};
-			//====================
 
-			/*if (mCameraService.IsThereAnAppToTakePictures())
-			{
-				mCameraService.CreateDirectoryForPictures();
-
-				ImageButton takePhoto = FindViewById<ImageButton>(Resource.Id.takePic);
-
-				takePhoto.Click += delegate
-				{
-					mCameraService.TakeAPicture();
-					mBill.ImagePath = mCameraService.GetSavedPicturePath();
-				};
-			}
-			*/
 			mImageView.Visibility = ViewStates.Invisible;
 
 			Button saveBtn = FindViewById<Button>(Resource.Id.save);
@@ -127,22 +130,16 @@ namespace PaySplit.Droid
 		{
 			try
 			{
-                EditText name = FindViewById<EditText>(Resource.Id.name);
-                mBill.Name = name.Text;
-                EditText description = FindViewById<EditText>(Resource.Id.description);
-                mBill.Description = description.Text;
-                EditText amount = FindViewById<EditText>(Resource.Id.amount);
-                mBill.Amount = Double.Parse(amount.Text);
-
+                mBill.Name = mNameEditText.Text;
+                mBill.Description = mDescriptionEditText.Text;
+                mBill.Amount = Double.Parse(mAmountEditText.Text);
                 mBill.LastEdited = DateTime.Now;
+                mBill.Category = mCategoriesSpinner.SelectedItem.ToString();
+				mBill.OwnerUID = mContacts[mOwnerSpinner.SelectedItemPosition].UID;
 
-                // Check if any more bills can be added for this category
-                Spinner categoriesSpinner = FindViewById<Spinner>(Resource.Id.category_spinner);
-                mBill.Category = categoriesSpinner.SelectedItem.ToString();
                 ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
                 string cat = sharedPreferences.GetString(mBill.Category, "0");
                 double limit = Convert.ToDouble(cat);
-
                 // if there was an entry in preferences for this category, check if exceeds limit
                 if (limit != 0)
                 {
@@ -182,9 +179,6 @@ namespace PaySplit.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-			//Bundle extras = data.GetBundleExtra("data");
-			//Bitmap imageBitmap = (Bitmap)extras.Get("data");
-			//mImageView.SetImageBitmap(imageBitmap);
 			mCameraService.SavePicture();
 		}
 
@@ -204,8 +198,7 @@ namespace PaySplit.Droid
 				else
 				{
 					// Your app will not have this permission. Turn off all functions 
-					// that require this permission or it will force close like your 
-					// original question
+					// that require this permission or it will force close
 				}
 			}
 		}
