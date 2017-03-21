@@ -69,7 +69,7 @@ namespace PaySplit.Droid
 			viewHolder.deleteButton.Click += delegate {
 				if (!mIsDialogShowing)
 				{
-					showDeleteContactDialog(c, viewHolder);
+					showDeleteContactDialog(c);
 				}
 			};
 			viewHolder.editButton.Click += delegate
