@@ -158,6 +158,8 @@
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Util\Debugger.cs" />
+    <Compile Include="Activities\ViewContactsActivity.cs" />
+    <Compile Include="Adapters\ContactsListViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -201,6 +203,7 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_search.png" />
+    <AndroidResource Include="Resources\layout\ViewContact.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

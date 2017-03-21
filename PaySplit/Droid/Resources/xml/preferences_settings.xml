@@ -7,14 +7,15 @@
             android:summary="Placeholder Name"
 			android:dialogTitle="Update Your Name:"
             android:defaultValue=""
-      android:maxLines="1"/>
+      		android:maxLines="1"/>
 		<EditTextPreference
 			android:title="E-mail"
             android:key="@string/pref_update_email"
             android:summary="Placeholder E-mail"
 			android:dialogTitle="Update Your E-mail:"
             android:defaultValue=""
-      android:maxLines="1"/>
+      		android:maxLines="1"/>
+		<Preference android:title="Contacts" android:key="@string/pref_contacts" android:summary="View and Edit your current contacts" />
 		<Preference android:title="App Version" android:summary="@string/app_version" />
 	</PreferenceCategory>
   

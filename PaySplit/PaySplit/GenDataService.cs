@@ -279,6 +279,24 @@ namespace PaySplit
 			return true;
 		}
 
+		public bool DeleteContact(Contact c)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				db.Delete(c);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
 
 		/* Delete Operations */
 		//Delete A Bill
@@ -299,6 +317,7 @@ namespace PaySplit
 			}
 			return true;
 		}
+
 
         // Delete all bills
         public bool deleteAllBills()
@@ -347,6 +366,30 @@ namespace PaySplit
             }
             return true;
         }
+
+		public bool UpdateContactInformation(Contact c)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				Contact contact = db.Find<Contact>(c.Id);
+				if (contact != null)
+				{
+					contact = c;
+					db.Update(contact);
+				}
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
 
 		public bool UpdateUserContactInformation(Contact c)
 		{

@@ -20,6 +20,8 @@ namespace PaySplit.Droid
 	{
 
 		private GenDataService mDBS;
+
+		private Preference contactPreference;
         private CheckBoxPreference cbPref;
         private PreferenceCategory budgetPref;
         private PreferenceScreen catPref;
@@ -47,6 +49,12 @@ namespace PaySplit.Droid
                 {
                     catPref = (PreferenceScreen)FindPreference(GetString(Resource.String.pref_insights_categories));
                 }
+
+				contactPreference = (Preference)FindPreference(GetString(Resource.String.pref_contacts));
+				contactPreference.PreferenceClick += delegate {
+					StartActivity(typeof(ViewContactsActivity));
+					Toast.MakeText(this, "Tapped Contacts", ToastLength.Short).Show();
+				};
 
                 showInsights();
 
@@ -85,13 +93,13 @@ namespace PaySplit.Droid
 				c.Email = etp.Text;
 
 				mDBS.UpdateUserContactInformation(c);
-			} else if (key.Equals(GetString(Resource.String.pref_enable_insights)))
+			}
+			else if (key.Equals(GetString(Resource.String.pref_enable_insights)))
             {
                 showInsights();
             }
 			else
 			{
-                //Toast.MakeText(this, key, ToastLength.Short).Show();
                 EditTextPreference etp = (EditTextPreference)pref;
                 pref.Summary = etp.Text;
             }

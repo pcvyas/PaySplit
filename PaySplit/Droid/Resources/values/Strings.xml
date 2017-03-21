@@ -12,6 +12,7 @@
 	<string name="settings_insights_title">Insights</string>
 
 	<string name="pref_update_name">pref_update_name</string>
+	<string name="pref_contacts">pref_contacts</string>
 	<string name="pref_update_email">pref_update_email</string>
 	<string name="pref_user_created">setting_user_created</string>
   <string name="pref_budgeting_category">pref_budgeting_category</string>
