@@ -43,6 +43,8 @@ namespace PaySplit.Droid
 		public void update(List<Contact> contacts)
 		{
 			this.mContacts = contacts;
+			NotifyDataSetChanged();
+
 		}
 
 		// Define what is within each row
@@ -120,6 +122,7 @@ namespace PaySplit.Droid
 				contact.FullName = name;
 				contact.Email = email;
 				DataHelper.getInstance().getGenDataService().UpdateContactInformation(contact);
+				update(DataHelper.getInstance().getGenDataService().GetAllContacts().Where(o => o.Id != 1).ToList());
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate {
 				mIsDialogShowing = false;
@@ -140,6 +143,7 @@ namespace PaySplit.Droid
 			alertDialog.SetPositiveButton("Confirm", delegate
 			{
 				DataHelper.getInstance().getGenDataService().DeleteContact(c);
+				update(DataHelper.getInstance().getGenDataService().GetAllContacts().Where(o => o.Id != 1).ToList());
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate
 			{

@@ -126,6 +126,9 @@ namespace PaySplit.Droid
 				c.FullName = name;
 				c.Email = email;
 				DataHelper.getInstance().getGenDataService().InsertContactEntry(c);
+				mAdapter.update(mDBS.GetAllContacts().Where(o => o.Id != 1).ToList());
+
+
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate
 			{
