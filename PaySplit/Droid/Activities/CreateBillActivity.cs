@@ -146,7 +146,7 @@ namespace PaySplit.Droid
                 string cat = sharedPreferences.GetString(mBill.Category, "0");
                 double limit = Convert.ToDouble(cat);
                 // if there was an entry in preferences for this category, check if exceeds limit
-                if (limit != 0)
+				if (!limit.Equals(0))
                 {
                     double total = 0;
                     foreach (Bill b in mDBService.GetBillsByCategory(mBill.Category))
@@ -156,17 +156,41 @@ namespace PaySplit.Droid
 
                     if (total + mBill.Amount > limit)
                     {
-                        Toast.MakeText(this, "Warning: Total exceeds limit for category: " + mBill.Category, ToastLength.Short).Show();
+						ShowBudgetExceededDialog(cat, limit, total);
                     }
+					if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
+					{
+						ShowApproachingBudgetDialog(cat, limit, total);
+					}
                 }
 
 				mDBService.InsertBillEntry(mBill);
 				this.Finish();
 			}
-			catch (Exception exc)
+			catch (Exception)
 			{
-				Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
+				Toast.MakeText(this, "Error: Unable to create bill!", ToastLength.Short).Show();
 			}
+		}
+
+		void ShowApproachingBudgetDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Approaching Monthly Limit");
+			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowBudgetExceededDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Montly Limit Exceeded");
+			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)

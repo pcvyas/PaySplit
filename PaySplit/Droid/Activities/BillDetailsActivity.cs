@@ -56,7 +56,7 @@ namespace PaySplit.Droid
 		int categoryIndex = 0;
 		int ownerIndex = 0;
 
-		private const int CATEGORY_LIMIT_WARNING_THRESHOLD = 10;
+		public const int CATEGORY_LIMIT_WARNING_THRESHOLD = 10;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -281,12 +281,10 @@ namespace PaySplit.Droid
 				owner.Text = mContacts[owner_edit.SelectedItemPosition].FullName;
 
 				updateLastUpdatedTimestampText();
-
-                Toast.MakeText(this, "Update Successful", ToastLength.Short).Show();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
+                Toast.MakeText(this, "Error: Failed to update bill.", ToastLength.Short).Show();
             }
         }
 

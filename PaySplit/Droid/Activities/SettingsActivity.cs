@@ -63,7 +63,7 @@ namespace PaySplit.Droid
             }
 			catch (Exception)
 			{
-				Toast.MakeText(this, "Unable to get contact", ToastLength.Short).Show();
+				Toast.MakeText(this, "Error: Failed to fetch contact", ToastLength.Short).Show();
 				// Unable to fetch contact and update fields
 			}
 		}
