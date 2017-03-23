@@ -162,7 +162,7 @@ namespace PaySplit.Droid
 
 		private void updateLastUpdatedTimestampText()
 		{
-			updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy");
+			updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy @ HH:mm:ss");
 		}
 
 		void LoadImageForBill()
@@ -218,8 +218,11 @@ namespace PaySplit.Droid
 		{
             try
             {
-                string billCat = adapter.GetItem(category_edit.SelectedItemPosition);
-				Contact c = mContacts[owner_edit.SelectedItemPosition];
+				categoryIndex = category_edit.SelectedItemPosition;
+                string billCat = adapter.GetItem(categoryIndex);
+
+				ownerIndex = owner_edit.SelectedItemPosition;
+				Contact c = mContacts[ownerIndex];
                 double billAmount = Double.Parse(amount_edit.Text);
                 ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
                 string catLimit = sharedPreferences.GetString(billCat, "0");
@@ -259,6 +262,7 @@ namespace PaySplit.Droid
                 mBill.Category = billCat;
                 mBill.Description = desc_edit.Text;
 				mBill.OwnerUID = c.UID;
+				mBill.LastEdited = DateTime.Now;
 
 				mDBS.SaveBillEntry(mBill.UID, mBill);
 
@@ -268,6 +272,8 @@ namespace PaySplit.Droid
                 category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
                 desc.Text = desc_edit.Text;
 				owner.Text = mContacts[owner_edit.SelectedItemPosition].FullName;
+
+				updateLastUpdatedTimestampText();
 
                 Toast.MakeText(this, "Update Successful", ToastLength.Short).Show();
             }
