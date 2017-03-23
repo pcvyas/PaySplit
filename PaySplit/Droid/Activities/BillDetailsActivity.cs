@@ -56,6 +56,8 @@ namespace PaySplit.Droid
 		int categoryIndex = 0;
 		int ownerIndex = 0;
 
+		private const int CATEGORY_LIMIT_WARNING_THRESHOLD = 10;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -243,10 +245,14 @@ namespace PaySplit.Droid
                         total -= mBill.Amount;
                     }
                     total += billAmount;
-                    if (total > limit)
-                    {
-                        Toast.MakeText(this, "Warning: Total exceeds limit for category: " + billCat, ToastLength.Short).Show();
-                    }
+					if (total > limit)
+					{
+						ShowBudgetExceededDialog(billCat, limit, total);
+					}
+					else if ((total + CATEGORY_LIMIT_WARNING_THRESHOLD) >= limit)
+					{
+						ShowApproachingBudgetDialog(billCat, limit, total);
+					}
                 }
 
                 nameSwitcher.ShowPrevious();
@@ -284,6 +290,26 @@ namespace PaySplit.Droid
             }
         }
 
+		void ShowApproachingBudgetDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Approaching Monthly Limit");
+			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowBudgetExceededDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Montly Limit Exceeded");
+			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
 		void Delete_Click(object sender, EventArgs e)
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -310,16 +336,5 @@ namespace PaySplit.Droid
 												 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
-    
-       
-        //public override void OnBackPressed()
-        //{
-        //    base.OnBackPressed();
-        //    FinishActivity(1);
-        //}
-        //protected override void OnStop()
-        //{
-        //    base.OnStop();
-        //}
     }
 }
