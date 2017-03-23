@@ -35,7 +35,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="25dp"
         android:padding="5dp"
-        android:src="@drawable/ic_plus"
+        android:src="@mipmap/ic_plus"
         android:visibility="gone"
         fab:fab_colorNormal="@color/accentColor"
         fab:fab_colorPressed="@color/accentColorDark"

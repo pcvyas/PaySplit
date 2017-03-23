@@ -198,7 +198,6 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable\ic_plus.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_search.png" />
@@ -206,6 +205,12 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_search.png" />
     <AndroidResource Include="Resources\layout\ViewContact.xml" />
     <AndroidResource Include="Resources\layout\SpinnerSuggestionView.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_plus_.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

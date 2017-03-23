@@ -17,8 +17,9 @@ namespace PaySplit.Droid
 	[Activity(Label = "CreateUserActivity", MainLauncher = false, Icon = "@mipmap/ic_launcher")]
 	public class CreateUserActivity : Activity
 	{
-		private TextView mNameTextView;
-		private TextView mEmailTextView;
+		private EditText mNameEditTextView;
+		private EditText mEmailEditTextView;
+		private EditText mPasswordEditTextView;
 
 		private Button mStartButton;
 
@@ -31,15 +32,17 @@ namespace PaySplit.Droid
 
 			mDBS = DataHelper.getInstance().getGenDataService();
 
-			mNameTextView = FindViewById<TextView>(Resource.Id.Create_Name_EditText);
-			mEmailTextView = FindViewById<TextView>(Resource.Id.Create_Email_EditText);
+			mNameEditTextView = FindViewById<EditText>(Resource.Id.Create_Name_EditText);
+			mEmailEditTextView = FindViewById<EditText>(Resource.Id.Create_Email_EditText);
+			mPasswordEditTextView = FindViewById<EditText>(Resource.Id.Create_Passwor_EditText);
 
 			mStartButton = FindViewById<Button>(Resource.Id.Create_StartBtn);
 			mStartButton.Click += delegate
 			{
-				String name = mNameTextView.Text;
-				String email = mEmailTextView.Text;
-				if ((name == null || name == "") || (email == null || !isValidEmail(email)))
+				String name = mNameEditTextView.Text;
+				String email = mEmailEditTextView.Text;
+				String password = mPasswordEditTextView.Text;
+				if ((name == null || ("").Equals(name)) || (email == null || !isValidEmail(email)) || (password == null || ("").Equals(password) || password.Length < 10))
 				{
 					showErrorDialog();
 				}
@@ -51,6 +54,7 @@ namespace PaySplit.Droid
 					c.UID = Constants.MAIN_USER_DEFAULT_UID;
 					c.FullName = name;
 					c.Email = email;
+					c.Password = password;
 					mDBS.InsertContactEntry(c);
 
 					Settings.setUserCreated(this, true);
@@ -85,7 +89,7 @@ namespace PaySplit.Droid
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("Invalid Info");
-			alert.SetMessage("Please enter a valid name and e-mail address.");
+			alert.SetMessage("Please enter a valid name, e-mail address & password. Password length must be at least 10 characters.");
 			alert.SetNegativeButton("Ok", (senderAlert, args) => {});
 			Dialog dialog = alert.Create();
 			dialog.Show();
