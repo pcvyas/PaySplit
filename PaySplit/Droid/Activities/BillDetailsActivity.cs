@@ -146,6 +146,7 @@ namespace PaySplit.Droid
 			owner.Text = mContacts[ownerIndex].FullName;
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+			this.ActionBar.Title = mBill.Name;
         }
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -285,8 +286,16 @@ namespace PaySplit.Droid
 
 		void Delete_Click(object sender, EventArgs e)
 		{
-			mDBS.DeleteBillAsync(mBill);
-			this.Finish();
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Confirm Delete");
+			alert.SetMessage("Are you sure you want to delete this bill? This will remove also remove all payments attached to this bill.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				mDBS.DeleteBillAsync(mBill);
+				this.Finish();
+			});
+			alert.SetNegativeButton("Cancel", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		void Date_Click(object sender, EventArgs e)
