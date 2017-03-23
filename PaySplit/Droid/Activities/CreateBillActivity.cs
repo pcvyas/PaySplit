@@ -108,10 +108,11 @@ namespace PaySplit.Droid
 			dateV.Click += Date_Click;
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+		}
 
-
-
-
+		public override void OnBackPressed()
+		{
+			ShowDiscardDialog();
 		}
 
 		void Date_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace PaySplit.Droid
 
 		void CancelBtn_Click(object sender, EventArgs e)
 		{
-			this.Finish();
+			ShowDiscardDialog();
 		}
 
 		void Save_Clicked(object sender, EventArgs e)
@@ -169,8 +170,31 @@ namespace PaySplit.Droid
 			}
 			catch (Exception)
 			{
-				Toast.MakeText(this, "Error: Unable to create bill!", ToastLength.Short).Show();
+				ShowInvalidInformationDialog();
 			}
+		}
+
+		void ShowInvalidInformationDialog()
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Missing fields");
+			alert.SetMessage("Please make sure you enter all required fields before saving bill.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowDiscardDialog()
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Discard new bill?");
+			alert.SetMessage("Are you sure you want to discard this bill? All unsaved changed will be lost.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {
+				this.Finish();
+			});
+			alert.SetNegativeButton("Cancel", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		void ShowApproachingBudgetDialog(string billCat, double limit, double total)
