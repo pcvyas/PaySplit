@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Firebase.Xamarin.Database;
 using SQLite;
 
 
@@ -10,10 +12,131 @@ namespace PaySplit
 		
 		public string DBPath;
 
+		private const string FIREBASE_URL = "https://paysplit-6daf0.firebaseio.com/";
+
+
 		public GenDataService(string path)
 		{
 			this.DBPath = path;
-		}	
+		}
+
+		//Firebase 
+		/************************
+		//Cloud DataBase Wrappers
+		*************************/
+
+		string GetTableName(Type t)
+		{
+			string stype = t.ToString();
+			int pos = stype.LastIndexOf('.') + 1;
+			return stype.Substring(pos, stype.Length - pos);
+		}
+
+
+		//Insert an Item
+		public async void FBInsertItem<T>(T item)
+		{
+			//Table name
+			string tableName = GetTableName(typeof(T));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			await fbDatabase.Child(tableName).PostAsync<T>(item);
+		}
+
+		//GetAll Items
+		public async Task<List<T>> FBGetItems<T>()
+		{
+			//Table name
+			string tableName = GetTableName(typeof(T));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			var entryList = await fbDatabase.Child(tableName).OnceAsync<T>();
+
+			List<T> returnList = new List<T>();
+			foreach (var entry in entryList)
+			{
+				returnList.Add(entry.Object);
+			}
+			return returnList;
+		}
+
+		//Get Bills by Category
+		public async Task<List<Bill>> FBGetBillsByCategory(string cat)
+		{
+			//Table name
+			string tableName = GetTableName(typeof(Bill));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			var entryList = await fbDatabase.Child(tableName) .OnceAsync<Bill>();
+			((List<FirebaseObject<Bill>>)entryList).FindAll(o => o.Object.Category == cat);
+
+			List<Bill> returnList = new List<Bill>();
+			foreach (var entry in entryList)
+			{
+				returnList.Add(entry.Object);
+			}
+			return returnList;
+		}
+
+		//Get all contact names
+		public async Task<List<string>> FBGetAllContactNames()
+		{
+			//Table name
+			string tableName = GetTableName(typeof(Contact));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			var entryList = await fbDatabase.Child(tableName).OnceAsync<Contact>();
+
+			List<string> returnList = new List<string>();
+			foreach (var entry in entryList)
+			{
+				returnList.Add(entry.Object.FullName);
+			}
+			return returnList;
+		}
+
+		//Get Bill by ID
+		public async Task<T> FBFindByUID<T>(string uid)
+		{
+			//Table name
+			string tableName = GetTableName(typeof(T));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			var entryList = await fbDatabase.Child(tableName).OnceAsync<T>();
+
+			return ((List<FirebaseObject<T>>)entryList).Find((obj) => ((dynamic)(obj.Object)).UID == uid).Object;
+		}
+
+
+		public async void FBDeleteItem<T>(T item)
+		{
+			//Table name
+			string tableName = GetTableName(typeof(T));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			await fbDatabase.Child(tableName).Client.Child(((dynamic)item).UID).DeleteAsync();
+		}
+
+		public async void FBUpdateItem<T>(T item)
+		{
+			//Table name
+			string tableName = GetTableName(typeof(T));
+
+			//FireBase Test
+			FirebaseClient fbDatabase = new FirebaseClient(FIREBASE_URL);
+			//await fbDatabase.Child(tableName).Client.Child(((dynamic)item).UID).DeleteAsync();
+			await fbDatabase.Child(tableName).PutAsync<T>(item);
+		}
+
+		/*---------------------------
+		//END Cloud DataBase Wrappers
+		-----------------------------*/
 
 		//Create Table
 		public bool CreateTableIfNotExists()
@@ -37,6 +160,8 @@ namespace PaySplit
 			return true;
 		}
 
+
+
 		/* Insertion Operations */
 
 		//Insert a new BillEntry
@@ -51,6 +176,7 @@ namespace PaySplit
 				SQLiteConnection db = new SQLiteConnection(DBPath);
 				db.Insert(b);
 				db.Close();
+
 			}
 			catch
 			{
@@ -161,7 +287,7 @@ namespace PaySplit
 			return bs;
 		}
 
-        public Bill getBillById(int id)
+        public Bill getBillByUid(string uid)
         {
             Bill b = new Bill();
             try
@@ -171,7 +297,7 @@ namespace PaySplit
                     throw new Exception("Database does't exist!");
                 }
                 SQLiteConnection db = new SQLiteConnection(DBPath);
-                b = db.Find<Bill>(id);
+                b = db.Find<Bill>(uid);
                 db.Close();
             }
             catch
@@ -371,7 +497,7 @@ namespace PaySplit
 		/* Update Operations */
 
         //Save a BillEntry
-        public bool SaveBillEntry(int id, Bill b)
+        public bool SaveBillEntry(string uid, Bill b)
         {
             try
             {
@@ -380,7 +506,7 @@ namespace PaySplit
                     throw new Exception("Database does't exist!");
                 }
                 SQLiteConnection db = new SQLiteConnection(DBPath);
-                Bill bill = db.Find<Bill>(id);
+                Bill bill = db.Find<Bill>(uid);
                 if (bill != null)
                 {
                     bill = b;	
@@ -404,7 +530,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				Contact contact = db.Find<Contact>(c.Id);
+				Contact contact = db.Find<Contact>(c.UID);
 				if (contact != null)
 				{
 					contact = c;
@@ -442,5 +568,7 @@ namespace PaySplit
 			}
 			return true;
 		}
+
+
     }
 }

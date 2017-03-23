@@ -13,6 +13,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Preferences;
+using Firebase.Xamarin.Database;
 
 namespace PaySplit.Droid
 {
@@ -107,6 +108,10 @@ namespace PaySplit.Droid
 			dateV.Click += Date_Click;
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+
+
+
+
 		}
 
 		void Date_Click(object sender, EventArgs e)
