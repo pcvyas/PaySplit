@@ -155,18 +155,21 @@ namespace PaySplit.Droid
                         total += b.Amount;
                     }
 
-                    if (total + mBill.Amount > limit)
-                    {
-						ShowBudgetExceededDialog(cat, limit, total);
-                    }
-					if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
+					if (total + mBill.Amount > limit)
 					{
-						ShowApproachingBudgetDialog(cat, limit, total);
+						ShowBudgetExceededDialog(mBill.Category, limit, total);
+					}
+					else if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
+					{
+						ShowApproachingBudgetDialog(mBill.Category, limit, total);
+					}
+					else
+					{
+						this.Finish();
 					}
                 }
 
 				mDBService.InsertBillEntry(mBill);
-				this.Finish();
 			}
 			catch (Exception)
 			{
@@ -201,8 +204,10 @@ namespace PaySplit.Droid
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("Approaching Monthly Limit");
-			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
-			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				this.Finish();
+			});
 			Dialog dialog = alert.Create();
 			dialog.Show();
 		}
@@ -211,8 +216,10 @@ namespace PaySplit.Droid
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("Montly Limit Exceeded");
-			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of " + limit + "!");
-			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				this.Finish();
+			});
 			Dialog dialog = alert.Create();
 			dialog.Show();
 		}
