@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 
 using Android.App;
@@ -32,15 +33,18 @@ namespace PaySplit.Droid
 			this.AddPreferencesFromResource(Resource.Xml.preferences_settings);
 			PreferenceManager.SetDefaultValues(this, Resource.Xml.preferences_settings, true);
 
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+
 			mDBS = DataHelper.getInstance().getGenDataService();
 
 			try
 			{
 				Contact c = mDBS.getUserContactInformation();
+
 				Settings.SetDefaultName(this, c.FullName);
 				FindPreference(GetString(Resource.String.pref_update_name)).Summary = c.FullName;
 
-				Settings.SetDefaultName(this, c.Email);
+				Settings.SetDefaultEmail(this, c.Email);
 				FindPreference(GetString(Resource.String.pref_update_email)).Summary = c.Email;
 
                 cbPref = (CheckBoxPreference)FindPreference(GetString(Resource.String.pref_enable_insights));
@@ -56,7 +60,6 @@ namespace PaySplit.Droid
 				};
 
                 showInsights();
-
             }
 			catch (Exception)
 			{
@@ -76,22 +79,32 @@ namespace PaySplit.Droid
 			if (key.Equals(GetString(Resource.String.pref_update_name)))
 			{
 				EditTextPreference etp = (EditTextPreference)pref;
-				pref.Summary = etp.Text;
+				if (etp.Text != null && !("").Equals(etp.Text))
+				{
+					pref.Summary = etp.Text;
 
-				Contact c = mDBS.getUserContactInformation();
-				c.FullName = etp.Text;
+					Contact c = mDBS.getUserContactInformation();
+					c.FullName = etp.Text;
 
-				mDBS.UpdateUserContactInformation(c);
+					mDBS.UpdateUserContactInformation(c);
+				} 
 			}
 			else if (key.Equals(GetString(Resource.String.pref_update_email)))
 			{
 				EditTextPreference etp = (EditTextPreference)pref;
-				pref.Summary = etp.Text;
+				if (etp.Text != null && isValidEmail(etp.Text))
+				{
+					pref.Summary = etp.Text;
+					Contact c = mDBS.getUserContactInformation();
+					c.Email = etp.Text;
 
-				Contact c = mDBS.getUserContactInformation();
-				c.Email = etp.Text;
-
-				mDBS.UpdateUserContactInformation(c);
+					mDBS.UpdateUserContactInformation(c);
+					Toast.MakeText(this, "Updated e-mail to " + etp.Text, ToastLength.Short).Show();
+				}
+				else
+				{
+					Toast.MakeText(this, "Failed to update: Invalid email address provided.", ToastLength.Long).Show();
+				}
 			}
 			else if (key.Equals(GetString(Resource.String.pref_enable_insights)))
             {
@@ -102,8 +115,6 @@ namespace PaySplit.Droid
                 EditTextPreference etp = (EditTextPreference)pref;
                 pref.Summary = etp.Text;
             }
-
-			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
         private void showInsights()
@@ -164,6 +175,19 @@ namespace PaySplit.Droid
 					return true;
 				default:
 					return base.OnOptionsItemSelected(item);
+			}
+		}
+
+		private bool isValidEmail(String email)
+		{
+			try
+			{
+				MailAddress mailAddress = new MailAddress(email);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
 			}
 		}
 

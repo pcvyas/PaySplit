@@ -3,7 +3,7 @@
 	<string name="app_name">PaySplit</string>
 	<string name="app_version">"1.0"</string>
 	
-	<string name="categories_menu_title">View Categories</string>
+	<string name="categories_menu_title">Categories</string>
 	<string name="settings_menu_title">Settings</string>
 
 	<string name="categories_no_items_text">As you create bills, categories will appear here. \nTapping on categories will allow you to view bills in that category.</string>
