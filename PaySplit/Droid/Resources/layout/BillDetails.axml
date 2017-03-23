@@ -154,7 +154,6 @@
                 android:singleLine="true"
                 android:fontFamily="sans-serif-light"
                 android:textSize="14sp"
-                android:textAllCaps="true"
                 android:textStyle="bold"
                 android:padding="5dp"
                 android:layout_height="wrap_content" />

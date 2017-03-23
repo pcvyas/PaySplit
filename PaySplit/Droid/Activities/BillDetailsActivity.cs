@@ -251,6 +251,7 @@ namespace PaySplit.Droid
 				ownerSwitcher.ShowPrevious();
                 descSwitcher.ShowPrevious();
                 buttonSwitcher.ShowPrevious();
+				dateSwitcher.ShowPrevious();
 
                 mBill.Name = name_edit.Text;
                 mBill.Amount = billAmount;
