@@ -19,7 +19,6 @@ namespace PaySplit.Droid
 	{
 		private EditText mNameEditTextView;
 		private EditText mEmailEditTextView;
-		private EditText mPasswordEditTextView;
 
 		private Button mStartButton;
 
@@ -34,15 +33,13 @@ namespace PaySplit.Droid
 
 			mNameEditTextView = FindViewById<EditText>(Resource.Id.Create_Name_EditText);
 			mEmailEditTextView = FindViewById<EditText>(Resource.Id.Create_Email_EditText);
-			mPasswordEditTextView = FindViewById<EditText>(Resource.Id.Create_Passwor_EditText);
 
 			mStartButton = FindViewById<Button>(Resource.Id.Create_StartBtn);
 			mStartButton.Click += delegate
 			{
 				String name = mNameEditTextView.Text;
 				String email = mEmailEditTextView.Text;
-				String password = mPasswordEditTextView.Text;
-				if ((name == null || ("").Equals(name)) || (email == null || !isValidEmail(email)) || (password == null || ("").Equals(password) || password.Length < 10))
+				if ((name == null || ("").Equals(name)) || (email == null || !isValidEmail(email)))
 				{
 					showErrorDialog();
 				}
@@ -54,7 +51,6 @@ namespace PaySplit.Droid
 					c.UID = Constants.MAIN_USER_DEFAULT_UID;
 					c.FullName = name;
 					c.Email = email;
-					c.Password = password;
 					mDBS.InsertContactEntry(c);
 
 					Settings.setUserCreated(this, true);
@@ -89,7 +85,7 @@ namespace PaySplit.Droid
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("Invalid Info");
-			alert.SetMessage("Please enter a valid name, e-mail address & password. Password length must be at least 10 characters.");
+			alert.SetMessage("Please enter a valid name & e-mail address. Password length must be at least 10 characters.");
 			alert.SetNegativeButton("Ok", (senderAlert, args) => {});
 			Dialog dialog = alert.Create();
 			dialog.Show();

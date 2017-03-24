@@ -33,9 +33,10 @@
             android:textStyle="bold" />
         <EditText
             android:layout_width="fill_parent"
-            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
+            android:textColor="@color/black"
+            android:background="@drawable/big_card"
+            android:padding="10dp"
             android:singleLine="true"
             android:id="@+id/Create_Name_EditText" />
         <TextView
@@ -48,34 +49,19 @@
             android:textStyle="bold" />
         <EditText
             android:layout_width="fill_parent"
-            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
+            android:textColor="@color/black"
+            android:background="@drawable/big_card"
+            android:padding="10dp"
             android:singleLine="true"
             android:id="@+id/Create_Email_EditText" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Create_Password_Label"
-            android:text="Password:"
-            android:textColor="@android:color/white"
-            android:padding="10dp"
-            android:textStyle="bold" />
-        <EditText
-            android:layout_width="fill_parent"
-            android:textColor="@android:color/white"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:backgroundTint="@android:color/white"
-            android:singleLine="true"
-            android:id="@+id/Create_Passwor_EditText" />
         <Button
             android:text="Start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/accentColor"
             android:textColor="@android:color/white"
-            android:layout_margin="20dp"
+            android:layout_margin="50dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:id="@+id/Create_StartBtn" />
