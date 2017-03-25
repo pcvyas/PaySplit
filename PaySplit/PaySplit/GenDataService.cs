@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using SQLite;
 
 
@@ -13,7 +14,8 @@ namespace PaySplit
 		public GenDataService(string path)
 		{
 			this.DBPath = path;
-		}	
+		}
+
 
 		//Create Table
 		public bool CreateTableIfNotExists()
@@ -51,6 +53,7 @@ namespace PaySplit
 				SQLiteConnection db = new SQLiteConnection(DBPath);
 				db.Insert(b);
 				db.Close();
+
 			}
 			catch
 			{
@@ -161,24 +164,33 @@ namespace PaySplit
 			return bs;
 		}
 
-        public Bill getBillById(int id)
+        public Bill getBillByUID(string uid)
         {
-            Bill b = new Bill();
-            try
-            {
-                if (DBPath == null)
-                {
-                    throw new Exception("Database does't exist!");
-                }
-                SQLiteConnection db = new SQLiteConnection(DBPath);
-                b = db.Find<Bill>(id);
-                db.Close();
-            }
-            catch
-            {
-                return null;
-            }
-            return b;
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var bills = db.Table<Bill>();
+				foreach (Bill b in bills)
+				{
+					if ((b.UID).Equals(uid))
+					{
+						return b;
+					}
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return null;
+			}
+
+			return null;
         }
 
 		public List<Contact> GetAllContacts()
@@ -442,5 +454,7 @@ namespace PaySplit
 			}
 			return true;
 		}
+
+
     }
 }

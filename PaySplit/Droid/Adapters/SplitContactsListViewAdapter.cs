@@ -101,19 +101,5 @@ namespace PaySplit.Droid
 		}
 
 
-
-		public class SplitContactListViewHolder : Java.Lang.Object
-		{
-			public TextView contactName;
-			public TextView contactEmail;
-			public CheckBox checkBox;
-
-			public SplitContactListViewHolder(View view)
-			{
-				contactName = view.FindViewById<TextView>(Resource.Id.contactName);
-				contactEmail = view.FindViewById<TextView>(Resource.Id.contactEmail);
-				checkBox = view.FindViewById<CheckBox>(Resource.Id.checkBox);
-			}
-		}
 	}
 }

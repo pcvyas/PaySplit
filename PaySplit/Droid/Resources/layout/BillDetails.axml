@@ -153,10 +153,7 @@
                 android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@android:color/white"
-                android:background="@color/accentColor"
                 android:textSize="14sp"
-                android:textAllCaps="true"
                 android:textStyle="bold"
                 android:padding="5dp"
                 android:layout_height="wrap_content" />
@@ -175,34 +172,42 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:id="@+id/Details_imageView" />
-        <ViewSwitcher
-            android:id="@+id/Details_button_switcher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:text="Edit"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Details_EditButton" />
-            <Button
-                android:text="Save"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Details_SaveButton" />
-        </ViewSwitcher>
-        <Button
-            android:text="Delete"
-            android:gravity="center"
-            android:background="@color/redButtonColor"
-            android:textColor="@color/whiteButtonColor"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:id="@+id/deleteBillButton" />
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <ViewSwitcher
+                android:id="@+id/Details_button_switcher"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+                <Button
+                    android:text="Edit"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Details_EditButton" />
+                <Button
+                    android:text="Save"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Details_SaveButton" />
+            </ViewSwitcher>
+            <Button
+                android:text="Delete"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/deleteBillButton" />
+        </LinearLayout>
         <TextView
             android:text="Last Updated"
             android:textAppearance="?android:attr/textAppearanceSmall"

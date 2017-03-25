@@ -48,7 +48,7 @@ namespace PaySplit.Droid
 		private ViewSwitcher dateSwitcher;
 		private ViewSwitcher ownerSwitcher;
 
-		ArrayAdapter<String> adapter;
+		ArrayAdapter<String> mCategoriesAdapter;
 		ContactsSuggestionArrayAdapter mContactsAdapter;
 
 		List<Contact> mContacts;
@@ -56,19 +56,21 @@ namespace PaySplit.Droid
 		int categoryIndex = 0;
 		int ownerIndex = 0;
 
+		public const int CATEGORY_LIMIT_WARNING_THRESHOLD = 10;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.BillDetails);
 
-            //string id = Intent.GetStringExtra("id") ?? "Data not available";
-            string id = Intent.GetStringExtra("id");
+            string uid = Intent.GetStringExtra("uid");
 
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
-            mBill = mDBS.getBillById(Int32.Parse(id));
+			mBill = mDBS.getBillByUID(uid);
 			if (mBill == null)
 			{
+				Toast.MakeText(this, "Error: Failed to load bill.", ToastLength.Short).Show();
 				Finish();
 				return;
 			}
@@ -104,16 +106,16 @@ namespace PaySplit.Droid
             // Initialize the Categories Spinner
             String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
             categoryIndex = 0;
-            for (int i = 0; i < categories.Length; ++i)
+            for (int i = 0; i < categories.Length; i++)
             {
-                if (categories[i] == category.Text)
+				if (categories[i].Equals(category.Text))
                 {
                     categoryIndex = i;
                     break;
                 }
             }
-            adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
-            category_edit.Adapter = adapter;
+            mCategoriesAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
+            category_edit.Adapter = mCategoriesAdapter;
 
 			mContacts = mDBS.GetAllContacts();
 			ownerIndex = 0;
@@ -146,6 +148,7 @@ namespace PaySplit.Droid
 			owner.Text = mContacts[ownerIndex].FullName;
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+			this.ActionBar.Title = mBill.Name;
         }
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -162,7 +165,7 @@ namespace PaySplit.Droid
 
 		private void updateLastUpdatedTimestampText()
 		{
-			updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy");
+			updated.Text = "Last updated: " + mBill.LastEdited.ToString("MMMM dd, yyyy @ HH:mm:ss");
 		}
 
 		void LoadImageForBill()
@@ -218,8 +221,11 @@ namespace PaySplit.Droid
 		{
             try
             {
-                string billCat = adapter.GetItem(category_edit.SelectedItemPosition);
-				Contact c = mContacts[owner_edit.SelectedItemPosition];
+				categoryIndex = category_edit.SelectedItemPosition;
+                string billCat = mCategoriesAdapter.GetItem(categoryIndex);
+
+				ownerIndex = owner_edit.SelectedItemPosition;
+				Contact c = mContacts[ownerIndex];
                 double billAmount = Double.Parse(amount_edit.Text);
                 ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
                 string catLimit = sharedPreferences.GetString(billCat, "0");
@@ -239,10 +245,14 @@ namespace PaySplit.Droid
                         total -= mBill.Amount;
                     }
                     total += billAmount;
-                    if (total > limit)
-                    {
-                        Toast.MakeText(this, "Warning: Total exceeds limit for category: " + billCat, ToastLength.Short).Show();
-                    }
+					if (total > limit)
+					{
+						ShowBudgetExceededDialog(mBill.Category, limit, total);
+					}
+					else if ((total + CATEGORY_LIMIT_WARNING_THRESHOLD) >= limit)
+					{
+						ShowApproachingBudgetDialog(mBill.Category, limit, total);
+					}
                 }
 
                 nameSwitcher.ShowPrevious();
@@ -251,6 +261,7 @@ namespace PaySplit.Droid
 				ownerSwitcher.ShowPrevious();
                 descSwitcher.ShowPrevious();
                 buttonSwitcher.ShowPrevious();
+				dateSwitcher.ShowPrevious();
 
                 mBill.Name = name_edit.Text;
                 mBill.Amount = billAmount;
@@ -258,28 +269,57 @@ namespace PaySplit.Droid
                 mBill.Category = billCat;
                 mBill.Description = desc_edit.Text;
 				mBill.OwnerUID = c.UID;
+				mBill.LastEdited = DateTime.Now;
 
-                mDBS.SaveBillEntry(mBill.Id, mBill);
+				mDBS.SaveBillEntry(mBill.Id, mBill);
 
                 name.Text = name_edit.Text;
                 amount.Text = "$" + amount_edit.Text; // number check here
                 date.Text = date_edit.Text;
-                category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
+                category.Text = mCategoriesAdapter.GetItem(category_edit.SelectedItemPosition);
                 desc.Text = desc_edit.Text;
 				owner.Text = mContacts[owner_edit.SelectedItemPosition].FullName;
 
-                Toast.MakeText(this, "Update Successful", ToastLength.Short).Show();
+				updateLastUpdatedTimestampText();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
+                Toast.MakeText(this, "Error: Failed to update bill.", ToastLength.Short).Show();
             }
         }
 
+		void ShowApproachingBudgetDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Approaching Monthly Limit");
+			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowBudgetExceededDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Montly Limit Exceeded");
+			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
 		void Delete_Click(object sender, EventArgs e)
 		{
-			mDBS.DeleteBillAsync(mBill);
-			this.Finish();
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Confirm Delete");
+			alert.SetMessage("Are you sure you want to delete this bill? This will remove also remove all payments attached to this bill.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				mDBS.DeleteBillAsync(mBill);
+				this.Finish();
+			});
+			alert.SetNegativeButton("Cancel", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		void Date_Click(object sender, EventArgs e)
@@ -294,16 +334,5 @@ namespace PaySplit.Droid
 												 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
-    
-       
-        //public override void OnBackPressed()
-        //{
-        //    base.OnBackPressed();
-        //    FinishActivity(1);
-        //}
-        //protected override void OnStop()
-        //{
-        //    base.OnStop();
-        //}
     }
 }

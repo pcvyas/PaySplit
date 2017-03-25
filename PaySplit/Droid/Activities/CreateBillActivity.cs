@@ -114,6 +114,12 @@ namespace PaySplit.Droid
 		}
 
 
+		public override void OnBackPressed()
+		{
+			ShowDiscardDialog();
+		}
+
+
 		void Date_Click(object sender, EventArgs e)
 		{
 			TextView dateV = FindViewById<TextView>(Resource.Id.date);
@@ -145,7 +151,7 @@ namespace PaySplit.Droid
 
 		void CancelBtn_Click(object sender, EventArgs e)
 		{
-			this.Finish();
+			ShowDiscardDialog();
 		}
 
 		void Save_Clicked(object sender, EventArgs e)
@@ -163,7 +169,7 @@ namespace PaySplit.Droid
                 string cat = sharedPreferences.GetString(mBill.Category, "0");
                 double limit = Convert.ToDouble(cat);
                 // if there was an entry in preferences for this category, check if exceeds limit
-                if (limit != 0)
+				if (!limit.Equals(0))
                 {
                     double total = 0;
                     foreach (Bill b in mDBService.GetBillsByCategory(mBill.Category))
@@ -171,19 +177,77 @@ namespace PaySplit.Droid
                         total += b.Amount;
                     }
 
-                    if (total + mBill.Amount > limit)
-                    {
-                        Toast.MakeText(this, "Warning: Total exceeds limit for category: " + mBill.Category, ToastLength.Short).Show();
-                    }
+					if (total + mBill.Amount > limit)
+					{
+						ShowBudgetExceededDialog(mBill.Category, limit, total);
+					}
+					else if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
+					{
+						ShowApproachingBudgetDialog(mBill.Category, limit, total);
+					}
+					else
+					{
+						this.Finish();
+					}
                 }
+				else
+				{
+					this.Finish();
+				}
 
 				mDBService.InsertBillEntry(mBill);
-				this.Finish();
 			}
-			catch (Exception exc)
+			catch (Exception)
 			{
-				Toast.MakeText(this, "Bill not saved!: " + exc.Message, ToastLength.Short).Show();
+				ShowInvalidInformationDialog();
 			}
+		}
+
+		void ShowInvalidInformationDialog()
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Missing fields");
+			alert.SetMessage("Please make sure you enter all required fields before saving bill.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowDiscardDialog()
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Discard new bill?");
+			alert.SetMessage("Are you sure you want to discard this bill? All unsaved changed will be lost.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {
+				this.Finish();
+			});
+			alert.SetNegativeButton("Cancel", (senderAlert, args) => {});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowApproachingBudgetDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Approaching Monthly Limit");
+			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				this.Finish();
+			});
+			Dialog dialog = alert.Create();
+			dialog.Show();
+		}
+
+		void ShowBudgetExceededDialog(string billCat, double limit, double total)
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Montly Limit Exceeded");
+			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
+			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
+				this.Finish();
+			});
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)

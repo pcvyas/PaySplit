@@ -2,9 +2,9 @@
 # [first argument, ignore] # /Library/Frameworks/Xamarin.iOS.framework/Versions/10.4.0.128/lib/mtouch/mtouch.exe
 /Library/Frameworks/Xamarin.iOS.framework/Versions/10.4.0.128/lib/mtouch/mtouch.exe \
 	--cache \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/mtouch-cache \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/mtouch-cache \
 	--sim \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.app \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug/PaySplit.iOS.app \
 	--executable \
 	PaySplit.iOS \
 	--fastdev \
@@ -20,7 +20,7 @@
 	--tls-provider=default \
 	--abi=x86_64 \
 	--symbollist \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/mtouch-symbols.list \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/iOS/obj/iPhoneSimulator/Debug/mtouch-symbols.list \
 	--dsym=no \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
@@ -31,17 +31,17 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.core.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.core.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/sqlite-net-pcl.1.3.1/lib/netstandard1.1/SQLite-net.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/sqlite-net-pcl.1.3.1/lib/netstandard1.1/SQLite-net.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
@@ -307,17 +307,17 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/System.Xml.Xsl.Primitives.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.core.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.core.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/SQLitePCLRaw.bundle_green.1.1.2/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/packages/sqlite-net-pcl.1.3.1/lib/netstandard1.1/SQLite-net.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/packages/sqlite-net-pcl.1.3.1/lib/netstandard1.1/SQLite-net.dll \
 	-r \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/PaySplit/bin/Debug/PaySplit.dll \
 	--target-framework \
 	"Xamarin.iOS,v1.0" \
-	/Users/yashpatel/Desktop/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug//PaySplit.iOS.exe \
+	/Users/priyanshvyas/Desktop/CS446/PaySplit/PaySplit/iOS/bin/iPhoneSimulator/Debug//PaySplit.iOS.exe \

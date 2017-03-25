@@ -122,9 +122,6 @@
     <Reference Include="Xamarin.Android.Support.v7.CardView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.1.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="Refractored.FloatingActionButton">
       <HintPath>..\packages\Refractored.FloatingActionButton.1.4.0\lib\MonoAndroid10\Refractored.FloatingActionButton.dll</HintPath>
@@ -201,7 +198,6 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable\ic_plus.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\ic_search.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_search.png" />
@@ -212,6 +208,13 @@
     <AndroidResource Include="Resources\layout\SplitView.axml" />
     <AndroidResource Include="Resources\layout\SplitAmountView.xml" />
     <AndroidResource Include="Resources\layout\SplitTemplate.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_plus.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_plus_.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\ic_plus.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

@@ -16,7 +16,6 @@
             android:defaultValue=""
       		android:maxLines="1"/>
 		<Preference android:title="Contacts" android:key="@string/pref_contacts" android:summary="View and Edit your current contacts" />
-		<Preference android:title="App Version" android:summary="@string/app_version" />
 	</PreferenceCategory>
   
 	<PreferenceCategory
@@ -44,4 +43,9 @@
       <EditTextPreference android:title="Other" android:key="@string/pref_other" android:inputType="numberDecimal" android:maxLines="1" android:defaultValue="0"/>
     </PreferenceScreen>
 	</PreferenceCategory>
+
+		<PreferenceCategory android:title="About">
+		<Preference android:title="Version" android:summary="@string/app_version" />
+	</PreferenceCategory>
+	
 </PreferenceScreen>

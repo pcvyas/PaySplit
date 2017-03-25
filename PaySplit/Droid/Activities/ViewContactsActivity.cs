@@ -44,7 +44,9 @@ namespace PaySplit.Droid
 			mFloatingActionButton.Click += FAB_Click;
 
 			mDBS = DataHelper.getInstance().getGenDataService();
-			mContacts = mDBS.GetAllContacts();
+			mDBS.CreateTableIfNotExists();
+
+			mContacts = mDBS.GetAllContacts().Where(o => o.Id != 1).ToList();
 
 			// Setup adapter
 			mAdapter = new ContactsListViewAdapter(this, mContacts);
@@ -56,14 +58,8 @@ namespace PaySplit.Droid
 		protected override void OnResume()
 		{
 			base.OnResume();
-
-			//Initialize database service
-			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
-			mDBS.CreateTableIfNotExists();
-
 			mContacts.Clear();
-			mContacts = mDBS.GetAllContacts();
-			mContacts.RemoveAt(0);
+			mContacts = mDBS.GetAllContacts().Where(o => o.Id != 1).ToList();
 			if (mContacts == null || mContacts.Count == 0)
 			{
 				mNoResultsText.Visibility = ViewStates.Visible;
@@ -74,7 +70,6 @@ namespace PaySplit.Droid
 			}
 
 			mAdapter.update(mContacts);
-			mContactsListview.Adapter = mAdapter;
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -125,16 +120,14 @@ namespace PaySplit.Droid
 				Contact c = new Contact();
 				c.FullName = name;
 				c.Email = email;
-				DataHelper.getInstance().getGenDataService().InsertContactEntry(c);
-			});
-			alertDialog.SetNegativeButton("Cancel", delegate
-			{
-				// TODO
-			});
 
+				DataHelper.getInstance().getGenDataService().InsertContactEntry(c);
+				mContacts = mDBS.GetAllContacts().Where(o => o.Id != 1).ToList();
+				mAdapter.update(mContacts);
+			});
+			alertDialog.SetNegativeButton("Cancel", delegate {});
 			AlertDialog dialog = alertDialog.Create();
 			dialog.Show();
 		}
-
 	}
 }

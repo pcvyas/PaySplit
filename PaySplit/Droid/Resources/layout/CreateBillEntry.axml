@@ -66,20 +66,6 @@
             android:paddingBottom="10dp"
             android:spinnerMode="dropdown" />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/peopleLable"
-            android:text="Number of People:"
-            android:textSize="15sp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold" />
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/peopleAmount"
-            android:maxLength="2"
-            android:inputType="numberDecimal" />
-        <TextView
             android:text="Date"
             android:textSize="15sp"
             android:id="@+id/datePicker"

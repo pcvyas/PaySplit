@@ -12,6 +12,7 @@ namespace PaySplit
 			UID = Guid.NewGuid().ToString();
 		}
 
+
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 		public string UID { get; set; }
