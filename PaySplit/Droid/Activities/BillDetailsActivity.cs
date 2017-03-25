@@ -48,7 +48,7 @@ namespace PaySplit.Droid
 		private ViewSwitcher dateSwitcher;
 		private ViewSwitcher ownerSwitcher;
 
-		ArrayAdapter<String> adapter;
+		ArrayAdapter<String> mCategoriesAdapter;
 		ContactsSuggestionArrayAdapter mContactsAdapter;
 
 		List<Contact> mContacts;
@@ -63,14 +63,14 @@ namespace PaySplit.Droid
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.BillDetails);
 
-            //string id = Intent.GetStringExtra("id") ?? "Data not available";
-            string id = Intent.GetStringExtra("id");
+            string uid = Intent.GetStringExtra("uid");
 
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
-			mBill = mDBS.getBillById(Int32.Parse(id));
+			mBill = mDBS.getBillByUID(uid);
 			if (mBill == null)
 			{
+				Toast.MakeText(this, "Error: Failed to load bill.", ToastLength.Short).Show();
 				Finish();
 				return;
 			}
@@ -106,16 +106,16 @@ namespace PaySplit.Droid
             // Initialize the Categories Spinner
             String[] categories = Resources.GetStringArray(Resource.Array.categories_array);
             categoryIndex = 0;
-            for (int i = 0; i < categories.Length; ++i)
+            for (int i = 0; i < categories.Length; i++)
             {
-                if (categories[i] == category.Text)
+				if (categories[i].Equals(category.Text))
                 {
                     categoryIndex = i;
                     break;
                 }
             }
-            adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
-            category_edit.Adapter = adapter;
+            mCategoriesAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, categories);
+            category_edit.Adapter = mCategoriesAdapter;
 
 			mContacts = mDBS.GetAllContacts();
 			ownerIndex = 0;
@@ -222,7 +222,7 @@ namespace PaySplit.Droid
             try
             {
 				categoryIndex = category_edit.SelectedItemPosition;
-                string billCat = adapter.GetItem(categoryIndex);
+                string billCat = mCategoriesAdapter.GetItem(categoryIndex);
 
 				ownerIndex = owner_edit.SelectedItemPosition;
 				Contact c = mContacts[ownerIndex];
@@ -276,7 +276,7 @@ namespace PaySplit.Droid
                 name.Text = name_edit.Text;
                 amount.Text = "$" + amount_edit.Text; // number check here
                 date.Text = date_edit.Text;
-                category.Text = adapter.GetItem(category_edit.SelectedItemPosition);
+                category.Text = mCategoriesAdapter.GetItem(category_edit.SelectedItemPosition);
                 desc.Text = desc_edit.Text;
 				owner.Text = mContacts[owner_edit.SelectedItemPosition].FullName;
 

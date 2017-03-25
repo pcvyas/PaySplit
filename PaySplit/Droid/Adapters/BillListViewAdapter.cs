@@ -15,17 +15,17 @@ namespace PaySplit.Droid
 {
     class BillListViewAdapter : BaseAdapter<string>
     {
-        private List<Bill> bills;
-        private Context context;
+		private List<Bill> mBills;
+		private Context mContext;
 
         public BillListViewAdapter(Context context, List<Bill> bills)
         {
-            this.bills = bills;
-            this.context = context;
+            this.mBills = bills;
+            this.mContext = context;
         }
         public override int Count
         {
-            get { return bills.Count; }
+            get { return mBills.Count; }
         }
 
         public override long GetItemId(int position)
@@ -36,7 +36,7 @@ namespace PaySplit.Droid
         // indexer that makes the adapter array-like
         public override string this[int position]
         {
-            get { return bills[position].Name; }
+            get { return mBills[position].Name; }
         }
 
         // Define what is within each row
@@ -49,7 +49,7 @@ namespace PaySplit.Droid
             if (rowView == null)
             {
                 // We use a viewholder so the views do not have to be recreated
-                rowView = LayoutInflater.From(context).Inflate(Resource.Layout.ViewBills, null, false);
+                rowView = LayoutInflater.From(mContext).Inflate(Resource.Layout.ViewBills, null, false);
                 viewHolder = new ViewBillListViewHolder(rowView);
                 rowView.Tag = viewHolder;
             } else
@@ -57,28 +57,22 @@ namespace PaySplit.Droid
                 viewHolder = (ViewBillListViewHolder)rowView.Tag;
             }
 
-			Bill bill = bills[position];
+			Bill bill = mBills[position];
 
             // Define what is in the row
             // Assign the text field of the textview to the name of each bill
-            viewHolder.billName.Text = bills[position].Name;
+            viewHolder.billName.Text = mBills[position].Name;
 
 			DateTime date = bill.Date;
 
-
-			//TODO use 02d format on day   
 			viewHolder.billDate.Text = date.ToString("MMM").ToUpper() + "\n" + date.Day;
-
             viewHolder.billDesc.Text = "Last modified: " + bill.LastEdited;
-
             viewHolder.billCategory.Text = bill.Category;
-
 			rowView.Click += delegate
             {
-                var activity = new Intent(context, typeof(BillDetailsActivity));
-				activity.PutExtra("id", bill.Id.ToString());
-                context.StartActivity(activity);
-                //((Activity)context).StartActivityForResult(activity, 1);
+                var activity = new Intent(mContext, typeof(BillDetailsActivity));
+				activity.PutExtra("uid", bill.UID);
+                mContext.StartActivity(activity);
              };
 
             return rowView;
@@ -87,12 +81,12 @@ namespace PaySplit.Droid
         // Update the bills list
         public void update(List<Bill> bills)
         {
-            this.bills = bills;
+            this.mBills = bills;
         }
 
         public List<Bill> getBills()
         {
-            return this.bills;
+            return this.mBills;
         }
 
     }

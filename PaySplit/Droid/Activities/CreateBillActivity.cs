@@ -167,6 +167,10 @@ namespace PaySplit.Droid
 						this.Finish();
 					}
                 }
+				else
+				{
+					this.Finish();
+				}
 
 				mDBService.InsertBillEntry(mBill);
 			}

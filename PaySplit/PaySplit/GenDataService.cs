@@ -39,8 +39,6 @@ namespace PaySplit
 			return true;
 		}
 
-
-
 		/* Insertion Operations */
 
 		//Insert a new BillEntry
@@ -166,24 +164,33 @@ namespace PaySplit
 			return bs;
 		}
 
-        public Bill getBillById(int id)
+        public Bill getBillByUID(string uid)
         {
-            Bill b = new Bill();
-            try
-            {
-                if (DBPath == null)
-                {
-                    throw new Exception("Database does't exist!");
-                }
-                SQLiteConnection db = new SQLiteConnection(DBPath);
-                b = db.Find<Bill>(id);
-                db.Close();
-            }
-            catch
-            {
-                return null;
-            }
-            return b;
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var bills = db.Table<Bill>();
+				foreach (Bill b in bills)
+				{
+					if ((b.UID).Equals(uid))
+					{
+						return b;
+					}
+				}
+				db.Close();
+
+			}
+			catch
+			{
+				return null;
+			}
+
+			return null;
         }
 
 		public List<Contact> GetAllContacts()

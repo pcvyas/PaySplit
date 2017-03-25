@@ -44,7 +44,7 @@ namespace PaySplit.Droid
 		{
 			this.mContacts = contacts;
 			NotifyDataSetChanged();
-
+			NotifyDataSetInvalidated();
 		}
 
 		// Define what is within each row
@@ -140,7 +140,7 @@ namespace PaySplit.Droid
 			alertDialog.SetTitle("Delete Contact");
 			alertDialog.SetMessage("Are you sure you want to delete " + c.FullName + " from your contacts? This will also remove them from any bills you have created.");
 			alertDialog.SetCancelable(false);
-			alertDialog.SetPositiveButton("Confirm", delegate
+			alertDialog.SetPositiveButton("Delete", delegate
 			{
 				DataHelper.getInstance().getGenDataService().DeleteContact(c);
 				update(DataHelper.getInstance().getGenDataService().GetAllContacts().Where(o => o.Id != 1).ToList());
