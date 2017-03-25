@@ -11,16 +11,24 @@ namespace PaySplit
 			UID = Guid.NewGuid().ToString();
 		}
 
-		/* Used when we generate the first contact (current user) and assign UID "0" */
 		public Contact(string customUID)
 		{
 			UID = customUID;
 		}
 
+		public Contact(string name, string email, string customUID)
+		{
+			FullName = name;
+			Email = email;
+			UID = customUID;
+		}
+
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
+		[Unique]
 		public string UID { get; set; } /* The UID generated that identifies a specific person */		
 		public string FullName { get; set; } /* The users full contact name */
+		[Unique]
 		public string Email { get; set; } /* The users full email (for sending payments) */
 	}
 }

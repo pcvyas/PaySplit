@@ -15,6 +15,7 @@ namespace PaySplit
 	
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
+		[Unique]
 		public string UID { get; set; } /* The UUID of the transaction */
 		public string BillUID { get; set; } /* The ID of the bill object in the bill table */ 
 		public string SenderUID { get; set; } /* The Contact of the sender of the transaction request */
