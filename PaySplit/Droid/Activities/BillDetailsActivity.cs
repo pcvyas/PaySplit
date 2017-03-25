@@ -64,11 +64,11 @@ namespace PaySplit.Droid
             SetContentView(Resource.Layout.BillDetails);
 
             //string id = Intent.GetStringExtra("id") ?? "Data not available";
-            string uid = Intent.GetStringExtra("uid");
+            string id = Intent.GetStringExtra("id");
 
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
-			mBill = mDBS.getBillByUid(uid);
+			mBill = mDBS.getBillById(Int32.Parse(id));
 			if (mBill == null)
 			{
 				Finish();
@@ -271,7 +271,7 @@ namespace PaySplit.Droid
 				mBill.OwnerUID = c.UID;
 				mBill.LastEdited = DateTime.Now;
 
-				mDBS.SaveBillEntry(mBill.UID, mBill);
+				mDBS.SaveBillEntry(mBill.Id, mBill);
 
                 name.Text = name_edit.Text;
                 amount.Text = "$" + amount_edit.Text; // number check here

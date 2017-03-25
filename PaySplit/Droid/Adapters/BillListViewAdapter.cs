@@ -76,7 +76,7 @@ namespace PaySplit.Droid
 			rowView.Click += delegate
             {
                 var activity = new Intent(context, typeof(BillDetailsActivity));
-				activity.PutExtra("uid", bill.UID);
+				activity.PutExtra("id", bill.Id.ToString());
                 context.StartActivity(activity);
                 //((Activity)context).StartActivityForResult(activity, 1);
              };
