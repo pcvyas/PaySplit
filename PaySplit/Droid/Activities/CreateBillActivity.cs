@@ -30,6 +30,7 @@ namespace PaySplit.Droid
 
 		ArrayAdapter<String> mCategoriesSpinnerAdapter;
 		ContactsSuggestionArrayAdapter mOwnerSpinnerAdapter;
+		private string ownerAmount;
 
 		private EditText mNameEditText;
 		private EditText mDescriptionEditText;
@@ -102,12 +103,16 @@ namespace PaySplit.Droid
 			Button cancelBtn = FindViewById<Button>(Resource.Id.cancel);
 			cancelBtn.Click += CancelBtn_Click;
 
+			Button splitBtn = FindViewById<Button>(Resource.Id.split);
+			splitBtn.Click += Split_Clicked;
+
 			TextView dateV = FindViewById<TextView>(Resource.Id.date);
 			dateV.Text = mBill.Date.ToLongDateString();
 			dateV.Click += Date_Click;
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
+
 
 		void Date_Click(object sender, EventArgs e)
 		{
@@ -119,6 +124,23 @@ namespace PaySplit.Droid
 
 																 });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
+		}
+
+		void Split_Clicked(object sender, EventArgs e) {
+			if (mAmountEditText.Text != "")
+			{
+				var splitActivity = new Intent(this, typeof(SplitActivity));
+				splitActivity.PutExtra("amount", Convert.ToInt32(mAmountEditText.Text));
+				//StartActivity(splitActivity);
+				StartActivityForResult(splitActivity, 60);
+			}
+			else
+			{
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+				alertDialog.SetTitle("Please enter an amount!");
+				AlertDialog dialog = alertDialog.Create();
+				dialog.Show();
+			}
 		}
 
 		void CancelBtn_Click(object sender, EventArgs e)
@@ -179,7 +201,17 @@ namespace PaySplit.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-			mCameraService.SavePicture();
+
+			if (resultCode == Result.Ok && requestCode == 60)
+			{
+				ownerAmount = data.GetStringExtra("amount");
+				System.Diagnostics.Debug.WriteLine(ownerAmount);
+				mAmountEditText.Text = ownerAmount;
+			}
+			else
+			{
+				mCameraService.SavePicture();
+			}
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions,  Permission[] grantResults)

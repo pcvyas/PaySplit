@@ -161,6 +161,9 @@
     <Compile Include="Activities\ViewContactsActivity.cs" />
     <Compile Include="Adapters\ContactsListViewAdapter.cs" />
     <Compile Include="Adapters\ContactsSuggestionArrayAdapter.cs" />
+    <Compile Include="Activities\SplitActivity.cs" />
+    <Compile Include="Adapters\SplitContactsListViewAdapter.cs" />
+    <Compile Include="Adapters\SplitAmountAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -206,6 +209,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_search.png" />
     <AndroidResource Include="Resources\layout\ViewContact.xml" />
     <AndroidResource Include="Resources\layout\SpinnerSuggestionView.xml" />
+    <AndroidResource Include="Resources\layout\SplitView.axml" />
+    <AndroidResource Include="Resources\layout\SplitAmountView.xml" />
+    <AndroidResource Include="Resources\layout\SplitTemplate.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
