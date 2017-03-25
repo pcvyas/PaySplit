@@ -20,22 +20,17 @@ namespace PaySplit.Droid
 
 		private GenDataService mDBS;
 		private List<Contact> mContacts = new List<Contact>();
-		private List<Contact> chosen = new List<Contact>();
-		private List<Boolean> mChecked = new List<Boolean>();
 
 		private int total;
+		private string billUID;
+
 		bool splitSelectionScreen;
 		bool splitAmountScreen;
-		bool splitAmountAdapter;
 
 		// Views
-		private TextView mNoResultsText;
-		private static Spinner mLoadingSpinner;
 		private ListView mContactsListview;
-		private ListView sContactsListview;
 		private SplitContactsListViewAdapter mAdapter;
 		private SplitAmountAdapter sAdapter;
-		private FloatingActionButton mFloatingActionButton;
 		private FloatingActionButton nextFloatingActionButton;
 		private FloatingActionButton backFloatingActionButton;
 
@@ -43,68 +38,47 @@ namespace PaySplit.Droid
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.SplitTemplate);
-			System.Diagnostics.Debug.WriteLine("gets in onresume");
-
-			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
-			mNoResultsText.Text = "You currently have no contacts! Contacts will be added here as bills are created.\nTap the + button to add contacts!";
 
 			mContactsListview = FindViewById<ListView>(Resource.Id.View_ListView);
-			//sContactsListview = FindViewById<ListView>(Resource.Id.View_ListView);
-			mLoadingSpinner = FindViewById<Spinner>(Resource.Id.loadingSpinner);
-
-			mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.floatingActionButton);
-			mFloatingActionButton.Visibility = ViewStates.Visible;
-			mFloatingActionButton.Click += FAB_Click;
 
 			nextFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.nextButton);
 			nextFloatingActionButton.Visibility = ViewStates.Visible;
 			nextFloatingActionButton.Click += next_click;
 
 			backFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.backButton);
-			backFloatingActionButton.Visibility = ViewStates.Visible;
 			backFloatingActionButton.Click += back_click;
 
 			mDBS = DataHelper.getInstance().getGenDataService();
 			mContacts = mDBS.GetAllContacts();
 
-			// Setup adapter
+			// Setup adapters
 			mAdapter = new SplitContactsListViewAdapter(this, mContacts);
+			sAdapter = new SplitAmountAdapter(this, mContacts, total);
+
 			mContactsListview.Adapter = mAdapter;
 			splitAmountScreen = false;
 			splitSelectionScreen = true;
-			splitAmountAdapter = false;
-			mChecked = mAdapter.getMChecked();
 
-
-
+			billUID = Intent.GetStringExtra("uid");
 			total = Intent.GetIntExtra("amount", 0);
-			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
-		}
-
-		protected override void OnResume()
-		{
-			base.OnResume();
-			System.Diagnostics.Debug.WriteLine("gets in onresume");
-			//Initialize database service
-			GenDataService mDBS = DataHelper.getInstance().getGenDataService();
-			mDBS.CreateTableIfNotExists();
+			sAdapter.setTotal(total);
 
 			mContacts.Clear();
 			mContacts = mDBS.GetAllContacts();
-			mContacts.RemoveAt(0);
-			if (mContacts == null || mContacts.Count == 0)
+			if (mContacts == null || mContacts.Count <= 1)
 			{
-				mNoResultsText.Visibility = ViewStates.Visible;
+				Toast.MakeText(this, "You have no contacts to split this bill with! Please create contacts first in Settings.", ToastLength.Short).Show();
+				Finish();
 			}
 			else
 			{
-				mNoResultsText.Visibility = ViewStates.Gone;
+				mAdapter.update(mContacts);
+				//sAdapter.update(mContacts);
+				mContactsListview.Adapter = mAdapter;
+				//sContactsListview.Adapter = sAdapter;
 			}
 
-			mAdapter.update(mContacts, mChecked);
-			//sAdapter.update(mContacts);
-			mContactsListview.Adapter = mAdapter;
-			//sContactsListview.Adapter = sAdapter;
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -112,16 +86,26 @@ namespace PaySplit.Droid
 			switch (item.ItemId)
 			{
 				case Android.Resource.Id.Home:
-					Finish();
+					ShowDiscardDialog();
 					return true;
 				default:
 					return base.OnOptionsItemSelected(item);
 			}
 		}
 
-		void FAB_Click(object sender, EventArgs e)
+		void ShowDiscardDialog()
 		{
-			showCreateContactDialog();
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Discard new bill?");
+			alert.SetMessage("Are you sure you want to discard this bill? All unsaved changed will be lost.");
+			alert.SetPositiveButton("Ok", (senderAlert, args) =>
+			{
+				mDBS.DeleteBill(mDBS.getBillByUID(billUID));
+				this.Finish();
+			});
+			alert.SetNegativeButton("Cancel", (senderAlert, args) => { });
+			Dialog dialog = alert.Create();
+			dialog.Show();
 		}
 
 		void back_click(object sender, EventArgs e)
@@ -129,23 +113,14 @@ namespace PaySplit.Droid
 
 			if (splitAmountScreen)
 			{
-				
 				mContactsListview.Adapter = mAdapter;
-				mAdapter.allContacts.Clear();
-				for (int i = 0; i < mAdapter.allContacts.Count; i++)
-				{	if (mChecked[i])
-					{
-						mAdapter.allContacts[i].checkBox.Checked = true;
-					}
-				}
 				splitSelectionScreen = true;
 				splitAmountScreen = false;
+				backFloatingActionButton.Visibility = ViewStates.Gone;
 			}
 			else
 			{
-				this.Finish();
-				splitSelectionScreen = false;
-				splitAmountScreen = false;
+				ShowDiscardDialog();
 			}
 		}
 
@@ -154,86 +129,68 @@ namespace PaySplit.Droid
 
 			if (splitSelectionScreen)
 			{
-				chosen.Clear();
-				for (int i = 0; i < mAdapter.Count; i++)
-				{
-					if (mAdapter.allContacts[i].checkBox.Checked)
-					{
-						chosen.Add(mContacts[i]);
-						mChecked[i] = true;
-					}
-
-				}
-				if (splitAmountAdapter == false)
-				{
-					sAdapter = new SplitAmountAdapter(this, chosen, total);
-					splitAmountAdapter = true;
-				}
-
-				sAdapter.update(chosen);
+				sAdapter.update(mAdapter.getSelectedContacts());
 				mContactsListview.Adapter = sAdapter;
 				splitSelectionScreen = false;
 				splitAmountScreen = true;
+				backFloatingActionButton.Visibility = ViewStates.Visible;
 			}
 			else
 			{
-				string ownerAmount = ((double)total / (chosen.Count + 1)).ToString("#.##");
-				System.Diagnostics.Debug.WriteLine(ownerAmount);
-				var splitAmount = new Intent();
-				splitAmount.PutExtra("amount", ownerAmount);
-				SetResult(Result.Ok, splitAmount);
-				this.Finish();
+				double coveredAmount = sAdapter.getCoveredAmount();
+				if (!coveredAmount.Equals(total))
+				{
+					ShowInvalidAmountsDialog(mAdapter.getSelectedContacts().Count, coveredAmount, total);
+				}
+				else
+				{
+					string ownerUid = mDBS.getBillByUID(billUID).OwnerUID;
+					List<Contact> contacts = sAdapter.mContacts;
+					List<double> amounts = sAdapter.mAmounts;
+					for (int i = 0; i < contacts.Count; i ++)
+					{
+						Transaction t = new Transaction();
+						t.BillUID = billUID;
+						t.Completed = false;
+						t.Amount = amounts[i];
+						t.SenderUID = contacts[i].UID;
+						t.ReceiverUID = ownerUid;
 
+						mDBS.InsertTransactionEntry(t);
+					}
+					ShowSuccessSplitDialog();
+				}
 			}
-
-
-
-
 		}
 
-		private void showCreateContactDialog()
+		void ShowInvalidAmountsDialog(int count, double cover, double total)
 		{
-			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-			alertDialog.SetTitle("Create New Contact");
-			TextView nameTextView = new TextView(this);
-			nameTextView.Text = "Name:";
-			EditText nameEditText = new EditText(this);
-			nameEditText.SetSingleLine(true);
-
-			TextView emailTextView = new TextView(this);
-			emailTextView.Text = "E-mail:";
-			EditText emailEditText = new EditText(this);
-			emailEditText.SetSingleLine(true);
-
-			LinearLayout ll = new LinearLayout(this);
-			ll.Orientation = Orientation.Vertical;
-			ll.AddView(nameTextView);
-			ll.AddView(nameEditText);
-			ll.AddView(emailTextView);
-			ll.AddView(emailEditText);
-			ll.SetPadding(25, 25, 25, 25);
-			alertDialog.SetView(ll);
-
-			alertDialog.SetCancelable(false);
-			alertDialog.SetPositiveButton("Create", delegate
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Invalid Split");
+			alert.SetMessage("The current splits between the " + count + " people only sum up to $" + cover + " of the total $" +  total + "!");
+			alert.SetPositiveButton("Fix", (senderAlert, args) =>
 			{
-				string name = nameEditText.Text;
-				string email = emailEditText.Text;
-				Contact c = new Contact();
-				c.FullName = name;
-				c.Email = email;
-				DataHelper.getInstance().getGenDataService().InsertContactEntry(c);
-				mChecked.Add(false);
 			});
-			alertDialog.SetNegativeButton("Cancel", delegate
-			{
-				// TODO
+			alert.SetNegativeButton("Discard", (senderAlert, args) => {
+				ShowDiscardDialog();
 			});
-
-			AlertDialog dialog = alertDialog.Create();
+			Dialog dialog = alert.Create();
 			dialog.Show();
 		}
+
+		void ShowSuccessSplitDialog()
+		{
+			AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.SetTitle("Successfully Split");
+			alert.SetMessage("Succesfully split the bill between contacts");
+			alert.SetCancelable(false);
+			alert.SetPositiveButton("Ok", (senderAlert, args) => {
+				this.Finish();
+			});
+			alert.Create().Show();
+		}
 	}
+
 	public class SplitContactListViewHolder : Java.Lang.Object
 	{
 		public TextView contactName;

@@ -69,8 +69,6 @@ namespace PaySplit.Droid
 			activity.StartActivityForResult(intent, 1);
 		}
 
-
-
 		public void SavePicture()
 		{
 			// Make it available in the gallery

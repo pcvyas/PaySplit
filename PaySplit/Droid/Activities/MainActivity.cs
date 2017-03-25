@@ -103,9 +103,11 @@ namespace PaySplit.Droid
 					b.Description = description;
 					b.Category = category;
 					b.Amount = amount;
+					b.AmountOwed = amount;
 					b.Date = date;
 					b.LastEdited = lastEdit;
 					b.OwnerUID = ownerUid;
+
 					mDBS.InsertBillEntry(b);
 				}
 				stream.Close();

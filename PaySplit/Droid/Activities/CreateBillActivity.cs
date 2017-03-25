@@ -13,6 +13,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Preferences;
+using Android.Text;
 
 namespace PaySplit.Droid
 {
@@ -30,7 +31,6 @@ namespace PaySplit.Droid
 
 		ArrayAdapter<String> mCategoriesSpinnerAdapter;
 		ContactsSuggestionArrayAdapter mOwnerSpinnerAdapter;
-		private string ownerAmount;
 
 		private EditText mNameEditText;
 		private EditText mDescriptionEditText;
@@ -103,9 +103,6 @@ namespace PaySplit.Droid
 			Button cancelBtn = FindViewById<Button>(Resource.Id.cancel);
 			cancelBtn.Click += CancelBtn_Click;
 
-			Button splitBtn = FindViewById<Button>(Resource.Id.split);
-			splitBtn.Click += Split_Clicked;
-
 			TextView dateV = FindViewById<TextView>(Resource.Id.date);
 			dateV.Text = mBill.Date.ToLongDateString();
 			dateV.Click += Date_Click;
@@ -132,23 +129,6 @@ namespace PaySplit.Droid
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
 
-		void Split_Clicked(object sender, EventArgs e) {
-			if (mAmountEditText.Text != "")
-			{
-				var splitActivity = new Intent(this, typeof(SplitActivity));
-				splitActivity.PutExtra("amount", Convert.ToInt32(mAmountEditText.Text));
-				//StartActivity(splitActivity);
-				StartActivityForResult(splitActivity, 60);
-			}
-			else
-			{
-				AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-				alertDialog.SetTitle("Please enter an amount!");
-				AlertDialog dialog = alertDialog.Create();
-				dialog.Show();
-			}
-		}
-
 		void CancelBtn_Click(object sender, EventArgs e)
 		{
 			ShowDiscardDialog();
@@ -158,49 +138,74 @@ namespace PaySplit.Droid
 		{
 			try
 			{
-                mBill.Name = mNameEditText.Text;
-                mBill.Description = mDescriptionEditText.Text;
-                mBill.Amount = Double.Parse(mAmountEditText.Text);
-                mBill.LastEdited = DateTime.Now;
-                mBill.Category = mCategoriesSpinner.SelectedItem.ToString();
-				mBill.OwnerUID = mContacts[mOwnerSpinner.SelectedItemPosition].UID;
+				if (!TextUtils.IsEmpty(mNameEditText.Text) && !TextUtils.IsEmpty(mAmountEditText.Text))
+				{
+					mBill.Name = mNameEditText.Text;
+					mBill.Description = mDescriptionEditText.Text;
+					mBill.Amount = Double.Parse(mAmountEditText.Text);
+					mBill.AmountOwed = Double.Parse(mAmountEditText.Text);
+					mBill.LastEdited = DateTime.Now;
+					mBill.Category = mCategoriesSpinner.SelectedItem.ToString();
+					mBill.OwnerUID = mContacts[mOwnerSpinner.SelectedItemPosition].UID;
 
-                ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
-                string cat = sharedPreferences.GetString(mBill.Category, "0");
-                double limit = Convert.ToDouble(cat);
-                // if there was an entry in preferences for this category, check if exceeds limit
-				if (!limit.Equals(0))
-                {
-                    double total = 0;
-                    foreach (Bill b in mDBService.GetBillsByCategory(mBill.Category))
-                    {
-                        total += b.Amount;
-                    }
+					mDBService.InsertBillEntry(mBill);
 
-					if (total + mBill.Amount > limit)
+					ISharedPreferences sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(this);
+					string cat = sharedPreferences.GetString(mBill.Category, "0");
+					double limit = Convert.ToDouble(cat);
+					// if there was an entry in preferences for this category, check if exceeds limit
+					if (!limit.Equals(0))
 					{
-						ShowBudgetExceededDialog(mBill.Category, limit, total);
-					}
-					else if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
-					{
-						ShowApproachingBudgetDialog(mBill.Category, limit, total);
+						double total = 0;
+						foreach (Bill b in mDBService.GetBillsByCategory(mBill.Category))
+						{
+							total += b.Amount;
+						}
+
+						if (total + mBill.Amount > limit)
+						{
+							ShowBudgetExceededDialog(mBill.Category, limit, total);
+						}
+						else if ((total + mBill.Amount + BillDetailsActivity.CATEGORY_LIMIT_WARNING_THRESHOLD > limit))
+						{
+							ShowApproachingBudgetDialog(mBill.Category, limit, total);
+						}
 					}
 					else
 					{
-						this.Finish();
+						ShowSplitBillDialog();
 					}
-                }
+				}
 				else
 				{
-					this.Finish();
+					ShowInvalidInformationDialog();
 				}
-
-				mDBService.InsertBillEntry(mBill);
 			}
 			catch (Exception)
 			{
 				ShowInvalidInformationDialog();
 			}
+		}
+
+		void ShowSplitBillDialog()
+		{
+			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+			alertDialog.SetTitle("Would you like to split this bill with others?");
+			alertDialog.SetMessage("This bill has been successfully created! Would you like to split it with your PaySplit contacts?");
+			alertDialog.SetPositiveButton("Split", delegate
+			{
+				var splitActivity = new Intent(this, typeof(SplitActivity));
+				splitActivity.PutExtra("amount", Convert.ToInt32(mAmountEditText.Text));
+				splitActivity.PutExtra("uid", mBill.UID);
+				StartActivity(splitActivity);
+				Finish();
+			});
+			alertDialog.SetNegativeButton("No", delegate
+			{
+				this.Finish();
+			});
+
+			alertDialog.Create().Show();
 		}
 
 		void ShowInvalidInformationDialog()
@@ -216,8 +221,8 @@ namespace PaySplit.Droid
 		void ShowDiscardDialog()
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.SetTitle("Discard new bill?");
-			alert.SetMessage("Are you sure you want to discard this bill? All unsaved changed will be lost.");
+			alert.SetTitle("Abondon split?");
+			alert.SetMessage("Are you sure you want to abandon this split? The bill is still saved locally.");
 			alert.SetPositiveButton("Ok", (senderAlert, args) => {
 				this.Finish();
 			});
@@ -232,7 +237,7 @@ namespace PaySplit.Droid
 			alert.SetTitle("Approaching Monthly Limit");
 			alert.SetMessage("You're approaching your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
 			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
-				this.Finish();
+				ShowSplitBillDialog();
 			});
 			Dialog dialog = alert.Create();
 			dialog.Show();
@@ -244,7 +249,7 @@ namespace PaySplit.Droid
 			alert.SetTitle("Montly Limit Exceeded");
 			alert.SetMessage("You've exceeded your monthly budget for " + billCat + ". You've spent $" + total + " of your limit of $" + limit + "!");
 			alert.SetPositiveButton("Ok", (senderAlert, args) => { 
-				this.Finish();
+				ShowSplitBillDialog();
 			});
 			Dialog dialog = alert.Create();
 			dialog.Show();
@@ -265,14 +270,7 @@ namespace PaySplit.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-
-			if (resultCode == Result.Ok && requestCode == 60)
-			{
-				ownerAmount = data.GetStringExtra("amount");
-				System.Diagnostics.Debug.WriteLine(ownerAmount);
-				mAmountEditText.Text = ownerAmount;
-			}
-			else
+			if (resultCode == Result.Ok && requestCode == CAMERA_REQUEST_CODE)
 			{
 				mCameraService.SavePicture();
 			}

@@ -130,12 +130,6 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/split"
-                android:text="SPLIT"
-                android:layout_margin="10dp" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/cancel"
                 android:text="CANCEL"
                 android:layout_below="@id/picture"

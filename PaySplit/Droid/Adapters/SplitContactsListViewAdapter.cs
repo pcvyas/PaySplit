@@ -15,22 +15,26 @@ namespace PaySplit.Droid
 	class SplitContactsListViewAdapter : BaseAdapter<Contact>
 	{
 		private List<Contact> mContacts = new List<Contact>();
-		public List<Boolean> mChecked = new List<bool>();
-		public List<SplitContactListViewHolder> allContacts = new List<SplitContactListViewHolder>();
+		private List<Boolean> mChecked = new List<bool>();
 		private Context mContext;
 
 		private bool mIsDialogShowing = false;
 
 		public SplitContactsListViewAdapter(Context context, List<Contact> contacts)
 		{
-			System.Diagnostics.Debug.WriteLine("gets inside splitcontactslistviewadapter constructor");
 			this.mContacts = contacts;
 			for (int i = 0; i < this.mContacts.Count; i++)
 			{
-				this.mChecked.Add(false);
+				this.mChecked.Add(i == 0);
 			}
 			this.mContext = context;
-			allContacts.Clear();
+		}
+
+		public SplitContactsListViewAdapter(Context context, List<Contact> contacts, List<bool> chosen)
+		{
+			this.mContacts = contacts;
+			this.mChecked = chosen;
+			this.mContext = context;
 		}
 
 		public override int Count
@@ -48,26 +52,29 @@ namespace PaySplit.Droid
 			get { return mContacts[position]; }
 		}
 
-		public void update(List<Contact> contacts, List<Boolean> mChecked )
+		public void update(List<Contact> contacts)
 		{
 			this.mContacts = contacts;
-			this.mChecked = mChecked;
 		}
 
-		public List<SplitContactListViewHolder> getViewHolders()
+		public List<Contact> getSelectedContacts()
 		{
-			return this.allContacts;
-		}
-
-		public List<Boolean> getMChecked()
-		{
-			return this.mChecked;
+			int i = 0;
+			List<Contact> result = new List<Contact>();
+			foreach (bool chk in mChecked)
+			{
+				if (mChecked[i])
+				{
+					result.Add(mContacts[i]);
+				}
+				i++;
+			}
+			return result;
 		}
 
 		// Define what is within each row
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
-			System.Diagnostics.Debug.WriteLine("gets inside getView of splitcontactslistview");
 			View rowView = convertView;
 			SplitContactListViewHolder viewHolder;
 
@@ -85,18 +92,18 @@ namespace PaySplit.Droid
 			}
 
 			Contact c = mContacts[position];
-
 			viewHolder.contactName.Text = c.FullName;
 			viewHolder.contactEmail.Text = "Email: " + c.Email;
-			if (this.mChecked[position])
+			viewHolder.checkBox.Checked = mChecked[position];
+			if (position == 0)
 			{
 				viewHolder.checkBox.Checked = true;
+				viewHolder.checkBox.Enabled = false;
 			}
-			else
-			{
-				viewHolder.checkBox.Checked = false;
-			}
-			allContacts.Add(viewHolder);
+			viewHolder.checkBox.CheckedChange += delegate {
+				mChecked[position] = viewHolder.checkBox.Checked;
+			};
+
 			return rowView;
 		}
 

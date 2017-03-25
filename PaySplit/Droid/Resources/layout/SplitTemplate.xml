@@ -5,21 +5,6 @@
     android:layout_height="fill_parent"
     android:background="@color/background"
     android:gravity="center">
-    <TextView
-        android:id="@+id/NoResults"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:text="No Bills Created Yet!\nTap the add button to create one."
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textColor="@color/lightGray"
-        android:textSize="15dp"
-        android:padding="29dp"
-        android:visibility="gone" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,30 +14,16 @@
         android:clipToPadding="false"
         android:id="@+id/View_ListView" />
     <com.refractored.fab.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="25dp"
         android:padding="5dp"
-        android:src="@drawable/ic_plus"
-        android:visibility="gone"
-        fab:fab_colorNormal="@color/accentColor"
-        fab:fab_colorPressed="@color/accentColorDark"
-        fab:fab_colorRipple="@color/rippleColor" />
-    <com.refractored.fab.FloatingActionButton
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="25dp"
-        android:padding="5dp"
         android:rotation="180"
         android:src="@drawable/abc_ic_ab_back_material"
         android:visibility="gone"
-        fab:fab_colorNormal="@color/accentColor"
-        fab:fab_colorPressed="@color/accentColorDark"
-        fab:fab_colorRipple="@color/rippleColor" />
+        fab:fab_colorNormal="@color/lightGray" />
     <com.refractored.fab.FloatingActionButton
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -62,7 +33,5 @@
         android:padding="5dp"
         android:src="@drawable/abc_ic_ab_back_material"
         android:visibility="gone"
-        fab:fab_colorNormal="@color/accentColor"
-        fab:fab_colorPressed="@color/accentColorDark"
-        fab:fab_colorRipple="@color/rippleColor" />
+        fab:fab_colorNormal="@color/lightGray" />
 </FrameLayout>

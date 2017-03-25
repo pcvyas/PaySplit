@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
         <TextView
             android:id="@+id/contactName"
-            android:text="Category Name"
+            android:text="Contact Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -22,7 +22,7 @@
             android:padding="3dp" />
         <TextView
             android:id="@+id/contactEmail"
-            android:text="Category Email"
+            android:text="Contact Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"

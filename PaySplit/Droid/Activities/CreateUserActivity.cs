@@ -48,7 +48,6 @@ namespace PaySplit.Droid
 					// Create initial contact as user
 					Contact c = new Contact();
 					c.Id = 1;
-					c.UID = Constants.MAIN_USER_DEFAULT_UID;
 					c.FullName = name;
 					c.Email = email;
 					mDBS.InsertContactEntry(c);

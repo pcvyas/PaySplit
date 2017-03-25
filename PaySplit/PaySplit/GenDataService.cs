@@ -51,7 +51,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.Insert(b);
+				db.InsertOrReplace(b);
 				db.Close();
 
 			}
@@ -72,7 +72,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.Insert(c);
+				db.InsertOrReplace(c);
 				db.Close();
 			}
 			catch
@@ -92,7 +92,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.Insert(t);
+				db.InsertOrReplace(t);
 				db.Close();
 			}
 			catch

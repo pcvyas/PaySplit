@@ -14,19 +14,17 @@ namespace PaySplit.Droid
 {
 	class SplitAmountAdapter : BaseAdapter<Contact>
 	{
-		private List<Contact> mContacts = new List<Contact>();
+		public List<Contact> mContacts = new List<Contact>();
+		public List<double> mAmounts = new List<double>();
 		private Context mContext;
-		private int total;
-		double totalDecimal;
+		private double total;
 
-		private bool mIsDialogShowing = false;
-
-		public SplitAmountAdapter(Context context, List<Contact> contacts, int total )
+		public SplitAmountAdapter(Context context, List<Contact> contacts, double total)
 		{
 			this.mContacts = contacts;
 			this.mContext = context;
 			this.total = total;
-			this.totalDecimal = (double) this.total;
+			InitializeAmounts();
 		}
 
 		public override int Count
@@ -44,9 +42,37 @@ namespace PaySplit.Droid
 			get { return mContacts[position]; }
 		}
 
+		public void setTotal(double total)
+		{
+			this.total = total;
+			InitializeAmounts();
+			NotifyDataSetChanged();
+		}
+
 		public void update(List<Contact> contacts)
 		{
 			this.mContacts = contacts;
+			InitializeAmounts();
+			NotifyDataSetChanged();
+		}
+
+		void InitializeAmounts()
+		{
+			mAmounts.Clear();
+			for (int i = 0; i < mContacts.Count; i++)
+			{
+				mAmounts.Add(this.total / (this.mContacts.Count));
+			}
+		}
+
+		public double getCoveredAmount()
+		{
+			double total = 0;
+			foreach (double amount in mAmounts)
+			{
+				total += amount;
+			}
+			return total;
 		}
 
 		// Define what is within each row
@@ -69,97 +95,13 @@ namespace PaySplit.Droid
 			}
 
 			Contact c = mContacts[position];
-
-			//viewHolder.deleteButton.Click += delegate
-			//{
-			//	if (!mIsDialogShowing)
-			//	{
-			//		showDeleteContactDialog(c);
-			//	}
-			//};
-			//viewHolder.editButton.Click += delegate
-			//{
-			//	if (!mIsDialogShowing)
-			//	{
-			//		showEditContactDialog(c);
-			//	}
-			//};
-
-
 			viewHolder.contactName.Text = c.FullName;
 			viewHolder.contactEmail.Text = "Email: " + c.Email;
-			viewHolder.amount.Text = (totalDecimal / (mContacts.Count + 1)).ToString("#.##");
+			viewHolder.amount.Text = mAmounts[position].ToString("#.##");
 
 			return rowView;
 		}
 
-		//	private void showEditContactDialog(Contact c)
-		//	{
-		//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-		//		alertDialog.SetTitle("Edit Contact");
-		//		TextView nameTextView = new TextView(mContext);
-		//		nameTextView.Text = "Name:";
-		//		EditText nameEditText = new EditText(mContext);
-		//		nameEditText.SetSingleLine(true);
-		//		nameEditText.Text = c.FullName;
-
-		//		TextView emailTextView = new TextView(mContext);
-		//		emailTextView.Text = "E-mail:";
-		//		EditText emailEditText = new EditText(mContext);
-		//		emailEditText.SetSingleLine(true);
-		//		emailEditText.Text = c.Email;
-
-		//		LinearLayout ll = new LinearLayout(mContext);
-		//		ll.Orientation = Orientation.Vertical;
-		//		ll.AddView(nameTextView);
-		//		ll.AddView(nameEditText);
-		//		ll.AddView(emailTextView);
-		//		ll.AddView(emailEditText);
-		//		ll.SetPadding(25, 25, 25, 25);
-		//		alertDialog.SetView(ll);
-
-		//		alertDialog.SetCancelable(false);
-		//		alertDialog.SetPositiveButton("Update", delegate
-		//		{
-		//			string name = nameEditText.Text;
-		//			string email = emailEditText.Text;
-
-		//			Contact contact = c;
-		//			contact.FullName = name;
-		//			contact.Email = email;
-		//			DataHelper.getInstance().getGenDataService().UpdateContactInformation(contact);
-		//		});
-		//		alertDialog.SetNegativeButton("Cancel", delegate
-		//		{
-		//			mIsDialogShowing = false;
-		//		});
-
-		//		AlertDialog dialog = alertDialog.Create();
-		//		dialog.Show();
-
-		//		mIsDialogShowing = true;
-		//	}
-
-		//	private void showDeleteContactDialog(Contact c)
-		//	{
-		//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-		//		alertDialog.SetTitle("Delete Contact");
-		//		alertDialog.SetMessage("Are you sure you want to delete " + c.FullName + " from your contacts? This will also remove them from any bills you have created.");
-		//		alertDialog.SetCancelable(false);
-		//		alertDialog.SetPositiveButton("Confirm", delegate
-		//		{
-		//			DataHelper.getInstance().getGenDataService().DeleteContact(c);
-		//		});
-		//		alertDialog.SetNegativeButton("Cancel", delegate
-		//		{
-		//			mIsDialogShowing = false;
-		//		});
-
-		//		AlertDialog dialog = alertDialog.Create();
-		//		dialog.Show();
-		//		mIsDialogShowing = true;
-		//	}
-		//}
 		public class SplitAmountViewHolder : Java.Lang.Object
 		{
 			public TextView contactName;
