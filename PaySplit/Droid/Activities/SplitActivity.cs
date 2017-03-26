@@ -51,15 +51,17 @@ namespace PaySplit.Droid
 			mDBS = DataHelper.getInstance().getGenDataService();
 			mContacts = mDBS.GetAllContacts();
 
-			// Setup adapters
-			mAdapter = new SplitContactsListViewAdapter(this, mContacts);
-			sAdapter = new SplitAmountAdapter(this, mContacts, total);
-
 			mContactsListview.Adapter = mAdapter;
 			splitAmountScreen = false;
 			splitSelectionScreen = true;
 
 			billUID = Intent.GetStringExtra("uid");
+			string ownerEmail = mDBS.getBillByUID(billUID).OwnerEmail;
+
+			// Setup adapters
+			mAdapter = new SplitContactsListViewAdapter(this, mContacts, ownerEmail);
+			sAdapter = new SplitAmountAdapter(this, mContacts, total);
+
 			total = Intent.GetIntExtra("amount", 0);
 			sAdapter.setTotal(total);
 
@@ -144,20 +146,23 @@ namespace PaySplit.Droid
 				}
 				else
 				{
-					string ownerUid = mDBS.getBillByUID(billUID).OwnerUID;
+					string ownerEmail = mDBS.getBillByUID(billUID).OwnerEmail;
 					List<Contact> contacts = sAdapter.mContacts;
 					List<double> amounts = sAdapter.mAmounts;
+
+					List<Transaction> transactions = new List<Transaction>();
 					for (int i = 0; i < contacts.Count; i ++)
 					{
 						Transaction t = new Transaction();
 						t.BillUID = billUID;
-						t.Completed = false;
 						t.Amount = amounts[i];
-						t.SenderUID = contacts[i].UID;
-						t.ReceiverUID = ownerUid;
-
-						mDBS.InsertTransactionEntry(t);
+						t.SenderEmail = contacts[i].Email;
+						t.ReceiverEmail = ownerEmail;
+						Debugger.Log("Created transaction for " + t.SenderEmail + " to " + t.ReceiverEmail + " [" + t.UID + "]");
+						transactions.Add(t);
 					}
+					mDBS.InsertTransactionEntries(transactions);
+
 					ShowSuccessSplitDialog();
 				}
 			}
@@ -185,10 +190,16 @@ namespace PaySplit.Droid
 			alert.SetMessage("Succesfully split the bill between contacts");
 			alert.SetCancelable(false);
 			alert.SetPositiveButton("Ok", (senderAlert, args) => {
+				var activity = new Intent(this, typeof(BillDetailsActivity));
+				activity.PutExtra("uid", billUID);
+				StartActivity(activity);
 				this.Finish();
 			});
+
 			alert.Create().Show();
 		}
+
+
 	}
 
 	public class SplitContactListViewHolder : Java.Lang.Object

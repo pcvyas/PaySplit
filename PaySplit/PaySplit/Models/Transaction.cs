@@ -8,8 +8,8 @@ namespace PaySplit
 	{
 		public Transaction()
 		{
-			Completed = false;
 			UID = Guid.NewGuid().ToString();
+			Completed = false;
 		}
 
 	
@@ -18,8 +18,8 @@ namespace PaySplit
 		[Unique]
 		public string UID { get; set; } /* The UUID of the transaction */
 		public string BillUID { get; set; } /* The ID of the bill object in the bill table */ 
-		public string SenderUID { get; set; } /* The Contact of the sender of the transaction request */
-		public string ReceiverUID { get; set; } /* The Contact of the receiver of the transaction request */
+		public string SenderEmail { get; set; } /* The Contact of the sender of the transaction request */
+		public string ReceiverEmail { get; set; } /* The Contact of the receiver of the transaction request */
 		public double Amount { get; set; } /* The amount owed by the sender */
 		public bool Completed { get; set; } /* The status of the transaction */
 	}

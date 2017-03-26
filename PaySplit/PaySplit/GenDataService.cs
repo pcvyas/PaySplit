@@ -51,7 +51,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.InsertOrReplace(b);
+				db.Insert(b);
 				db.Close();
 
 			}
@@ -72,7 +72,7 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.InsertOrReplace(c);
+				db.Insert(c);
 				db.Close();
 			}
 			catch
@@ -92,7 +92,26 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.InsertOrReplace(t);
+				db.Insert(t);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public bool InsertTransactionEntries(List<Transaction> ts)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				db.InsertAll(ts);
 				db.Close();
 			}
 			catch
@@ -259,12 +278,66 @@ namespace PaySplit
 				}
 
 				SQLiteConnection db = new SQLiteConnection(DBPath);
+				Contact c = db.Find<Contact>(1);
+				if (c != null)
+				{
+					return c;
+				}
+				db.Close();
+			}
+			catch
+			{
+				return null;
+			}
+
+			return null;
+		}
+
+		public Contact getContactByEmail(string email)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
 				var contactTableQuery = db.Table<Contact>();
 				foreach (Contact c in contactTableQuery)
 				{
-					if (c.Id.Equals(1))
+					if (c.Email.Equals(email))
 					{
 						return c;
+					}
+				}
+				db.Close();
+			}
+			catch
+			{
+				return null;
+			}
+
+			return null;
+		}
+
+		public List<Transaction> getTransactionsForBill(string UID)
+		{
+			List<Transaction> transactions = new List<Transaction>();
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				var transactionQuery = db.Table<Transaction>();
+				foreach (Transaction t in transactionQuery)
+				{
+					if (t.BillUID.Equals(UID))
+					{
+						transactions.Add(t);
 					}
 				}
 				db.Close();
@@ -275,27 +348,7 @@ namespace PaySplit
 				return null;
 			}
 
-			return null;
-		}
-
-		public Contact getContactByUID(string UID)
-		{
-			Contact c = new Contact();
-			try
-			{
-				if (DBPath == null)
-				{
-					throw new Exception("Database does't exist!");
-				}
-				SQLiteConnection db = new SQLiteConnection(DBPath);
-				c = db.Find<Contact>(UID);
-				db.Close();
-			}
-			catch
-			{
-				return null;
-			}
-			return c;
+			return transactions;
 		}
 
 		/* Delete Operations */

@@ -146,7 +146,7 @@ namespace PaySplit.Droid
 					mBill.AmountOwed = Double.Parse(mAmountEditText.Text);
 					mBill.LastEdited = DateTime.Now;
 					mBill.Category = mCategoriesSpinner.SelectedItem.ToString();
-					mBill.OwnerUID = mContacts[mOwnerSpinner.SelectedItemPosition].UID;
+					mBill.OwnerEmail = mContacts[mOwnerSpinner.SelectedItemPosition].Email;
 
 					mDBService.InsertBillEntry(mBill);
 
@@ -202,6 +202,13 @@ namespace PaySplit.Droid
 			});
 			alertDialog.SetNegativeButton("No", delegate
 			{
+				Transaction t = new Transaction();
+				t.Amount = mBill.Amount;
+				t.BillUID = mBill.UID;
+				t.ReceiverEmail = mBill.OwnerEmail;
+				t.SenderEmail = mBill.OwnerEmail;
+				t.Completed = false;
+				mDBService.InsertTransactionEntry(t);
 				this.Finish();
 			});
 
@@ -221,8 +228,8 @@ namespace PaySplit.Droid
 		void ShowDiscardDialog()
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.SetTitle("Abondon split?");
-			alert.SetMessage("Are you sure you want to abandon this split? The bill is still saved locally.");
+			alert.SetTitle("Discard bill?");
+			alert.SetMessage("Are you sure you want to discard this bill? All unsaved data will be lost.");
 			alert.SetPositiveButton("Ok", (senderAlert, args) => {
 				this.Finish();
 			});

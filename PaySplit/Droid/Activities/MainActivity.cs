@@ -39,8 +39,10 @@ namespace PaySplit.Droid
 
 			mDBS = DataHelper.getInstance().getGenDataService();
 
+			bool user_info_recorded = Settings.getUserCreated(this);
+
 			Android.Net.Uri data = Intent.Data;
-			if (data != null)
+			if (data != null && user_info_recorded)
 			{
 				// reset the data
 				Intent.SetData(null);
@@ -54,7 +56,6 @@ namespace PaySplit.Droid
 				}
 			}
 
-			bool user_info_recorded = Settings.getUserCreated(this);
 			if (!user_info_recorded)
 			{
 				// send user to create user page (so we can record their name, email, etc) on first use and
@@ -83,8 +84,7 @@ namespace PaySplit.Droid
 					/* Load Contact */
 					string name = reader.ReadLine();
 					string email = reader.ReadLine();
-					string uid = reader.ReadLine();
-					Contact c = new Contact(name, email, uid);
+					Contact c = new Contact(name, email);
 					mDBS.InsertContactEntry(c);
 
 					reader.ReadLine();
@@ -97,7 +97,7 @@ namespace PaySplit.Droid
 					double amount = Java.Lang.Double.ParseDouble(reader.ReadLine());
 					DateTime date = DateTime.Parse(reader.ReadLine());
 					DateTime lastEdit = DateTime.Parse(reader.ReadLine());
-					string ownerUid = reader.ReadLine();
+					string ownerEmail = reader.ReadLine();
 					Bill b = new Bill(billUid);
 					b.Name = title;
 					b.Description = description;
@@ -106,7 +106,7 @@ namespace PaySplit.Droid
 					b.AmountOwed = amount;
 					b.Date = date;
 					b.LastEdited = lastEdit;
-					b.OwnerUID = ownerUid;
+					b.OwnerEmail = ownerEmail;
 
 					mDBS.InsertBillEntry(b);
 				}

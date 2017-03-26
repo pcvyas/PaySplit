@@ -16,24 +16,19 @@ namespace PaySplit.Droid
 	{
 		private List<Contact> mContacts = new List<Contact>();
 		private List<Boolean> mChecked = new List<bool>();
+		private string mOwnerEmail;
 		private Context mContext;
 
 		private bool mIsDialogShowing = false;
 
-		public SplitContactsListViewAdapter(Context context, List<Contact> contacts)
+		public SplitContactsListViewAdapter(Context context, List<Contact> contacts, string ownerEmail)
 		{
 			this.mContacts = contacts;
 			for (int i = 0; i < this.mContacts.Count; i++)
 			{
-				this.mChecked.Add(i == 0);
+				this.mChecked.Add(mContacts[i].Email.Equals(ownerEmail));
 			}
-			this.mContext = context;
-		}
-
-		public SplitContactsListViewAdapter(Context context, List<Contact> contacts, List<bool> chosen)
-		{
-			this.mContacts = contacts;
-			this.mChecked = chosen;
+			this.mOwnerEmail = ownerEmail;
 			this.mContext = context;
 		}
 
@@ -95,9 +90,8 @@ namespace PaySplit.Droid
 			viewHolder.contactName.Text = c.FullName;
 			viewHolder.contactEmail.Text = "Email: " + c.Email;
 			viewHolder.checkBox.Checked = mChecked[position];
-			if (position == 0)
+			if (c.Email.Equals(mOwnerEmail))
 			{
-				viewHolder.checkBox.Checked = true;
 				viewHolder.checkBox.Enabled = false;
 			}
 			viewHolder.checkBox.CheckedChange += delegate {
