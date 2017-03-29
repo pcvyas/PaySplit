@@ -61,13 +61,16 @@ namespace PaySplit.Droid
 
 			Transaction trans = mTransactions[position];
 
+
             // Define what is in the row
-            // Assign the text field of the textview to the name of each bill
-			viewHolder.sender.Text = "owed by: " + mTransactions[position].SenderEmail;
-			viewHolder.reciever.Text = "+ " + mTransactions[position].ReceiverEmail;
+			viewHolder.sender.Text = "owes: " + mTransactions[position].ReceiverEmail;
+			viewHolder.reciever.Text = mTransactions[position].SenderEmail;
 			viewHolder.amount.Text = "$" + mTransactions[position].Amount.ToString();
 
 			var dbs = DataHelper.getInstance().getGenDataService();
+
+			//Current Phone owner
+			Contact appOwner = dbs.getUserContactInformation();
 
 			viewHolder.sendEmail.Click += delegate
 			{
@@ -82,11 +85,11 @@ namespace PaySplit.Droid
 
 				//Contacts Properties
 				var contacts = transactionsWithBill.Select(o => o.SenderEmail).ToList();
-				sb.AppendLine(contacts.Count().ToString());
+				sb.AppendLine((contacts.Count() - 1).ToString());
 				for (int i = 0; i < contacts.Count(); i++)
 				{
 					Contact c = dbs.getContactByEmail(contacts[i]);
-					if (c.Email != trans.ReceiverEmail)
+					if (c.Email != trans.SenderEmail)
 					{
 						sb.AppendLine(c.FullName);
 						sb.AppendLine(c.Email);
@@ -152,6 +155,11 @@ namespace PaySplit.Droid
 				mContext.StartActivity(Intent.CreateChooser(emailIntent, "Choose email client to send with..."));
 
 			};
+
+			if (trans.SenderEmail == trans.ReceiverEmail || trans.ReceiverEmail != appOwner.Email)
+			{
+				viewHolder.sendEmail.Visibility = ViewStates.Invisible;
+			}
 			
              return rowView;
         }
