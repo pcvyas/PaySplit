@@ -81,11 +81,15 @@ namespace PaySplit.Droid
 				BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 				if (stream != null)
 				{
-					/* Load Contact */
-					string name = reader.ReadLine();
-					string email = reader.ReadLine();
-					Contact c = new Contact(name, email);
-					mDBS.InsertContactEntry(c);
+					/* Load Contacts */
+					int numContacts = Integer.ParseInt(reader.ReadLine());
+					for (int i = 0; i < numContacts; i++)
+					{
+						string name = reader.ReadLine();
+						string email = reader.ReadLine();
+						Contact c = new Contact(name, email);
+						mDBS.InsertContactEntry(c);
+					}
 
 					reader.ReadLine();
 
@@ -103,12 +107,24 @@ namespace PaySplit.Droid
 					b.Description = description;
 					b.Category = category;
 					b.Amount = amount;
-					b.AmountOwed = amount;
 					b.Date = date;
 					b.LastEdited = lastEdit;
 					b.OwnerEmail = ownerEmail;
-
 					mDBS.InsertBillEntry(b);
+
+					reader.ReadLine();
+
+					/* Load Transactions */
+					int numTransactions = Integer.ParseInt(reader.ReadLine());
+					for (int i = 0; i < numTransactions; i++)
+					{
+						Transaction t = new Transaction(reader.ReadLine());
+						t.BillUID = reader.ReadLine();
+						t.SenderEmail = reader.ReadLine();
+						t.ReceiverEmail = reader.ReadLine();
+						t.Amount = Java.Lang.Double.ParseDouble(reader.ReadLine());
+						mDBS.InsertTransactionEntry(t);
+					}
 				}
 				stream.Close();
 			}

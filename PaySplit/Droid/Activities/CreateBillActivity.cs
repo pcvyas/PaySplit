@@ -143,7 +143,6 @@ namespace PaySplit.Droid
 					mBill.Name = mNameEditText.Text;
 					mBill.Description = mDescriptionEditText.Text;
 					mBill.Amount = Double.Parse(mAmountEditText.Text);
-					mBill.AmountOwed = Double.Parse(mAmountEditText.Text);
 					mBill.LastEdited = DateTime.Now;
 					mBill.Category = mCategoriesSpinner.SelectedItem.ToString();
 					mBill.OwnerEmail = mContacts[mOwnerSpinner.SelectedItemPosition].Email;

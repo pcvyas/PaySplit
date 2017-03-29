@@ -12,7 +12,12 @@ namespace PaySplit
 			Completed = false;
 		}
 
-	
+		public Transaction(string uuid)
+		{
+			UID = uuid;
+			Completed = false;
+		}
+
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
 		[Unique]
