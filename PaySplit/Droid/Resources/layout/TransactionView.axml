@@ -18,8 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="18sp"
-            android:padding="3dp" />
+            android:textSize="16sp"
+            android:padding="3dp"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/black"
+            android:background="#fff3d6cf"
+            android:layout_marginTop="5dp" />
         <TextView
             android:id="@+id/sender"
             android:text="Sender"
@@ -40,7 +45,8 @@
             android:text="$00.00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:textStyle="bold" />
         <ImageButton
             android:id="@+id/sendEmail"
             android:layout_width="wrap_content"
