@@ -63,8 +63,8 @@ namespace PaySplit.Droid
 
             // Define what is in the row
             // Assign the text field of the textview to the name of each bill
-			viewHolder.sender.Text = mTransactions[position].SenderEmail;
-			viewHolder.reciever.Text = mTransactions[position].ReceiverEmail;
+			viewHolder.sender.Text = "owed by" + mTransactions[position].SenderEmail;
+			viewHolder.reciever.Text = "+ " + mTransactions[position].ReceiverEmail;
 			viewHolder.amount.Text = "$" + mTransactions[position].Amount.ToString();
 
 			var dbs = DataHelper.getInstance().getGenDataService();
