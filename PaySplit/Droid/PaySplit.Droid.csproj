@@ -134,6 +134,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\MinTransactionsActivity.cs" />
+    <Compile Include="Adapters\MinTransactionListViewAdapter.cs" />
     <Compile Include="Decorators\CategoryFilter.cs" />
     <Compile Include="Decorators\DateFilter.cs" />
     <Compile Include="Decorators\FilterDecorator.cs" />
@@ -215,6 +217,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_plus_.png" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\drawable\ic_plus.png" />
+    <AndroidResource Include="Resources\layout\ViewMinBalances.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">

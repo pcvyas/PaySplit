@@ -321,7 +321,36 @@ namespace PaySplit
 			return null;
 		}
 
-		public List<Transaction> getTransactionsForBill(string UID)
+        //Get all Transactions
+        public List<Transaction> GetAllTransactions()
+        {
+            List<Transaction> ts = new List<Transaction>();
+
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+
+                SQLiteConnection db = new SQLiteConnection(DBPath);
+                var transactions = db.Table<Transaction>();
+
+                foreach (Transaction t in transactions)
+                {
+                    ts.Add(t);
+                }
+                db.Close();
+
+            }
+            catch
+            {
+                return new List<Transaction>();
+            }
+            return ts;
+        }
+
+        public List<Transaction> getTransactionsForBill(string UID)
 		{
 			List<Transaction> transactions = new List<Transaction>();
 			try

@@ -11,6 +11,10 @@
           android:title="@string/categories_menu_title"
           android:showAsAction="never"/>
 
+  <item android:id="@+id/minimize"
+        android:title="@string/minimize_menu_title"
+        android:showAsAction="never"/>
+
 	<item android:id="@+id/settings"
       android:title="@string/settings_menu_title"
       android:showAsAction="never"/>

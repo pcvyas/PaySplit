@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
-    <SelectedDevice>Motorola MotoG3</SelectedDevice>
+    <SelectedDevice>AVD_GalaxyNexus_ToolsForApacheCordova</SelectedDevice>
     <DefaultDevice>AVD_GalaxyNexus_ToolsForApacheCordova</DefaultDevice>
   </PropertyGroup>
 </Project>

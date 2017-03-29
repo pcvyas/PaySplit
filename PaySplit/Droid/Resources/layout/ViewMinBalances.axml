@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/big_card"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/amount_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="top|left"
+            android:text="AMOUNT"
+            android:background="@color/accentColor"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/min_payer"
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:text="Example Payer"
+                android:fontFamily="sans-serif"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:padding="2dp"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/min_filler_text"
+                android:layout_width="fill_parent"
+                android:singleLine="true"
+                android:text="owes"
+                android:fontFamily="sans-serif-light"
+                android:padding="2dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/secondary_text_light"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/min_payee"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Example Payee"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/black"
+                android:background="@color/accentColorLight"
+                android:textSize="8sp"
+                android:textAllCaps="true"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
