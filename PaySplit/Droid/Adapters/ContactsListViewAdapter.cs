@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 
 using Android.App;
@@ -129,6 +130,12 @@ namespace PaySplit.Droid
 				contact.FullName = name;
 				contact.Email = email;
 
+				if (!isValidEmail(email))
+				{
+					Toast.MakeText(mContext, "Invalid e-mail format, contact was not updated.", ToastLength.Short).Show();
+					return;
+				}
+
 				DataHelper.getInstance().getGenDataService().UpdateContactInformation(contact);
 				this.mContacts[position] = contact;
 				invalidate();
@@ -141,6 +148,19 @@ namespace PaySplit.Droid
 			dialog.Show();
 
 			mIsDialogShowing = true;
+		}
+
+		private bool isValidEmail(String email)
+		{
+			try
+			{
+				MailAddress mailAddress = new MailAddress(email);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
 		}
 
 		private void showDeleteContactDialog(Contact c, int position)

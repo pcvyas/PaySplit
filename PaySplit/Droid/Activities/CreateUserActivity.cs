@@ -84,7 +84,7 @@ namespace PaySplit.Droid
 		{
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 			alert.SetTitle("Invalid Info");
-			alert.SetMessage("Please enter a valid name & e-mail address. Password length must be at least 10 characters.");
+			alert.SetMessage("Please enter a valid name & e-mail address to begin.");
 			alert.SetNegativeButton("Ok", (senderAlert, args) => {});
 			Dialog dialog = alert.Create();
 			dialog.Show();

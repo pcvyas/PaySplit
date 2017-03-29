@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 
 using Android.App;
@@ -23,7 +24,6 @@ namespace PaySplit.Droid
 
 		// Views
 		private TextView mNoResultsText;
-		private static Spinner mLoadingSpinner;
 		private ListView mContactsListview;
 		private ContactsListViewAdapter mAdapter;
 		private FloatingActionButton mFloatingActionButton;
@@ -37,7 +37,6 @@ namespace PaySplit.Droid
 			mNoResultsText.Text = "You currently have no contacts! Contacts will be added here as bills are created.\nTap the + button to add contacts!";
 
 			mContactsListview = FindViewById<ListView>(Resource.Id.View_ListView);
-			mLoadingSpinner = FindViewById<Spinner>(Resource.Id.loadingSpinner);
 
 			mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.floatingActionButton);
 			mFloatingActionButton.Visibility = ViewStates.Visible;
@@ -125,6 +124,12 @@ namespace PaySplit.Droid
 				c.FullName = name;
 				c.Email = email;
 
+				if (!isValidEmail(email))
+				{
+					Toast.MakeText(this, "Invalid e-mail format, contact was not created.", ToastLength.Short).Show();
+					return;
+				}
+
 				GenDataService dbs = DataHelper.getInstance().getGenDataService();
 				Contact newContact = dbs.getContactByEmail(email);
 				if (newContact == null)
@@ -140,6 +145,19 @@ namespace PaySplit.Droid
 			alertDialog.SetNegativeButton("Cancel", delegate {});
 			AlertDialog dialog = alertDialog.Create();
 			dialog.Show();
+		}
+
+		private bool isValidEmail(String email)
+		{
+			try
+			{
+				MailAddress mailAddress = new MailAddress(email);
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
 		}
 	}
 }
