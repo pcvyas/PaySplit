@@ -10,6 +10,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -20,14 +22,15 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:padding="3dp"
+            android:gravity="center"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/black"
-            android:background="#fff3d6cf"
             android:layout_marginTop="5dp" />
         <TextView
             android:id="@+id/sender"
             android:text="Sender"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -36,23 +39,22 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_weight="1"
-        android:layout_gravity="right"
-        android:gravity="right"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:id="@+id/transAmount"
             android:text="$00.00"
+            android:textSize="24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:textStyle="bold" />
-        <ImageButton
+        <Button
             android:id="@+id/sendEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_dialog_email"
             android:layout_margin="5dp"
-            android:backgroundTint="#ffee9c1f" />
+            android:text="Send Bill" />
     </LinearLayout>
 </LinearLayout>

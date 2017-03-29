@@ -32,7 +32,6 @@ namespace PaySplit.Droid
 			SetContentView(Resource.Layout.Main_ListView);
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
-			mNoResultsText.Text = "No transactions exist for this bill";
 			mTransactionsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
 			//Make FAB invisible
@@ -43,17 +42,45 @@ namespace PaySplit.Droid
 			mDBS = DataHelper.getInstance().getGenDataService();
 
 			billUid = Intent.GetStringExtra("bill-uid");
-			// Load all trans from database
-			mTransactions = mDBS.getTransactionsForBill(billUid);
-
-			// Setup adapter
-			mAdapter = new TransactionListViewAdapter(this, mTransactions);
-			mTransactionsListview.Adapter = mAdapter;
 		}
 
 		protected override void OnResume()
 		{
 			base.OnResume();
+
+			// Load all trans from database
+			mTransactions = mDBS.getTransactionsForBill(billUid);
+
+			if (mTransactions == null)
+			{
+				mNoResultsText.Text = "No transactions exist\nfor this bill.";
+				mNoResultsText.Visibility = ViewStates.Visible;
+			}
+			else if (mTransactions.Count <= 1)
+			{
+				mNoResultsText.Text = "This bill is not\nshared with anyone.";
+				mNoResultsText.Visibility = ViewStates.Visible;
+			}
+			else
+			{
+				// Setup adapter
+				mAdapter = new TransactionListViewAdapter(this, mTransactions);
+				mTransactionsListview.Adapter = mAdapter;
+			}
+
+			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Android.Resource.Id.Home:
+					Finish();
+					return true;
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
 		}
 	}
 

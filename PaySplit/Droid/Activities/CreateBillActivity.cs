@@ -208,6 +208,9 @@ namespace PaySplit.Droid
 				t.SenderEmail = mBill.OwnerEmail;
 				t.Completed = false;
 				mDBService.InsertTransactionEntry(t);
+				var activity = new Intent(this, typeof(BillDetailsActivity));
+				activity.PutExtra("uid", t.BillUID);
+				StartActivity(activity);
 				this.Finish();
 			});
 

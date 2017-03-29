@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -61,7 +62,6 @@ namespace PaySplit.Droid
 
 			Transaction trans = mTransactions[position];
 
-
             // Define what is in the row
 			viewHolder.sender.Text = "owes: " + mTransactions[position].ReceiverEmail;
 			viewHolder.reciever.Text = mTransactions[position].SenderEmail;
@@ -71,6 +71,21 @@ namespace PaySplit.Droid
 
 			//Current Phone owner
 			Contact appOwner = dbs.getUserContactInformation();
+
+			if (trans.Completed)
+			{
+				viewHolder.amount.SetTextColor(Color.DarkSeaGreen);
+				viewHolder.sendEmail.Text = "Resend Bill";
+			}
+			else
+			{
+				viewHolder.amount.SetTextColor(Color.IndianRed);
+			}
+
+			if (trans.SenderEmail.Equals(trans.ReceiverEmail) || !trans.ReceiverEmail.Equals(appOwner.Email))
+			{
+				viewHolder.sendEmail.Visibility = ViewStates.Gone;
+			}
 
 			viewHolder.sendEmail.Click += delegate
 			{
@@ -146,20 +161,18 @@ namespace PaySplit.Droid
 				emailIntent.PutExtra(Intent.ExtraSubject, "New Bill Shared with you: " + b.Name);
 
 				Java.Lang.StringBuilder builder = new Java.Lang.StringBuilder();
-				builder.Append("Hello,\n\nYou are receiving this email because " + dbs.getContactByEmail(b.OwnerEmail).FullName
+				builder.Append("Hello,\n\n" + dbs.getContactByEmail(b.OwnerEmail).FullName
 									+ " has decided to share a bill for " + b.Name + " with you.\n\n");
 
 				builder.Append("You owe a total of $" + trans.Amount + "! You can import this bill into your PaySplit app by clicking the attached pay split bill file, or simply use a payment service of your choice to pay this user.\n\n");
 				builder.Append("Thanks,\nPaySplit Team");
 				emailIntent.PutExtra(Intent.ExtraText, builder.ToString());
+
+				trans.Completed = true;
+				dbs.UpdateTransactionEntry(trans);
+
 				mContext.StartActivity(Intent.CreateChooser(emailIntent, "Choose email client to send with..."));
-
 			};
-
-			if (trans.SenderEmail == trans.ReceiverEmail || trans.ReceiverEmail != appOwner.Email)
-			{
-				viewHolder.sendEmail.Visibility = ViewStates.Invisible;
-			}
 			
              return rowView;
         }
@@ -182,13 +195,13 @@ namespace PaySplit.Droid
         public TextView reciever;
         public TextView sender;
         public TextView amount;
-		public ImageButton sendEmail;
+		public Button sendEmail;
         public TransactionsListViewHolder(View view)
         {
 			reciever = view.FindViewById<TextView>(Resource.Id.reciever);
 			sender = view.FindViewById<TextView>(Resource.Id.sender);
 			amount = view.FindViewById<TextView>(Resource.Id.transAmount);
-			sendEmail = view.FindViewById<ImageButton>(Resource.Id.sendEmail);
+			sendEmail = view.FindViewById<Button>(Resource.Id.sendEmail);
         }
     }
 }

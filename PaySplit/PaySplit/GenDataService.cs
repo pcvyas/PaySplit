@@ -102,6 +102,25 @@ namespace PaySplit
 			return true;
 		}
 
+		public bool UpdateTransactionEntry(Transaction trans)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+				db.InsertOrReplace(trans);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
+
 		public bool InsertTransactionEntries(List<Transaction> ts)
 		{
 			try
