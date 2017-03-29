@@ -71,14 +71,11 @@ namespace PaySplit.Droid
 
 			viewHolder.sendEmail.Click += delegate
 			{
-
-
 				File outputDir = mContext.GetExternalCacheDirs().FirstOrDefault();
 				File outputFile = File.CreateTempFile("BillShare", ".psbf", outputDir);
 				Android.Net.Uri path = Android.Net.Uri.FromFile(outputFile);
 
 				System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
 
 				//------------Create PBSF file Here
 				List<Transaction> transactionsWithBill = dbs.getTransactionsForBill(trans.BillUID);
@@ -99,7 +96,6 @@ namespace PaySplit.Droid
 				//Bills detail
 				sb.AppendLine("");
 				Bill b = dbs.getBillByUID(trans.BillUID);
-
 				sb.AppendLine(b.UID);
 				sb.AppendLine(b.Name);
 				sb.AppendLine(b.Description);
@@ -108,7 +104,6 @@ namespace PaySplit.Droid
 				sb.AppendLine(b.Date.ToString());
 				sb.AppendLine(b.LastEdited.ToString());
 				sb.AppendLine(b.OwnerEmail);
-
 
 				//Trans Detail
 				sb.AppendLine("");
@@ -119,8 +114,8 @@ namespace PaySplit.Droid
 					sb.AppendLine(transactionsWithBill[i].BillUID);
 					sb.AppendLine(transactionsWithBill[i].SenderEmail);
 					sb.AppendLine(transactionsWithBill[i].ReceiverEmail);
+					sb.AppendLine(Java.Lang.Double.ToString(transactionsWithBill[i].Amount));
 				}
-
 
 				string filetoWrite = sb.ToString();
 				var writer = new BufferedWriter(new FileWriter(outputFile));
@@ -143,9 +138,18 @@ namespace PaySplit.Droid
 				emailIntent.PutExtra(Intent.ExtraStream, path);
 
 				// the mail subject
-				emailIntent.PutExtra(Intent.ExtraSubject, "PaySplit Bill file");
-				mContext.StartActivity(Intent.CreateChooser(emailIntent, "Send email..."));
 
+				emailIntent.PutExtra(Intent.ExtraEmail, new string[] { mTransactions[position].SenderEmail });
+				emailIntent.PutExtra(Intent.ExtraSubject, "PaySplit Bill file");
+
+				Java.Lang.StringBuilder builder = new Java.Lang.StringBuilder();
+				builder.Append("Hello,\nYou are receiving this email because " + dbs.getContactByEmail(b.OwnerEmail).FullName
+									+ " has decided to share a bill for " + b.Name + " with you.\n\n");
+
+				builder.Append("You owe a total of $" + trans.Amount + "! You can import this bill into your PaySplit app by clicking the attached pay split bill file, or simply use a payment service of your choice to pay this user.\n\n");
+				builder.Append("Thanks,\nPaySplit Team");
+				emailIntent.PutExtra(Intent.ExtraText, builder.ToString());
+				mContext.StartActivity(Intent.CreateChooser(emailIntent, "Choose email client to send with..."));
 
 			};
 			
