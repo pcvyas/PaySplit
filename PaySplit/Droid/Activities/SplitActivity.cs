@@ -21,7 +21,7 @@ namespace PaySplit.Droid
 		private GenDataService mDBS;
 		private List<Contact> mContacts = new List<Contact>();
 
-		private int total;
+		private double total;
 		private string billUID;
 
 		bool splitSelectionScreen;
@@ -62,7 +62,7 @@ namespace PaySplit.Droid
 			mAdapter = new SplitContactsListViewAdapter(this, mContacts, ownerEmail);
 			sAdapter = new SplitAmountAdapter(this, mContacts, total);
 
-			total = Intent.GetIntExtra("amount", 0);
+			total = Intent.GetDoubleExtra("amount", 0);
 			sAdapter.setTotal(total);
 
 			mContacts.Clear();

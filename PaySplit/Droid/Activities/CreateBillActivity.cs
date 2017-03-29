@@ -194,7 +194,7 @@ namespace PaySplit.Droid
 			alertDialog.SetPositiveButton("Split", delegate
 			{
 				var splitActivity = new Intent(this, typeof(SplitActivity));
-				splitActivity.PutExtra("amount", Convert.ToInt32(mAmountEditText.Text));
+				splitActivity.PutExtra("amount", Convert.ToDouble(mAmountEditText.Text));
 				splitActivity.PutExtra("uid", mBill.UID);
 				StartActivity(splitActivity);
 				Finish();
