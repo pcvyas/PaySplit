@@ -58,8 +58,14 @@ namespace PaySplit.Droid
 		protected override void OnResume()
 		{
 			base.OnResume();
+			reloadContacts();
+		}
+
+		private void reloadContacts()
+		{
 			mContacts.Clear();
 			mContacts = mDBS.GetAllContacts().Where(o => o.Id != 1).ToList();
+			mAdapter.update(mContacts);
 			if (mContacts == null || mContacts.Count == 0)
 			{
 				mNoResultsText.Visibility = ViewStates.Visible;
@@ -68,8 +74,6 @@ namespace PaySplit.Droid
 			{
 				mNoResultsText.Visibility = ViewStates.Gone;
 			}
-
-			mAdapter.update(mContacts);
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -121,9 +125,17 @@ namespace PaySplit.Droid
 				c.FullName = name;
 				c.Email = email;
 
-				DataHelper.getInstance().getGenDataService().InsertContactEntry(c);
-				mContacts = mDBS.GetAllContacts().Where(o => o.Id != 1).ToList();
-				mAdapter.update(mContacts);
+				GenDataService dbs = DataHelper.getInstance().getGenDataService();
+				Contact newContact = dbs.getContactByEmail(email);
+				if (newContact == null)
+				{
+					dbs.InsertContactEntry(c);
+				}
+				else
+				{
+					Toast.MakeText(this, "Error: Contact with this e-mail address already exists.", ToastLength.Short).Show();
+				}
+				reloadContacts();
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate {});
 			AlertDialog dialog = alertDialog.Create();

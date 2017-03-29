@@ -43,6 +43,11 @@ namespace PaySplit.Droid
 		public void update(List<Contact> contacts)
 		{
 			this.mContacts = contacts;
+			invalidate();
+		}
+
+		private void invalidate()
+		{
 			NotifyDataSetChanged();
 			NotifyDataSetInvalidated();
 		}
@@ -71,14 +76,14 @@ namespace PaySplit.Droid
 			viewHolder.deleteButton.Click += delegate {
 				if (!mIsDialogShowing)
 				{
-					showDeleteContactDialog(c);
+					showDeleteContactDialog(c, position);
 				}
 			};
 			viewHolder.editButton.Click += delegate
 			{
 				if (!mIsDialogShowing)
 				{
-					showEditContactDialog(c);
+					showEditContactDialog(c, position);
 				}
 			};
 
@@ -88,7 +93,7 @@ namespace PaySplit.Droid
 			return rowView;
 		}
 
-		private void showEditContactDialog(Contact c)
+		private void showEditContactDialog(Contact c, int position)
 		{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 			alertDialog.SetTitle("Edit Contact");
@@ -115,14 +120,18 @@ namespace PaySplit.Droid
 
 			alertDialog.SetCancelable(false);
 			alertDialog.SetPositiveButton("Update", delegate {
+				mIsDialogShowing = false;
+
 				string name = nameEditText.Text;
 				string email = emailEditText.Text;
 
 				Contact contact = c;
 				contact.FullName = name;
 				contact.Email = email;
+
 				DataHelper.getInstance().getGenDataService().UpdateContactInformation(contact);
-				update(DataHelper.getInstance().getGenDataService().GetAllContacts().Where(o => o.Id != 1).ToList());
+				this.mContacts[position] = contact;
+				invalidate();
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate {
 				mIsDialogShowing = false;
@@ -134,7 +143,7 @@ namespace PaySplit.Droid
 			mIsDialogShowing = true;
 		}
 
-		private void showDeleteContactDialog(Contact c)
+		private void showDeleteContactDialog(Contact c, int position)
 		{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 			alertDialog.SetTitle("Delete Contact");
@@ -142,8 +151,10 @@ namespace PaySplit.Droid
 			alertDialog.SetCancelable(false);
 			alertDialog.SetPositiveButton("Delete", delegate
 			{
+				mIsDialogShowing = false;
 				DataHelper.getInstance().getGenDataService().DeleteContact(c);
-				update(DataHelper.getInstance().getGenDataService().GetAllContacts().Where(o => o.Id != 1).ToList());
+				this.mContacts.RemoveAt(position);
+				invalidate();
 			});
 			alertDialog.SetNegativeButton("Cancel", delegate
 			{

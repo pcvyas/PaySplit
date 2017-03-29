@@ -89,23 +89,6 @@ namespace PaySplit.Droid
 					mDBS.UpdateUserContactInformation(c);
 				} 
 			}
-			else if (key.Equals(GetString(Resource.String.pref_update_email)))
-			{
-				EditTextPreference etp = (EditTextPreference)pref;
-				if (etp.Text != null && isValidEmail(etp.Text))
-				{
-					pref.Summary = etp.Text;
-					Contact c = mDBS.getUserContactInformation();
-					c.Email = etp.Text;
-
-					mDBS.UpdateUserContactInformation(c);
-					Toast.MakeText(this, "Updated e-mail to " + etp.Text, ToastLength.Short).Show();
-				}
-				else
-				{
-					Toast.MakeText(this, "Failed to update: Invalid email address provided.", ToastLength.Long).Show();
-				}
-			}
 			else if (key.Equals(GetString(Resource.String.pref_enable_insights)))
             {
                 showInsights();
