@@ -98,6 +98,16 @@ namespace PaySplit.Droid
 			viewHolder.contactName.Text = c.FullName;
 			viewHolder.contactEmail.Text = "Email: " + c.Email;
 			viewHolder.amount.Text = mAmounts[position].ToString("#.##");
+			viewHolder.amount.TextChanged += delegate {
+				try
+				{
+					mAmounts[position] = Double.Parse(viewHolder.amount.Text);
+				}
+				catch (Exception)
+				{
+					// failed to update amounts
+				}
+			};
 
 			return rowView;
 		}
