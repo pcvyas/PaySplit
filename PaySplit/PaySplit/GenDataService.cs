@@ -212,7 +212,39 @@ namespace PaySplit
 			return null;
         }
 
-		public List<Contact> GetAllContacts()
+        public List<Bill> getBillsByContact(Contact c)
+        {
+            List<Bill> bills = new List<Bill>();
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+
+                SQLiteConnection db = new SQLiteConnection(DBPath);
+
+                var billTableQuery = db.Table<Bill>();
+                string email = c.Email;
+                foreach (Bill b in billTableQuery)
+                {
+                    if (b.OwnerEmail == email)
+                    {
+                        bills.Add(b);
+                    }
+                }
+                db.Close();
+
+            }
+            catch
+            {
+                return new List<Bill>();
+            }
+
+            return bills;
+        }
+
+        public List<Contact> GetAllContacts()
 		{
 			List<Contact> contacts = new List<Contact>();
 
@@ -391,6 +423,11 @@ namespace PaySplit
 					throw new Exception("Database does't exist!");
 				}
 				SQLiteConnection db = new SQLiteConnection(DBPath);
+
+                foreach (Transaction t in getTransactionsForBill(b.UID))
+                {
+                    db.Delete(t);
+                }
 				db.Delete(b);
 				db.Close();
 			}
@@ -401,44 +438,29 @@ namespace PaySplit
 			return true;
 		}
 
-		public bool DeleteContact(Contact c)
-		{
-			try
-			{
-				if (DBPath == null)
-				{
-					throw new Exception("Database does't exist!");
-				}
-				SQLiteConnection db = new SQLiteConnection(DBPath);
-				db.Delete(c);
-				db.Close();
-			}
-			catch
-			{
-				return false;
-			}
-			return true;
-		}
+        //Delete A Bill
+        public bool DeleteBillAsync(Bill b)
+        {
+            try
+            {
+                if (DBPath == null)
+                {
+                    throw new Exception("Database does't exist!");
+                }
+                SQLiteAsyncConnection db = new SQLiteAsyncConnection(DBPath);
 
-		/* Delete Operations */
-		//Delete A Bill
-		public bool DeleteBillAsync(Bill b)
-		{
-			try
-			{
-				if (DBPath == null)
-				{
-					throw new Exception("Database does't exist!");
-				}
-				SQLiteAsyncConnection db = new SQLiteAsyncConnection(DBPath);
-				db.DeleteAsync(b);
-			}
-			catch
-			{
-				return false;
-			}
-			return true;
-		}
+                foreach (Transaction t in getTransactionsForBill(b.UID))
+                {
+                    db.DeleteAsync(t);
+                }
+                db.DeleteAsync(b);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
 
 
         // Delete all bills
@@ -461,6 +483,29 @@ namespace PaySplit
             return true;
         }
 
+        // Delete a contact
+        public bool DeleteContact(Contact c)
+		{
+			try
+			{
+				if (DBPath == null)
+				{
+					throw new Exception("Database does't exist!");
+				}
+				SQLiteConnection db = new SQLiteConnection(DBPath);
+                foreach (Bill b in getBillsByContact(c))
+                {
+                    DeleteBill(b);
+                }
+                db.Delete(c);
+				db.Close();
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
 
 		/* Update Operations */
 

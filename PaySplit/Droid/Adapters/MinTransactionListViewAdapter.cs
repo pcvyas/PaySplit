@@ -55,7 +55,7 @@ namespace PaySplit.Droid
             if (rowView == null)
             {
                 // We use a viewholder so the views do not have to be recreated
-                rowView = LayoutInflater.From(mContext).Inflate(Resource.Layout.ViewContact, null, false);
+                rowView = LayoutInflater.From(mContext).Inflate(Resource.Layout.ViewMinBalances, null, false);
                 viewHolder = new TransactionListViewHolder(rowView);
                 rowView.Tag = viewHolder;
             }
