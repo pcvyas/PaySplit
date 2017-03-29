@@ -24,6 +24,7 @@ namespace PaySplit.Droid
 		private FloatingActionButton mFloatingActionButton;
 
 		private GenDataService mDBS;
+		private string billUid;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -31,6 +32,7 @@ namespace PaySplit.Droid
 			SetContentView(Resource.Layout.Main_ListView);
 
 			mNoResultsText = FindViewById<TextView>(Resource.Id.NoResults);
+			mNoResultsText.Text = "No transactions exist for this bill";
 			mTransactionsListview = FindViewById<ListView>(Resource.Id.View_ListView);
 
 			//Make FAB invisible
@@ -40,8 +42,9 @@ namespace PaySplit.Droid
 			//Initialize database service
 			mDBS = DataHelper.getInstance().getGenDataService();
 
+			billUid = Intent.GetStringExtra("bill-uid");
 			// Load all trans from database
-			mTransactions = mDBS.GetAllTransactions();
+			mTransactions = mDBS.getTransactionsForBill(billUid);
 
 			// Setup adapter
 			mAdapter = new TransactionListViewAdapter(this, mTransactions);
@@ -51,25 +54,6 @@ namespace PaySplit.Droid
 		protected override void OnResume()
 		{
 			base.OnResume();
-			UpdateListView();
-		}
-
-		private void UpdateListView()
-		{
-			mTransactions = mDBS.GetAllTransactions();
-
-			// we filter the bills using filter decorators
-
-			if (mTransactions == null || mTransactions.Count == 0)
-			{
-				mNoResultsText.Visibility = ViewStates.Visible;
-			}
-			else
-			{
-				mNoResultsText.Visibility = ViewStates.Gone;
-			}
-			mAdapter.update(mTransactions);
-			mTransactionsListview.Adapter = mAdapter;
 		}
 	}
 

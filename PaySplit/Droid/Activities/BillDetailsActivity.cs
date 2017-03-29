@@ -28,7 +28,6 @@ namespace PaySplit.Droid
 		private TextView owner;
 		private ImageView image;
 		private TextView updated;
-		private TextView transactionsText;
 		private Button editButton;
 		private Button deleteButton;
 
@@ -38,6 +37,7 @@ namespace PaySplit.Droid
 		private Spinner category_edit;
 		private EditText desc_edit;
 		private Button saveButton;
+		private Button transButton; 
 
 		// Instantiate ViewSwitchers used for switching to edit mode
 		private ViewSwitcher nameSwitcher;
@@ -48,7 +48,6 @@ namespace PaySplit.Droid
 		private ViewSwitcher dateSwitcher;
 
 		ArrayAdapter<String> mCategoriesAdapter;
-		ContactsSuggestionArrayAdapter mContactsAdapter;
 
 		List<Contact> mContacts;
 
@@ -80,7 +79,6 @@ namespace PaySplit.Droid
             category = FindViewById<TextView>(Resource.Id.Details_BillCategory);
             desc = FindViewById<TextView>(Resource.Id.Details_BillDesc);
 			owner  = FindViewById<TextView>(Resource.Id.Details_BillOwner);
-			transactionsText = FindViewById<TextView>(Resource.Id.Details_transactionsText);
 			image = FindViewById<ImageView>(Resource.Id.Details_imageView);
             updated = FindViewById<TextView>(Resource.Id.Details_Updated);
             editButton = FindViewById<Button>(Resource.Id.Details_EditButton);
@@ -91,6 +89,7 @@ namespace PaySplit.Droid
             desc_edit = FindViewById<EditText>(Resource.Id.Details_BillDesc_Edit);
             saveButton = FindViewById<Button>(Resource.Id.Details_SaveButton);
 			deleteButton = FindViewById<Button>(Resource.Id.deleteBillButton);
+			transButton = FindViewById<Button>(Resource.Id.transactionsBillButton);
 
 			// Instantiate ViewSwitchers used for switching to edit mode
 			nameSwitcher = FindViewById<ViewSwitcher>(Resource.Id.Details_name_switcher);
@@ -122,7 +121,6 @@ namespace PaySplit.Droid
             category_edit.Adapter = mCategoriesAdapter;
 
 			mContacts = mDBS.GetAllContacts();
-			mContactsAdapter = new ContactsSuggestionArrayAdapter(this, mContacts);
 
 			LoadImageForBill();
 			updateLastUpdatedTimestampText();
@@ -130,6 +128,7 @@ namespace PaySplit.Droid
 			editButton.Click += Edit_Click;
 			saveButton.Click += Save_Click;
 			deleteButton.Click += Delete_Click;
+			transButton.Click += TransButton_Click;
 
 			Contact c = mDBS.getContactByEmail(mBill.OwnerEmail);
 
@@ -143,15 +142,6 @@ namespace PaySplit.Droid
 
 			this.ActionBar.SetDisplayHomeAsUpEnabled(true);
 			this.ActionBar.Title = mBill.Name;
-
-			List<Transaction> transactions = mDBS.getTransactionsForBill(mBill.UID);
-			StringBuilder builder = new StringBuilder();
-			foreach (Transaction t in transactions)
-			{
-				Debugger.Log("Found transaction for " + t.SenderEmail + " to " + t.ReceiverEmail + " [" + t.UID + "]");
-				builder.Append(t.SenderEmail + " owes " + t.ReceiverEmail + " $" + t.Amount + "\n");
-			}
-			transactionsText.Text = builder.ToString();
         }
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
@@ -216,6 +206,13 @@ namespace PaySplit.Droid
 			date_edit.SetText(date.Text, TextView.BufferType.Editable);
 			category_edit.SetSelection(categoryIndex);
 			desc_edit.SetText(desc.Text, TextView.BufferType.Editable);
+		}
+
+		void TransButton_Click(object sender, EventArgs e)
+		{
+			var activity = new Intent(this, typeof(TransactionsActivity));
+			activity.PutExtra("bill-uid", mBill.UID);
+			StartActivity(activity);
 		}
 
 		void Save_Click(object sender, EventArgs e)

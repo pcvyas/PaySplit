@@ -125,9 +125,6 @@ namespace PaySplit.Droid
 					return true;
                 case Resource.Id.minimize:
                     StartActivity(typeof(MinTransactionsActivity));
-                    return true;
-				case Resource.Id.transactions:
-					StartActivity(typeof(TransactionsActivity));
 					return true;
 				default:
 					return base.OnOptionsItemSelected(item);

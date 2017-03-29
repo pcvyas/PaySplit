@@ -140,10 +140,10 @@ namespace PaySplit.Droid
 				// the mail subject
 
 				emailIntent.PutExtra(Intent.ExtraEmail, new string[] { mTransactions[position].SenderEmail });
-				emailIntent.PutExtra(Intent.ExtraSubject, "PaySplit Bill file");
+				emailIntent.PutExtra(Intent.ExtraSubject, "New Bill Shared with you: " + b.Name);
 
 				Java.Lang.StringBuilder builder = new Java.Lang.StringBuilder();
-				builder.Append("Hello,\nYou are receiving this email because " + dbs.getContactByEmail(b.OwnerEmail).FullName
+				builder.Append("Hello,\n\nYou are receiving this email because " + dbs.getContactByEmail(b.OwnerEmail).FullName
 									+ " has decided to share a bill for " + b.Name + " with you.\n\n");
 
 				builder.Append("You owe a total of $" + trans.Amount + "! You can import this bill into your PaySplit app by clicking the attached pay split bill file, or simply use a payment service of your choice to pay this user.\n\n");
