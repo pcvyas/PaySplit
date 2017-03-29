@@ -163,6 +163,8 @@
     <Compile Include="Activities\SplitActivity.cs" />
     <Compile Include="Adapters\SplitContactsListViewAdapter.cs" />
     <Compile Include="Adapters\SplitAmountAdapter.cs" />
+    <Compile Include="Activities\TransactionsActivity.cs" />
+    <Compile Include="Adapters\TransactionListViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ViewBills.axml">
@@ -220,6 +222,7 @@
     <AndroidResource Include="Resources\layout\ViewMinBalances.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\TransactionView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml">
