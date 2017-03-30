@@ -79,7 +79,7 @@ namespace PaySplit.Droid
 
 			takePhoto.Click += delegate
 			{
-				if (CheckSelfPermission(Manifest.Permission.Camera) != Permission.Granted)
+				if (Build.VERSION.SdkInt >= BuildVersionCodes.M && CheckSelfPermission(Manifest.Permission.Camera) != Permission.Granted )
 				{
 
 					RequestPermissions(new String[] { Manifest.Permission.Camera }, CAMERA_REQUEST_CODE);
